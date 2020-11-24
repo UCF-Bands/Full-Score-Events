@@ -1,0 +1,9 @@
+{
+  "name": "full-score-events",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {},
+  "dependencies": {
+    "@wordpress/icons": "^1.2.0"
+  }
+}

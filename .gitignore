@@ -1,0 +1,12 @@
+.vscode/settings.json
+.vscode/launch.json
+node_modules
+
+# just keep autoloading stuff
+vendor/*
+!vendor/composer
+!vendor/autoload.php
+
+## Uncomment line below if you prefer to
+## keep compiled files out of version control
+# dist/

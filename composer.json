@@ -1,0 +1,27 @@
+{
+	"name": "full-score-events/full-score-events",
+	"description": "A WordPress plugin for Full Score Events",
+	"type": "project",
+	"authors": [
+		{
+			"name": "Designzillas",
+			"email": "info@designzillas.com"
+		}
+	],
+	"require": {},
+	"require-dev": {
+		"wp-coding-standards/wpcs": "^2.2",
+		"dealerdirect/phpcodesniffer-composer-installer": "^0.6.2",
+		"phpcompatibility/php-compatibility": "^9.3",
+		"roave/security-advisories": "dev-master"
+	},
+	"autoload": {
+		"psr-4": { "Full_Score_Events\\": "./src" }
+	},
+	"scripts": {
+		"install-codestandards": [
+			"Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run"
+		],
+		"phpcs": "phpcs . --ignore=node_modules/*,vendor/*"
+	}
+}

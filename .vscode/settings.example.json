@@ -1,0 +1,10 @@
+{
+	"phpcs.enable": true,
+	"phpcs.standard": "WordPress",
+	"phpcs.executablePath": "/absolute/path/to/this/full-score-events-dev/vendor/squizlabs/php_codesniffer/bin/phpcs",
+	"files.exclude": {
+		"**/node_modules": true
+	},
+	"editor.renderWhitespace": "all",
+	"intelephense.environment.includePaths": [ "/absolute/path/to/this/WORDPRESS-ROOT" ]
+}
