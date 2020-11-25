@@ -1,9 +1,18 @@
 {
-  "name": "full-score-events",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {},
-  "dependencies": {
-    "@wordpress/icons": "^1.2.0"
-  }
+	"name": "full-score-events",
+	"version": "1.0.0",
+	"private": true,
+	"scripts": {
+		"build": "wp-scripts build",
+		"format:js": "wp-scripts format-js",
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js",
+		"start": "wp-scripts start ./src/blocks ./src/public",
+		"packages-update": "wp-scripts packages-update"
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"@wordpress/icons": "^2.8.0",
+		"@wordpress/scripts": "^12.5.0"
+	}
 }
