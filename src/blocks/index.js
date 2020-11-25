@@ -1,4 +1,3 @@
-console.log( 'Full Score Events block JS loaded.' );
+import './taco';
 
-import './index.css';
-import './style.css';
+console.log( 'Full Score Events block JS loaded.' );

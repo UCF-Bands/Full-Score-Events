@@ -1,1 +1,1 @@
-{"version":3,"sources":["webpack:///style.css"],"names":[],"mappings":"AAAA,wCAAwC;AACxC;CACC,iBAAiB;AAClB","file":"style-blocks.css","sourcesContent":["/* These are editor + front end styles */\nbody {\n\tbackground: green;\n}\n"],"sourceRoot":""}
+{"version":3,"sources":["webpack:///style.css"],"names":[],"mappings":"AAAA,yCAAyC;AACzC;CACC,iBAAiB;AAClB","file":"style-blocks.css","sourcesContent":["/* Taco block editor + front end styles */\nbody {\n\tbackground: green;\n}\n"],"sourceRoot":""}
