@@ -70,10 +70,7 @@ abstract class Post {
 			return $this->meta[ $key ];
 		}
 
-		$this->meta[ $key ] = function_exists( 'get_field' )
-			? get_field( $key, $this->get_id() )
-			: \get_post_meta( $this->get_id(), $key, true );
-
+		$this->meta[ $key ] = \get_post_meta( $this->get_id(), $key, true );
 		return $this->meta[ $key ];
 	}
 
