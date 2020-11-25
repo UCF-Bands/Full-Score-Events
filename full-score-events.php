@@ -77,7 +77,6 @@ class Plugin {
 	/**
 	 * Handle activation tasks
 	 *
-	 * @todo  move this to its own class
 	 * @since 1.0.0
 	 */
 	public function do_activate() {
@@ -87,7 +86,6 @@ class Plugin {
 	/**
 	 * Handle deactivation tasks
 	 *
-	 * @todo  move this to its own class
 	 * @since 1.0.0
 	 */
 	public function do_deactivate() {
