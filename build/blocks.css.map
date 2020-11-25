@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///index.css"],"names":[],"mappings":"AAAA,4BAA4B;AAC5B;CACC,eAAe;AAChB","file":"blocks.css","sourcesContent":["/* these are editor styles */\nbody {\n\tbackground: red;\n}\n"],"sourceRoot":""}

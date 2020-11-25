@@ -81,15 +81,15 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/public.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/public/index.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/public.js":
-/*!***********************!*\
-  !*** ./src/public.js ***!
-  \***********************/
+/***/ "./src/public/index.js":
+/*!*****************************!*\
+  !*** ./src/public/index.js ***!
+  \*****************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
