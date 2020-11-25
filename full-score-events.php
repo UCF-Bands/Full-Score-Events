@@ -32,14 +32,6 @@ require_once __DIR__ . '/src/functions.php';
 class Plugin {
 
 	/**
-	 * CPT keys
-	 *
-	 * @var   string
-	 * @since 1.0.0
-	 */
-	const SAMPLE_KEY = 'fse_sample';
-
-	/**
 	 * Spin up plugin
 	 *
 	 * @since 1.0.0
@@ -69,6 +61,7 @@ class Plugin {
 	 * @since 1.0.0
 	 */
 	public function init() {
+		new Schedules();
 		new Blocks();
 		// new CPTs();
 		// new Taxonomies();
