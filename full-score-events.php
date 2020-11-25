@@ -69,8 +69,9 @@ class Plugin {
 	 * @since 1.0.0
 	 */
 	public function init() {
-		new CPTs();
-		new Taxonomies();
+		new Blocks();
+		// new CPTs();
+		// new Taxonomies();
 	}
 
 	/**
