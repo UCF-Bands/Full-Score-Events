@@ -1,4 +1,4 @@
 /* Taco block editor-only styles */
 body {
-	background: red;
+	background: var(--color-red);
 }

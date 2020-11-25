@@ -4,7 +4,6 @@
  * Look at this test bro.
  *
  * @since   1.0.0
- * @package Full_Score_Events
  */
 
 import { registerBlockType } from '@wordpress/blocks';

@@ -1,4 +1,4 @@
 /* Taco block editor + front end styles */
 body {
-	background: green;
+	background: var(--color-green);
 }

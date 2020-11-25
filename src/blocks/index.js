@@ -1,3 +1,7 @@
-import './taco';
+/**
+ * Block editor blocks + helpers
+ *
+ * @since 1.0.0
+ */
 
-console.log( 'Full Score Events block JS loaded.' );
+import './taco';

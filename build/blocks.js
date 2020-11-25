@@ -180,8 +180,12 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _taco__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./taco */ "./src/blocks/taco/index.js");
+/**
+ * Block editor blocks + helpers
+ *
+ * @since 1.0.0
+ */
 
-console.log('Full Score Events block JS loaded.');
 
 /***/ }),
 
