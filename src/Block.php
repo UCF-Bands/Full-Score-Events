@@ -59,5 +59,14 @@ class Block {
 			)
 		);
 
+		$this->do_meta_registration();
+	}
+
+	/**
+	 * Do extra meta post meta registration for attribute sourcing
+	 *
+	 * @since 1.0.0
+	 */
+	protected function do_meta_registration() {
 	}
 }
