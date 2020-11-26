@@ -26,7 +26,7 @@ class Schedules extends Post_Type {
 	 * @since 1.0.0
 	 * @var   string
 	 */
-	protected $cpt_key = 'fse_schedule';
+	const CPT_KEY = 'fse_schedule';
 
 	/**
 	 * Get general post type label

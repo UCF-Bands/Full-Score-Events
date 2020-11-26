@@ -26,7 +26,7 @@ abstract class Post_Type {
 	 * @since 1.0.0
 	 * @var   string
 	 */
-	protected $cpt_key = 'fse_';
+	const CPT_KEY = 'fse_post_type';
 
 	/**
 	 * Registration args
@@ -56,22 +56,22 @@ abstract class Post_Type {
 	}
 
 	/**
+	 * Get main post type label
+	 *
+	 * @return string
+	 * @since  1.0.0
+	 */
+	public function get_label() {
+		return __( 'Set CPT Label', 'full-score-events' );
+	}
+
+	/**
 	 * Do CPT registration
 	 *
 	 * @since 1.0.0
 	 */
 	public function do_registration() {
-		register_post_type( $this->cpt_key, $this->get_args() );
-	}
-
-	/**
-	 * Get main post type label
-	 *
-	 * @return string
-	 * @since 1.0.0
-	 */
-	public function get_label() {
-		return __( 'Set CPT Label', 'full-score-events' );
+		register_post_type( $this::CPT_KEY, $this->get_args() );
 	}
 
 	/**
@@ -131,7 +131,7 @@ abstract class Post_Type {
 
 		$screen = get_current_screen();
 
-		return $this->title_placeholder && $this->cpt_key === $screen->post_type
+		return $this->title_placeholder && $this::CPT_KEY === $screen->post_type
 			? $this->title_placeholder
 			: $title;
 	}
