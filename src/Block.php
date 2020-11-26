@@ -26,7 +26,7 @@ class Block {
 	 * @since 1.0.0
 	 * @var   string
 	 */
-	private $name;
+	protected $name;
 
 	/**
 	 * Set everything up
