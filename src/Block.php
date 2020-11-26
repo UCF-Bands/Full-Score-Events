@@ -49,11 +49,15 @@ class Block {
 
 		register_block_type(
 			"full-score-events/{$this->name}",
-			[
-				'editor_script' => Blocks::EDITOR_ASSET_HANDLE,
-				'editor_style'  => Blocks::EDITOR_ASSET_HANDLE,
-				'style'         => Blocks::ASSET_HANDLE,
-			]
+			array_filter(
+				[
+					'editor_script' => Blocks::EDITOR_ASSET_HANDLE,
+					'editor_style'  => Blocks::EDITOR_ASSET_HANDLE,
+					'style'         => Blocks::ASSET_HANDLE,
+					// 'attributes'    => $this->get_attributes(),
+				]
+			)
 		);
+
 	}
 }
