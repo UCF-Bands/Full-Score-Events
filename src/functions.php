@@ -47,6 +47,16 @@ function get_plugin_template( $name, $args = [] ) {
 }
 
 /**
+ * Wrapper for edit_posts capability check
+ *
+ * @return bool
+ * @since  1.0.0
+ */
+function get_can_user_edit_posts() {
+	return current_user_can( 'edit_posts' );
+}
+
+/**
  * Add SVG to allowed MIMEs
  *
  * @param  array $mimes  Allowed MIME types.
