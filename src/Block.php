@@ -34,8 +34,9 @@ class Block {
 	 * @param string $name Block name.
 	 * @since 1.0.0
 	 */
-	public function __construct( $name ) {
-		$this->name = $name;
+	public function __construct( $name = null ) {
+		$this->name = $name ?: $this->name;
+
 		add_action( 'init', [ $this, 'do_registration' ] );
 	}
 
