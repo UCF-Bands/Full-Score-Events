@@ -43,6 +43,7 @@ class Blocks {
 	 */
 	public function __construct() {
 		add_action( 'init', [ __CLASS__, 'do_asset_registration' ] );
+		add_action( 'admin_enqueue_scripts', [ __CLASS__, 'do_admin_script_localization' ] );
 
 		new Block( 'taco' );
 	}
@@ -80,6 +81,25 @@ class Blocks {
 			"$build_url/style-blocks.css",
 			[],
 			filemtime( "$build_dir/style-blocks.css" )
+		);
+	}
+
+	/**
+	 * Localize objects for admin JS
+	 *
+	 * @since 1.0.0
+	 */
+	public static function do_admin_script_localization() {
+
+		wp_localize_script(
+			self::EDITOR_ASSET_HANDLE,
+			'fullScoreEventsEditor',
+			apply_filters(
+				'full_score_events_editor_js_object',
+				[
+					'currentCPT' => get_post_type(),
+				]
+			)
 		);
 	}
 }
