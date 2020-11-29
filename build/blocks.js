@@ -6594,21 +6594,11 @@ if (fullScoreEventsEditor.currentCPT === 'fse_schedule') {
     icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_2__["formatListBullets"],
     keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('schedule'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('plan')],
     attributes: {
-      jimbo: {
-        type: 'string',
+      items: {
+        type: 'array',
         source: 'meta',
-        meta: '_jimbo'
-      },
-      krik: {
-        type: 'string',
-        source: 'meta',
-        meta: '_krik'
-      } // items: {
-      // 	type: 'array',
-      // 	source: 'meta',
-      // 	meta: '_schedule_items',
-      // },
-
+        meta: '_schedule_items'
+      }
     },
     edit: _edit__WEBPACK_IMPORTED_MODULE_3__["default"],
     save: function save() {

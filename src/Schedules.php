@@ -67,7 +67,7 @@ class Schedules extends Post_Type {
 				'items_list_navigation' => __( 'Schedules list navigation', 'full-score-events' ),
 				'filter_items_list'     => __( 'Filter schedules list', 'full-score-events' ),
 			],
-			'supports'            => [ 'title', 'editor' ],
+			'supports'            => [ 'title', 'editor', 'custom-fields' ],
 			'public'              => true,
 			'show_ui'             => true,
 			'menu_icon'           => 'dashicons-list-view',

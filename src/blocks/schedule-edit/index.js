@@ -22,23 +22,11 @@ if ( fullScoreEventsEditor.currentCPT === 'fse_schedule' ) {
 		keywords: [ __( 'schedule' ), __( 'plan' ) ],
 
 		attributes: {
-			jimbo: {
-				type: 'string',
+			items: {
+				type: 'array',
 				source: 'meta',
-				meta: '_jimbo',
+				meta: '_schedule_items',
 			},
-
-			krik: {
-				type: 'string',
-				source: 'meta',
-				meta: '_krik',
-			},
-
-			// items: {
-			// 	type: 'array',
-			// 	source: 'meta',
-			// 	meta: '_schedule_items',
-			// },
 		},
 
 		edit,
