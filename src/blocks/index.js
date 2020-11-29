@@ -5,3 +5,4 @@
  */
 
 import './taco';
+import './schedule-edit';
