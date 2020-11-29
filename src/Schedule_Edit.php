@@ -36,22 +36,41 @@ class Schedule_Edit extends Block {
 	protected function do_meta_registration() {
 
 		register_post_meta(
-			Schedules::CPT_KEY,
-			'_schedule_items',
+			'',
+			// Schedules::CPT_KEY,
+			'_krik',
 			[
+				'show_in_rest'  => true,
 				'single'        => true,
-				'type'          => 'array',
-				// 'show_in_rest'  => [
-				// 	'schema' => [
-				// 		'type'       => 'object',
-				// 		'properties' => [
-				// 			'label' => [ 'type' => 'string' ],
-				// 			'value' => [ 'type' => 'number' ],
-				// 		],
-				// 	],
-				// ],
-				'auth_callback' => 'Full_Score_Events\get_can_user_edit_posts',
+				'type'          => 'string',
+				'auth_callback' => function() {
+					return current_user_can( 'edit_posts' );
+				},
+				// 'auth_callback' => 'Full_Score_Events\get_can_user_edit_posts',
 			]
 		);
+
+		// d( $rick, Schedules::CPT_KEY ); die;
+
+		// register_post_meta(
+		// 	Schedules::CPT_KEY,
+		// 	'_schedule_items',
+		// 	[
+		// 		'single'        => true,
+		// 		'type'          => 'array',
+		// 		'show_in_rest'  => [
+		// 			'schema' => [
+		// 				'items' => [
+		// 					'type'       => 'object',
+		// 					'properties' => [
+		// 						'time'     => [ 'type' => 'string' ],
+		// 						'activity' => [ 'type' => 'string' ],
+		// 					],
+		// 				],
+		// 			],
+		// 		],
+		// 		'auth_callback' => 'Full_Score_Events\get_can_user_edit_posts',
+		// 	]
+		// );
 	}
 }
