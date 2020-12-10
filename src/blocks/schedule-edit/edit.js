@@ -6,44 +6,66 @@
 
 import { __ } from '@wordpress/i18n';
 import { Fragment } from '@wordpress/element';
+import { TextControl, Button, IconButton } from '@wordpress/components';
 
 export default function edit( { attributes, setAttributes } ) {
-	console.log( 'schedule edit attrs', attributes );
-	return <Fragment>{ __( 'KRIK', 'full-score-events' ) }</Fragment>;
+	const { items } = attributes;
 
-	// const { text, icon, iconPosition } = attributes;
-	// return (
-	// 	<Fragment>
-	// 		<RichText
-	// 			tagName="span"
-	// 			className="icon-link-text"
-	// 			value={ text }
-	// 			onChange={ ( value ) => setAttributes( { text: value } ) }
-	// 			placeholder={ __( 'Ex: View All', 'knight-blocks' ) }
-	// 			allowedFormats={ [] }
-	// 		/>
+	console.log( 'ITEMS!', items );
 
-	// 		<FontAwesomeIcon icon={ [ 'far', icon ] } className={ `icon-position-${ iconPosition }` } />
+	const handleAddItem = () => {
+		const newItems = [ ...items ];
+		newItems.push( {
+			time: '',
+			activity: '',
+		} );
+		setAttributes( { items: newItems } );
+	};
 
-	// 		<InspectorControls>
-	// 			<PanelBody title={ __( 'Icon', 'knight-blocks' ) }>
-	// 				<IconNameControl
-	// 					value={ icon }
-	// 					onChange={ ( value ) => setAttributes( { icon: value } ) }
-	// 				/>
+	const handleRemoveItem = ( index ) => {
+		const newItems = [ ...items ];
+		newItems.splice( index, 1 );
+		setAttributes( { items: newItems } );
+	};
 
-	// 				<RadioControl
-	// 					label={ __( 'Position', 'knight-blocks' ) }
-	// 					options={ [
-	// 						{ label: __( 'Right', 'knight-blocks' ), value: 'right' },
-	// 						{ label: __( 'Left', 'knight-blocks' ), value: 'left' },
-	// 					] }
-	// 					selected={ iconPosition }
-	// 					onChange={ ( value ) => setAttributes( { iconPosition: value } ) }
-	// 				/>
-	// 			</PanelBody>
-	// 		</InspectorControls>
+	const handleActivityChange = ( activity, index ) => {
+		const newItems = [ ...items ];
+		newItems[ index ].activity = activity;
+		setAttributes( { items: newItems } );
+	};
 
-	// 	</Fragment>
-	// );
+	let itemFields;
+
+	if ( items.length ) {
+		itemFields = items.map( ( thing, index ) => {
+			return (
+				<Fragment key={ index }>
+					<TextControl
+						placeholder={ __(
+							'Aight add something',
+							'full-score-events'
+						) }
+						value={ items[ index ].activity }
+						onChange={ ( value ) =>
+							handleActivityChange( value, index )
+						}
+					/>
+					<IconButton
+						icon="no-alt"
+						label={ __( 'Delete Activity', 'full-score-events' ) }
+						onClick={ () => handleRemoveItem( index ) }
+					/>
+				</Fragment>
+			);
+		} );
+	}
+
+	return (
+		<Fragment>
+			{ itemFields }
+			<Button isPrimary onClick={ handleAddItem.bind( this ) }>
+				{ __( 'Add Activity', 'full-score-events' ) }
+			</Button>
+		</Fragment>
+	);
 }
