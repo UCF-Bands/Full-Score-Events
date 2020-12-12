@@ -17,7 +17,7 @@ export default function edit( { attributes, setAttributes } ) {
 		const newItems = [ ...items ];
 		newItems.push( {
 			time: '',
-			activity: '',
+			activity: JSON.stringify( '' ),
 		} );
 		setAttributes( { items: newItems } );
 	};
@@ -30,7 +30,7 @@ export default function edit( { attributes, setAttributes } ) {
 
 	const handleActivityChange = ( activity, index ) => {
 		const newItems = [ ...items ];
-		newItems[ index ].activity = activity;
+		newItems[ index ].activity = JSON.stringify( activity );
 		setAttributes( { items: newItems } );
 	};
 
@@ -40,12 +40,9 @@ export default function edit( { attributes, setAttributes } ) {
 		itemFields = items.map( ( thing, index ) => {
 			return (
 				<Fragment key={ index }>
-					<TextControl
-						placeholder={ __(
-							'Aight add something',
-							'full-score-events'
-						) }
-						value={ items[ index ].activity }
+					<RichText
+						tagName="p"
+						value={ JSON.parse( thing.activity ) }
 						onChange={ ( value ) =>
 							handleActivityChange( value, index )
 						}
