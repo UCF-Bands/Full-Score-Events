@@ -48,7 +48,8 @@ class Blocks {
 		new Block( 'taco' );
 		new Block( 'schedule-items' );
 		new Block( 'schedule-item' );
-		// new Schedule_Edit();
+
+		// new Zombie_Schedule_Edit(); This is just a placeholder since we have that Gutenberg issue.
 	}
 
 	/**

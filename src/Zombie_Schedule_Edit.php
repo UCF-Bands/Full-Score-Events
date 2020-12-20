@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.0.0
  */
-class Schedule_Edit extends Block {
+class Zombie_Schedule_Edit extends Block {
 
 	/**
 	 * Internal block name
