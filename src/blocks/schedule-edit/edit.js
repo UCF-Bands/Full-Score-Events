@@ -22,13 +22,12 @@ export default function edit( { attributes, setAttributes } ) {
 
 	const [ meta, setMeta ] = useEntityProp( 'postType', postType, 'meta' );
 
-	const items = meta._schedule_items;
-	// console.log( 'ALL META', meta );
-	// console.log( 'META FIELD VALUE', metaFieldValue );
+	// Get schedule items meta and parse (empty array default)
+	let items = meta._schedule_items;
+	items = items ? JSON.parse( items ) : JSON.parse( '[]' );
 
 	const updateItems = ( newItems ) => {
-		console.log( 'SETTING META', newItems );
-		setMeta( { ...meta, _schedule_items: newItems } );
+		setMeta( { ...meta, _schedule_items: JSON.stringify( newItems ) } );
 	};
 
 	// console.log( 'ITEMS!', items );

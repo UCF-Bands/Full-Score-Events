@@ -40,18 +40,20 @@ class Schedule_Edit extends Block {
 			'_schedule_items',
 			[
 				'single'        => true,
-				'type'          => 'array',
-				'show_in_rest'  => [
-					'schema' => [
-						'items' => [
-							'type'       => 'object',
-							'properties' => [
-								'time'     => [ 'type' => 'string' ],
-								'activity' => [ 'type' => 'string' ],
-							],
-						],
-					],
-				],
+				'type'          => 'string',
+				'show_in_rest'  => true,
+				// 'type'          => 'array',
+				// 'show_in_rest'  => [
+				// 	'schema' => [
+				// 		'items' => [
+				// 			'type'       => 'object',
+				// 			'properties' => [
+				// 				'time'     => [ 'type' => 'string' ],
+				// 				'activity' => [ 'type' => 'string' ],
+				// 			],
+				// 		],
+				// 	],
+				// ],
 				'auth_callback' => 'Full_Score_Events\get_can_user_edit_posts',
 			]
 		);

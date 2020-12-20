@@ -6788,15 +6788,15 @@ function edit(_ref) {
   var _useEntityProp = Object(_wordpress_core_data__WEBPACK_IMPORTED_MODULE_6__["useEntityProp"])('postType', postType, 'meta'),
       _useEntityProp2 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_2___default()(_useEntityProp, 2),
       meta = _useEntityProp2[0],
-      setMeta = _useEntityProp2[1];
+      setMeta = _useEntityProp2[1]; // Get schedule items meta and parse (empty array default)
 
-  var items = meta._schedule_items; // console.log( 'ALL META', meta );
-  // console.log( 'META FIELD VALUE', metaFieldValue );
+
+  var items = meta._schedule_items;
+  items = items ? JSON.parse(items) : JSON.parse('[]');
 
   var updateItems = function updateItems(newItems) {
-    console.log('SETTING META', newItems);
     setMeta(_objectSpread(_objectSpread({}, meta), {}, {
-      _schedule_items: newItems
+      _schedule_items: JSON.stringify(newItems)
     }));
   }; // console.log( 'ITEMS!', items );
   // JP: FIGURE OUT WHY THIS CAN'T SAVE OVER EXISTING META?!!?
