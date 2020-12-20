@@ -17,17 +17,18 @@ import edit from './edit';
 if ( fullScoreEventsEditor.currentCPT === 'fse_schedule' ) {
 	registerBlockType( 'full-score-events/schedule-edit', {
 		title: __( 'Schedule Editor', 'full-score-events' ),
-		description: __( "Edit a schedule's items.", 'knight-blocks' ),
+		description: __( "Edit a schedule's items.", 'full-score-events' ),
 		icon,
 		keywords: [ __( 'schedule' ), __( 'plan' ) ],
 
-		// attributes: {
-		// 	items: {
-		// 		type: 'array',
-		// 		source: 'meta',
-		// 		meta: '_schedule_items',
-		// 	},
-		// },
+		attributes: {
+			items: {
+				type: 'string',
+				source: 'meta',
+				meta: '_schedule_items',
+				default: '[]',
+			},
+		},
 
 		edit,
 		save: () => null,

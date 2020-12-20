@@ -5,34 +5,22 @@
  */
 
 import { __ } from '@wordpress/i18n';
-import { useSelect } from '@wordpress/data';
-import { useEntityProp } from '@wordpress/core-data';
-import { RichText, useBlockProps } from '@wordpress/block-editor';
+import { RichText } from '@wordpress/block-editor';
 import { Fragment } from '@wordpress/element';
-import { TextControl, Button, IconButton } from '@wordpress/components';
+import { Button, IconButton } from '@wordpress/components';
 
 export default function edit( { attributes, setAttributes } ) {
-	const blockProps = useBlockProps();
-	// const { items } = attributes;
+	let { items } = attributes;
 
-	const postType = useSelect(
-		( select ) => select( 'core/editor' ).getCurrentPostType(),
-		[]
-	);
+	// convert to array of items
+	items = JSON.parse( items );
 
-	const [ meta, setMeta ] = useEntityProp( 'postType', postType, 'meta' );
-
-	// Get schedule items meta and parse (empty array default)
-	let items = meta._schedule_items;
-	items = items ? JSON.parse( items ) : JSON.parse( '[]' );
-
+	// set items attribute
 	const updateItems = ( newItems ) => {
-		setMeta( { ...meta, _schedule_items: JSON.stringify( newItems ) } );
+		setAttributes( { items: JSON.stringify( newItems ) } );
 	};
 
-	// console.log( 'ITEMS!', items );
-	// JP: FIGURE OUT WHY THIS CAN'T SAVE OVER EXISTING META?!!?
-
+	// add a new, blank item
 	const handleAddItem = () => {
 		const newItems = [ ...items ];
 		newItems.push( {
@@ -40,25 +28,26 @@ export default function edit( { attributes, setAttributes } ) {
 			activity: JSON.stringify( '' ),
 		} );
 		updateItems( newItems );
-		// setAttributes( { items: newItems } );
 	};
 
+	// remove item at index
 	const handleRemoveItem = ( index ) => {
 		const newItems = [ ...items ];
 		newItems.splice( index, 1 );
 		updateItems( newItems );
-		// setAttributes( { items: newItems } );
 	};
 
+	// handle a single schedule item being edited
 	const handleActivityChange = ( activity, index ) => {
 		const newItems = [ ...items ];
 		newItems[ index ].activity = JSON.stringify( activity );
 		updateItems( newItems );
-		// setAttributes( { items: newItems } );
 	};
 
 	let itemFields;
 
+	// loop through the items and create a field to edit it and a button to
+	// remove it.
 	if ( items.length ) {
 		itemFields = items.map( ( thing, index ) => {
 			return (
@@ -81,11 +70,11 @@ export default function edit( { attributes, setAttributes } ) {
 	}
 
 	return (
-		<div { ...blockProps }>
+		<Fragment>
 			{ itemFields }
 			<Button isPrimary onClick={ handleAddItem.bind( this ) }>
 				{ __( 'Add Activity', 'full-score-events' ) }
 			</Button>
-		</div>
+		</Fragment>
 	);
 }
