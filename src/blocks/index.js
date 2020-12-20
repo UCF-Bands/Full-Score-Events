@@ -4,6 +4,9 @@
  * @since 1.0.0
  */
 
+// components
+import './components';
+
 // blocks
 import './taco';
 import './schedule-items';

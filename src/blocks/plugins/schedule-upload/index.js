@@ -8,8 +8,9 @@ import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
 import { withSelect, withDispatch } from '@wordpress/data';
 import { PluginDocumentSettingPanel } from '@wordpress/edit-post';
-import { TextControl } from '@wordpress/components';
 import { registerPlugin } from '@wordpress/plugins';
+
+import FileControl from '../../components/file-control';
 
 const render = compose(
 	/*
@@ -43,35 +44,21 @@ const render = compose(
 		return null;
 	}
 
-	const { uploadId, shopUrl, setUploadId, setShopUrl } = props;
+	const { uploadId, setUploadId } = props;
 
 	return (
 		<PluginDocumentSettingPanel
 			className="fse-schedule-upload"
 			title={ __( 'Schedule Upload', 'full-score-events' ) }
 		>
-			<TextControl
-				label={ __( 'Schedule Upload ID', 'full-score-events' ) }
-				type="number"
-				min={ 0 }
-				step={ 1 }
-				value={ uploadId }
-				onChange={ setUploadId }
+			<FileControl
+				attachmentID={ uploadId }
+				onSelect={ ( media ) => {
+					console.log( 'SET MEDIA', media );
+					setUploadId( Number( media.id ) );
+				} }
+				onClear={ () => setUploadId( 0 ) }
 			/>
-			{ /* <URLInput
-				label={ __( 'Shop URL', 'knight-blocks' ) }
-				value={ shopUrl }
-				onChange={ setShopUrl }
-			/>
-
-			<TextControl
-				label={ __( 'Price ($)', 'knight-blocks' ) }
-				type="number"
-				min={ 0 }
-				step={ 0.01 }
-				value={ price }
-				onChange={ setPrice }
-			/> */ }
 		</PluginDocumentSettingPanel>
 	);
 } );

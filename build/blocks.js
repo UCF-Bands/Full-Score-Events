@@ -6477,6 +6477,85 @@ var wordpress = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createEl
 
 /***/ }),
 
+/***/ "./src/blocks/components/file-control/index.js":
+/*!*****************************************************!*\
+  !*** ./src/blocks/components/file-control/index.js ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+
+
+/**
+ * Media InspectorControls handler for files
+ *
+ * @since 1.0.0
+ */
+
+
+
+
+
+var FileControl = function FileControl(_ref) {
+  var label = _ref.label,
+      attachmentID = _ref.attachmentID,
+      onSelect = _ref.onSelect,
+      onClear = _ref.onClear;
+  return (// eslint-disable-next-line @wordpress/no-base-control-with-label-without-id
+    Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["BaseControl"], {
+      label: label
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["MediaUpload"], {
+      onSelect: onSelect,
+      value: attachmentID,
+      render: function render(_ref2) {
+        var open = _ref2.open;
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+          className: "components-base-control__field"
+        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Button"], {
+          isSecondary: true,
+          onClick: open
+        }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Select File', 'full-score-events')), attachmentID > 0 && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, "\xA0\xA0", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Button"], {
+          isDestructive: true,
+          isSecondary: true,
+          onClick: onClear
+        }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Remove', 'full-score-events'))));
+      }
+    }), attachmentID > 0 && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Selected upload ID: ", attachmentID))
+  );
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (FileControl);
+
+/***/ }),
+
+/***/ "./src/blocks/components/index.js":
+/*!****************************************!*\
+  !*** ./src/blocks/components/index.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/**
+ * On-load components
+ *
+ * Many components are just imported by other blocks/plugins/etc. These are
+ * available all the time.
+ *
+ * @since 1.0.0
+ */
+
+/***/ }),
+
 /***/ "./src/blocks/index.js":
 /*!*****************************!*\
   !*** ./src/blocks/index.js ***!
@@ -6486,16 +6565,20 @@ var wordpress = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createEl
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _taco__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./taco */ "./src/blocks/taco/index.js");
-/* harmony import */ var _schedule_items__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./schedule-items */ "./src/blocks/schedule-items/index.js");
-/* harmony import */ var _schedule_item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./schedule-item */ "./src/blocks/schedule-item/index.js");
-/* harmony import */ var _plugins__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./plugins */ "./src/blocks/plugins/index.js");
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components */ "./src/blocks/components/index.js");
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_components__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _taco__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./taco */ "./src/blocks/taco/index.js");
+/* harmony import */ var _schedule_items__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./schedule-items */ "./src/blocks/schedule-items/index.js");
+/* harmony import */ var _schedule_item__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./schedule-item */ "./src/blocks/schedule-item/index.js");
+/* harmony import */ var _plugins__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./plugins */ "./src/blocks/plugins/index.js");
 /**
  * Block editor blocks + helpers
  *
  * @since 1.0.0
  */
-// blocks
+// components
+ // blocks
+
 
 
  // import './zombie-schedule-edit';
@@ -6543,10 +6626,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/edit-post */ "@wordpress/edit-post");
 /* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/plugins */ "@wordpress/plugins");
-/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/plugins */ "@wordpress/plugins");
+/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _components_file_control__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/file-control */ "./src/blocks/components/file-control/index.js");
 
 
 /**
@@ -6591,23 +6673,23 @@ Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__["withSelect"])(function (sel
   }
 
   var uploadId = props.uploadId,
-      shopUrl = props.shopUrl,
-      setUploadId = props.setUploadId,
-      setShopUrl = props.setShopUrl;
+      setUploadId = props.setUploadId;
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_4__["PluginDocumentSettingPanel"], {
     className: "fse-schedule-upload",
     title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Schedule Upload', 'full-score-events')
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["TextControl"], {
-    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Schedule Upload ID', 'full-score-events'),
-    type: "number",
-    min: 0,
-    step: 1,
-    value: uploadId,
-    onChange: setUploadId
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_components_file_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    attachmentID: uploadId,
+    onSelect: function onSelect(media) {
+      console.log('SET MEDIA', media);
+      setUploadId(Number(media.id));
+    },
+    onClear: function onClear() {
+      return setUploadId(0);
+    }
   }));
 }); // register the sidebar plugin
 
-Object(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_6__["registerPlugin"])('fse-schedule-upload', {
+Object(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_5__["registerPlugin"])('fse-schedule-upload', {
   render: render,
   icon: 'tag'
 });
