@@ -21,13 +21,13 @@ if ( fullScoreEventsEditor.currentCPT === 'fse_schedule' ) {
 		icon,
 		keywords: [ __( 'schedule' ), __( 'plan' ) ],
 
-		attributes: {
-			items: {
-				type: 'array',
-				source: 'meta',
-				meta: '_schedule_items',
-			},
-		},
+		// attributes: {
+		// 	items: {
+		// 		type: 'array',
+		// 		source: 'meta',
+		// 		meta: '_schedule_items',
+		// 	},
+		// },
 
 		edit,
 		save: () => null,

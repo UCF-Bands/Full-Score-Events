@@ -5,13 +5,34 @@
  */
 
 import { __ } from '@wordpress/i18n';
+import { useSelect } from '@wordpress/data';
+import { useEntityProp } from '@wordpress/core-data';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 import { Fragment } from '@wordpress/element';
 import { TextControl, Button, IconButton } from '@wordpress/components';
 
 export default function edit( { attributes, setAttributes } ) {
-	const { items } = attributes;
+	const blockProps = useBlockProps();
+	// const { items } = attributes;
 
-	console.log( 'ITEMS!', items );
+	const postType = useSelect(
+		( select ) => select( 'core/editor' ).getCurrentPostType(),
+		[]
+	);
+
+	const [ meta, setMeta ] = useEntityProp( 'postType', postType, 'meta' );
+
+	const items = meta._schedule_items;
+	// console.log( 'ALL META', meta );
+	// console.log( 'META FIELD VALUE', metaFieldValue );
+
+	const updateItems = ( newItems ) => {
+		console.log( 'SETTING META', newItems );
+		setMeta( { ...meta, _schedule_items: newItems } );
+	};
+
+	// console.log( 'ITEMS!', items );
+	// JP: FIGURE OUT WHY THIS CAN'T SAVE OVER EXISTING META?!!?
 
 	const handleAddItem = () => {
 		const newItems = [ ...items ];
@@ -19,19 +40,22 @@ export default function edit( { attributes, setAttributes } ) {
 			time: '',
 			activity: JSON.stringify( '' ),
 		} );
-		setAttributes( { items: newItems } );
+		updateItems( newItems );
+		// setAttributes( { items: newItems } );
 	};
 
 	const handleRemoveItem = ( index ) => {
 		const newItems = [ ...items ];
 		newItems.splice( index, 1 );
-		setAttributes( { items: newItems } );
+		updateItems( newItems );
+		// setAttributes( { items: newItems } );
 	};
 
 	const handleActivityChange = ( activity, index ) => {
 		const newItems = [ ...items ];
 		newItems[ index ].activity = JSON.stringify( activity );
-		setAttributes( { items: newItems } );
+		updateItems( newItems );
+		// setAttributes( { items: newItems } );
 	};
 
 	let itemFields;
@@ -58,11 +82,11 @@ export default function edit( { attributes, setAttributes } ) {
 	}
 
 	return (
-		<Fragment>
+		<div { ...blockProps }>
 			{ itemFields }
 			<Button isPrimary onClick={ handleAddItem.bind( this ) }>
 				{ __( 'Add Activity', 'full-score-events' ) }
 			</Button>
-		</Fragment>
+		</div>
 	);
 }
