@@ -6627,10 +6627,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_date__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/date */ "@wordpress/date");
+/* harmony import */ var _wordpress_date__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_date__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__);
 
 
 
@@ -6643,6 +6645,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+/**
+ * Get time format
+ *
+ * @see https://github.com/WordPress/gutenberg/tree/master/packages/components/src/date-time
+ */
+
+var settings = Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_3__["__experimentalGetSettings"])(); // To know if the current timezone is a 12 hour time with look for an "a" in the time format.
+// We also make sure this a is not escaped by a "/".
+
+
+var is12HourTime = /a(?!\\)/i.test(settings.formats.time.toLowerCase() // Test only the lower case a
+.replace(/\\\\/g, '') // Replace "//" with empty strings
+.split('').reverse().join('') // Reverse the string and test for "a" not followed by a slash
+);
 function edit(_ref) {
   var attributes = _ref.attributes,
       setAttributes = _ref.setAttributes;
@@ -6654,15 +6671,16 @@ function edit(_ref) {
     setAttributes({
       items: JSON.stringify(newItems)
     });
-  }; // add a new, blank item
+  }; // add a new, blank item using the last item's date as the date
 
 
   var handleAddItem = function handleAddItem() {
-    var newItems = _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(items);
+    var newItems = _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(items),
+        lastItem = newItems[newItems.length - 1];
 
     newItems.push({
-      time: '',
-      activity: JSON.stringify('')
+      dateTime: lastItem ? lastItem.dateTime : '',
+      activity: ''
     });
     updateItems(newItems);
   }; // remove item at index
@@ -6673,13 +6691,20 @@ function edit(_ref) {
 
     newItems.splice(index, 1);
     updateItems(newItems);
-  }; // handle a single schedule item being edited
+  }; // handle a single schedule item's activity being edited
 
 
   var handleActivityChange = function handleActivityChange(activity, index) {
     var newItems = _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(items);
 
-    newItems[index].activity = JSON.stringify(activity);
+    newItems[index].activity = activity;
+    updateItems(newItems);
+  };
+
+  var handleDateTimeChange = function handleDateTimeChange(dateTime, index) {
+    var newItems = _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(items);
+
+    newItems[index].dateTime = dateTime;
     updateItems(newItems);
   };
 
@@ -6690,13 +6715,19 @@ function edit(_ref) {
     itemFields = items.map(function (thing, index) {
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["Fragment"], {
         key: index
-      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["RichText"], {
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["TimePicker"], {
+        currentTime: thing.dateTime,
+        onChange: function onChange(dateTime) {
+          return handleDateTimeChange(dateTime, index);
+        },
+        is12Hour: is12HourTime
+      }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__["RichText"], {
         tagName: "p",
-        value: JSON.parse(thing.activity),
+        value: thing.activity,
         onChange: function onChange(value) {
           return handleActivityChange(value, index);
         }
-      }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["IconButton"], {
+      }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["IconButton"], {
         icon: "no-alt",
         label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Delete Activity', 'full-score-events'),
         onClick: function onClick() {
@@ -6706,7 +6737,7 @@ function edit(_ref) {
     });
   }
 
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["Fragment"], null, itemFields, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["Button"], {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["Fragment"], null, itemFields, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["Button"], {
     isPrimary: true,
     onClick: handleAddItem.bind(this)
   }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Add Activity', 'full-score-events')));
@@ -6848,6 +6879,17 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('ful
 /***/ (function(module, exports) {
 
 (function() { module.exports = this["wp"]["components"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/date":
+/*!***************************************!*\
+  !*** external {"this":["wp","date"]} ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["date"]; }());
 
 /***/ }),
 

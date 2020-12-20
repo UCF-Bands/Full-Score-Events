@@ -5,9 +5,28 @@
  */
 
 import { __ } from '@wordpress/i18n';
+import { __experimentalGetSettings } from '@wordpress/date';
 import { RichText } from '@wordpress/block-editor';
 import { Fragment } from '@wordpress/element';
-import { Button, IconButton } from '@wordpress/components';
+import { Button, IconButton, TimePicker } from '@wordpress/components';
+
+/**
+ * Get time format
+ *
+ * @see https://github.com/WordPress/gutenberg/tree/master/packages/components/src/date-time
+ */
+const settings = __experimentalGetSettings();
+
+// To know if the current timezone is a 12 hour time with look for an "a" in the time format.
+// We also make sure this a is not escaped by a "/".
+const is12HourTime = /a(?!\\)/i.test(
+	settings.formats.time
+		.toLowerCase() // Test only the lower case a
+		.replace( /\\\\/g, '' ) // Replace "//" with empty strings
+		.split( '' )
+		.reverse()
+		.join( '' ) // Reverse the string and test for "a" not followed by a slash
+);
 
 export default function edit( { attributes, setAttributes } ) {
 	let { items } = attributes;
@@ -20,12 +39,14 @@ export default function edit( { attributes, setAttributes } ) {
 		setAttributes( { items: JSON.stringify( newItems ) } );
 	};
 
-	// add a new, blank item
+	// add a new, blank item using the last item's date as the date
 	const handleAddItem = () => {
-		const newItems = [ ...items ];
+		const newItems = [ ...items ],
+			lastItem = newItems[ newItems.length - 1 ];
+
 		newItems.push( {
-			time: '',
-			activity: JSON.stringify( '' ),
+			dateTime: lastItem ? lastItem.dateTime : '',
+			activity: '',
 		} );
 		updateItems( newItems );
 	};
@@ -37,10 +58,16 @@ export default function edit( { attributes, setAttributes } ) {
 		updateItems( newItems );
 	};
 
-	// handle a single schedule item being edited
+	// handle a single schedule item's activity being edited
 	const handleActivityChange = ( activity, index ) => {
 		const newItems = [ ...items ];
-		newItems[ index ].activity = JSON.stringify( activity );
+		newItems[ index ].activity = activity;
+		updateItems( newItems );
+	};
+
+	const handleDateTimeChange = ( dateTime, index ) => {
+		const newItems = [ ...items ];
+		newItems[ index ].dateTime = dateTime;
 		updateItems( newItems );
 	};
 
@@ -52,9 +79,16 @@ export default function edit( { attributes, setAttributes } ) {
 		itemFields = items.map( ( thing, index ) => {
 			return (
 				<Fragment key={ index }>
+					<TimePicker
+						currentTime={ thing.dateTime }
+						onChange={ ( dateTime ) =>
+							handleDateTimeChange( dateTime, index )
+						}
+						is12Hour={ is12HourTime }
+					/>
 					<RichText
 						tagName="p"
-						value={ JSON.parse( thing.activity ) }
+						value={ thing.activity }
 						onChange={ ( value ) =>
 							handleActivityChange( value, index )
 						}
