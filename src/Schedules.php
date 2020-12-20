@@ -48,7 +48,7 @@ class Schedules extends Post_Type {
 		return [
 			'description'         => __( 'A schedule of events.', 'full-score-events' ),
 			'labels'              => [
-				'name'                  => _x( 'Schedules', 'Post Type General Name', 'full-score-events' ),
+				'name'                  => _x( 'Schedule', 'Post Type General Name', 'full-score-events' ),
 				'menu_name'             => __( 'Schedules', 'full-score-events' ),
 				'archives'              => __( 'Schedule Archives', 'full-score-events' ),
 				'attributes'            => __( 'Schedule Attributes', 'full-score-events' ),
@@ -82,5 +82,28 @@ class Schedules extends Post_Type {
 				'feeds'      => true,
 			],
 		];
+	}
+
+	/**
+	 * Register meta
+	 *
+	 * @since 1.0.0
+	 */
+	public function do_meta_registration() {
+
+		foreach ( [
+			'_schedule_upload' => 'number',
+		] as $key => $type ) {
+			register_post_meta(
+				$this::CPT_KEY,
+				$key,
+				[
+					'type'          => $type,
+					'single'        => true,
+					'show_in_rest'  => true,
+					'auth_callback' => 'Full_Score_Events\get_can_user_edit_posts',
+				]
+			);
+		}
 	}
 }
