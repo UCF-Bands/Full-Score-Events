@@ -46,7 +46,9 @@ class Blocks {
 		add_action( 'admin_enqueue_scripts', [ __CLASS__, 'do_admin_script_localization' ] );
 
 		new Block( 'taco' );
-		new Schedule_Edit();
+		new Block( 'schedule-items' );
+		new Block( 'schedule-item' );
+		// new Schedule_Edit();
 	}
 
 	/**
