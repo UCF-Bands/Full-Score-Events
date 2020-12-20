@@ -52,6 +52,7 @@ abstract class Post_Type {
 	public function __construct() {
 		add_action( 'init', [ $this, 'do_registration' ] );
 		add_action( 'full_score_events_activate', [ $this, 'do_registration' ] );
+		add_action( 'init', [ $this, 'do_meta_registration' ] );
 		add_filter( 'enter_title_here', [ $this, 'set_title_placeholder' ] );
 	}
 
@@ -72,6 +73,14 @@ abstract class Post_Type {
 	 */
 	public function do_registration() {
 		register_post_type( $this::CPT_KEY, $this->get_args() );
+	}
+
+	/**
+	 * Register post type's meta
+	 *
+	 * @since 1.0.0
+	 */
+	public function do_meta_registration() {
 	}
 
 	/**
