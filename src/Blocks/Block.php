@@ -6,7 +6,7 @@
  * @package Full_Score_Events
  */
 
-namespace Full_Score_Events;
+namespace Full_Score_Events\Blocks;
 
 // exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {

@@ -1,3 +1,17 @@
+/**
+ * FileControl editor fixes
+ *
+ * @since 1.0.0
+ */
+
+.fse-attachment-description .attachment {
+	float: none;
+	width: 100%;
+	margin-top: 1rem;
+	padding: 0;
+	text-align: left;
+}
+
 /* Taco block editor-only styles */
 body {
 	background: var(--color-red);
@@ -39,19 +53,5 @@ body {
 
 /* stylelint-enable selector-class-pattern */
 
-/**
- * FileControl editor fixes
- *
- * @since 1.0.0
- */
 
-.fse-attachment-description .attachment {
-	float: none;
-	width: 100%;
-	margin-top: 1rem;
-	padding: 0;
-	text-align: left;
-}
-
-
-/*# sourceMappingURL=blocks.css.map*/
+/*# sourceMappingURL=editor.css.map*/
