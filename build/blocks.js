@@ -6477,6 +6477,17 @@ var wordpress = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createEl
 
 /***/ }),
 
+/***/ "./src/blocks/components/file-control/index.css":
+/*!******************************************************!*\
+  !*** ./src/blocks/components/file-control/index.css ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "./src/blocks/components/file-control/index.js":
 /*!*****************************************************!*\
   !*** ./src/blocks/components/file-control/index.js ***!
@@ -6496,6 +6507,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _index_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./index.css */ "./src/blocks/components/file-control/index.css");
+/* harmony import */ var _index_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_index_css__WEBPACK_IMPORTED_MODULE_5__);
 
 
 /**
@@ -6503,6 +6516,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @since 1.0.0
  */
+
 
 
 
@@ -6695,8 +6709,7 @@ Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__["withSelect"])(function (sel
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_components_file_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
     attachmentID: uploadId,
     onSelect: function onSelect(media) {
-      console.log('SET MEDIA', media);
-      setUploadId(Number(media.id));
+      return setUploadId(Number(media.id));
     },
     onClear: function onClear() {
       return setUploadId(0);

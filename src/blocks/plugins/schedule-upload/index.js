@@ -53,10 +53,7 @@ const render = compose(
 		>
 			<FileControl
 				attachmentID={ uploadId }
-				onSelect={ ( media ) => {
-					console.log( 'SET MEDIA', media );
-					setUploadId( Number( media.id ) );
-				} }
+				onSelect={ ( media ) => setUploadId( Number( media.id ) ) }
 				onClear={ () => setUploadId( 0 ) }
 			/>
 		</PluginDocumentSettingPanel>

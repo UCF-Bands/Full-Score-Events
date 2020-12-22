@@ -10,6 +10,8 @@ import { MediaUpload } from '@wordpress/block-editor';
 import { Fragment } from '@wordpress/element';
 import { BaseControl, Button } from '@wordpress/components';
 
+import './index.css';
+
 const FileControl = withSelect( ( select, { attachmentID } ) => {
 	return {
 		attachmentPost: select( 'core' ).getEntityRecord(

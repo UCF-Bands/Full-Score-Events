@@ -1,8 +1,3 @@
-/* Taco block editor-only styles */
-body {
-	background: var(--color-red);
-}
-
 /**
  * FileControl editor fixes
  *
@@ -16,6 +11,3 @@ body {
 	padding: 0;
 	text-align: left;
 }
-
-
-/*# sourceMappingURL=blocks.css.map*/
