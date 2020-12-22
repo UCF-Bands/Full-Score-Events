@@ -8,6 +8,8 @@
 
 namespace Full_Score_Events\Blocks;
 
+use function Full_Score_Events\get_block_template;
+
 // exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -29,9 +31,17 @@ class Block {
 	protected $name;
 
 	/**
+	 * Does the block render as a template?
+	 *
+	 * @since 1.0.0
+	 * @var   boolean
+	 */
+	protected $templated = false;
+
+	/**
 	 * Set everything up
 	 *
-	 * @param string $name Block name.
+	 * @param string $name  Block name.
 	 * @since 1.0.0
 	 */
 	public function __construct( $name = null ) {
@@ -51,10 +61,11 @@ class Block {
 			"full-score-events/{$this->name}",
 			array_filter(
 				[
-					'editor_script' => Blocks::EDITOR_ASSET_HANDLE,
-					'editor_style'  => Blocks::EDITOR_ASSET_HANDLE,
-					'style'         => Blocks::ASSET_HANDLE,
-					// 'attributes'    => $this->get_attributes(),
+					'editor_script'   => Blocks::EDITOR_ASSET_HANDLE,
+					'editor_style'    => Blocks::EDITOR_ASSET_HANDLE,
+					'style'           => Blocks::ASSET_HANDLE,
+					'attributes'      => $this->get_attributes(),
+					'render_callback' => $this->templated ? [ $this, 'render' ] : null,
 				]
 			)
 		);
@@ -63,10 +74,34 @@ class Block {
 	}
 
 	/**
+	 * Get block's attributes
+	 *
+	 * @return array
+	 * @since  1.0.0
+	 */
+	public function get_attributes() {
+		return [];
+	}
+
+	/**
 	 * Do extra meta post meta registration for attribute sourcing
 	 *
 	 * @since 1.0.0
 	 */
 	protected function do_meta_registration() {
+	}
+
+	/**
+	 * Render the block
+	 *
+	 * Only used if templated.
+	 *
+	 * @param  array $attrs Block's attributes.
+	 * @return string       Block HTML.
+	 *
+	 * @since 1.0.0
+	 */
+	public function render( $attrs ) {
+		return get_block_template( $this->name, $attrs );
 	}
 }
