@@ -5,4 +5,4 @@
  * @package Full_Score_Events
  */
 
-// Silence is @krik.
+// Silence is #ChargeOn.
