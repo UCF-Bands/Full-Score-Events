@@ -8,8 +8,7 @@ import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 import { formatListBullets as icon } from '@wordpress/icons';
 
-// import './style.css';
-// import './index.css';
+import './index.scss';
 
 import edit from './edit';
 

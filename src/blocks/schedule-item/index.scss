@@ -1,0 +1,30 @@
+/**
+ * Schedule item editor adjustments
+ *
+ * @since 1.0.0
+ */
+
+/* stylelint-disable selector-class-pattern */
+.wp-block-full-score-events-schedule-item {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 2rem;
+	max-width: none;
+	padding: 1.25rem;
+
+	&:nth-child(even) {
+		background: #f1f1f1;
+	}
+
+	.components-datetime__time {
+		padding-bottom: 0;
+
+		.components-button,
+		input[type="number"],
+		select {
+			height: 30px;
+		}
+	}
+}
+
+/* stylelint-enable selector-class-pattern */
