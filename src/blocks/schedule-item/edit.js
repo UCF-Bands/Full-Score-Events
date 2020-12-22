@@ -7,8 +7,19 @@
 import { __ } from '@wordpress/i18n';
 import { withSelect } from '@wordpress/data';
 import { __experimentalGetSettings } from '@wordpress/date';
-import { useBlockProps, RichText } from '@wordpress/block-editor';
+import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 import { TimePicker } from '@wordpress/components';
+
+const ALLOWED_BLOCKS = [ 'core/paragraph', 'core/list' ];
+
+const BLOCKS_TEMPLATE = [
+	[
+		'core/paragraph',
+		{
+			placeholder: __( 'Ex: Kickoff #ChargeOn', 'full-score-events' ),
+		},
+	],
+];
 
 /**
  * Get time format
@@ -39,8 +50,7 @@ const edit = withSelect( ( select ) => {
 		).getBlockAttributes( previousBlockId ),
 	};
 } )( ( { previousBlockAttributes, attributes, setAttributes } ) => {
-	const blockProps = useBlockProps(),
-		{ activity } = attributes;
+	const blockProps = useBlockProps();
 	let { dateTime } = attributes;
 
 	// auto-set dateTime by previous block if empty
@@ -55,15 +65,9 @@ const edit = withSelect( ( select ) => {
 				onChange={ ( value ) => setAttributes( { dateTime: value } ) }
 				is12Hour={ is12HourTime }
 			/>
-			<RichText
-				tagName="p"
-				value={ activity }
-				placeholder={ __(
-					'Ex: Kickoff #ChargeOn',
-					'full-score-events'
-				) }
-				keepPlaceholderOnFocus={ true }
-				onChange={ ( value ) => setAttributes( { activity: value } ) }
+			<InnerBlocks
+				allowedBlocks={ ALLOWED_BLOCKS }
+				template={ BLOCKS_TEMPLATE }
 			/>
 		</div>
 	);

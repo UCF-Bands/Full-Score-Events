@@ -13,6 +13,8 @@ import './index.scss';
 
 const ALLOWED_BLOCKS = [ 'full-score-events/schedule-item' ];
 
+const BLOCKS_TEMPLATE = [ [ 'full-score-events/schedule-item' ] ];
+
 // only allow schedule editing in schedule CPT
 if ( fullScoreEventsEditor.currentCPT === 'fse_schedule' ) {
 	registerBlockType( 'full-score-events/schedule-items', {
@@ -27,7 +29,10 @@ if ( fullScoreEventsEditor.currentCPT === 'fse_schedule' ) {
 
 			return (
 				<div { ...blockProps }>
-					<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } />
+					<InnerBlocks
+						allowedBlocks={ ALLOWED_BLOCKS }
+						template={ BLOCKS_TEMPLATE }
+					/>
 				</div>
 			);
 		},

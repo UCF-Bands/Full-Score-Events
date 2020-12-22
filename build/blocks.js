@@ -6757,6 +6757,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var ALLOWED_BLOCKS = ['core/paragraph', 'core/list'];
+var BLOCKS_TEMPLATE = [['core/paragraph', {
+  placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Ex: Kickoff #ChargeOn', 'full-score-events')
+}]];
 /**
  * Get time format
  *
@@ -6780,8 +6784,7 @@ var edit = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_2__["withSelect"])(fu
   var previousBlockAttributes = _ref.previousBlockAttributes,
       attributes = _ref.attributes,
       setAttributes = _ref.setAttributes;
-  var blockProps = Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__["useBlockProps"])(),
-      activity = attributes.activity;
+  var blockProps = Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__["useBlockProps"])();
   var dateTime = attributes.dateTime; // auto-set dateTime by previous block if empty
 
   if (!dateTime && previousBlockAttributes !== null && previousBlockAttributes !== void 0 && previousBlockAttributes.dateTime) {
@@ -6796,16 +6799,9 @@ var edit = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_2__["withSelect"])(fu
       });
     },
     is12Hour: is12HourTime
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__["RichText"], {
-    tagName: "p",
-    value: activity,
-    placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Ex: Kickoff #ChargeOn', 'full-score-events'),
-    keepPlaceholderOnFocus: true,
-    onChange: function onChange(value) {
-      return setAttributes({
-        activity: value
-      });
-    }
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__["InnerBlocks"], {
+    allowedBlocks: ALLOWED_BLOCKS,
+    template: BLOCKS_TEMPLATE
   }));
 });
 /* harmony default export */ __webpack_exports__["default"] = (edit);
@@ -6829,11 +6825,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./index.scss */ "./src/blocks/schedule-item/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./edit */ "./src/blocks/schedule-item/edit.js");
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./save */ "./src/blocks/schedule-item/save.js");
 /**
  * Individual schedule item block
  *
  * @since 1.0.0
  */
+
 
 
 
@@ -6850,16 +6848,10 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('ful
     dateTime: {
       type: 'string',
       default: ''
-    },
-    activity: {
-      type: 'string',
-      default: ''
     }
   },
   edit: _edit__WEBPACK_IMPORTED_MODULE_4__["default"],
-  save: function save() {
-    return null;
-  }
+  save: _save__WEBPACK_IMPORTED_MODULE_5__["default"]
 });
 
 /***/ }),
@@ -6872,6 +6864,35 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('ful
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./src/blocks/schedule-item/save.js":
+/*!******************************************!*\
+  !*** ./src/blocks/schedule-item/save.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return save; });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * Schedule item block save
+ *
+ * @since 1.0.0
+ */
+
+function save() {
+  var blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["useBlockProps"].save();
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", blockProps, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["InnerBlocks"].Content, null));
+}
 
 /***/ }),
 
@@ -6907,7 +6928,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var ALLOWED_BLOCKS = ['full-score-events/schedule-item']; // only allow schedule editing in schedule CPT
+var ALLOWED_BLOCKS = ['full-score-events/schedule-item'];
+var BLOCKS_TEMPLATE = [['full-score-events/schedule-item']]; // only allow schedule editing in schedule CPT
 
 if (fullScoreEventsEditor.currentCPT === 'fse_schedule') {
   Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('full-score-events/schedule-items', {
@@ -6919,7 +6941,8 @@ if (fullScoreEventsEditor.currentCPT === 'fse_schedule') {
     edit: function edit() {
       var blockProps = Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["useBlockProps"])();
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", blockProps, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["InnerBlocks"], {
-        allowedBlocks: ALLOWED_BLOCKS
+        allowedBlocks: ALLOWED_BLOCKS,
+        template: BLOCKS_TEMPLATE
       }));
     },
     save: function save() {

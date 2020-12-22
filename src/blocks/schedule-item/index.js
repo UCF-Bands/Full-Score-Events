@@ -11,6 +11,7 @@ import { formatListBullets as icon } from '@wordpress/icons';
 import './index.scss';
 
 import edit from './edit';
+import save from './save';
 
 registerBlockType( 'full-score-events/schedule-item', {
 	apiVersion: 2,
@@ -25,12 +26,8 @@ registerBlockType( 'full-score-events/schedule-item', {
 			type: 'string',
 			default: '',
 		},
-		activity: {
-			type: 'string',
-			default: '',
-		},
 	},
 
 	edit,
-	save: () => null,
+	save,
 } );

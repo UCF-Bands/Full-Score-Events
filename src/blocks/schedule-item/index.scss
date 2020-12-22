@@ -25,6 +25,14 @@
 			height: 30px;
 		}
 	}
+
+	.editor-styles-wrapper & {
+
+		.block-editor-block-list__layout > * + *,
+		[data-type="core/paragraph"] + [data-type="core/paragraph"] {
+			margin-top: 1rem;
+		}
+	}
 }
 
 /* stylelint-enable selector-class-pattern */

@@ -33,6 +33,9 @@ body {
     .wp-block-full-score-events-schedule-item .components-datetime__time input[type="number"],
     .wp-block-full-score-events-schedule-item .components-datetime__time select {
       height: 30px; }
+  .editor-styles-wrapper .wp-block-full-score-events-schedule-item .block-editor-block-list__layout > * + *,
+  .editor-styles-wrapper .wp-block-full-score-events-schedule-item [data-type="core/paragraph"] + [data-type="core/paragraph"] {
+    margin-top: 1rem; }
 
 /* stylelint-enable selector-class-pattern */
 
