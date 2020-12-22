@@ -46,8 +46,10 @@ class Blocks {
 		add_action( 'enqueue_block_editor_assets', [ __CLASS__, 'enqueue_editor_assets' ] );
 
 		new Block( 'taco' );
-		new Block( 'schedule-items' );
-		new Block( 'schedule-item' );
+
+		// Dynamic/templated blocks.
+		new Schedule_Item();
+		new Schedule_Items();
 
 		// new Zombie_Schedule_Edit(); This is just a placeholder since we have that Gutenberg issue.
 	}

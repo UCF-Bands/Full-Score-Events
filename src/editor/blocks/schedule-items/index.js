@@ -37,14 +37,6 @@ if ( fullScoreEventsEditor.currentCPT === 'fse_schedule' ) {
 			);
 		},
 
-		save() {
-			const blockProps = useBlockProps.save();
-
-			return (
-				<div { ...blockProps }>
-					<InnerBlocks.Content />
-				</div>
-			);
-		},
+		save: () => <InnerBlocks.Content />,
 	} );
 }

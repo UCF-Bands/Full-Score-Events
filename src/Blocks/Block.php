@@ -79,7 +79,7 @@ class Block {
 	 * @return array
 	 * @since  1.0.0
 	 */
-	public function get_attributes() {
+	protected function get_attributes() {
 		return [];
 	}
 
@@ -96,12 +96,18 @@ class Block {
 	 *
 	 * Only used if templated.
 	 *
-	 * @param  array $attrs Block's attributes.
-	 * @return string       Block HTML.
+	 * @param  array  $attrs   Block's attributes.
+	 * @param  string $content Block's contents (InnerBlocks).
+	 * @return string          Block HTML.
 	 *
 	 * @since 1.0.0
 	 */
-	public function render( $attrs ) {
+	public function render( $attrs, $content ) {
+
+		if ( $content ) {
+			$attrs['content'] = $content;
+		}
+
 		return get_block_template( $this->name, $attrs );
 	}
 }
