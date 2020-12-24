@@ -6673,6 +6673,168 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 /***/ }),
 
+/***/ "./src/editor/blocks/callout/edit.js":
+/*!*******************************************!*\
+  !*** ./src/editor/blocks/callout/edit.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+
+
+/**
+ * Callout block edit
+ *
+ * @since 1.0.0
+ */
+
+
+
+
+function CalloutEdit(_ref) {
+  var attributes = _ref.attributes,
+      setAttributes = _ref.setAttributes;
+  var type = attributes.type,
+      message = attributes.message,
+      blockProps = Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["useBlockProps"])({
+    className: "fse-callout-".concat(type)
+  });
+  var typeControl = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["RadioControl"] // label={ __( 'Type', 'full-score-events' ) }
+  , {
+    options: [{
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Info', 'full-score-events'),
+      value: 'info'
+    }, {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Success', 'full-score-events'),
+      value: 'success'
+    }, {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Warning', 'full-score-events'),
+      value: 'warning'
+    }, {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Error', 'full-score-events'),
+      value: 'error'
+    }],
+    onChange: function onChange(value) {
+      return setAttributes({
+        type: value
+      });
+    },
+    selected: type
+  });
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["InspectorControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelBody"], {
+    title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Type', 'full-score-events')
+  }, typeControl)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", blockProps, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["RichText"], {
+    tagName: "p",
+    className: "fse-callout-message",
+    placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Ex: This event has been cancelled due to a pandemic.', 'full-score-events'),
+    value: message,
+    onChange: function onChange(value) {
+      return setAttributes({
+        message: value
+      });
+    }
+  })));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (CalloutEdit);
+
+/***/ }),
+
+/***/ "./src/editor/blocks/callout/index.js":
+/*!********************************************!*\
+  !*** ./src/editor/blocks/callout/index.js ***!
+  \********************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/index.js");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edit */ "./src/editor/blocks/callout/edit.js");
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./save */ "./src/editor/blocks/callout/save.js");
+/**
+ * Callout block
+ *
+ * @since 1.0.0
+ */
+
+
+ // import './index.scss';
+
+
+
+Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('full-score-events/callout', {
+  apiVersion: 2,
+  title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Callout', 'full-score-events'),
+  description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Display a notice or warning.', 'full-score-events'),
+  icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_2__["info"],
+  keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('schedule'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('notice'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('message')],
+  attributes: {
+    type: {
+      type: 'string',
+      default: 'info'
+    },
+    message: {
+      type: 'string',
+      source: 'html',
+      selector: '.fse-callout-message'
+    }
+  },
+  edit: _edit__WEBPACK_IMPORTED_MODULE_3__["default"],
+  save: _save__WEBPACK_IMPORTED_MODULE_4__["default"]
+});
+
+/***/ }),
+
+/***/ "./src/editor/blocks/callout/save.js":
+/*!*******************************************!*\
+  !*** ./src/editor/blocks/callout/save.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return edit; });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * Callout block save
+ *
+ * @since 1.0.0
+ */
+
+function edit(_ref) {
+  var attributes = _ref.attributes;
+  var blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["useBlockProps"].save(),
+      message = attributes.message;
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", blockProps, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["RichText"].Content, {
+    tagName: "p",
+    className: "fse-callout-message",
+    value: message
+  }));
+}
+
+/***/ }),
+
 /***/ "./src/editor/blocks/index.js":
 /*!************************************!*\
   !*** ./src/editor/blocks/index.js ***!
@@ -6683,8 +6845,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _taco__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./taco */ "./src/editor/blocks/taco/index.js");
-/* harmony import */ var _schedule_items__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./schedule-items */ "./src/editor/blocks/schedule-items/index.js");
-/* harmony import */ var _schedule_item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./schedule-item */ "./src/editor/blocks/schedule-item/index.js");
+/* harmony import */ var _callout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./callout */ "./src/editor/blocks/callout/index.js");
+/* harmony import */ var _schedule_items__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./schedule-items */ "./src/editor/blocks/schedule-items/index.js");
+/* harmony import */ var _schedule_item__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./schedule-item */ "./src/editor/blocks/schedule-item/index.js");
+/* harmony import */ var _schedule_heading__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./schedule-heading */ "./src/editor/blocks/schedule-heading/index.js");
 /**
  * Custom blocks
  *
@@ -6692,7 +6856,143 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 
+
+
  // import './zombie-schedule-edit';
+
+/***/ }),
+
+/***/ "./src/editor/blocks/schedule-heading/edit.js":
+/*!****************************************************!*\
+  !*** ./src/editor/blocks/schedule-heading/edit.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return edit; });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+
+
+/**
+ * Schedule heading block edit
+ *
+ * @since 1.0.0
+ */
+
+
+var ALLOWED_BLOCKS = ['full-score-events/callout'];
+var BLOCKS_TEMPLATE = [['full-score-events/callout']];
+function edit(_ref) {
+  var attributes = _ref.attributes,
+      setAttributes = _ref.setAttributes;
+  var blockProps = Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["useBlockProps"])(),
+      heading = attributes.heading;
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", blockProps, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["RichText"], {
+    tagName: "h4",
+    className: "fse-schedule-heading-heading",
+    placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Day 1: UCF vs NAVY'),
+    value: heading,
+    onChange: function onChange(value) {
+      return setAttributes({
+        heading: value
+      });
+    }
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["InnerBlocks"], {
+    allowedBlocks: ALLOWED_BLOCKS,
+    template: BLOCKS_TEMPLATE
+  }));
+}
+
+/***/ }),
+
+/***/ "./src/editor/blocks/schedule-heading/index.js":
+/*!*****************************************************!*\
+  !*** ./src/editor/blocks/schedule-heading/index.js ***!
+  \*****************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/index.js");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edit */ "./src/editor/blocks/schedule-heading/edit.js");
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./save */ "./src/editor/blocks/schedule-heading/save.js");
+/**
+ * Schedule heading block
+ *
+ * @since 1.0.0
+ */
+
+
+ // import './index.scss';
+
+
+
+Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('full-score-events/schedule-heading', {
+  apiVersion: 2,
+  title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Schedule Heading', 'full-score-events'),
+  description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Heading for a schedule or day in the schedule', 'full-score-events'),
+  icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_2__["heading"],
+  keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('schedule'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('heading'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('message')],
+  parent: ['full-score-events/schedule-items'],
+  attributes: {
+    heading: {
+      type: 'string',
+      source: 'html',
+      selector: '.fse-schedule-heading-heading'
+    }
+  },
+  edit: _edit__WEBPACK_IMPORTED_MODULE_3__["default"],
+  save: _save__WEBPACK_IMPORTED_MODULE_4__["default"]
+});
+
+/***/ }),
+
+/***/ "./src/editor/blocks/schedule-heading/save.js":
+/*!****************************************************!*\
+  !*** ./src/editor/blocks/schedule-heading/save.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return save; });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * Schedule heading block save
+ *
+ * No blockProps so we can do custom wrapping in dynamic block.
+ *
+ * @since 1.0.0
+ */
+
+function save(_ref) {
+  var attributes = _ref.attributes;
+  var blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["useBlockProps"].save(),
+      heading = attributes.heading;
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", blockProps, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["RichText"].Content, {
+    tagName: "h4",
+    className: "fse-schedule-heading-heading",
+    value: heading
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["InnerBlocks"].Content, null));
+}
 
 /***/ }),
 
@@ -6819,7 +7119,8 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('ful
   attributes: {
     dateTime: {
       type: 'string',
-      default: ''
+      default: '' // @todo is this necessary?
+
     }
   },
   edit: _edit__WEBPACK_IMPORTED_MODULE_4__["default"],
@@ -6921,8 +7222,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var ALLOWED_BLOCKS = ['full-score-events/schedule-item'];
-var BLOCKS_TEMPLATE = [['full-score-events/schedule-item']];
+var ALLOWED_BLOCKS = ['full-score-events/schedule-item', 'full-score-events/schedule-heading'];
+var BLOCKS_TEMPLATE = [['full-score-events/schedule-heading'], ['full-score-events/schedule-item']];
 
 function FileEdit(_ref) {
   var attributes = _ref.attributes,
@@ -7032,12 +7333,12 @@ function FileEdit(_ref) {
     allowedBlocks: ALLOWED_BLOCKS,
     template: BLOCKS_TEMPLATE
   }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
-    className: "schedule-download-wrapper"
+    className: "fse-schedule-download-wrapper"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("a", {
     href: uploadHref,
     download: true
   }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])('Download', 'full-score-events')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("p", {
-    className: "schedule-upload-instructions"
+    className: "fse-schedule-upload-instructions"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("i", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])('Remove or replace in toolbar', 'full-score-events'))))));
 }
 

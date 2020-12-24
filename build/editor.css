@@ -29,6 +29,8 @@ body {
     background: #f1f1f1; }
   .wp-block-full-score-events-schedule-item .components-datetime__time {
     padding-bottom: 0; }
+    .wp-block-full-score-events-schedule-item .components-datetime__time fieldset:first-child {
+      display: none; }
     .wp-block-full-score-events-schedule-item .components-datetime__time .components-button,
     .wp-block-full-score-events-schedule-item .components-datetime__time input[type="number"],
     .wp-block-full-score-events-schedule-item .components-datetime__time select {
