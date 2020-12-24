@@ -5,7 +5,9 @@
  */
 
 import './taco';
+import './callout';
 import './schedule-items';
 import './schedule-item';
+import './schedule-heading';
 
 // import './zombie-schedule-edit';
