@@ -163,10 +163,12 @@ function FileEdit( { attributes, setAttributes, noticeUI, noticeOperations } ) {
 						{ __( 'Download', 'full-score-events' ) }
 					</a>
 					<p className="schedule-upload-instructions">
-						{ __(
-							'Remove or replace in toolbar',
-							'full-score-events'
-						) }
+						<i>
+							{ __(
+								'Remove or replace in toolbar',
+								'full-score-events'
+							) }
+						</i>
 					</p>
 				</div>
 			</div>

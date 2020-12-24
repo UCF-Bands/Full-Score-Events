@@ -7038,7 +7038,7 @@ function FileEdit(_ref) {
     download: true
   }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])('Download', 'full-score-events')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("p", {
     className: "schedule-upload-instructions"
-  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])('Remove or replace in toolbar', 'full-score-events')))));
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("i", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])('Remove or replace in toolbar', 'full-score-events'))))));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["withNotices"])(FileEdit));
