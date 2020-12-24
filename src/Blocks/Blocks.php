@@ -46,6 +46,7 @@ class Blocks {
 		add_action( 'enqueue_block_editor_assets', [ __CLASS__, 'enqueue_editor_assets' ] );
 
 		new Block( 'taco' );
+		new Block( 'callout' );
 
 		// Dynamic/templated blocks.
 		new Post_Block( 'schedule' );
