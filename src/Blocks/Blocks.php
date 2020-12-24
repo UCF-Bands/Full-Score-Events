@@ -48,6 +48,7 @@ class Blocks {
 		new Block( 'taco' );
 
 		// Dynamic/templated blocks.
+		new Post_Block( 'schedule' );
 		new Schedule_Item();
 		new Schedule_Items();
 
