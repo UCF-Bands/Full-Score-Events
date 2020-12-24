@@ -4,4 +4,4 @@
  * @since 1.0.0
  */
 
-import './schedule-upload';
+// import './zombie-schedule-upload';

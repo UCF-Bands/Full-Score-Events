@@ -4,6 +4,30 @@
  * @since 1.0.0
  */
 
+// this needs to be put back into Schedules.php to work:
+// /**
+//  * Register meta
+//  *
+//  * @since 1.0.0
+//  */
+// public function do_meta_registration() {
+
+// 	foreach ( [
+// 		'_schedule_upload' => 'number',
+// 	] as $key => $type ) {
+// 		register_post_meta(
+// 			$this::CPT_KEY,
+// 			$key,
+// 			[
+// 				'type'          => $type,
+// 				'single'        => true,
+// 				'show_in_rest'  => true,
+// 				'auth_callback' => 'Full_Score_Events\get_can_user_edit_posts',
+// 			]
+// 		);
+// 	}
+// }
+
 import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
 import { withSelect, withDispatch } from '@wordpress/data';
