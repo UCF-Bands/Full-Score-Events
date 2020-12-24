@@ -34,9 +34,15 @@ import { useEffect, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { file as icon } from '@wordpress/icons';
 
-const ALLOWED_BLOCKS = [ 'full-score-events/schedule-item' ];
+const ALLOWED_BLOCKS = [
+	'full-score-events/schedule-item',
+	'full-score-events/schedule-heading',
+];
 
-const BLOCKS_TEMPLATE = [ [ 'full-score-events/schedule-item' ] ];
+const BLOCKS_TEMPLATE = [
+	[ 'full-score-events/schedule-heading' ],
+	[ 'full-score-events/schedule-item' ],
+];
 
 function FileEdit( { attributes, setAttributes, noticeUI, noticeOperations } ) {
 	const { uploadId, uploadHref } = attributes;
@@ -158,11 +164,11 @@ function FileEdit( { attributes, setAttributes, noticeUI, noticeOperations } ) {
 					template={ BLOCKS_TEMPLATE }
 				/>
 
-				<div className="schedule-download-wrapper">
+				<div className="fse-schedule-download-wrapper">
 					<a href={ uploadHref } download>
 						{ __( 'Download', 'full-score-events' ) }
 					</a>
-					<p className="schedule-upload-instructions">
+					<p className="fse-schedule-upload-instructions">
 						<i>
 							{ __(
 								'Remove or replace in toolbar',
