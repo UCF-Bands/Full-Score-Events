@@ -6,14 +6,12 @@
 
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
-import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
+import { InnerBlocks } from '@wordpress/block-editor';
 import { formatListBullets as icon } from '@wordpress/icons';
 
 import './index.scss';
 
-const ALLOWED_BLOCKS = [ 'full-score-events/schedule-item' ];
-
-const BLOCKS_TEMPLATE = [ [ 'full-score-events/schedule-item' ] ];
+import edit from './edit';
 
 // only allow schedule editing in schedule CPT
 if ( fullScoreEventsEditor.currentCPT === 'fse_schedule' ) {
@@ -24,19 +22,16 @@ if ( fullScoreEventsEditor.currentCPT === 'fse_schedule' ) {
 		icon,
 		keywords: [ __( 'schedule' ), __( 'plan' ) ],
 
-		edit() {
-			const blockProps = useBlockProps();
-
-			return (
-				<div { ...blockProps }>
-					<InnerBlocks
-						allowedBlocks={ ALLOWED_BLOCKS }
-						template={ BLOCKS_TEMPLATE }
-					/>
-				</div>
-			);
+		attributes: {
+			uploadId: {
+				type: 'number',
+			},
+			uploadHref: {
+				type: 'string',
+			},
 		},
 
+		edit,
 		save: () => <InnerBlocks.Content />,
 	} );
 }
