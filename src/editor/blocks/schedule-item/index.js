@@ -24,7 +24,7 @@ registerBlockType( 'full-score-events/schedule-item', {
 	attributes: {
 		dateTime: {
 			type: 'string',
-			default: '',
+			default: '', // @todo is this necessary?
 		},
 	},
 

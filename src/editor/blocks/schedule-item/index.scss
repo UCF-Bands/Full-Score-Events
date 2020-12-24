@@ -19,6 +19,11 @@
 	.components-datetime__time {
 		padding-bottom: 0;
 
+		// hide date
+		fieldset:first-child {
+			display: none;
+		}
+
 		.components-button,
 		input[type="number"],
 		select {
