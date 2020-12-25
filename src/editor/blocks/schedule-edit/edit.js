@@ -40,9 +40,36 @@ const ALLOWED_BLOCKS = [
 ];
 
 const BLOCKS_TEMPLATE = [
-	[ 'full-score-events/schedule-heading' ],
+	[
+		'full-score-events/schedule-heading',
+		{ heading: __( 'Day 1: Travel', 'full-score-events' ) },
+		[
+			[
+				'full-score-events/callout',
+				{
+					type: 'error',
+					message: __(
+						'This is a warning message you can use or delete.',
+						'full-score-events'
+					),
+				},
+			],
+		],
+	],
 	[ 'full-score-events/schedule-items' ],
-	[ 'full-score-events/schedule-heading' ],
+	[
+		'full-score-events/schedule-heading',
+		{ heading: __( 'Day 2: UCF vs NAVY', 'full-score-events' ) },
+		[
+			[
+				'full-score-events/callout',
+				{
+					type: 'success',
+					message: __( 'Gameday!', 'full-score-events' ),
+				},
+			],
+		],
+	],
 	[ 'full-score-events/schedule-items' ],
 ];
 
@@ -79,6 +106,7 @@ function FileEdit( { attributes, setAttributes, noticeUI, noticeOperations } ) {
 		}
 	}, [] );
 
+	// adjusted by JP
 	function onSelectFile( newMedia ) {
 		if ( newMedia && newMedia.url ) {
 			setHasError( false );
@@ -89,6 +117,7 @@ function FileEdit( { attributes, setAttributes, noticeUI, noticeOperations } ) {
 		}
 	}
 
+	// added by JP
 	function onRemoveFile() {
 		setAttributes( {
 			uploadHref: '',

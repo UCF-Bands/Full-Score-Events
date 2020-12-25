@@ -6917,7 +6917,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ALLOWED_BLOCKS = ['full-score-events/schedule-heading', 'full-score-events/schedule-items'];
-var BLOCKS_TEMPLATE = [['full-score-events/schedule-heading'], ['full-score-events/schedule-items'], ['full-score-events/schedule-heading'], ['full-score-events/schedule-items']];
+var BLOCKS_TEMPLATE = [['full-score-events/schedule-heading', {
+  heading: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])('Day 1: Travel', 'full-score-events')
+}, [['full-score-events/callout', {
+  type: 'error',
+  message: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])('This is a warning message you can use or delete.', 'full-score-events')
+}]]], ['full-score-events/schedule-items'], ['full-score-events/schedule-heading', {
+  heading: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])('Day 2: UCF vs NAVY', 'full-score-events')
+}, [['full-score-events/callout', {
+  type: 'success',
+  message: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])('Gameday!', 'full-score-events')
+}]]], ['full-score-events/schedule-items']];
 
 function FileEdit(_ref) {
   var attributes = _ref.attributes,
@@ -6959,7 +6969,7 @@ function FileEdit(_ref) {
       });
       Object(_wordpress_blob__WEBPACK_IMPORTED_MODULE_3__["revokeBlobURL"])(uploadHref);
     }
-  }, []);
+  }, []); // adjusted by JP
 
   function onSelectFile(newMedia) {
     if (newMedia && newMedia.url) {
@@ -6969,7 +6979,8 @@ function FileEdit(_ref) {
         uploadId: newMedia.id
       });
     }
-  }
+  } // added by JP
+
 
   function onRemoveFile() {
     setAttributes({
