@@ -13,6 +13,7 @@
 	"dependencies": {},
 	"devDependencies": {
 		"@wordpress/icons": "^2.8.0",
-		"@wordpress/scripts": "^12.5.0"
+		"@wordpress/scripts": "^12.5.0",
+		"react-select": "^3.1.1"
 	}
 }
