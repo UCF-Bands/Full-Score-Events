@@ -47,6 +47,7 @@ class Blocks {
 
 		new Block( 'taco' );
 		new Block( 'callout' );
+		new Block( 'schedule-edit' );
 		new Block( 'schedule-heading' );
 
 		// Dynamic/templated blocks.

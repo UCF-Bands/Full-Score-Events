@@ -6,12 +6,12 @@
 
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
+import { InnerBlocks } from '@wordpress/block-editor';
 import { formatListBullets as icon } from '@wordpress/icons';
 
 import './index.scss';
 
 import edit from './edit';
-import save from './save';
 
 registerBlockType( 'full-score-events/schedule-item', {
 	apiVersion: 2,
@@ -29,5 +29,5 @@ registerBlockType( 'full-score-events/schedule-item', {
 	},
 
 	edit,
-	save,
+	save: () => <InnerBlocks.Content />,
 } );

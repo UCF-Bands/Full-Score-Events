@@ -1,5 +1,5 @@
 /**
- * Schedule items block edit
+ * Schedule editor block edit
  *
  * Most of this is a stripped form of the file block's edit.
  *
@@ -35,13 +35,15 @@ import { __ } from '@wordpress/i18n';
 import { file as icon } from '@wordpress/icons';
 
 const ALLOWED_BLOCKS = [
-	'full-score-events/schedule-item',
 	'full-score-events/schedule-heading',
+	'full-score-events/schedule-items',
 ];
 
 const BLOCKS_TEMPLATE = [
 	[ 'full-score-events/schedule-heading' ],
-	[ 'full-score-events/schedule-item' ],
+	[ 'full-score-events/schedule-items' ],
+	[ 'full-score-events/schedule-heading' ],
+	[ 'full-score-events/schedule-items' ],
 ];
 
 function FileEdit( { attributes, setAttributes, noticeUI, noticeOperations } ) {

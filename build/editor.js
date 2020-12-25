@@ -6846,9 +6846,10 @@ function edit(_ref) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _taco__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./taco */ "./src/editor/blocks/taco/index.js");
 /* harmony import */ var _callout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./callout */ "./src/editor/blocks/callout/index.js");
-/* harmony import */ var _schedule_items__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./schedule-items */ "./src/editor/blocks/schedule-items/index.js");
-/* harmony import */ var _schedule_item__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./schedule-item */ "./src/editor/blocks/schedule-item/index.js");
-/* harmony import */ var _schedule_heading__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./schedule-heading */ "./src/editor/blocks/schedule-heading/index.js");
+/* harmony import */ var _schedule_edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./schedule-edit */ "./src/editor/blocks/schedule-edit/index.js");
+/* harmony import */ var _schedule_items__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./schedule-items */ "./src/editor/blocks/schedule-items/index.js");
+/* harmony import */ var _schedule_item__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./schedule-item */ "./src/editor/blocks/schedule-item/index.js");
+/* harmony import */ var _schedule_heading__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./schedule-heading */ "./src/editor/blocks/schedule-heading/index.js");
 /**
  * Custom blocks
  *
@@ -6858,7 +6859,241 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
  // import './zombie-schedule-edit';
+
+/***/ }),
+
+/***/ "./src/editor/blocks/schedule-edit/edit.js":
+/*!*************************************************!*\
+  !*** ./src/editor/blocks/schedule-edit/edit.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/slicedToArray.js");
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_blob__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/blob */ "@wordpress/blob");
+/* harmony import */ var _wordpress_blob__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blob__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/index.js");
+
+
+
+/**
+ * Schedule editor block edit
+ *
+ * Most of this is a stripped form of the file block's edit.
+ *
+ * @since 1.0.0
+ */
+
+/**
+ * External dependencies
+ */
+
+/**
+ * WordPress dependencies
+ */
+
+
+
+
+
+
+
+
+var ALLOWED_BLOCKS = ['full-score-events/schedule-heading', 'full-score-events/schedule-items'];
+var BLOCKS_TEMPLATE = [['full-score-events/schedule-heading'], ['full-score-events/schedule-items'], ['full-score-events/schedule-heading'], ['full-score-events/schedule-items']];
+
+function FileEdit(_ref) {
+  var attributes = _ref.attributes,
+      setAttributes = _ref.setAttributes,
+      noticeUI = _ref.noticeUI,
+      noticeOperations = _ref.noticeOperations;
+  var uploadId = attributes.uploadId,
+      uploadHref = attributes.uploadHref;
+
+  var _useState = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
+      _useState2 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_useState, 2),
+      hasError = _useState2[0],
+      setHasError = _useState2[1];
+
+  var _useSelect = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_5__["useSelect"])(function (select) {
+    return {
+      media: uploadId === undefined ? undefined : select('core').getMedia(uploadId),
+      mediaUpload: select('core/block-editor').getSettings().mediaUpload
+    };
+  }, [uploadId]),
+      mediaUpload = _useSelect.mediaUpload;
+
+  Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+    // Upload a file drag-and-dropped into the editor
+    if (Object(_wordpress_blob__WEBPACK_IMPORTED_MODULE_3__["isBlobURL"])(uploadHref)) {
+      var file = Object(_wordpress_blob__WEBPACK_IMPORTED_MODULE_3__["getBlobByURL"])(uploadHref);
+      mediaUpload({
+        filesList: [file],
+        onFileChange: function onFileChange(_ref2) {
+          var _ref3 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_ref2, 1),
+              newMedia = _ref3[0];
+
+          return onSelectFile(newMedia);
+        },
+        onError: function onError(message) {
+          setHasError(true);
+          noticeOperations.createErrorNotice(message);
+        }
+      });
+      Object(_wordpress_blob__WEBPACK_IMPORTED_MODULE_3__["revokeBlobURL"])(uploadHref);
+    }
+  }, []);
+
+  function onSelectFile(newMedia) {
+    if (newMedia && newMedia.url) {
+      setHasError(false);
+      setAttributes({
+        uploadHref: newMedia.url,
+        uploadId: newMedia.id
+      });
+    }
+  }
+
+  function onRemoveFile() {
+    setAttributes({
+      uploadHref: '',
+      uploadId: null
+    });
+  }
+
+  function onUploadError(message) {
+    setHasError(true);
+    noticeOperations.removeAllNotices();
+    noticeOperations.createErrorNotice(message);
+  }
+
+  var blockProps = Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["useBlockProps"])({
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(Object(_wordpress_blob__WEBPACK_IMPORTED_MODULE_3__["isBlobURL"])(uploadHref) && Object(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["__unstableGetAnimateClassName"])({
+      type: 'loading'
+    }), {
+      'is-transient': Object(_wordpress_blob__WEBPACK_IMPORTED_MODULE_3__["isBlobURL"])(uploadHref)
+    })
+  });
+
+  if (!uploadHref || hasError) {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", blockProps, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["InnerBlocks"], {
+      allowedBlocks: ALLOWED_BLOCKS,
+      template: BLOCKS_TEMPLATE
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["MediaPlaceholder"], {
+      icon: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["BlockIcon"], {
+        icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_8__["file"]
+      }),
+      labels: {
+        title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])('Schedule Upload'),
+        instructions: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])('Upload a file or pick one from your media library.')
+      },
+      onSelect: onSelectFile,
+      notices: noticeUI,
+      onError: onUploadError,
+      accept: "*"
+    }));
+  }
+
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["BlockControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ToolbarGroup"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["MediaReplaceFlow"], {
+    mediaId: uploadId,
+    mediaURL: uploadHref,
+    accept: "*",
+    onSelect: onSelectFile,
+    onError: onUploadError,
+    name: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])('Replace Upload', 'full-score-events') // added by JP
+
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ToolbarButton"], {
+    className: "components-media-remove-toolbar-button",
+    isDisabled: Object(_wordpress_blob__WEBPACK_IMPORTED_MODULE_3__["isBlobURL"])(uploadHref),
+    onClick: onRemoveFile
+  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])('Remove Upload', 'full-score-events')))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", blockProps, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["InnerBlocks"], {
+    allowedBlocks: ALLOWED_BLOCKS,
+    template: BLOCKS_TEMPLATE
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+    className: "fse-schedule-download-wrapper"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("a", {
+    href: uploadHref,
+    download: true
+  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])('Download', 'full-score-events')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("p", {
+    className: "fse-schedule-upload-instructions"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("i", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])('Remove or replace in toolbar', 'full-score-events'))))));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["withNotices"])(FileEdit));
+
+/***/ }),
+
+/***/ "./src/editor/blocks/schedule-edit/index.js":
+/*!**************************************************!*\
+  !*** ./src/editor/blocks/schedule-edit/index.js ***!
+  \**************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/index.js");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./edit */ "./src/editor/blocks/schedule-edit/edit.js");
+
+
+/**
+ * Schedule editing block
+ *
+ * @since 1.0.0
+ */
+
+
+
+ // import './index.scss';
+
+ // only allow schedule editing in schedule CPT
+
+if (fullScoreEventsEditor.currentCPT === 'fse_schedule') {
+  Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('full-score-events/schedule-edit', {
+    apiVersion: 2,
+    title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Schedule Editor', 'full-score-events'),
+    description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Edit a schedule's items and upload.", 'full-score-events'),
+    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__["formatListBullets"],
+    keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('schedule'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('plan'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('edit')],
+    attributes: {
+      uploadId: {
+        type: 'number'
+      },
+      uploadHref: {
+        type: 'string'
+      }
+    },
+    edit: _edit__WEBPACK_IMPORTED_MODULE_5__["default"],
+    save: function save() {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["InnerBlocks"].Content, null);
+    }
+  });
+}
 
 /***/ }),
 
@@ -7089,15 +7324,20 @@ var edit = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_2__["withSelect"])(fu
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/index.js");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./index.scss */ "./src/editor/blocks/schedule-item/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./edit */ "./src/editor/blocks/schedule-item/edit.js");
-/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./save */ "./src/editor/blocks/schedule-item/save.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/index.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./index.scss */ "./src/editor/blocks/schedule-item/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./edit */ "./src/editor/blocks/schedule-item/edit.js");
+
+
 /**
  * Individual schedule item block
  *
@@ -7109,12 +7349,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('full-score-events/schedule-item', {
+Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('full-score-events/schedule-item', {
   apiVersion: 2,
-  title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Schedule Item', 'full-score-events'),
-  description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Edit a schedule's schedule.", 'full-score-events'),
-  icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_2__["formatListBullets"],
-  keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('schedule'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('plan')],
+  title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Schedule Item', 'full-score-events'),
+  description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Edit a schedule's schedule.", 'full-score-events'),
+  icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__["formatListBullets"],
+  keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('schedule'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('plan')],
   parent: ['full-score-events/schedule-items'],
   attributes: {
     dateTime: {
@@ -7123,8 +7363,10 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('ful
 
     }
   },
-  edit: _edit__WEBPACK_IMPORTED_MODULE_4__["default"],
-  save: _save__WEBPACK_IMPORTED_MODULE_5__["default"]
+  edit: _edit__WEBPACK_IMPORTED_MODULE_6__["default"],
+  save: function save() {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["InnerBlocks"].Content, null);
+  }
 });
 
 /***/ }),
@@ -7137,212 +7379,6 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('ful
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
-
-/***/ }),
-
-/***/ "./src/editor/blocks/schedule-item/save.js":
-/*!*************************************************!*\
-  !*** ./src/editor/blocks/schedule-item/save.js ***!
-  \*************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return save; });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
-
-
-/**
- * Schedule item block save
- *
- * No blockProps so we can do custom wrapping in dynamic block.
- *
- * @since 1.0.0
- */
-
-function save() {
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["InnerBlocks"].Content, null);
-}
-
-/***/ }),
-
-/***/ "./src/editor/blocks/schedule-items/edit.js":
-/*!**************************************************!*\
-  !*** ./src/editor/blocks/schedule-items/edit.js ***!
-  \**************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/slicedToArray.js");
-/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_blob__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/blob */ "@wordpress/blob");
-/* harmony import */ var _wordpress_blob__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blob__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/index.js");
-
-
-
-/**
- * Schedule items block edit
- *
- * Most of this is a stripped form of the file block's edit.
- *
- * @since 1.0.0
- */
-
-/**
- * External dependencies
- */
-
-/**
- * WordPress dependencies
- */
-
-
-
-
-
-
-
-
-var ALLOWED_BLOCKS = ['full-score-events/schedule-item', 'full-score-events/schedule-heading'];
-var BLOCKS_TEMPLATE = [['full-score-events/schedule-heading'], ['full-score-events/schedule-item']];
-
-function FileEdit(_ref) {
-  var attributes = _ref.attributes,
-      setAttributes = _ref.setAttributes,
-      noticeUI = _ref.noticeUI,
-      noticeOperations = _ref.noticeOperations;
-  var uploadId = attributes.uploadId,
-      uploadHref = attributes.uploadHref;
-
-  var _useState = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
-      _useState2 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_useState, 2),
-      hasError = _useState2[0],
-      setHasError = _useState2[1];
-
-  var _useSelect = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_5__["useSelect"])(function (select) {
-    return {
-      media: uploadId === undefined ? undefined : select('core').getMedia(uploadId),
-      mediaUpload: select('core/block-editor').getSettings().mediaUpload
-    };
-  }, [uploadId]),
-      mediaUpload = _useSelect.mediaUpload;
-
-  Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
-    // Upload a file drag-and-dropped into the editor
-    if (Object(_wordpress_blob__WEBPACK_IMPORTED_MODULE_3__["isBlobURL"])(uploadHref)) {
-      var file = Object(_wordpress_blob__WEBPACK_IMPORTED_MODULE_3__["getBlobByURL"])(uploadHref);
-      mediaUpload({
-        filesList: [file],
-        onFileChange: function onFileChange(_ref2) {
-          var _ref3 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_ref2, 1),
-              newMedia = _ref3[0];
-
-          return onSelectFile(newMedia);
-        },
-        onError: function onError(message) {
-          setHasError(true);
-          noticeOperations.createErrorNotice(message);
-        }
-      });
-      Object(_wordpress_blob__WEBPACK_IMPORTED_MODULE_3__["revokeBlobURL"])(uploadHref);
-    }
-  }, []);
-
-  function onSelectFile(newMedia) {
-    if (newMedia && newMedia.url) {
-      setHasError(false);
-      setAttributes({
-        uploadHref: newMedia.url,
-        uploadId: newMedia.id
-      });
-    }
-  }
-
-  function onRemoveFile() {
-    setAttributes({
-      uploadHref: '',
-      uploadId: null
-    });
-  }
-
-  function onUploadError(message) {
-    setHasError(true);
-    noticeOperations.removeAllNotices();
-    noticeOperations.createErrorNotice(message);
-  }
-
-  var blockProps = Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["useBlockProps"])({
-    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(Object(_wordpress_blob__WEBPACK_IMPORTED_MODULE_3__["isBlobURL"])(uploadHref) && Object(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["__unstableGetAnimateClassName"])({
-      type: 'loading'
-    }), {
-      'is-transient': Object(_wordpress_blob__WEBPACK_IMPORTED_MODULE_3__["isBlobURL"])(uploadHref)
-    })
-  });
-
-  if (!uploadHref || hasError) {
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", blockProps, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["InnerBlocks"], {
-      allowedBlocks: ALLOWED_BLOCKS,
-      template: BLOCKS_TEMPLATE
-    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["MediaPlaceholder"], {
-      icon: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["BlockIcon"], {
-        icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_8__["file"]
-      }),
-      labels: {
-        title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])('Schedule Upload'),
-        instructions: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])('Upload a file or pick one from your media library.')
-      },
-      onSelect: onSelectFile,
-      notices: noticeUI,
-      onError: onUploadError,
-      accept: "*"
-    }));
-  }
-
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["BlockControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ToolbarGroup"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["MediaReplaceFlow"], {
-    mediaId: uploadId,
-    mediaURL: uploadHref,
-    accept: "*",
-    onSelect: onSelectFile,
-    onError: onUploadError,
-    name: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])('Replace Upload', 'full-score-events') // added by JP
-
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ToolbarButton"], {
-    className: "components-media-remove-toolbar-button",
-    isDisabled: Object(_wordpress_blob__WEBPACK_IMPORTED_MODULE_3__["isBlobURL"])(uploadHref),
-    onClick: onRemoveFile
-  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])('Remove Upload', 'full-score-events')))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", blockProps, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["InnerBlocks"], {
-    allowedBlocks: ALLOWED_BLOCKS,
-    template: BLOCKS_TEMPLATE
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
-    className: "fse-schedule-download-wrapper"
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("a", {
-    href: uploadHref,
-    download: true
-  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])('Download', 'full-score-events')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("p", {
-    className: "fse-schedule-upload-instructions"
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("i", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])('Remove or replace in toolbar', 'full-score-events'))))));
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["withNotices"])(FileEdit));
 
 /***/ }),
 
@@ -7364,9 +7400,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/index.js");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./index.scss */ "./src/editor/blocks/schedule-items/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./edit */ "./src/editor/blocks/schedule-items/edit.js");
 
 
 /**
@@ -7378,41 +7411,25 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
- // only allow schedule editing in schedule CPT
-
-if (fullScoreEventsEditor.currentCPT === 'fse_schedule') {
-  Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('full-score-events/schedule-items', {
-    apiVersion: 2,
-    title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Schedule Items', 'full-score-events'),
-    description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Edit a schedule's schedule.", 'full-score-events'),
-    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__["formatListBullets"],
-    keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('schedule'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('plan')],
-    attributes: {
-      uploadId: {
-        type: 'number'
-      },
-      uploadHref: {
-        type: 'string'
-      }
-    },
-    edit: _edit__WEBPACK_IMPORTED_MODULE_6__["default"],
-    save: function save() {
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["InnerBlocks"].Content, null);
-    }
-  });
-}
-
-/***/ }),
-
-/***/ "./src/editor/blocks/schedule-items/index.scss":
-/*!*****************************************************!*\
-  !*** ./src/editor/blocks/schedule-items/index.scss ***!
-  \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
+var ALLOWED_BLOCKS = ['full-score-events/schedule-item'];
+var BLOCKS_TEMPLATE = [['full-score-events/schedule-item'], ['full-score-events/schedule-item']];
+Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('full-score-events/schedule-items', {
+  apiVersion: 2,
+  title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Schedule Items', 'full-score-events'),
+  description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Edit a schedule's activities.", 'full-score-events'),
+  icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__["formatListBullets"],
+  keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('schedule'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('plan')],
+  parent: ['full-score-events/schedule-edit'],
+  edit: function edit() {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["useBlockProps"])(), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["InnerBlocks"], {
+      allowedBlocks: ALLOWED_BLOCKS,
+      template: BLOCKS_TEMPLATE
+    }));
+  },
+  save: function save() {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["InnerBlocks"].Content, null);
+  }
+});
 
 /***/ }),
 
