@@ -82,7 +82,7 @@ class Schedules extends Post_Type {
 				'feeds'      => true,
 			],
 			'template'            => [
-				[ 'full-score-events/schedule-items' ],
+				[ 'full-score-events/schedule-edit' ],
 			],
 		];
 	}
