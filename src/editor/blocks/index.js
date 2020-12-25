@@ -6,6 +6,7 @@
 
 import './taco';
 import './callout';
+import './schedule';
 import './schedule-edit';
 import './schedule-items';
 import './schedule-item';
