@@ -124,6 +124,7 @@
 				<element value="Full_Score_Events" />
 				<element value="full_score_events" />
 				<element value="FULL_SCORE_EVENTS" />
+				<element value="fse" />
 			</property>
 		</properties>
 	</rule>
