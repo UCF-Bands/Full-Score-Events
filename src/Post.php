@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.0.0
  */
-abstract class Post {
+class Post {
 
 	/**
 	 * Associated post ID
