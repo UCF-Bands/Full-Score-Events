@@ -29,6 +29,22 @@ class Schedules extends Post_Type {
 	const CPT_KEY = 'fse_schedule';
 
 	/**
+	 * Object class to be used for indivudal instances of the post type
+	 *
+	 * @since 1.0.0
+	 * @var   string
+	 */
+	protected $singular_class = 'Schedule';
+
+	/**
+	 * Flag for global post variable in look
+	 *
+	 * @since 1.0.0
+	 * @var   boolean
+	 */
+	protected $loop_global_name = 'schedule';
+
+	/**
 	 * Get general post type label
 	 *
 	 * @return string
