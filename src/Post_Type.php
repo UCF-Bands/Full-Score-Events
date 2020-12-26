@@ -45,6 +45,25 @@ abstract class Post_Type {
 	protected $title_placeholder = false;
 
 	/**
+	 * Object class to be used for indivudal instances of the post type
+	 *
+	 * Ex: If a "Schedule" post type is being setup with "Schedules" as the main
+	 * CPT handler (the class extending this class), the "singular class" would
+	 * probably be "Schedule" since each item in a loop would be a schedule.
+	 *
+	 * @var string
+	 */
+	protected $singular_class = 'Post';
+
+	/**
+	 * Flag for global post variable in look
+	 *
+	 * @since 1.0.0
+	 * @var   boolean
+	 */
+	protected $loop_global_name = false;
+
+	/**
 	 * Spin everything up
 	 *
 	 * @since 1.0.0
@@ -54,6 +73,7 @@ abstract class Post_Type {
 		add_action( 'full_score_events_activate', [ $this, 'do_registration' ] );
 		add_action( 'init', [ $this, 'do_meta_registration' ] );
 		add_filter( 'enter_title_here', [ $this, 'set_title_placeholder' ] );
+		add_action( 'the_post', [ $this, 'do_post_setup' ] );
 	}
 
 	/**
@@ -143,5 +163,44 @@ abstract class Post_Type {
 		return $this->title_placeholder && $this::CPT_KEY === $screen->post_type
 			? $this->title_placeholder
 			: $title;
+	}
+
+	/**
+	 * Set up the global custom post type post object
+	 *
+	 * Inspired by WooCommerce's wc_setup_product_data
+	 *
+	 * @param  WP_Post $post Post object that is being set up in loop.
+	 * @return Product
+	 *
+	 * @since 1.0.0
+	 */
+	public function do_post_setup( $post ) {
+
+		if ( ! $this->loop_global_name ) {
+			return;
+		}
+
+		// Reset prior loop item's global.
+		unset( $GLOBALS[ "fse_{$this->loop_global_name}" ] );
+
+		// Make sure it's an actual WP_Post object if it isn't already.
+		if ( is_int( $post ) ) {
+			$post = get_post();
+		}
+
+		// Make sure there's a post type and it's the current CPT handler.
+		if ( empty( $post->post_type ) || $this::CPT_KEY !== $post->post_type ) {
+			return;
+		}
+
+		// Put together the actual class for the object to be created.
+		$post_class = 'Full_Score_Events\\' . $this->singular_class;
+
+		// Assign global loop object. Ex: global $fse_schedule will be an
+		// instance of Full_Score_Events\Schedule.
+		$GLOBALS[ "fse_{$this->loop_global_name}" ] = new $post_class( $post->ID );
+
+		return $GLOBALS[ "fse_{$this->loop_global_name}" ];
 	}
 }
