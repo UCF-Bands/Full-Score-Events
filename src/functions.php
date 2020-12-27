@@ -66,6 +66,25 @@ function do_attrs( $attrs, $prefix = '' ) {
 }
 
 /**
+ * Attribute building helper, but all items go to "class" arg
+ *
+ * @return string
+ * @since  1.0.0
+ */
+function get_attrs_class() {
+	return get_attrs( [ 'class' => func_get_args() ] );
+}
+
+/**
+ * Output class attribute
+ *
+ * @since 1.0.0
+ */
+function do_attrs_class() {
+	echo get_attrs( [ 'class' => func_get_args() ] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+}
+
+/**
  * Get a plugin template
  *
  * @param string $name  Template part name (excluding .php).
