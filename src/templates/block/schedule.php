@@ -51,6 +51,7 @@ $upload_id = $edit_block['attrs']['uploadId'] ?? false;
 			[
 				'href'     => wp_get_attachment_url( $upload_id ),
 				'class'    => 'button',
+				'role'     => 'button',
 				'download' => 'download',
 			]
 		);
