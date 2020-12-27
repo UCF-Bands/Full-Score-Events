@@ -9,8 +9,11 @@ import { useBlockProps, RichText } from '@wordpress/block-editor';
 import icons from './icons';
 
 export default function edit( { attributes } ) {
-	const blockProps = useBlockProps.save(),
-		{ message, type } = attributes;
+	const { type, message } = attributes;
+
+	const blockProps = useBlockProps.save( {
+		className: `fse-callout-${ type }`,
+	} );
 
 	return (
 		<div { ...blockProps }>
