@@ -5,6 +5,9 @@
  * @since 1.0.0
  */
 
+const Html5Entities = require( 'html-entities' ).Html5Entities;
+const entities = new Html5Entities();
+
 import { addQueryArgs } from '@wordpress/url';
 import apiFetch from '@wordpress/api-fetch';
 
@@ -50,7 +53,7 @@ const getApiOptions = ( endpoint, search, callback, namespace = 'wp/v2' ) => {
 			// console.log( 'RESPONSE', typeof response, response );
 			response.forEach( ( { id, title, name } ) => {
 				options.push( {
-					label: title ? title.rendered : name,
+					label: title ? entities.decode( title.rendered ) : name,
 					value: id,
 				} );
 			} );
