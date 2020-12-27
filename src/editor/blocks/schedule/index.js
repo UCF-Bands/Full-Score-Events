@@ -6,7 +6,7 @@
  * @since 1.0.0
  */
 
-// import './style.css';
+import './style.scss';
 // import './editor.css';
 
 import PostSelectWrapper from '../../components/post-select-wrapper';

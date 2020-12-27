@@ -8,7 +8,7 @@ import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 import { heading as icon } from '@wordpress/icons';
 
-// import './index.scss';
+import './style.scss';
 
 import edit from './edit';
 import save from './save';

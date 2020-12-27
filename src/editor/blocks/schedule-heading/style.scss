@@ -1,0 +1,15 @@
+/**
+ * Schedule heading block
+ *
+ * @since   1.0.0
+ * @package Full_Score_Events
+ */
+.wp-block-full-score-events-schedule-heading {
+	display: grid;
+	gap: 1rem;
+	margin-top: 1rem;
+
+	&:first-child {
+		margin-top: 0;
+	}
+}
