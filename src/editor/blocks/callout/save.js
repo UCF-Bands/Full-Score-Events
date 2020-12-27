@@ -6,12 +6,15 @@
 
 import { useBlockProps, RichText } from '@wordpress/block-editor';
 
+import icons from './icons';
+
 export default function edit( { attributes } ) {
 	const blockProps = useBlockProps.save(),
-		{ message } = attributes;
+		{ message, type } = attributes;
 
 	return (
 		<div { ...blockProps }>
+			{ icons[ type ]() }
 			<RichText.Content
 				tagName="p"
 				className="fse-callout-message"

@@ -12,7 +12,9 @@ import {
 } from '@wordpress/block-editor';
 import { PanelBody, RadioControl } from '@wordpress/components';
 
-function CalloutEdit( { attributes, setAttributes } ) {
+import icons from './icons';
+
+export default function Edit( { attributes, setAttributes } ) {
 	const { type, message } = attributes,
 		blockProps = useBlockProps( { className: `fse-callout-${ type }` } );
 
@@ -51,6 +53,7 @@ function CalloutEdit( { attributes, setAttributes } ) {
 			</InspectorControls>
 
 			<div { ...blockProps }>
+				{ icons[ type ]() }
 				<RichText
 					tagName="p"
 					className="fse-callout-message"
@@ -67,5 +70,3 @@ function CalloutEdit( { attributes, setAttributes } ) {
 		</>
 	);
 }
-
-export default CalloutEdit;
