@@ -13,8 +13,9 @@ import PostSelectWrapper from '../../components/post-select-wrapper';
 
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
-import ServerSideRender from '@wordpress/server-side-render';
 import { formatListBullets as icon } from '@wordpress/icons';
+
+import edit from './edit';
 
 const config = {
 	apiVersion: 2,
@@ -27,24 +28,14 @@ const config = {
 	category: 'design',
 	keywords: [ __( 'schedule' ), __( 'activites' ), __( 'event' ) ],
 
-	edit: ( { attributes } ) => {
-		const { selectedPost } = attributes;
-
-		return selectedPost.value ? (
-			<ServerSideRender
-				block="full-score-events/schedule"
-				attributes={ attributes }
-			/>
-		) : (
-			<p>
-				{ __(
-					'Please select a schedule in block options.',
-					'full-score-events'
-				) }
-			</p>
-		);
+	attributes: {
+		showTitle: {
+			type: 'boolean',
+			default: false,
+		},
 	},
 
+	edit,
 	save: () => null,
 
 	// for PostSelectWrapper
