@@ -25,9 +25,7 @@ class Schedule extends Post {
 	/**
 	 * Get schedule edit block
 	 *
-	 * @return boolean false  Schedule post doesn't have schedule-edit block.
-	 * @return array          Parsed schedule-edit block.
-	 *
+	 * @return array|boolean  Parsed schedule-edit block.
 	 * @since  1.0.0
 	 */
 	public function get_edit_block() {
@@ -42,6 +40,11 @@ class Schedule extends Post {
 		$blocks = parse_blocks( $post->post_content );
 		$blocks = wp_list_filter( $blocks, [ 'blockName' => $block_name ] );
 
-		$krick = 'rick';
+		if ( ! $blocks ) {
+			return;
+		}
+
+		// Always just use one edit block.
+		return $blocks[0];
 	}
 }
