@@ -47,13 +47,11 @@ class Blocks {
 
 		new Block( 'taco' );
 		new Block( 'callout' );
-		new Block( 'schedule-heading' );
-
-		// Dynamic/templated blocks.
-		new Post_Block( 'schedule' );
 		new Renderless_Block( 'schedule-edit' );
-		new Renderless_Block( 'schedule-item' );
-		new Renderless_Block( 'schedule-items' );
+		new Block( 'schedule-heading' );
+		new Block( 'schedule-items' );
+		new Schedule_Item();
+		new Post_Block( 'schedule' );
 
 		// new Zombie_Schedule_Edit(); This is just a placeholder since we have that Gutenberg issue.
 	}
