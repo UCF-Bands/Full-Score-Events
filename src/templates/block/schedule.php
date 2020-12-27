@@ -27,7 +27,11 @@ $upload_id = $edit_block['attrs']['uploadId'] ?? false;
 
 	<?php
 	foreach ( $edit_block['innerBlocks'] as $block ) :
-		if ( 'full-score-events/schedule-items' === $block['blockName'] && $block['innerBlocks'] ) :
+		if ( 'full-score-events/schedule-items' === $block['blockName'] ) :
+
+			if ( ! $block['innerBlocks'] ) {
+				continue;
+			}
 			?>
 			<ul class="fse-schedule-items">
 				<?php echo implode( '', array_map( 'render_block', $block['innerBlocks'] ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
