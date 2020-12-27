@@ -20,6 +20,10 @@ $upload_id = $edit_block['attrs']['uploadId'] ?? false;
 ?>
 
 <div class="fse-schedule">
+	<?php if ( $showTitle ) : ?>
+		<h2><?php $fse_schedule->do_title(); ?></h2>
+	<?php endif; ?>
+
 	<?php
 	foreach ( $edit_block['innerBlocks'] as $block ) :
 		if ( 'full-score-events/schedule-items' === $block['blockName'] && $block['innerBlocks'] ) :
