@@ -21,6 +21,51 @@ function get( $key ) {
 }
 
 /**
+ * Break array into string of attributes
+ *
+ * Has special cases for "class" and "data" keys if their values are arrays, so
+ * it's compatible with arrays of data attributes (by using recusion).
+ *
+ * @param  array  $attrs   Attribute names/values.
+ * @param  string $prefix  a prefix for the data attribute (ex: "data-").
+ * @return string          Inline string of data attributes.
+ */
+function get_attrs( $attrs, $prefix = '' ) {
+
+	// Remove initially empty args.
+	$attrs = array_filter( $attrs );
+
+	foreach ( $attrs as $attr => $value ) {
+
+		// data- attributes.
+		if ( 'data' === $attr && is_array( $value ) ) {
+			$attrs[ $attr ] = get_attrs( array_filter( $value ), 'data-' );
+			continue;
+		}
+
+		// Array of classes.
+		if ( 'class' === $attr && is_array( $value ) ) {
+			$value = implode( ' ', array_filter( $value ) );
+		}
+
+		// Array of classes + all other cases.
+		$attrs[ $attr ] = $prefix . $attr . '="' . esc_attr( $value ) . '"';
+	}
+
+	return implode( ' ', $attrs );
+}
+
+/**
+ * Output HTML string off attributes
+ *
+ * @param  array  $attrs   Attribute names/values.
+ * @param  string $prefix  a prefix for the data attribute (ex: "data-").
+ */
+function do_attrs( $attrs, $prefix = '' ) {
+	echo get_attrs( $attrs, $prefix ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+}
+
+/**
  * Get a plugin template
  *
  * @param string $name  Template part name (excluding .php).
