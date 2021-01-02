@@ -20,7 +20,7 @@ export default function edit( { attributes, setAttributes } ) {
 			<RichText
 				tagName="h4"
 				className="fse-schedule-heading-heading"
-				placeholder={ __( 'Day 1: UCF vs NAVY' ) }
+				placeholder={ __( 'Day 1: UCF vs NAVY', 'full-score-events' ) }
 				value={ heading }
 				onChange={ ( value ) => setAttributes( { heading: value } ) }
 			/>
