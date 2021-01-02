@@ -16615,7 +16615,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/index.js");
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./edit */ "./src/editor/blocks/schedule-edit/edit.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./index.scss */ "./src/editor/blocks/schedule-edit/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./edit */ "./src/editor/blocks/schedule-edit/edit.js");
 
 
 /**
@@ -16626,7 +16628,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- // import './index.scss';
+
 
  // only allow schedule editing in schedule CPT
 
@@ -16645,12 +16647,23 @@ if (fullScoreEventsEditor.currentCPT === 'fse_schedule') {
         type: 'string'
       }
     },
-    edit: _edit__WEBPACK_IMPORTED_MODULE_5__["default"],
+    edit: _edit__WEBPACK_IMPORTED_MODULE_6__["default"],
     save: function save() {
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["InnerBlocks"].Content, null);
     }
   });
 }
+
+/***/ }),
+
+/***/ "./src/editor/blocks/schedule-edit/index.scss":
+/*!****************************************************!*\
+  !*** ./src/editor/blocks/schedule-edit/index.scss ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 

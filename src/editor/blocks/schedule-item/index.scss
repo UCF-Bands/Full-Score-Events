@@ -10,11 +10,12 @@
 	grid-template-columns: auto 1fr;
 	gap: 2rem;
 	max-width: none;
-	padding: 1.25rem;
+	padding-top: 1.25rem; // USE THEME TO ADD SIDE PADDING BACK
+	padding-bottom: 1.25rem; // USE THEME TO ADD SIDE PADDING BACK
 
-	&:nth-child(even) {
-		background: #f1f1f1;
-	}
+	// &:nth-child(even) {
+	// 	background: #f1f1f1;
+	// }
 
 	.components-datetime__time {
 		padding-bottom: 0;
