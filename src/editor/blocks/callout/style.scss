@@ -1,0 +1,19 @@
+/**
+ * Callout block
+ *
+ * @since   1.0.0
+ * @package Full_Score_Events
+ */
+.wp-block-full-score-events-callout {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.5rem 1rem;
+	font-weight: 700;
+	border: 2px solid var(--global--color-border);
+
+	[data-icon] {
+		width: var(--global--font-size-base);
+	}
+}

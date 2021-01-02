@@ -1,0 +1,44 @@
+/**
+ * Schedule item editor adjustments
+ *
+ * @since 1.0.0
+ */
+
+/* stylelint-disable selector-class-pattern */
+.wp-block-full-score-events-schedule-item {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 2rem;
+	max-width: none;
+	padding-top: 1.25rem; // USE THEME TO ADD SIDE PADDING BACK
+	padding-bottom: 1.25rem; // USE THEME TO ADD SIDE PADDING BACK
+
+	// &:nth-child(even) {
+	// 	background: #f1f1f1;
+	// }
+
+	.components-datetime__time {
+		padding-bottom: 0;
+
+		// hide date
+		fieldset:first-child {
+			display: none;
+		}
+
+		.components-button,
+		input[type="number"],
+		select {
+			height: 30px;
+		}
+	}
+
+	.editor-styles-wrapper & {
+
+		.block-editor-block-list__layout > * + *,
+		[data-type="core/paragraph"] + [data-type="core/paragraph"] {
+			margin-top: 1rem;
+		}
+	}
+}
+
+/* stylelint-enable selector-class-pattern */

@@ -1,0 +1,76 @@
+/* Taco block editor-only styles */
+body {
+	background: var(--color-red);
+}
+
+/**
+ * Schedule block editor adjustments
+ *
+ * @since   1.0.0
+ * @package Full_Score_Events
+ */
+.editor-styles-wrapper .fse-schedule h2,
+.editor-styles-wrapper .fse-callout-message,
+.editor-styles-wrapper .fse-schedule-items,
+.editor-styles-wrapper .fse-schedule-activity p {
+  margin: 0; }
+
+.editor-styles-wrapper .fse-schedule-items {
+  padding: 0; }
+
+/**
+ * Schedule edit block editor adjustments
+ *
+ * @since   1.0.0
+ * @package Full_Score_Events
+ */
+.wp-block-full-score-events-schedule-edit > .block-editor-inner-blocks > .block-editor-block-list__layout {
+  display: -ms-grid;
+  display: grid;
+  gap: 1rem; }
+
+.editor-styles-wrapper .wp-block-full-score-events-schedule-edit .wp-block,
+.editor-styles-wrapper .wp-block-full-score-events-schedule-edit p,
+.editor-styles-wrapper .fse-schedule-heading-heading {
+  margin: 0; }
+
+.editor-styles-wrapper .wp-block-full-score-events-schedule-heading.wp-block {
+  margin-top: 1rem; }
+
+.wp-block-full-score-events-schedule-item + .wp-block-full-score-events-schedule-item {
+  border-top: 1px solid var(--global--color-border); }
+
+.fse-schedule-download-wrapper {
+  margin-top: 1.5rem; }
+
+/**
+ * Schedule item editor adjustments
+ *
+ * @since 1.0.0
+ */
+/* stylelint-disable selector-class-pattern */
+.wp-block-full-score-events-schedule-item {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto 1fr;
+  grid-template-columns: auto 1fr;
+  gap: 2rem;
+  max-width: none;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem; }
+  .wp-block-full-score-events-schedule-item .components-datetime__time {
+    padding-bottom: 0; }
+    .wp-block-full-score-events-schedule-item .components-datetime__time fieldset:first-child {
+      display: none; }
+    .wp-block-full-score-events-schedule-item .components-datetime__time .components-button,
+    .wp-block-full-score-events-schedule-item .components-datetime__time input[type="number"],
+    .wp-block-full-score-events-schedule-item .components-datetime__time select {
+      height: 30px; }
+  .editor-styles-wrapper .wp-block-full-score-events-schedule-item .block-editor-block-list__layout > * + *,
+  .editor-styles-wrapper .wp-block-full-score-events-schedule-item [data-type="core/paragraph"] + [data-type="core/paragraph"] {
+    margin-top: 1rem; }
+
+/* stylelint-enable selector-class-pattern */
+
+
+/*# sourceMappingURL=editor.css.map*/

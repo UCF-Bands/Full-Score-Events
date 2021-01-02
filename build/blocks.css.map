@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///index.css"],"names":[],"mappings":"AAAA,kCAAkC;AAClC;CACC,eAAe;AAChB","file":"blocks.css","sourcesContent":["/* Taco block editor-only styles */\nbody {\n\tbackground: red;\n}\n"],"sourceRoot":""}

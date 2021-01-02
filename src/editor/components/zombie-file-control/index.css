@@ -1,0 +1,13 @@
+/**
+ * FileControl editor fixes
+ *
+ * @since 1.0.0
+ */
+
+.fse-attachment-description .attachment {
+	float: none;
+	width: 100%;
+	margin-top: 1rem;
+	padding: 0;
+	text-align: left;
+}

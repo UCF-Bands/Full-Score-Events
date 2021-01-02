@@ -1,0 +1,85 @@
+/* Taco block editor + front end styles */
+body {
+	background: var(--color-green);
+}
+
+/**
+ * Callout block
+ *
+ * @since   1.0.0
+ * @package Full_Score_Events
+ */
+.wp-block-full-score-events-callout {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto 1fr;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-weight: 700;
+  border: 2px solid var(--global--color-border); }
+  .wp-block-full-score-events-callout [data-icon] {
+    width: var(--global--font-size-base); }
+
+/**
+ * Schedule displaying block
+ *
+ * @since   1.0.0
+ * @package Full_Score_Events
+ */
+.fse-schedule {
+  display: -ms-grid;
+  display: grid;
+  gap: 1rem;
+  padding: 1.5rem;
+  border: 2px solid var(--global--color-border); }
+  .fse-schedule [role="button"] {
+    margin-top: 0.5rem;
+    text-align: center; }
+
+/**
+ * Schedule items block
+ *
+ * @since   1.0.0
+ * @package Full_Score_Events
+ */
+.fse-schedule-items {
+  margin: 0;
+  padding: 0;
+  list-style-type: none; }
+
+/**
+ * Schedule item block
+ *
+ * @since   1.0.0
+ * @package Full_Score_Events
+ */
+.fse-schedule-item {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 6rem 1fr;
+  grid-template-columns: 6rem 1fr;
+  gap: 1.5rem;
+  padding: 0.5rem 0; }
+  .fse-schedule-item time {
+    font-weight: 700; }
+  .fse-schedule-item + .fse-schedule-item {
+    border-top: 1px solid var(--global--color-border); }
+
+/**
+ * Schedule heading block
+ *
+ * @since   1.0.0
+ * @package Full_Score_Events
+ */
+.wp-block-full-score-events-schedule-heading {
+  display: -ms-grid;
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem; }
+  .wp-block-full-score-events-schedule-heading:first-child {
+    margin-top: 0; }
+
+
+/*# sourceMappingURL=style-editor.css.map*/

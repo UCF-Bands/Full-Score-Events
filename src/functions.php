@@ -21,6 +21,70 @@ function get( $key ) {
 }
 
 /**
+ * Break array into string of attributes
+ *
+ * Has special cases for "class" and "data" keys if their values are arrays, so
+ * it's compatible with arrays of data attributes (by using recusion).
+ *
+ * @param  array  $attrs   Attribute names/values.
+ * @param  string $prefix  a prefix for the data attribute (ex: "data-").
+ * @return string          Inline string of data attributes.
+ */
+function get_attrs( $attrs, $prefix = '' ) {
+
+	// Remove initially empty args.
+	$attrs = array_filter( $attrs );
+
+	foreach ( $attrs as $attr => $value ) {
+
+		// data- attributes.
+		if ( 'data' === $attr && is_array( $value ) ) {
+			$attrs[ $attr ] = get_attrs( array_filter( $value ), 'data-' );
+			continue;
+		}
+
+		// Array of classes.
+		if ( 'class' === $attr && is_array( $value ) ) {
+			$value = implode( ' ', array_filter( $value ) );
+		}
+
+		// Array of classes + all other cases.
+		$attrs[ $attr ] = $prefix . $attr . '="' . esc_attr( $value ) . '"';
+	}
+
+	return implode( ' ', $attrs );
+}
+
+/**
+ * Output HTML string off attributes
+ *
+ * @param  array  $attrs   Attribute names/values.
+ * @param  string $prefix  a prefix for the data attribute (ex: "data-").
+ */
+function do_attrs( $attrs, $prefix = '' ) {
+	echo get_attrs( $attrs, $prefix ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+}
+
+/**
+ * Attribute building helper, but all items go to "class" arg
+ *
+ * @return string
+ * @since  1.0.0
+ */
+function get_attrs_class() {
+	return get_attrs( [ 'class' => func_get_args() ] );
+}
+
+/**
+ * Output class attribute
+ *
+ * @since 1.0.0
+ */
+function do_attrs_class() {
+	echo get_attrs( [ 'class' => func_get_args() ] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+}
+
+/**
  * Get a plugin template
  *
  * @param string $name  Template part name (excluding .php).
@@ -44,6 +108,30 @@ function get_plugin_template( $name, $args = [] ) {
 
 	// Load the template part.
 	include $template;
+}
+
+/**
+ * Get a dynamic block template
+ *
+ * @param string $name Block template part name (excluding .php).
+ * @param array  $args Template arguments (extracted to vars).
+ *
+ * @since 1.0.0
+ */
+function get_block_template( $name, $args = [] ) {
+	ob_start();
+	get_plugin_template( "block/$name", $args );
+	return ob_get_clean();
+}
+
+/**
+ * Wrapper for edit_posts capability check
+ *
+ * @return bool
+ * @since  1.0.0
+ */
+function get_can_user_edit_posts() {
+	return current_user_can( 'edit_posts' );
 }
 
 /**

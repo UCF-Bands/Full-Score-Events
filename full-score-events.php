@@ -62,9 +62,7 @@ class Plugin {
 	 */
 	public function init() {
 		new Schedules();
-		new Blocks();
-		// new CPTs();
-		// new Taxonomies();
+		new Blocks\Blocks();
 	}
 
 	/**

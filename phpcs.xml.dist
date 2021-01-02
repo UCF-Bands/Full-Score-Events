@@ -108,12 +108,23 @@
 		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase" />
 	</rule>
 
+	<!-- Allow for block-cased attribute vars (from extract) and false-positived
+	     "global prefixes" -->
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound">
+		<exclude-pattern>*/src/templates/block/*</exclude-pattern>
+	</rule>
+
+	<rule ref="WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase">
+		<exclude-pattern>*/src/templates/block/*</exclude-pattern>
+	</rule>
+
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
 		<properties>
 			<property name="prefixes" type="array">
 				<element value="Full_Score_Events" />
 				<element value="full_score_events" />
 				<element value="FULL_SCORE_EVENTS" />
+				<element value="fse" />
 			</property>
 		</properties>
 	</rule>
