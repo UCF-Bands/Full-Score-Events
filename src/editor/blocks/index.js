@@ -13,6 +13,8 @@ import './schedule-item';
 import './schedule-heading';
 
 import './program-edit';
+import './program-pieces';
+import './program-piece';
 import './program-heading';
 
 // import './zombie-schedule-edit';
