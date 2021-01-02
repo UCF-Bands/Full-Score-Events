@@ -4,6 +4,21 @@ body {
 }
 
 /**
+ * Schedule block editor adjustments
+ *
+ * @since   1.0.0
+ * @package Full_Score_Events
+ */
+.editor-styles-wrapper .fse-schedule h2,
+.editor-styles-wrapper .fse-callout-message,
+.editor-styles-wrapper .fse-schedule-items,
+.editor-styles-wrapper .fse-schedule-activity p {
+  margin: 0; }
+
+.editor-styles-wrapper .fse-schedule-items {
+  padding: 0; }
+
+/**
  * Schedule edit block editor adjustments
  *
  * @since   1.0.0
