@@ -111,6 +111,35 @@ function get_plugin_template( $name, $args = [] ) {
 }
 
 /**
+ * Get the first parsed block of type/name from post content
+ *
+ * @param  string  $name     Block name.
+ * @param  integer $post_id  Post to search.
+ * @return array             Parsed block array, if exists.
+ *
+ * @since  1.0.0
+ */
+function get_block( $name, $post_id = null ) {
+
+	$post_id = $post_id ?: get_the_ID();
+
+	if ( ! has_block( $name, $post_id ) ) {
+		return false;
+	}
+
+	$post   = get_post( $post_id );
+	$blocks = parse_blocks( $post->post_content );
+	$blocks = wp_list_filter( $blocks, [ 'blockName' => $name ] );
+
+	if ( ! $blocks ) {
+		return;
+	}
+
+	// Always just use one edit block.
+	return $blocks[0];
+}
+
+/**
  * Get a dynamic block template
  *
  * @param string $name Block template part name (excluding .php).
