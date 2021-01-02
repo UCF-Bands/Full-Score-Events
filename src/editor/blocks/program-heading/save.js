@@ -13,7 +13,7 @@ export default function save( { attributes } ) {
 	return (
 		<div { ...blockProps }>
 			<RichText.Content
-				tagName="h4"
+				tagName="h3"
 				className="fse-program-heading-heading"
 				value={ heading }
 			/>

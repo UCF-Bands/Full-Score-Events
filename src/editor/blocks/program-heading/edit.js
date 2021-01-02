@@ -24,7 +24,7 @@ export default function edit( { attributes, setAttributes } ) {
 	return (
 		<div { ...blockProps }>
 			<RichText
-				tagName="h4"
+				tagName="h3"
 				className="fse-program-heading-heading"
 				placeholder={ __(
 					'Ex: UCF Symphonic Band',
