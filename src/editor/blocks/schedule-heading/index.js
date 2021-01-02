@@ -22,7 +22,7 @@ registerBlockType( 'full-score-events/schedule-heading', {
 	),
 	icon,
 	keywords: [ __( 'schedule' ), __( 'heading' ), __( 'message' ) ],
-	parent: [ 'full-score-events/schedule-items' ],
+	parent: [ 'full-score-events/schedule-items' ], // @todo isn't this supposed to be schedule-edit?
 
 	attributes: {
 		heading: {
