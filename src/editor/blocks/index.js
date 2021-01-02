@@ -16,5 +16,6 @@ import './program-edit';
 import './program-pieces';
 import './program-piece';
 import './program-heading';
+import './program';
 
 // import './zombie-schedule-edit';
