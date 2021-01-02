@@ -1,0 +1,15 @@
+/**
+ * Program displaying block
+ *
+ * @since   1.0.0
+ * @package Full_Score_Events
+ */
+.fse-program > * {
+	padding-left: 1.5rem;
+	padding-right: 1.5rem;
+
+	@media (min-width: 50rem) {
+		padding-left: 2rem;
+		padding-right: 2rem;
+	}
+}
