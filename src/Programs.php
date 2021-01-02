@@ -34,7 +34,7 @@ class Programs extends Post_Type {
 	 * @since 1.0.0
 	 * @var   string
 	 */
-	// protected $singular_class = 'Program';
+	protected $singular_class = 'Program';
 
 	/**
 	 * Flag for global post variable in look
@@ -42,7 +42,7 @@ class Programs extends Post_Type {
 	 * @since 1.0.0
 	 * @var   boolean
 	 */
-	// protected $loop_global_name = 'program';
+	protected $loop_global_name = 'program';
 
 	/**
 	 * Get general post type label
