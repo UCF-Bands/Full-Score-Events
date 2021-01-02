@@ -4,6 +4,10 @@
  * @since 1.0.0
  */
 
+// shared
+import './style.scss';
+// import './index.scss';
+
 import './taco';
 import './callout';
 import './schedule';

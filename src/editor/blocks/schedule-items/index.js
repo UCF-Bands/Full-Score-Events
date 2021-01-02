@@ -9,8 +9,6 @@ import { registerBlockType } from '@wordpress/blocks';
 import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 import { formatListBullets as icon } from '@wordpress/icons';
 
-import './style.scss';
-
 const ALLOWED_BLOCKS = [ 'full-score-events/schedule-item' ];
 
 const BLOCKS_TEMPLATE = [
