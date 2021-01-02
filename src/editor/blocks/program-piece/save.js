@@ -12,16 +12,11 @@ export default function save( { attributes } ) {
 		{ title, note, composer, arranger } = attributes;
 
 	return (
-		<div { ...blockProps }>
+		<li { ...blockProps }>
 			<RichText.Content
-				tagName="h5"
+				tagName="p"
 				className="fse-piece-title"
 				value={ title }
-			/>
-			<RichText.Content
-				tagName="small"
-				className="fse-piece-note"
-				value={ note }
 			/>
 
 			{ composer && (
@@ -38,8 +33,14 @@ export default function save( { attributes } ) {
 				</p>
 			) }
 
+			<RichText.Content
+				tagName="small"
+				className="fse-piece-note"
+				value={ note }
+			/>
+
 			{ arranger && (
-				<p className="fse-piece-arranger">
+				<small className="fse-piece-arranger">
 					<span className="fse-arranger-label">
 						{ __( 'Arr.', 'full-score-events' ) }
 					</span>
@@ -49,8 +50,8 @@ export default function save( { attributes } ) {
 						className="fse-piece-arranger-name"
 						value={ arranger }
 					/>
-				</p>
+				</small>
 			) }
-		</div>
+		</li>
 	);
 }

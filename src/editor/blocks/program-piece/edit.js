@@ -24,7 +24,7 @@ export default function edit( { attributes, setAttributes, isSelected } ) {
 	return (
 		<div { ...blockProps }>
 			<RichText
-				tagName="h5"
+				tagName="p"
 				className="fse-piece-title"
 				placeholder={ __(
 					'Ex: Big Noise from Winnetka',
@@ -34,20 +34,6 @@ export default function edit( { attributes, setAttributes, isSelected } ) {
 				onChange={ ( value ) => setAttributes( { title: value } ) }
 				allowedFormats={ ALLOWED_FORMATS }
 			/>
-
-			{ ( note || isSelected ) && (
-				<RichText
-					tagName="small"
-					className="fse-piece-note"
-					placeholder={ __(
-						'Ex: Lazlo Marosi, Conductor',
-						'full-score-events'
-					) }
-					value={ note }
-					onChange={ ( value ) => setAttributes( { note: value } ) }
-					allowedFormats={ ALLOWED_FORMATS }
-				/>
-			) }
 
 			<p className="fse-piece-composer">
 				<span className="screen-reader-text">
@@ -66,8 +52,22 @@ export default function edit( { attributes, setAttributes, isSelected } ) {
 				/>
 			</p>
 
+			{ ( note || isSelected ) && (
+				<RichText
+					tagName="small"
+					className="fse-piece-note"
+					placeholder={ __(
+						'Ex: Lazlo Marosi, Conductor',
+						'full-score-events'
+					) }
+					value={ note }
+					onChange={ ( value ) => setAttributes( { note: value } ) }
+					allowedFormats={ ALLOWED_FORMATS }
+				/>
+			) }
+
 			{ ( arranger || isSelected ) && (
-				<p className="fse-piece-arranger">
+				<small className="fse-piece-arranger">
 					<span className="fse-arranger-label">
 						{ __( 'Arr.', 'full-score-events' ) }
 					</span>
@@ -85,7 +85,7 @@ export default function edit( { attributes, setAttributes, isSelected } ) {
 						}
 						allowedFormats={ ALLOWED_FORMATS }
 					/>
-				</p>
+				</small>
 			) }
 		</div>
 	);
