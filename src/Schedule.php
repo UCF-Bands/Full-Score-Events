@@ -29,22 +29,6 @@ class Schedule extends Post {
 	 * @since  1.0.0
 	 */
 	public function get_edit_block() {
-
-		$block_name = 'full-score-events/schedule-edit';
-
-		if ( ! has_block( $block_name, $this->get_id() ) ) {
-			return false;
-		}
-
-		$post   = get_post( $this->get_id() );
-		$blocks = parse_blocks( $post->post_content );
-		$blocks = wp_list_filter( $blocks, [ 'blockName' => $block_name ] );
-
-		if ( ! $blocks ) {
-			return;
-		}
-
-		// Always just use one edit block.
-		return $blocks[0];
+		return get_block( 'full-score-events/schedule-edit', $this->get_id() );
 	}
 }
