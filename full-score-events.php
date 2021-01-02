@@ -62,6 +62,7 @@ class Plugin {
 	 */
 	public function init() {
 		new Schedules();
+		new Programs();
 		new Blocks\Blocks();
 	}
 
