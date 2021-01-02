@@ -64,7 +64,7 @@ class Programs extends Post_Type {
 		return [
 			'description'         => __( 'A performance program.', 'full-score-events' ),
 			'labels'              => [
-				'name'                  => _x( 'Program', 'Post Type General Name', 'full-score-events' ),
+				'name'                  => _x( 'Programs', 'Post Type General Name', 'full-score-events' ),
 				'menu_name'             => __( 'Programs', 'full-score-events' ),
 				'archives'              => __( 'Program Archives', 'full-score-events' ),
 				'attributes'            => __( 'Program Attributes', 'full-score-events' ),
