@@ -27,7 +27,7 @@ registerBlockType( 'full-score-events/program-heading', {
 	attributes: {
 		heading: {
 			type: 'string',
-			source: 'html',
+			source: 'html', // @todo change these to text?
 			selector: '.fse-program-heading-heading',
 		},
 		subheading: {

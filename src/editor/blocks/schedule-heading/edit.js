@@ -23,6 +23,15 @@ export default function edit( { attributes, setAttributes } ) {
 				placeholder={ __( 'Day 1: UCF vs NAVY', 'full-score-events' ) }
 				value={ heading }
 				onChange={ ( value ) => setAttributes( { heading: value } ) }
+				alloedFormats={ [
+					'core/code',
+					'core/link',
+					'core/strikethrough',
+					'core/underline',
+					'core/subscript',
+					'core/superscript',
+					'core/keyboard',
+				] }
 			/>
 			<InnerBlocks
 				allowedBlocks={ ALLOWED_BLOCKS }

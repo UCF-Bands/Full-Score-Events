@@ -7,6 +7,16 @@
 import { __ } from '@wordpress/i18n';
 import { useBlockProps, RichText } from '@wordpress/block-editor';
 
+const ALLOWED_FORMATS = [
+	'core/code',
+	'core/link',
+	'core/strikethrough',
+	'core/underline',
+	'core/subscript',
+	'core/superscript',
+	'core/keyboard',
+];
+
 export default function edit( { attributes, setAttributes } ) {
 	const blockProps = useBlockProps(),
 		{ heading, subheading, tertiaryHeading } = attributes;
@@ -22,6 +32,7 @@ export default function edit( { attributes, setAttributes } ) {
 				) }
 				value={ heading }
 				onChange={ ( value ) => setAttributes( { heading: value } ) }
+				allowedFormats={ ALLOWED_FORMATS }
 			/>
 			<RichText
 				tagName="p"
@@ -32,6 +43,7 @@ export default function edit( { attributes, setAttributes } ) {
 				) }
 				value={ subheading }
 				onChange={ ( value ) => setAttributes( { subheading: value } ) }
+				allowedFormats={ ALLOWED_FORMATS }
 			/>
 			<RichText
 				tagName="p"
@@ -44,6 +56,7 @@ export default function edit( { attributes, setAttributes } ) {
 				onChange={ ( value ) =>
 					setAttributes( { tertiaryHeading: value } )
 				}
+				allowedFormats={ ALLOWED_FORMATS }
 			/>
 		</div>
 	);
