@@ -16395,6 +16395,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _schedule_items__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./schedule-items */ "./src/editor/blocks/schedule-items/index.js");
 /* harmony import */ var _schedule_item__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./schedule-item */ "./src/editor/blocks/schedule-item/index.js");
 /* harmony import */ var _schedule_heading__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./schedule-heading */ "./src/editor/blocks/schedule-heading/index.js");
+/* harmony import */ var _program_edit__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./program-edit */ "./src/editor/blocks/program-edit/index.js");
 /**
  * Custom blocks
  *
@@ -16406,7 +16407,94 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
  // import './zombie-schedule-edit';
+
+/***/ }),
+
+/***/ "./src/editor/blocks/program-edit/index.js":
+/*!*************************************************!*\
+  !*** ./src/editor/blocks/program-edit/index.js ***!
+  \*************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/index.js");
+
+
+/**
+ * Program editing block
+ *
+ * @since 1.0.0
+ */
+
+
+
+ // import './index.scss';
+// import edit from './edit';
+
+var ALLOWED_BLOCKS = ['full-score-events/program-heading', 'full-score-events/program-pieces'];
+var BLOCKS_TEMPLATE = [// [
+  // 	'full-score-events/schedule-heading',
+  // 	{ heading: __( 'Day 1: Travel', 'full-score-events' ) },
+  // 	[
+  // 		[
+  // 			'full-score-events/callout',
+  // 			{
+  // 				type: 'error',
+  // 				message: __(
+  // 					'This is a warning message you can use or delete.',
+  // 					'full-score-events'
+  // 				),
+  // 			},
+  // 		],
+  // 	],
+  // ],
+  // [ 'full-score-events/schedule-items' ],
+  // [
+  // 	'full-score-events/schedule-heading',
+  // 	{ heading: __( 'Day 2: UCF vs NAVY', 'full-score-events' ) },
+  // 	[
+  // 		[
+  // 			'full-score-events/callout',
+  // 			{
+  // 				type: 'success',
+  // 				message: __( 'Gameday!', 'full-score-events' ),
+  // 			},
+  // 		],
+  // 	],
+  // ],
+  // [ 'full-score-events/schedule-items' ],
+]; // only allow program editing in program CPT
+
+if (fullScoreEventsEditor.currentCPT === 'fse_program') {
+  Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('full-score-events/program-edit', {
+    apiVersion: 2,
+    title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Program Editor', 'full-score-events'),
+    description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Edit a program's pieces/ensembles/notes.", 'full-score-events'),
+    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__["formatListBullets"],
+    keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('program'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('concert'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('ensemble')],
+    edit: function edit() {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["useBlockProps"])(), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["InnerBlocks"], {
+        allowedBlocks: ALLOWED_BLOCKS,
+        template: BLOCKS_TEMPLATE
+      }));
+    },
+    save: function save() {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["InnerBlocks"].Content, null);
+    }
+  });
+}
 
 /***/ }),
 

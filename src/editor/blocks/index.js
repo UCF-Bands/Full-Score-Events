@@ -12,4 +12,6 @@ import './schedule-items';
 import './schedule-item';
 import './schedule-heading';
 
+import './program-edit';
+
 // import './zombie-schedule-edit';
