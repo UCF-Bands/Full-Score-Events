@@ -16828,8 +16828,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/index.js");
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./style.scss */ "./src/editor/blocks/program-piece/style.scss");
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./style.scss */ "./src/editor/blocks/program-piece/style.scss");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./edit */ "./src/editor/blocks/program-piece/edit.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./save */ "./src/editor/blocks/program-piece/save.js");
 /**
@@ -16847,7 +16847,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('ful
   apiVersion: 2,
   title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Piece', 'full-score-events'),
   description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('A piece of music in a program', 'full-score-events'),
-  icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_2__["heading"],
+  icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_2__["formatListBullets"],
   keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('program'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('piece'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('song')],
   parent: ['full-score-events/program-pieces'],
   attributes: {

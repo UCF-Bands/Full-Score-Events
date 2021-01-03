@@ -6,7 +6,7 @@
 
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
-import { heading as icon } from '@wordpress/icons';
+import { formatListBullets as icon } from '@wordpress/icons';
 
 import './style.scss';
 
