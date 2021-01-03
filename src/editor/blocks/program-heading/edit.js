@@ -17,7 +17,7 @@ const ALLOWED_FORMATS = [
 	'core/keyboard',
 ];
 
-export default function edit( { attributes, setAttributes } ) {
+export default function edit( { attributes, setAttributes, isSelected } ) {
 	const blockProps = useBlockProps(),
 		{ heading, subheading, tertiaryHeading } = attributes;
 
@@ -34,6 +34,7 @@ export default function edit( { attributes, setAttributes } ) {
 				onChange={ ( value ) => setAttributes( { heading: value } ) }
 				allowedFormats={ ALLOWED_FORMATS }
 			/>
+
 			<RichText
 				tagName="p"
 				className="fse-program-subheading"
@@ -45,19 +46,22 @@ export default function edit( { attributes, setAttributes } ) {
 				onChange={ ( value ) => setAttributes( { subheading: value } ) }
 				allowedFormats={ ALLOWED_FORMATS }
 			/>
-			<RichText
-				tagName="p"
-				className="fse-program-tertiary-heading"
-				placeholder={ __(
-					'Ex: Danny Santos, GTA Conductor',
-					'full-score-events'
-				) }
-				value={ tertiaryHeading }
-				onChange={ ( value ) =>
-					setAttributes( { tertiaryHeading: value } )
-				}
-				allowedFormats={ ALLOWED_FORMATS }
-			/>
+
+			{ ( tertiaryHeading || isSelected ) && (
+				<RichText
+					tagName="p"
+					className="fse-program-tertiary-heading"
+					placeholder={ __(
+						'Ex: Danny Santos, GTA Conductor',
+						'full-score-events'
+					) }
+					value={ tertiaryHeading }
+					onChange={ ( value ) =>
+						setAttributes( { tertiaryHeading: value } )
+					}
+					allowedFormats={ ALLOWED_FORMATS }
+				/>
+			) }
 		</div>
 	);
 }
