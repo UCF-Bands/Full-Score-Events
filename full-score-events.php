@@ -63,6 +63,7 @@ class Plugin {
 	public function init() {
 		new Schedules();
 		new Programs();
+		new Locations();
 		new Ensembles();
 		new Blocks\Blocks();
 	}

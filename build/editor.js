@@ -16422,8 +16422,8 @@ function edit(_ref) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./style.scss */ "./src/editor/blocks/style.scss");
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.scss */ "./src/editor/blocks/style.scss");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _taco__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./taco */ "./src/editor/blocks/taco/index.js");
 /* harmony import */ var _callout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./callout */ "./src/editor/blocks/callout/index.js");
 /* harmony import */ var _schedule__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./schedule */ "./src/editor/blocks/schedule/index.js");
