@@ -7,7 +7,7 @@
  */
 
 import './style.scss';
-// import './index.scss';
+import './index.scss';
 
 import PostSelectWrapper from '../../components/post-select-wrapper';
 
