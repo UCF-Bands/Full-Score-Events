@@ -14,8 +14,23 @@ import { formatListBullets as icon } from '@wordpress/icons';
 const ALLOWED_BLOCKS = [ 'full-score-events/program-piece' ];
 
 const BLOCKS_TEMPLATE = [
-	[ 'full-score-events/program-piece' ],
-	[ 'full-score-events/program-piece' ],
+	[
+		'full-score-events/program-piece',
+		{
+			title: __( 'Big Noise from Winnetka', 'full-score-events' ),
+			note: __( 'Ft. UCF Marching Knights', 'full-score-events' ),
+			composer: __( 'Bob Haggart', 'full-score-events' ),
+			arranger: __( 'Dave Schreier', 'full-score-events' ),
+		},
+	],
+	[
+		'full-score-events/program-piece',
+		{
+			title: __( 'Entry of Pegasus', 'full-score-events' ),
+			note: __( 'Max Glorit, Conductor', 'full-score-events' ),
+			composer: __( 'Larry Clark', 'full-score-events' ),
+		},
+	],
 ];
 
 registerBlockType( 'full-score-events/program-pieces', {

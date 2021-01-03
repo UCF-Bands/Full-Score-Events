@@ -11,45 +11,35 @@ import { formatListBullets as icon } from '@wordpress/icons';
 
 // import './index.scss';
 
-// import edit from './edit';
-
 const ALLOWED_BLOCKS = [
 	'full-score-events/program-heading',
 	'full-score-events/program-pieces',
 ];
 
 const BLOCKS_TEMPLATE = [
-	// [
-	// 	'full-score-events/schedule-heading',
-	// 	{ heading: __( 'Day 1: Travel', 'full-score-events' ) },
-	// 	[
-	// 		[
-	// 			'full-score-events/callout',
-	// 			{
-	// 				type: 'error',
-	// 				message: __(
-	// 					'This is a warning message you can use or delete.',
-	// 					'full-score-events'
-	// 				),
-	// 			},
-	// 		],
-	// 	],
-	// ],
-	// [ 'full-score-events/schedule-items' ],
-	// [
-	// 	'full-score-events/schedule-heading',
-	// 	{ heading: __( 'Day 2: UCF vs NAVY', 'full-score-events' ) },
-	// 	[
-	// 		[
-	// 			'full-score-events/callout',
-	// 			{
-	// 				type: 'success',
-	// 				message: __( 'Gameday!', 'full-score-events' ),
-	// 			},
-	// 		],
-	// 	],
-	// ],
-	// [ 'full-score-events/schedule-items' ],
+	[
+		'full-score-events/program-heading',
+		{
+			heading: __( 'UCF Symphonic Band', 'full-score-events' ),
+			subheading: __( 'Dr. Tremon Kizer, Director', 'full-score-events' ),
+			tertiaryHeading: __(
+				'Danny Santos, GTA Conductor',
+				'full-score-events'
+			),
+		},
+	],
+	[ 'full-score-events/program-pieces' ],
+	[
+		'full-score-events/program-heading',
+		{
+			heading: __( 'UCF Wind Ensemble', 'full-score-events' ),
+			subheading: __(
+				'Dr. Scott Lubaroff, Director',
+				'full-score-events'
+			),
+		},
+	],
+	[ 'full-score-events/program-pieces' ],
 ];
 
 // only allow program editing in program CPT

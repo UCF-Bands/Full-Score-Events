@@ -16488,41 +16488,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
  // import './index.scss';
-// import edit from './edit';
 
 var ALLOWED_BLOCKS = ['full-score-events/program-heading', 'full-score-events/program-pieces'];
-var BLOCKS_TEMPLATE = [// [
-  // 	'full-score-events/schedule-heading',
-  // 	{ heading: __( 'Day 1: Travel', 'full-score-events' ) },
-  // 	[
-  // 		[
-  // 			'full-score-events/callout',
-  // 			{
-  // 				type: 'error',
-  // 				message: __(
-  // 					'This is a warning message you can use or delete.',
-  // 					'full-score-events'
-  // 				),
-  // 			},
-  // 		],
-  // 	],
-  // ],
-  // [ 'full-score-events/schedule-items' ],
-  // [
-  // 	'full-score-events/schedule-heading',
-  // 	{ heading: __( 'Day 2: UCF vs NAVY', 'full-score-events' ) },
-  // 	[
-  // 		[
-  // 			'full-score-events/callout',
-  // 			{
-  // 				type: 'success',
-  // 				message: __( 'Gameday!', 'full-score-events' ),
-  // 			},
-  // 		],
-  // 	],
-  // ],
-  // [ 'full-score-events/schedule-items' ],
-]; // only allow program editing in program CPT
+var BLOCKS_TEMPLATE = [['full-score-events/program-heading', {
+  heading: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('UCF Symphonic Band', 'full-score-events'),
+  subheading: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Dr. Tremon Kizer, Director', 'full-score-events'),
+  tertiaryHeading: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Danny Santos, GTA Conductor', 'full-score-events')
+}], ['full-score-events/program-pieces'], ['full-score-events/program-heading', {
+  heading: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('UCF Wind Ensemble', 'full-score-events'),
+  subheading: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Dr. Scott Lubaroff, Director', 'full-score-events')
+}], ['full-score-events/program-pieces']]; // only allow program editing in program CPT
 
 if (fullScoreEventsEditor.currentCPT === 'fse_program') {
   Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('full-score-events/program-edit', {
@@ -16853,22 +16828,22 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('ful
   attributes: {
     title: {
       type: 'string',
-      source: 'text',
+      source: 'html',
       selector: '.fse-piece-title'
     },
     note: {
       type: 'string',
-      source: 'text',
+      source: 'html',
       selector: '.fse-piece-note'
     },
     composer: {
       type: 'string',
-      source: 'text',
+      source: 'html',
       selector: '.fse-piece-composer-name'
     },
     arranger: {
       type: 'string',
-      source: 'text',
+      source: 'html',
       selector: '.fse-piece-arranger-name'
     }
   },
@@ -16970,7 +16945,16 @@ __webpack_require__.r(__webpack_exports__);
  // import './style.scss';
 
 var ALLOWED_BLOCKS = ['full-score-events/program-piece'];
-var BLOCKS_TEMPLATE = [['full-score-events/program-piece'], ['full-score-events/program-piece']];
+var BLOCKS_TEMPLATE = [['full-score-events/program-piece', {
+  title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Big Noise from Winnetka', 'full-score-events'),
+  note: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Ft. UCF Marching Knights', 'full-score-events'),
+  composer: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Bob Haggart', 'full-score-events'),
+  arranger: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Dave Schreier', 'full-score-events')
+}], ['full-score-events/program-piece', {
+  title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Entry of Pegasus', 'full-score-events'),
+  note: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Max Glorit, Conductor', 'full-score-events'),
+  composer: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Larry Clark', 'full-score-events')
+}]];
 Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('full-score-events/program-pieces', {
   apiVersion: 2,
   title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Pieces', 'full-score-events'),

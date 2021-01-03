@@ -24,22 +24,22 @@ registerBlockType( 'full-score-events/program-piece', {
 	attributes: {
 		title: {
 			type: 'string',
-			source: 'text',
+			source: 'html',
 			selector: '.fse-piece-title',
 		},
 		note: {
 			type: 'string',
-			source: 'text',
+			source: 'html',
 			selector: '.fse-piece-note',
 		},
 		composer: {
 			type: 'string',
-			source: 'text',
+			source: 'html',
 			selector: '.fse-piece-composer-name',
 		},
 		arranger: {
 			type: 'string',
-			source: 'text',
+			source: 'html',
 			selector: '.fse-piece-arranger-name',
 		},
 	},
