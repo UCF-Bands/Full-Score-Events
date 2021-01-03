@@ -20,9 +20,18 @@ export default function edit( { attributes, setAttributes } ) {
 			<RichText
 				tagName="h4"
 				className="fse-schedule-heading-heading"
-				placeholder={ __( 'Day 1: UCF vs NAVY' ) }
+				placeholder={ __( 'Day 1: UCF vs NAVY', 'full-score-events' ) }
 				value={ heading }
 				onChange={ ( value ) => setAttributes( { heading: value } ) }
+				alloedFormats={ [
+					'core/code',
+					'core/link',
+					'core/strikethrough',
+					'core/underline',
+					'core/subscript',
+					'core/superscript',
+					'core/keyboard',
+				] }
 			/>
 			<InnerBlocks
 				allowedBlocks={ ALLOWED_BLOCKS }

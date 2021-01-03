@@ -65,6 +65,17 @@ export default function Edit( { attributes, setAttributes } ) {
 					onChange={ ( value ) =>
 						setAttributes( { message: value } )
 					}
+					allowedFormats={ [
+						'core/bold',
+						'core/italic',
+						'core/code',
+						'core/link',
+						'core/strikethrough',
+						'core/underline',
+						'core/subscript',
+						'core/superscript',
+						'core/keyboard',
+					] }
 				/>
 			</div>
 		</>

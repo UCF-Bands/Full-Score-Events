@@ -1,8 +1,6 @@
 /**
  * Schedule heading block save
  *
- * No blockProps so we can do custom wrapping in dynamic block.
- *
  * @since 1.0.0
  */
 

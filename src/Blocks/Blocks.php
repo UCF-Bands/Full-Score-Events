@@ -52,6 +52,11 @@ class Blocks {
 		new Block( 'schedule-items' );
 		new Schedule_Item();
 		new Schedule();
+		new Renderless_Block( 'program-edit' );
+		new Block( 'program-heading' );
+		new Block( 'program-pieces' );
+		new Block( 'program-piece' );
+		new Post_Block( 'program' );
 
 		// new Zombie_Schedule_Edit(); This is just a placeholder since we have that Gutenberg issue.
 	}

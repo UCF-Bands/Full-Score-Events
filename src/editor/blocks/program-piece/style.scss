@@ -1,0 +1,47 @@
+/**
+ * Program piece block
+ *
+ * @since   1.0.0
+ * @package Full_Score_Events
+ */
+
+.wp-block-full-score-events-program-piece {
+	display: grid;
+	padding: 1rem 0;
+	font-size: var(--global--font-size-sm);
+	line-height: var(--global--line-height-heading);
+
+	& + & {
+		border-top: 1px solid var(--global--color-border);
+	}
+
+	small {
+		font-size: var(--global--font-size-xs);
+	}
+}
+
+.fse-piece-note,
+.fse-piece-arranger {
+	font-style: italic;
+}
+
+.fse-piece-title {
+	font-weight: 700;
+}
+
+@media (min-width: 50rem) {
+
+	.wp-block-full-score-events-program-piece {
+		grid-template-columns: 1.3333fr 1fr;
+		column-gap: 1rem;
+	}
+
+	.fse-piece-composer,
+	.fse-piece-arranger {
+		text-align: right;
+	}
+
+	.fse-piece-arranger {
+		grid-column: 2;
+	}
+}

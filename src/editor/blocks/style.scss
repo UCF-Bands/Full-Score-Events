@@ -1,0 +1,27 @@
+/**
+ * Shared block styling
+ *
+ * @since   1.0.0
+ * @package Full_Score_Events
+ */
+
+.fse-schedule,
+.fse-program {
+	display: grid;
+	gap: 1rem;
+	padding-top: 1.5rem;
+	padding-bottom: 1.5rem;
+	border: 2px solid var(--global--color-border);
+
+	@media (min-width: 50rem) {
+		padding-top: 2rem;
+		padding-bottom: 2rem;
+	}
+}
+
+.fse-schedule-items,
+.fse-program-pieces {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
