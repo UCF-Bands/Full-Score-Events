@@ -8,6 +8,8 @@
 
 namespace Full_Score_Events\Blocks;
 
+use Full_Score_Events\Settings;
+
 // exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -115,7 +117,8 @@ class Blocks {
 			apply_filters(
 				'full_score_events_editor_js_object',
 				[
-					'currentCPT' => get_post_type(),
+					'currentCPT'   => get_post_type(),
+					'googleAPIKey' => Settings::get( 'google' ),
 				]
 			)
 		);
