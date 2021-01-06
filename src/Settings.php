@@ -95,8 +95,10 @@ class Settings {
 		self::do_text_field( self::$key_google );
 		echo '<p>' . sprintf(
 			// Translators: Enable the %sMaps Embed% and %Places% APIs (settings).
-			esc_html__( 'Create an API key credential for this site on %1$sGoogle Cloud Platform%2$s with: %3$sMaps Embed%4$s, %5$sPlaces%6$s.', 'full-score-events' ),
+			esc_html__( 'Create an API key credential for this site on %1$sGoogle Cloud Platform%2$s with: %3$sMaps JavaScript%4$s, %5$sMaps Embed%6$s, %7$sPlaces%8$s.', 'full-score-events' ),
 			'<a href="https://console.cloud.google.com/" target="_blank" rel="nofollow">',
+			'</a>',
+			'<a href="https://console.cloud.google.com/marketplace/product/google/maps-backend.googleapis.com" target="_blank" rel="nofollow">',
 			'</a>',
 			'<a href="https://console.cloud.google.com/marketplace/product/google/maps-embed-backend.googleapis.com" target="_blank" rel="nofollow">',
 			'</a>',
