@@ -5,6 +5,7 @@
  */
 
 import { __ } from '@wordpress/i18n';
+import { addQueryArgs } from '@wordpress/url';
 import { useBlockProps } from '@wordpress/block-editor';
 
 import PlaceSearch from '../../util/place-search';
@@ -13,14 +14,16 @@ const { googleAPIKey, googleMapsURL } = fullScoreEventsEditor;
 
 export default function edit( { attributes, setAttributes } ) {
 	const blockProps = useBlockProps(),
-		{ placeName, address, addressHTML, mapUrl } = attributes;
+		{ placeName, placeId, address, addressHTML, mapUrl } = attributes;
 
 	return (
 		<div { ...blockProps }>
 			<h2>{ __( 'Location Details', 'full-score-events' ) }</h2>
 
 			<PlaceSearch
-				googleMapURL={ `${ googleMapsURL }&key=${ googleAPIKey }` }
+				googleMapURL={ addQueryArgs( googleMapsURL, {
+					key: googleAPIKey,
+				} ) }
 				placeholder={
 					address
 						? __(
@@ -61,6 +64,23 @@ export default function edit( { attributes, setAttributes } ) {
 				<a href={ mapUrl } target="_blank" rel="noopener noreferrer">
 					{ __( 'Google Map', 'full-score-events' ) }
 				</a>
+			) }
+
+			{ placeId && (
+				<iframe
+					title={ __( 'Google Map preview', 'full-score-events' ) }
+					width="100%"
+					height="450"
+					frameBorder="0"
+					style={ { border: 0 } }
+					src={ addQueryArgs(
+						'https://www.google.com/maps/embed/v1/place',
+						{
+							q: `place_id:${ placeId }`,
+							key: googleAPIKey,
+						}
+					) }
+				></iframe>
 			) }
 		</div>
 	);

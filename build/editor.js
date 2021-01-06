@@ -35924,9 +35924,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _util_place_search__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../util/place-search */ "./src/editor/util/place-search.js");
+/* harmony import */ var _wordpress_url__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/url */ "@wordpress/url");
+/* harmony import */ var _wordpress_url__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_url__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _util_place_search__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util/place-search */ "./src/editor/util/place-search.js");
 
 
 /**
@@ -35937,19 +35939,23 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var _fullScoreEventsEdito = fullScoreEventsEditor,
     googleAPIKey = _fullScoreEventsEdito.googleAPIKey,
     googleMapsURL = _fullScoreEventsEdito.googleMapsURL;
 function edit(_ref) {
   var attributes = _ref.attributes,
       setAttributes = _ref.setAttributes;
-  var blockProps = Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["useBlockProps"])(),
+  var blockProps = Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["useBlockProps"])(),
       placeName = attributes.placeName,
+      placeId = attributes.placeId,
       address = attributes.address,
       addressHTML = attributes.addressHTML,
       mapUrl = attributes.mapUrl;
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", blockProps, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Location Details', 'full-score-events')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_util_place_search__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    googleMapURL: "".concat(googleMapsURL, "&key=").concat(googleAPIKey),
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", blockProps, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Location Details', 'full-score-events')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_util_place_search__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    googleMapURL: Object(_wordpress_url__WEBPACK_IMPORTED_MODULE_2__["addQueryArgs"])(googleMapsURL, {
+      key: googleAPIKey
+    }),
     placeholder: address ? Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Search to set new location', 'full-score-events') : Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Search to set location', 'full-score-events'),
     onChange: function onChange(name, id, addrHTML, addrFormatted, url, lat, lng) {
       setAttributes({
@@ -35974,7 +35980,19 @@ function edit(_ref) {
     href: mapUrl,
     target: "_blank",
     rel: "noopener noreferrer"
-  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Google Map', 'full-score-events')));
+  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Google Map', 'full-score-events')), placeId && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("iframe", {
+    title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Google Map preview', 'full-score-events'),
+    width: "100%",
+    height: "450",
+    frameBorder: "0",
+    style: {
+      border: 0
+    },
+    src: Object(_wordpress_url__WEBPACK_IMPORTED_MODULE_2__["addQueryArgs"])('https://www.google.com/maps/embed/v1/place', {
+      q: "place_id:".concat(placeId),
+      key: googleAPIKey
+    })
+  }));
 }
 
 /***/ }),
