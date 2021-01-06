@@ -63,6 +63,52 @@ class Locations extends Post_Type {
 	}
 
 	/**
+	 * Register location meta
+	 *
+	 * @since 1.0.0
+	 */
+	public function do_meta_registration() {
+
+		foreach ( [
+			'_place_name',
+			'_place_id',
+			'_address',
+			'_address_html',
+			'_map_url',
+		] as $key ) {
+			register_post_meta(
+				self::CPT_KEY,
+				$key,
+				[
+					'show_in_rest'  => true,
+					'single'        => true,
+					'type'          => 'string',
+					'auth_callback' => 'Full_Score_Events\get_can_user_edit_posts',
+				]
+			);
+		}
+
+		register_post_meta(
+			self::CPT_KEY,
+			'_map_marker',
+			[
+				'show_in_rest'  => [
+					'schema' => [
+						'type'       => 'object',
+						'properties' => [
+							'lat' => [ 'type' => 'string' ],
+							'lng' => [ 'type' => 'string' ],
+						],
+					],
+				],
+				'single'        => true,
+				'type'          => 'object',
+				'auth_callback' => 'Full_Score_Events\get_can_user_edit_posts',
+			]
+		);
+	}
+
+	/**
 	 * Get non-default post type args
 	 *
 	 * @return array
@@ -107,7 +153,7 @@ class Locations extends Post_Type {
 			// 	'feeds'      => true,
 			// ],
 			'template'            => [
-				// [ 'full-score-events/location-details' ],
+				[ 'full-score-events/location-details' ],
 			],
 		];
 	}
