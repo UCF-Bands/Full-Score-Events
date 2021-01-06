@@ -59,6 +59,7 @@ class Blocks {
 		new Block( 'program-pieces' );
 		new Block( 'program-piece' );
 		new Post_Block( 'program' );
+		new Block( 'location-details' );
 
 		// new Zombie_Schedule_Edit(); This is just a placeholder since we have that Gutenberg issue.
 	}

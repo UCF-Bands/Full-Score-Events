@@ -22,4 +22,5 @@ import './program-piece';
 import './program-heading';
 import './program';
 
+import './location-details';
 // import './zombie-schedule-edit';
