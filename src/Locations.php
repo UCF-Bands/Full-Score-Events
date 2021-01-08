@@ -155,6 +155,7 @@ class Locations extends Post_Type {
 			'template'            => [
 				[ 'full-score-events/location-details' ],
 			],
+			'template_lock'       => true,
 		];
 	}
 }
