@@ -158,4 +158,54 @@ class Locations extends Post_Type {
 			'template_lock'       => true,
 		];
 	}
+
+	/**
+	 * Manage admin columns
+	 *
+	 * @param  array $columns Column headings.
+	 * @return array $columns
+	 *
+	 * @since 1.0.0
+	 */
+	public function set_posts_columns( $columns ) {
+
+		// Move date column to end.
+		$date = $columns['date'] ?? false;
+		unset( $columns['date'] );
+
+		$columns['address'] = __( 'Address', 'full-score-events' );
+
+		if ( $date ) {
+			$columns['date'] = $date;
+		}
+
+		return $columns;
+	}
+
+	/**
+	 * Set value of custom admin column
+	 *
+	 * @param string $name  Column name.
+	 * @since 1.0.0
+	 */
+	public function do_custom_column( $name ) {
+
+		if ( 'address' !== $name ) {
+			return;
+		}
+
+		global $fse_location;
+
+		$fse_location->do_address( true, false );
+
+		$map = $fse_location->get_map_url();
+
+		if ( $map ) {
+			printf(
+				'<a href="%s" target="_blank" rel="nofollow noopener">%s <span class="dashicons dashicons-external"></span></a>',
+				esc_attr( $map ),
+				esc_html__( 'View Map', 'full-score-events' )
+			);
+		}
+	}
 }

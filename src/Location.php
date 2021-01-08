@@ -60,6 +60,16 @@ class Location extends Post {
 	}
 
 	/**
+	 * Get Google Maps place URL
+	 *
+	 * @return string
+	 * @since  1.0.0
+	 */
+	public function get_map_url() {
+		return $this->get( '_map_url' );
+	}
+
+	/**
 	 * Get Google Place ID
 	 *
 	 * @return string
