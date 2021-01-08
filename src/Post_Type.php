@@ -63,17 +63,30 @@ abstract class Post_Type {
 	 */
 	protected $loop_global_name = false;
 
+
+	/**
+	 * Singular view redirect flag
+	 *
+	 * @since 1.0.0
+	 * @var   boolean
+	 */
+	protected $singular_redirect = false;
+
 	/**
 	 * Spin everything up
 	 *
 	 * @since 1.0.0
 	 */
 	public function __construct() {
+		$key = $this::CPT_KEY;
 		add_action( 'init', [ $this, 'do_registration' ] );
 		add_action( 'full_score_events_activate', [ $this, 'do_registration' ] );
 		add_action( 'init', [ $this, 'do_meta_registration' ] );
 		add_filter( 'enter_title_here', [ $this, 'set_title_placeholder' ] );
 		add_action( 'the_post', [ $this, 'do_post_setup' ] );
+		add_action( 'template_redirect', [ $this, 'do_singular_redirect' ] );
+		add_filter( "manage_{$key}_posts_columns", [ $this, 'set_posts_columns' ] );
+		add_action( "manage_{$key}_posts_custom_column", [ $this, 'do_custom_column' ], 20, 2 );
 	}
 
 	/**
@@ -202,5 +215,43 @@ abstract class Post_Type {
 		$GLOBALS[ "fse_{$this->loop_global_name}" ] = new $post_class( $post->ID );
 
 		return $GLOBALS[ "fse_{$this->loop_global_name}" ];
+	}
+
+	/**
+	 * Redirect singular view?
+	 *
+	 * @since 1.0.0
+	 */
+	public function do_singular_redirect() {
+
+		if ( ! is_singular( $this::CPT_KEY ) || ! $this->singular_redirect ) {
+			return;
+		}
+
+		// @todo have this go to event archive?
+		wp_safe_redirect( site_url() );
+		die;
+	}
+
+	/**
+	 * Manage admin columns
+	 *
+	 * @param  array $columns Column headings.
+	 * @return array $columns
+	 *
+	 * @since 1.0.0
+	 */
+	public function set_posts_columns( $columns ) {
+		return $columns;
+	}
+
+	/**
+	 * Output custom admin column contents
+	 *
+	 * @param string $name  Column name.
+	 * @since 1.0.0
+	 */
+	public function do_custom_column( $name ) {
+		return null;
 	}
 }

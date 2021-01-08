@@ -8,6 +8,8 @@
 
 namespace Full_Score_Events\Blocks;
 
+use Full_Score_Events\Settings;
+
 // exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -57,6 +59,8 @@ class Blocks {
 		new Block( 'program-pieces' );
 		new Block( 'program-piece' );
 		new Post_Block( 'program' );
+		new Block( 'location-details' );
+		new Location();
 
 		// new Zombie_Schedule_Edit(); This is just a placeholder since we have that Gutenberg issue.
 	}
@@ -115,7 +119,9 @@ class Blocks {
 			apply_filters(
 				'full_score_events_editor_js_object',
 				[
-					'currentCPT' => get_post_type(),
+					'currentCPT'    => get_post_type(),
+					'googleAPIKey'  => Settings::get( 'google' ),
+					'googleMapsURL' => add_query_arg( 'libraries', 'places', 'https://maps.googleapis.com/maps/api/js' ),
 				]
 			)
 		);

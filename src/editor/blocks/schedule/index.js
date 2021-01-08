@@ -6,7 +6,7 @@
  * @since 1.0.0
  */
 
-import './style.scss';
+import './style.scss'; // @todo normalize import order
 import './index.scss';
 
 import PostSelectWrapper from '../../components/post-select-wrapper';
