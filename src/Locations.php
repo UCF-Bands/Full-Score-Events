@@ -34,7 +34,7 @@ class Locations extends Post_Type {
 	 * @since 1.0.0
 	 * @var   string
 	 */
-	// protected $singular_class = 'Location';
+	protected $singular_class = 'Location';
 
 	/**
 	 * Flag for global post variable in look
@@ -42,7 +42,7 @@ class Locations extends Post_Type {
 	 * @since 1.0.0
 	 * @var   boolean
 	 */
-	// protected $loop_global_name = 'location';
+	protected $loop_global_name = 'location';
 
 	/**
 	 * Singular view redirect flag
