@@ -192,5 +192,8 @@ body {
   display: grid;
   gap: 2rem; }
 
+.fse-location-map {
+  border: 0; }
+
 
 /*# sourceMappingURL=style-editor.css.map*/
