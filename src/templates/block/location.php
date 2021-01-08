@@ -9,15 +9,11 @@
 namespace Full_Score_Events;
 
 global $fse_location;
-
-
 ?>
 
 <div <?php do_attrs_class( 'fse-location', $className ?? '' ); ?>>
-
 	<?php
-	$fse_location->do_address();
-	$fse_location->do_map_embed();
+	$showAddress ? $fse_location->do_address() : null;
+	$showMap ? $fse_location->do_map_embed() : null;
 	?>
-
 </div>

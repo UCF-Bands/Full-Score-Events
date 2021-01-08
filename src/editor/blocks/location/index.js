@@ -6,15 +6,15 @@
  * @since 1.0.0
  */
 
-// import './style.scss';
-// import './index.scss';
+import { __ } from '@wordpress/i18n';
+import { registerBlockType } from '@wordpress/blocks';
+import { mapMarker as icon } from '@wordpress/icons';
 
 import PostSelectWrapper from '../../components/post-select-wrapper';
 
-import { __ } from '@wordpress/i18n';
-import ServerSideRender from '@wordpress/server-side-render';
-import { registerBlockType } from '@wordpress/blocks';
-import { mapMarker as icon } from '@wordpress/icons';
+import './style.scss';
+
+import edit from './edit';
 
 const config = {
 	apiVersion: 2,
@@ -27,24 +27,18 @@ const config = {
 	category: 'common', // @todo audit all categories
 	keywords: [ __( 'location' ), __( 'address' ), __( 'venue' ) ],
 
-	edit: ( { attributes } ) => {
-		const { selectedPost } = attributes;
-
-		return selectedPost.value ? (
-			<ServerSideRender
-				block="full-score-events/location"
-				attributes={ attributes }
-			/>
-		) : (
-			<p>
-				{ __(
-					'Please select a location in block options',
-					'full-score-events'
-				) }
-			</p>
-		);
+	attributes: {
+		showAddress: {
+			type: 'boolean',
+			default: false,
+		},
+		showMap: {
+			type: 'boolean',
+			default: true,
+		},
 	},
 
+	edit,
 	save: () => null,
 
 	// for PostSelectWrapper

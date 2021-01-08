@@ -181,5 +181,16 @@ body {
       padding-left: 2rem;
       padding-right: 2rem; } }
 
+/**
+ * Location displaying block
+ *
+ * @since   1.0.0
+ * @package Full_Score_Events
+ */
+.fse-location {
+  display: -ms-grid;
+  display: grid;
+  gap: 2rem; }
+
 
 /*# sourceMappingURL=style-editor.css.map*/

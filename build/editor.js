@@ -11,6 +11,17 @@
 
 /***/ }),
 
+/***/ "./src/editor/blocks/location/style.scss":
+/*!***********************************************!*\
+  !*** ./src/editor/blocks/location/style.scss ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "./src/editor/blocks/program-heading/style.scss":
 /*!******************************************************!*\
   !*** ./src/editor/blocks/program-heading/style.scss ***!
@@ -36086,6 +36097,81 @@ if (fullScoreEventsEditor.currentCPT === 'fse_location') {
 
 /***/ }),
 
+/***/ "./src/editor/blocks/location/edit.js":
+/*!********************************************!*\
+  !*** ./src/editor/blocks/location/edit.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return edit; });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/server-side-render */ "@wordpress/server-side-render");
+/* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
+
+
+/**
+ * Location block edit
+ *
+ * @since 1.0.0
+ */
+
+
+
+
+function edit(_ref) {
+  var attributes = _ref.attributes,
+      setAttributes = _ref.setAttributes;
+  var selectedPost = attributes.selectedPost,
+      showAddress = attributes.showAddress,
+      showMap = attributes.showMap;
+  var showAddressControl = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ToggleControl"], {
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Display Address', 'full-score-events'),
+    checked: showAddress,
+    onChange: function onChange(value) {
+      return setAttributes({
+        showAddress: value
+      });
+    }
+  });
+  var showMapControl = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ToggleControl"], {
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Display Map', 'full-score-events'),
+    checked: showMap,
+    onChange: function onChange(value) {
+      return setAttributes({
+        showMap: value
+      });
+    }
+  });
+  var block;
+
+  if (!showAddress && !showMap) {
+    block = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Please enable address and/or map in block settings', 'full-score-events'));
+  } else if (selectedPost.value) {
+    block = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_2___default.a, {
+      block: "full-score-events/location",
+      attributes: attributes
+    });
+  } else {
+    block = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Please select a location in block options.', 'full-score-events'));
+  }
+
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["InspectorControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["PanelBody"], {
+    title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Title', 'full-score-events')
+  }, showAddressControl, showMapControl)), block);
+}
+
+/***/ }),
+
 /***/ "./src/editor/blocks/location/index.js":
 /*!*********************************************!*\
   !*** ./src/editor/blocks/location/index.js ***!
@@ -36095,18 +36181,15 @@ if (fullScoreEventsEditor.currentCPT === 'fse_location') {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_post_select_wrapper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/post-select-wrapper */ "./src/editor/components/post-select-wrapper/index.js");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/server-side-render */ "@wordpress/server-side-render");
-/* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/index.js");
-
-
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/index.js");
+/* harmony import */ var _components_post_select_wrapper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/post-select-wrapper */ "./src/editor/components/post-select-wrapper/index.js");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style.scss */ "./src/editor/blocks/location/style.scss");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./edit */ "./src/editor/blocks/location/edit.js");
 /**
  * Location block
  *
@@ -36114,8 +36197,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @since 1.0.0
  */
-// import './style.scss';
-// import './index.scss';
+
 
 
 
@@ -36123,26 +36205,29 @@ __webpack_require__.r(__webpack_exports__);
 
 var config = {
   apiVersion: 2,
-  title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Location', 'full-score-events'),
-  description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Display an event location/venue address and/or map embed', 'full-score-events'),
-  icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__["mapMarker"],
+  title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Location', 'full-score-events'),
+  description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Display an event location/venue address and/or map embed', 'full-score-events'),
+  icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_2__["mapMarker"],
   category: 'common',
   // @todo audit all categories
-  keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('location'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('address'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('venue')],
-  edit: function edit(_ref) {
-    var attributes = _ref.attributes;
-    var selectedPost = attributes.selectedPost;
-    return selectedPost.value ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_3___default.a, {
-      block: "full-score-events/location",
-      attributes: attributes
-    }) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Please select a location in block options', 'full-score-events'));
+  keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('location'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('address'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('venue')],
+  attributes: {
+    showAddress: {
+      type: 'boolean',
+      default: false
+    },
+    showMap: {
+      type: 'boolean',
+      default: true
+    }
   },
+  edit: _edit__WEBPACK_IMPORTED_MODULE_5__["default"],
   save: function save() {
     return null;
   },
   // for PostSelectWrapper
   postType: 'fse_location',
-  selectLabel: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('location', 'full-score-events')
+  selectLabel: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('location', 'full-score-events')
 };
 /**
  * Register location block
@@ -36154,7 +36239,7 @@ var config = {
  * @return {?WPBlock}          The block, if it has been successfully registered; otherwise `undefined`.
  */
 
-Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_4__["registerBlockType"])('full-score-events/location', Object(_components_post_select_wrapper__WEBPACK_IMPORTED_MODULE_1__["default"])(config));
+Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('full-score-events/location', Object(_components_post_select_wrapper__WEBPACK_IMPORTED_MODULE_3__["default"])(config));
 
 /***/ }),
 
@@ -37441,6 +37526,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @since 1.0.0
  */
+ // @todo normalize import order
 
 
 
