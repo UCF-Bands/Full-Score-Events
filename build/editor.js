@@ -35981,6 +35981,7 @@ function edit(_ref) {
     target: "_blank",
     rel: "noopener noreferrer"
   }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Google Map', 'full-score-events')), placeId && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("iframe", {
+    className: "fse-location-details-map",
     title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Google Map preview', 'full-score-events'),
     width: "100%",
     height: "450",
@@ -36011,7 +36012,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/index.js");
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edit */ "./src/editor/blocks/location-details/edit.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./index.scss */ "./src/editor/blocks/location-details/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./edit */ "./src/editor/blocks/location-details/edit.js");
 /**
  * Location details block
  *
@@ -36019,7 +36022,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 
- // import './style.scss';
+
 
  // only allow location details in location CPT
 
@@ -36061,12 +36064,23 @@ if (fullScoreEventsEditor.currentCPT === 'fse_location') {
         meta: '_map_url'
       }
     },
-    edit: _edit__WEBPACK_IMPORTED_MODULE_3__["default"],
+    edit: _edit__WEBPACK_IMPORTED_MODULE_4__["default"],
     save: function save() {
       return null;
     }
   });
 }
+
+/***/ }),
+
+/***/ "./src/editor/blocks/location-details/index.scss":
+/*!*******************************************************!*\
+  !*** ./src/editor/blocks/location-details/index.scss ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 

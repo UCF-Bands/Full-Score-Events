@@ -8,7 +8,7 @@ import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 import { mapMarker as icon } from '@wordpress/icons';
 
-// import './style.scss';
+import './index.scss';
 
 import edit from './edit';
 

@@ -117,5 +117,14 @@ body {
     padding-left: 2rem;
     padding-right: 2rem; } }
 
+/**
+ * Location details block
+ *
+ * @since   1.0.0
+ * @package Full_Score_Events
+ */
+.fse-location-details-map {
+  margin-top: 2rem; }
+
 
 /*# sourceMappingURL=editor.css.map*/

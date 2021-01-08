@@ -68,6 +68,7 @@ export default function edit( { attributes, setAttributes } ) {
 
 			{ placeId && (
 				<iframe
+					className="fse-location-details-map"
 					title={ __( 'Google Map preview', 'full-score-events' ) }
 					width="100%"
 					height="450"
