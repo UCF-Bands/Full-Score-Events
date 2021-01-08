@@ -35886,6 +35886,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _program_heading__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./program-heading */ "./src/editor/blocks/program-heading/index.js");
 /* harmony import */ var _program__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./program */ "./src/editor/blocks/program/index.js");
 /* harmony import */ var _location_details__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./location-details */ "./src/editor/blocks/location-details/index.js");
+/* harmony import */ var _location__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./location */ "./src/editor/blocks/location/index.js");
 /**
  * Custom blocks
  *
@@ -35893,6 +35894,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 // shared
  // import './index.scss';
+
 
 
 
@@ -36081,6 +36083,78 @@ if (fullScoreEventsEditor.currentCPT === 'fse_location') {
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./src/editor/blocks/location/index.js":
+/*!*********************************************!*\
+  !*** ./src/editor/blocks/location/index.js ***!
+  \*********************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_post_select_wrapper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/post-select-wrapper */ "./src/editor/components/post-select-wrapper/index.js");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/server-side-render */ "@wordpress/server-side-render");
+/* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/index.js");
+
+
+/**
+ * Location block
+ *
+ * Allows editor to display a location and/or map by location post.
+ *
+ * @since 1.0.0
+ */
+// import './style.scss';
+// import './index.scss';
+
+
+
+
+
+var config = {
+  apiVersion: 2,
+  title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Location', 'full-score-events'),
+  description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Display an event location/venue address and/or map embed', 'full-score-events'),
+  icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__["mapMarker"],
+  category: 'common',
+  // @todo audit all categories
+  keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('location'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('address'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('venue')],
+  edit: function edit(_ref) {
+    var attributes = _ref.attributes;
+    var selectedPost = attributes.selectedPost;
+    return selectedPost.value ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_3___default.a, {
+      block: "full-score-events/location",
+      attributes: attributes
+    }) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Please select a location in block options', 'full-score-events'));
+  },
+  save: function save() {
+    return null;
+  },
+  // for PostSelectWrapper
+  postType: 'fse_location',
+  selectLabel: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('location', 'full-score-events')
+};
+/**
+ * Register location block
+ *
+ * {@link https://wordpress.org/gutenberg/handbook/block-api/}
+ *
+ * @param  {string}   name     Block name.
+ * @param  {Object}   settings Block settings.
+ * @return {?WPBlock}          The block, if it has been successfully registered; otherwise `undefined`.
+ */
+
+Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_4__["registerBlockType"])('full-score-events/location', Object(_components_post_select_wrapper__WEBPACK_IMPORTED_MODULE_1__["default"])(config));
 
 /***/ }),
 
