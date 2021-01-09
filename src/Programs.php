@@ -16,6 +16,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Program CPT registration and general handling
  *
+ * @todo add date meta (for archiving?)
+ *
  * @since 1.0.0
  */
 class Programs extends Post_Type {
