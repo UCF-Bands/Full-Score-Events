@@ -65,6 +65,7 @@ class Plugin {
 		new Programs();
 		new Locations();
 		new Ensembles();
+		new Events();
 		new Blocks\Blocks();
 		new Settings();
 	}
