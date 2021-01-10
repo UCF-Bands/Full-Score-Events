@@ -5,4 +5,5 @@
  */
 
 import './event-date-time';
+import './event-registration';
 // import './zombie-schedule-upload';
