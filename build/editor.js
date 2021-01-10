@@ -38203,16 +38203,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/compose */ "@wordpress/compose");
-/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_compose__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/plugins */ "@wordpress/plugins");
-/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/edit-post */ "@wordpress/edit-post");
-/* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/plugins */ "@wordpress/plugins");
+/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/edit-post */ "@wordpress/edit-post");
+/* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../util/plugin-meta-handler */ "./src/editor/util/plugin-meta-handler.js");
 
 
 /**
@@ -38225,47 +38222,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- // import './index.scss';
-
-var render = Object(_wordpress_compose__WEBPACK_IMPORTED_MODULE_2__["compose"])(
-/*
- * withSelect allows us to get existing meta values
- */
-Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__["withSelect"])(function (select) {
-  var meta = Object.assign({}, select('core/editor').getEditedPostAttribute('meta'));
-  return {
-    postType: select('core/editor').getCurrentPostType(),
-    isFeatured: meta._is_featured
-  };
-}),
-/*
- * withDispatch allows us to save meta values
- */
-Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__["withDispatch"])(function (dispatch) {
-  var setMeta = function setMeta(key, value) {
-    var meta = {};
-    meta[key] = value;
-    dispatch('core/editor').editPost({
-      meta: meta
-    });
-  };
-
-  return {
-    setIsFeatured: function setIsFeatured(value) {
-      return setMeta('_is_featured', Boolean(value));
-    }
-  };
-}))(function (_ref) {
+var render = Object(_util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_5__["default"])({
+  isFeatured: {
+    key: '_is_featured',
+    type: 'boolean'
+  }
+})(function (_ref) {
   var postType = _ref.postType,
       isFeatured = _ref.isFeatured,
       setIsFeatured = _ref.setIsFeatured;
 
-  // sanity check for event
   if (postType !== 'fse_event') {
     return null;
   }
 
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_5__["PluginPostStatusInfo"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["ToggleControl"], {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_3__["PluginPostStatusInfo"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ToggleControl"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Special Event', 'full-score-events'),
     help: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Feature this event on the events page.', 'full-score-events'),
     checked: isFeatured,
@@ -38275,7 +38246,7 @@ Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__["withDispatch"])(function (d
   }));
 }); // register the sidebar plugin
 
-Object(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_4__["registerPlugin"])('fse-event-featured', {
+Object(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_2__["registerPlugin"])('fse-event-featured', {
   render: render,
   icon: 'tickets-alt'
 });
@@ -38636,6 +38607,121 @@ var PlaceSearch = Object(recompose__WEBPACK_IMPORTED_MODULE_2__["compose"])(Obje
   })));
 });
 /* harmony default export */ __webpack_exports__["default"] = (PlaceSearch);
+
+/***/ }),
+
+/***/ "./src/editor/util/plugin-meta-handler.js":
+/*!************************************************!*\
+  !*** ./src/editor/util/plugin-meta-handler.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return pluginMetaHandler; });
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/slicedToArray.js");
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/compose */ "@wordpress/compose");
+/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_compose__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_2__);
+
+
+/**
+ * Create a meta getter and setter for a sidebar plugin
+ *
+ * @since 1.0.0
+ */
+
+
+
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+/**
+ * Compose a meta selector and dispatcher for the provided meta keys and types
+ *
+ * @param {Object} meta Meta names/keys/types to select and create dispatchers for
+ */
+
+
+function pluginMetaHandler(meta) {
+  /**
+   * Get post meta values for each of the provided meta keys
+   */
+  var selector = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_2__["withSelect"])(function (select) {
+    // get all registered post meta
+    var postMeta = Object.assign({}, select('core/editor').getEditedPostAttribute('meta')); // init new meta object with postType
+
+    var selected = {
+      postType: select('core/editor').getCurrentPostType()
+    }; // get meta value for reach of the keys
+
+    for (var _i = 0, _Object$entries = Object.entries(meta); _i < _Object$entries.length; _i++) {
+      var _Object$entries$_i = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_Object$entries[_i], 2),
+          key = _Object$entries$_i[0],
+          props = _Object$entries$_i[1];
+
+      selected[key] = postMeta[props.key];
+    }
+
+    return selected;
+  });
+  /**
+   * Create post meta setting functions for each of the provided keys
+   */
+
+  var dispatcher = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_2__["withDispatch"])(function (dispatch) {
+    /**
+     * Dispatch an edit for the actual meta value
+     *
+     * @param {string}                key    registered post meta name/key
+     * @param {string|number|boolean} value  new meta value
+     * @param {string}                type   value type
+     */
+    var setMeta = function setMeta(key, value) {
+      var type = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'string';
+      var postMeta = {};
+
+      switch (type) {
+        case 'number':
+          value = Number(value);
+          break;
+
+        case 'boolean':
+          value = Boolean(value);
+          break;
+      }
+
+      postMeta[key] = value;
+      dispatch('core/editor').editPost({
+        meta: postMeta
+      });
+    };
+
+    var dispatchers = {}; // Add a setWhatever "dispatcher" for each of the provided keys. If the
+    // property isFeatured is passed in, a new property in this dispatchers
+    // object would be setIsFeatured.
+
+    var _loop = function _loop() {
+      var _Object$entries2$_i = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_Object$entries2[_i2], 2),
+          key = _Object$entries2$_i[0],
+          props = _Object$entries2$_i[1];
+
+      dispatchers["set".concat(capitalizeFirstLetter(key))] = function (value) {
+        return setMeta(props.key, value, props.type);
+      };
+    };
+
+    for (var _i2 = 0, _Object$entries2 = Object.entries(meta); _i2 < _Object$entries2.length; _i2++) {
+      _loop();
+    }
+
+    return dispatchers;
+  });
+  return Object(_wordpress_compose__WEBPACK_IMPORTED_MODULE_1__["compose"])(selector, dispatcher);
+}
 
 /***/ }),
 

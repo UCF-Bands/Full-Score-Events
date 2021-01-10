@@ -5,47 +5,18 @@
  */
 
 import { __ } from '@wordpress/i18n';
-import { compose } from '@wordpress/compose';
-import { withSelect, withDispatch } from '@wordpress/data';
 import { registerPlugin } from '@wordpress/plugins';
 import { PluginPostStatusInfo } from '@wordpress/edit-post';
 import { ToggleControl } from '@wordpress/components';
 
-// import './index.scss';
+import pluginMetaHandler from '../../util/plugin-meta-handler';
 
-const render = compose(
-	/*
-	 * withSelect allows us to get existing meta values
-	 */
-	withSelect( ( select ) => {
-		const meta = Object.assign(
-			{},
-			select( 'core/editor' ).getEditedPostAttribute( 'meta' )
-		);
-
-		return {
-			postType: select( 'core/editor' ).getCurrentPostType(),
-			isFeatured: meta._is_featured,
-		};
-	} ),
-
-	/*
-	 * withDispatch allows us to save meta values
-	 */
-	withDispatch( ( dispatch ) => {
-		const setMeta = ( key, value ) => {
-			const meta = {};
-			meta[ key ] = value;
-			dispatch( 'core/editor' ).editPost( { meta } );
-		};
-
-		return {
-			setIsFeatured: ( value ) =>
-				setMeta( '_is_featured', Boolean( value ) ),
-		};
-	} )
-)( ( { postType, isFeatured, setIsFeatured } ) => {
-	// sanity check for event
+const render = pluginMetaHandler( {
+	isFeatured: {
+		key: '_is_featured',
+		type: 'boolean',
+	},
+} )( ( { postType, isFeatured, setIsFeatured } ) => {
 	if ( postType !== 'fse_event' ) {
 		return null;
 	}
