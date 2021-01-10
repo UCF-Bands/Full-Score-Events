@@ -38190,6 +38190,98 @@ Object(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_4__["registerPlugin"])('fse-e
 
 /***/ }),
 
+/***/ "./src/editor/plugins/event-featured/index.js":
+/*!****************************************************!*\
+  !*** ./src/editor/plugins/event-featured/index.js ***!
+  \****************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/compose */ "@wordpress/compose");
+/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_compose__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/plugins */ "@wordpress/plugins");
+/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/edit-post */ "@wordpress/edit-post");
+/* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__);
+
+
+/**
+ * Featured event handling sidebar plugin
+ *
+ * @since 1.0.0
+ */
+
+
+
+
+
+ // import './index.scss';
+
+var render = Object(_wordpress_compose__WEBPACK_IMPORTED_MODULE_2__["compose"])(
+/*
+ * withSelect allows us to get existing meta values
+ */
+Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__["withSelect"])(function (select) {
+  var meta = Object.assign({}, select('core/editor').getEditedPostAttribute('meta'));
+  return {
+    postType: select('core/editor').getCurrentPostType(),
+    isFeatured: meta._is_featured
+  };
+}),
+/*
+ * withDispatch allows us to save meta values
+ */
+Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__["withDispatch"])(function (dispatch) {
+  var setMeta = function setMeta(key, value) {
+    var meta = {};
+    meta[key] = value;
+    dispatch('core/editor').editPost({
+      meta: meta
+    });
+  };
+
+  return {
+    setIsFeatured: function setIsFeatured(value) {
+      return setMeta('_is_featured', Boolean(value));
+    }
+  };
+}))(function (_ref) {
+  var postType = _ref.postType,
+      isFeatured = _ref.isFeatured,
+      setIsFeatured = _ref.setIsFeatured;
+
+  // sanity check for event
+  if (postType !== 'fse_event') {
+    return null;
+  }
+
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_5__["PluginPostStatusInfo"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["ToggleControl"], {
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Special Event', 'full-score-events'),
+    help: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Feature this event on the events page.', 'full-score-events'),
+    checked: isFeatured,
+    onChange: function onChange(value) {
+      return setIsFeatured(value);
+    }
+  }));
+}); // register the sidebar plugin
+
+Object(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_4__["registerPlugin"])('fse-event-featured', {
+  render: render,
+  icon: 'tickets-alt'
+});
+
+/***/ }),
+
 /***/ "./src/editor/plugins/event-registration/index.js":
 /*!********************************************************!*\
   !*** ./src/editor/plugins/event-registration/index.js ***!
@@ -38217,8 +38309,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./index.scss */ "./src/editor/plugins/event-registration/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./index.scss */ "./src/editor/plugins/event-registration/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_9__);
 
 
 /**
@@ -38351,13 +38443,15 @@ Object(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_5__["registerPlugin"])('fse-e
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _event_date_time__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./event-date-time */ "./src/editor/plugins/event-date-time/index.js");
-/* harmony import */ var _event_registration__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./event-registration */ "./src/editor/plugins/event-registration/index.js");
+/* harmony import */ var _event_featured__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./event-featured */ "./src/editor/plugins/event-featured/index.js");
+/* harmony import */ var _event_date_time__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./event-date-time */ "./src/editor/plugins/event-date-time/index.js");
+/* harmony import */ var _event_registration__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./event-registration */ "./src/editor/plugins/event-registration/index.js");
 /**
  * Sidebar/editor plugins
  *
  * @since 1.0.0
  */
+
 
  // import './zombie-schedule-upload';
 
