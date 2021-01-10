@@ -37634,6 +37634,81 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('ful
 
 /***/ }),
 
+/***/ "./src/editor/components/date-time-control/index.js":
+/*!**********************************************************!*\
+  !*** ./src/editor/components/date-time-control/index.js ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_date__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/date */ "@wordpress/date");
+/* harmony import */ var _wordpress_date__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_date__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+
+
+/**
+ * DateTimePicker in a InspectorControls panel tooltip
+ *
+ * @since 1.0.0
+ */
+
+
+/**
+ * Get time format
+ *
+ * @see https://github.com/WordPress/gutenberg/tree/master/packages/components/src/date-time
+ */
+
+var settings = Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_1__["__experimentalGetSettings"])(); // To know if the current timezone is a 12 hour time with look for an "a" in the time format.
+// We also make sure this a is not escaped by a "/".
+
+
+var is12HourTime = /a(?!\\)/i.test(settings.formats.time.toLowerCase() // Test only the lower case a
+.replace(/\\\\/g, '') // Replace "//" with empty strings
+.split('').reverse().join('') // Reverse the string and test for "a" not followed by a slash
+);
+
+var getDate = function getDate(date) {
+  return Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_1__["format"])("".concat(settings.formats.date, " ").concat(settings.formats.time), date);
+};
+
+var DateTimeControl = function DateTimeControl(_ref) {
+  var label = _ref.label,
+      date = _ref.date,
+      onChange = _ref.onChange;
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelRow"], {
+    className: "fse-date-time-control"
+  }, label && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", null, label), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["Dropdown"], {
+    position: "bottom left",
+    contentClassName: "edit-post-post-schedule__dialog",
+    renderToggle: function renderToggle(_ref2) {
+      var onToggle = _ref2.onToggle,
+          isOpen = _ref2.isOpen;
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+        onClick: onToggle,
+        "aria-expanded": isOpen,
+        isTertiary: true
+      }, getDate(date)));
+    },
+    renderContent: function renderContent() {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["DateTimePicker"], {
+        currentDate: date,
+        onChange: onChange,
+        is12Hour: is12HourTime
+      });
+    }
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (DateTimeControl);
+
+/***/ }),
+
 /***/ "./src/editor/components/index.js":
 /*!****************************************!*\
   !*** ./src/editor/components/index.js ***!
@@ -37801,81 +37876,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/editor/plugins/event-date-time/date-time-control.js":
-/*!*****************************************************************!*\
-  !*** ./src/editor/plugins/event-date-time/date-time-control.js ***!
-  \*****************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_date__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/date */ "@wordpress/date");
-/* harmony import */ var _wordpress_date__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_date__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
-
-
-/**
- * DateTimePicker in a InspectorControls panel tooltip
- *
- * @since 1.0.0
- */
-
-
-/**
- * Get time format
- *
- * @see https://github.com/WordPress/gutenberg/tree/master/packages/components/src/date-time
- */
-
-var settings = Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_1__["__experimentalGetSettings"])(); // To know if the current timezone is a 12 hour time with look for an "a" in the time format.
-// We also make sure this a is not escaped by a "/".
-
-
-var is12HourTime = /a(?!\\)/i.test(settings.formats.time.toLowerCase() // Test only the lower case a
-.replace(/\\\\/g, '') // Replace "//" with empty strings
-.split('').reverse().join('') // Reverse the string and test for "a" not followed by a slash
-);
-
-var getDate = function getDate(date) {
-  return Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_1__["format"])("".concat(settings.formats.date, " ").concat(settings.formats.time), date);
-};
-
-var DateTimeControl = function DateTimeControl(_ref) {
-  var label = _ref.label,
-      date = _ref.date,
-      onChange = _ref.onChange;
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelRow"], {
-    className: "fse-date-time-control"
-  }, label && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", null, label), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["Dropdown"], {
-    position: "bottom left",
-    contentClassName: "edit-post-post-schedule__dialog",
-    renderToggle: function renderToggle(_ref2) {
-      var onToggle = _ref2.onToggle,
-          isOpen = _ref2.isOpen;
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["Button"], {
-        onClick: onToggle,
-        "aria-expanded": isOpen,
-        isTertiary: true
-      }, getDate(date)));
-    },
-    renderContent: function renderContent() {
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["DateTimePicker"], {
-        currentDate: date,
-        onChange: onChange,
-        is12Hour: is12HourTime
-      });
-    }
-  }));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (DateTimeControl);
-
-/***/ }),
-
 /***/ "./src/editor/plugins/event-date-time/index.js":
 /*!*****************************************************!*\
   !*** ./src/editor/plugins/event-date-time/index.js ***!
@@ -37899,7 +37899,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _date_time_control__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./date-time-control */ "./src/editor/plugins/event-date-time/date-time-control.js");
+/* harmony import */ var _components_date_time_control__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/date-time-control */ "./src/editor/components/date-time-control/index.js");
 
 
 /**
@@ -37991,13 +37991,13 @@ Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__["withSelect"])(function (sel
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_5__["PluginDocumentSettingPanel"], {
     className: "fse-event-date-time",
     title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Date & Time', 'full-score-events')
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_date_time_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_components_date_time_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Start Date', 'full-score-events'),
     date: dateStart,
     onChange: function onChange(value) {
       return setDateStart(value);
     }
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_date_time_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_components_date_time_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Finish Date', 'full-score-events'),
     date: dateFinish,
     onChange: function onChange(value) {

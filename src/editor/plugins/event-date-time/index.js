@@ -11,7 +11,7 @@ import { registerPlugin } from '@wordpress/plugins';
 import { PluginDocumentSettingPanel } from '@wordpress/edit-post';
 import { ToggleControl } from '@wordpress/components';
 
-import DateTimeControl from './date-time-control';
+import DateTimeControl from '../../components/date-time-control';
 
 const render = compose(
 	/*
