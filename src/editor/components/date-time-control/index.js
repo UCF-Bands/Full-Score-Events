@@ -35,7 +35,7 @@ const is12HourTime = /a(?!\\)/i.test(
 const getDate = ( date ) =>
 	format( `${ settings.formats.date } ${ settings.formats.time }`, date );
 
-const DateTimeControl = ( { label, date, onChange } ) => (
+const DateTimeControl = ( { label, date, onChange, isInvalid } ) => (
 	<PanelRow className="fse-date-time-control">
 		{ label && <span>{ label }</span> }
 		<Dropdown
@@ -57,6 +57,7 @@ const DateTimeControl = ( { label, date, onChange } ) => (
 					currentDate={ date }
 					onChange={ onChange }
 					is12Hour={ is12HourTime }
+					isInvalidDate={ isInvalid }
 				/>
 			) }
 		/>

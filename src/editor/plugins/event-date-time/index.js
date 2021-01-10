@@ -50,6 +50,19 @@ const render = pluginMetaHandler( {
 			return null;
 		}
 
+		// make comparable date objects
+		const dateStartDate = new Date( dateStart );
+		const dateFinishDate = new Date( dateFinish );
+
+		// set finish date to start date if earlier than start date
+		if ( dateFinishDate < dateStartDate ) {
+			setDateFinish( dateStart );
+		}
+
+		// determine earliest finish DAY based on start date
+		const earliestFinishDate = dateStartDate;
+		earliestFinishDate.setDate( earliestFinishDate.getDate() - 1 );
+
 		return (
 			<PluginDocumentSettingPanel
 				className="fse-event-date-time"
@@ -64,6 +77,7 @@ const render = pluginMetaHandler( {
 					label={ __( 'Finish Date', 'full-score-events' ) }
 					date={ dateFinish }
 					onChange={ ( value ) => setDateFinish( value ) }
+					isInvalid={ ( date ) => date < earliestFinishDate }
 				/>
 				<ToggleControl
 					label={ __( 'All-Day Event', 'full-score-events' ) }

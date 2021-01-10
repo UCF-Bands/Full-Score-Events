@@ -37838,7 +37838,8 @@ var getDate = function getDate(date) {
 var DateTimeControl = function DateTimeControl(_ref) {
   var label = _ref.label,
       date = _ref.date,
-      onChange = _ref.onChange;
+      onChange = _ref.onChange,
+      isInvalid = _ref.isInvalid;
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelRow"], {
     className: "fse-date-time-control"
   }, label && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", null, label), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["Dropdown"], {
@@ -37857,7 +37858,8 @@ var DateTimeControl = function DateTimeControl(_ref) {
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["DateTimePicker"], {
         currentDate: date,
         onChange: onChange,
-        is12Hour: is12HourTime
+        is12Hour: is12HourTime,
+        isInvalidDate: isInvalid
       });
     }
   }));
@@ -38114,8 +38116,19 @@ var render = Object(_util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_5__["defa
   // sanity check for event
   if (postType !== 'fse_event') {
     return null;
-  }
+  } // make comparable date objects
 
+
+  var dateStartDate = new Date(dateStart);
+  var dateFinishDate = new Date(dateFinish); // set finish date to start date if earlier than start date
+
+  if (dateFinishDate < dateStartDate) {
+    setDateFinish(dateStart);
+  } // determine earliest finish DAY based on start date
+
+
+  var earliestFinishDate = dateStartDate;
+  earliestFinishDate.setDate(earliestFinishDate.getDate() - 1);
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_3__["PluginDocumentSettingPanel"], {
     className: "fse-event-date-time",
     title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Date & Time', 'full-score-events')
@@ -38130,6 +38143,9 @@ var render = Object(_util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_5__["defa
     date: dateFinish,
     onChange: function onChange(value) {
       return setDateFinish(value);
+    },
+    isInvalid: function isInvalid(date) {
+      return date < earliestFinishDate;
     }
   }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ToggleControl"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('All-Day Event', 'full-score-events'),
