@@ -53,15 +53,27 @@ const render = pluginMetaHandler( {
 		// make comparable date objects
 		const dateStartDate = new Date( dateStart );
 		const dateFinishDate = new Date( dateFinish );
-
-		// set finish date to start date if earlier than start date
-		if ( dateFinishDate < dateStartDate ) {
-			setDateFinish( dateStart );
-		}
+		const originalDateDifference = dateFinishDate - dateStartDate;
 
 		// determine earliest finish DAY based on start date
 		const earliestFinishDate = dateStartDate;
 		earliestFinishDate.setDate( earliestFinishDate.getDate() - 1 );
+
+		/**
+		 * Check if the new start date is AFTER the existing finish date and
+		 * offset the finish date to the original date difference if so.
+		 *
+		 * @param {string} newStartDate  New start date in ISO from DatePicker
+		 */
+		const maybeOffsetDateFinish = ( newStartDate ) => {
+			newStartDate = new Date( newStartDate );
+
+			if ( newStartDate > dateFinishDate ) {
+				setDateFinish(
+					new Date( newStartDate.getTime() + originalDateDifference )
+				);
+			}
+		};
 
 		return (
 			<PluginDocumentSettingPanel
@@ -71,7 +83,10 @@ const render = pluginMetaHandler( {
 				<DateTimeControl
 					label={ __( 'Start Date', 'full-score-events' ) }
 					date={ dateStart }
-					onChange={ ( value ) => setDateStart( value ) }
+					onChange={ ( value ) => {
+						maybeOffsetDateFinish( value );
+						setDateStart( value );
+					} }
 				/>
 				<DateTimeControl
 					label={ __( 'Finish Date', 'full-score-events' ) }

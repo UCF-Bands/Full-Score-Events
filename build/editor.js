@@ -38120,15 +38120,26 @@ var render = Object(_util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_5__["defa
 
 
   var dateStartDate = new Date(dateStart);
-  var dateFinishDate = new Date(dateFinish); // set finish date to start date if earlier than start date
-
-  if (dateFinishDate < dateStartDate) {
-    setDateFinish(dateStart);
-  } // determine earliest finish DAY based on start date
-
+  var dateFinishDate = new Date(dateFinish);
+  var originalDateDifference = dateFinishDate - dateStartDate; // determine earliest finish DAY based on start date
 
   var earliestFinishDate = dateStartDate;
   earliestFinishDate.setDate(earliestFinishDate.getDate() - 1);
+  /**
+   * Check if the new start date is AFTER the existing finish date and
+   * offset the finish date to the original date difference if so.
+   *
+   * @param {string} newStartDate  New start date in ISO from DatePicker
+   */
+
+  var maybeOffsetDateFinish = function maybeOffsetDateFinish(newStartDate) {
+    newStartDate = new Date(newStartDate);
+
+    if (newStartDate > dateFinishDate) {
+      setDateFinish(new Date(newStartDate.getTime() + originalDateDifference));
+    }
+  };
+
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_3__["PluginDocumentSettingPanel"], {
     className: "fse-event-date-time",
     title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Date & Time', 'full-score-events')
@@ -38136,7 +38147,8 @@ var render = Object(_util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_5__["defa
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Start Date', 'full-score-events'),
     date: dateStart,
     onChange: function onChange(value) {
-      return setDateStart(value);
+      maybeOffsetDateFinish(value);
+      setDateStart(value);
     }
   }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_components_date_time_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Finish Date', 'full-score-events'),
