@@ -70,25 +70,26 @@ class Events extends Post_Type {
 	public function do_meta_registration() {
 
 		foreach ( [
-			'_date_start'  => 'string',
-			'_date_finish' => 'string',
-			'_show_finish' => 'boolean',
-			'_is_all_day'  => 'boolean',
-			'_is_time_tba' => 'boolean',
-			'_location_id' => 'integer',
-			'_is_featured' => 'boolean',
-			'_contact_id'  => 'integer',
-			'_action_type' => 'string', // none vs ticketed vs registration?
-			'_action_url'  => 'string', // registration or sales URL
-			'_price'       => 'number',
-		] as $key => $type ) {
+			'_date_start'        => [ 'string', '' ],
+			'_date_finish'       => [ 'string', '' ],
+			'_show_finish'       => [ 'boolean', false ],
+			'_is_all_day'        => [ 'boolean', false ],
+			'_is_time_tba'       => [ 'boolean', false ],
+			'_location_id'       => [ 'integer', 0 ],
+			'_is_featured'       => [ 'boolean', false ],
+			'_contact_id'        => [ 'integer', 0 ],
+			'_registration_type' => [ 'string', 'register' ],
+			'_registration_url'  => [ 'string', '' ],
+			'_price'             => [ 'number', 0 ],
+		] as $key => $args ) {
 			register_post_meta(
 				self::CPT_KEY,
 				$key,
 				[
 					'show_in_rest'  => true,
 					'single'        => true,
-					'type'          => $type,
+					'type'          => $args[0],
+					'default'       => $args[1],
 					'auth_callback' => 'Full_Score_Events\get_can_user_edit_posts',
 				]
 			);
