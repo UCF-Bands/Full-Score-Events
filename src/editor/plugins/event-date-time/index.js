@@ -5,56 +5,33 @@
  */
 
 import { __ } from '@wordpress/i18n';
-import { compose } from '@wordpress/compose';
-import { withSelect, withDispatch } from '@wordpress/data';
 import { registerPlugin } from '@wordpress/plugins';
 import { PluginDocumentSettingPanel } from '@wordpress/edit-post';
 import { ToggleControl } from '@wordpress/components';
 
+import pluginMetaHandler from '../../util/plugin-meta-handler';
 import DateTimeControl from '../../components/date-time-control';
 
-const render = compose(
-	/*
-	 * withSelect allows us to get existing meta values
-	 */
-	withSelect( ( select ) => {
-		const meta = Object.assign(
-			{},
-			select( 'core/editor' ).getEditedPostAttribute( 'meta' )
-		);
-
-		return {
-			postType: select( 'core/editor' ).getCurrentPostType(),
-			dateStart: meta._date_start,
-			dateFinish: meta._date_finish,
-			showFinish: meta._show_finish,
-			isAllDay: meta._is_all_day,
-			isTimeTba: meta._is_time_tba,
-		};
-	} ),
-
-	/*
-	 * withDispatch allows us to save meta values
-	 */
-	withDispatch( ( dispatch ) => {
-		const setMeta = ( key, value ) => {
-			const meta = {};
-			meta[ key ] = value;
-			dispatch( 'core/editor' ).editPost( { meta } );
-		};
-
-		return {
-			setDateStart: ( value ) => setMeta( '_date_start', value ),
-			setDateFinish: ( value ) => setMeta( '_date_finish', value ),
-			setShowFinish: ( value ) =>
-				setMeta( '_show_finish', Boolean( value ) ),
-			setIsAllDay: ( value ) =>
-				setMeta( '_is_all_day', Boolean( value ) ),
-			setIsTimeTba: ( value ) =>
-				setMeta( '_is_time_tba', Boolean( value ) ),
-		};
-	} )
-)(
+const render = pluginMetaHandler( {
+	dateStart: {
+		key: '_date_start',
+	},
+	dateFinish: {
+		key: '_date_finish',
+	},
+	showFinish: {
+		key: '_show_finish',
+		type: 'boolean',
+	},
+	isAllDay: {
+		key: '_is_all_day',
+		type: 'boolean',
+	},
+	isTimeTba: {
+		key: '_is_time_tba',
+		type: 'boolean',
+	},
+} )(
 	( {
 		postType,
 		dateStart,

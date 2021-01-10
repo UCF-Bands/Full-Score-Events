@@ -38058,17 +38058,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/compose */ "@wordpress/compose");
-/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_compose__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/plugins */ "@wordpress/plugins");
-/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/edit-post */ "@wordpress/edit-post");
-/* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _components_date_time_control__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/date-time-control */ "./src/editor/components/date-time-control/index.js");
+/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/plugins */ "@wordpress/plugins");
+/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/edit-post */ "@wordpress/edit-post");
+/* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../util/plugin-meta-handler */ "./src/editor/util/plugin-meta-handler.js");
+/* harmony import */ var _components_date_time_control__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/date-time-control */ "./src/editor/components/date-time-control/index.js");
 
 
 /**
@@ -38082,52 +38079,26 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-var render = Object(_wordpress_compose__WEBPACK_IMPORTED_MODULE_2__["compose"])(
-/*
- * withSelect allows us to get existing meta values
- */
-Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__["withSelect"])(function (select) {
-  var meta = Object.assign({}, select('core/editor').getEditedPostAttribute('meta'));
-  return {
-    postType: select('core/editor').getCurrentPostType(),
-    dateStart: meta._date_start,
-    dateFinish: meta._date_finish,
-    showFinish: meta._show_finish,
-    isAllDay: meta._is_all_day,
-    isTimeTba: meta._is_time_tba
-  };
-}),
-/*
- * withDispatch allows us to save meta values
- */
-Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__["withDispatch"])(function (dispatch) {
-  var setMeta = function setMeta(key, value) {
-    var meta = {};
-    meta[key] = value;
-    dispatch('core/editor').editPost({
-      meta: meta
-    });
-  };
-
-  return {
-    setDateStart: function setDateStart(value) {
-      return setMeta('_date_start', value);
-    },
-    setDateFinish: function setDateFinish(value) {
-      return setMeta('_date_finish', value);
-    },
-    setShowFinish: function setShowFinish(value) {
-      return setMeta('_show_finish', Boolean(value));
-    },
-    setIsAllDay: function setIsAllDay(value) {
-      return setMeta('_is_all_day', Boolean(value));
-    },
-    setIsTimeTba: function setIsTimeTba(value) {
-      return setMeta('_is_time_tba', Boolean(value));
-    }
-  };
-}))(function (_ref) {
+var render = Object(_util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_5__["default"])({
+  dateStart: {
+    key: '_date_start'
+  },
+  dateFinish: {
+    key: '_date_finish'
+  },
+  showFinish: {
+    key: '_show_finish',
+    type: 'boolean'
+  },
+  isAllDay: {
+    key: '_is_all_day',
+    type: 'boolean'
+  },
+  isTimeTba: {
+    key: '_is_time_tba',
+    type: 'boolean'
+  }
+})(function (_ref) {
   var postType = _ref.postType,
       dateStart = _ref.dateStart,
       dateFinish = _ref.dateFinish,
@@ -38145,35 +38116,35 @@ Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__["withDispatch"])(function (d
     return null;
   }
 
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_5__["PluginDocumentSettingPanel"], {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_3__["PluginDocumentSettingPanel"], {
     className: "fse-event-date-time",
     title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Date & Time', 'full-score-events')
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_components_date_time_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_components_date_time_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Start Date', 'full-score-events'),
     date: dateStart,
     onChange: function onChange(value) {
       return setDateStart(value);
     }
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_components_date_time_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_components_date_time_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Finish Date', 'full-score-events'),
     date: dateFinish,
     onChange: function onChange(value) {
       return setDateFinish(value);
     }
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["ToggleControl"], {
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ToggleControl"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('All-Day Event', 'full-score-events'),
     help: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Displays "Daily" instead of the start/finish time', 'full-score-events'),
     checked: isAllDay,
     onChange: function onChange(value) {
       return setIsAllDay(value);
     }
-  }), !isAllDay && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["ToggleControl"], {
+  }), !isAllDay && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ToggleControl"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Time TBA', 'full-score-events'),
     checked: isTimeTba,
     onChange: function onChange(value) {
       return setIsTimeTba(value);
     }
-  }), !isAllDay && !isTimeTba && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["ToggleControl"], {
+  }), !isAllDay && !isTimeTba && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ToggleControl"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Show Finish Time', 'full-score-events'),
     checked: showFinish,
     onChange: function onChange(value) {
@@ -38183,7 +38154,7 @@ Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__["withDispatch"])(function (d
   }));
 }); // register the sidebar plugin
 
-Object(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_4__["registerPlugin"])('fse-event-date-time', {
+Object(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_2__["registerPlugin"])('fse-event-date-time', {
   render: render,
   icon: 'calendar-alt'
 });
