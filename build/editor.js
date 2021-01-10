@@ -38268,20 +38268,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash_find__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_find__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/compose */ "@wordpress/compose");
-/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_compose__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/plugins */ "@wordpress/plugins");
-/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/edit-post */ "@wordpress/edit-post");
-/* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./index.scss */ "./src/editor/plugins/event-registration/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/plugins */ "@wordpress/plugins");
+/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/edit-post */ "@wordpress/edit-post");
+/* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../util/plugin-meta-handler */ "./src/editor/util/plugin-meta-handler.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./index.scss */ "./src/editor/plugins/event-registration/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_8__);
 
 
 /**
@@ -38297,44 +38294,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-var render = Object(_wordpress_compose__WEBPACK_IMPORTED_MODULE_3__["compose"])(
-/*
- * withSelect allows us to get existing meta values
- */
-Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__["withSelect"])(function (select) {
-  var meta = Object.assign({}, select('core/editor').getEditedPostAttribute('meta'));
-  return {
-    postType: select('core/editor').getCurrentPostType(),
-    type: meta._registration_type,
-    url: meta._registration_url,
-    price: meta._price
-  };
-}),
-/*
- * withDispatch allows us to save meta values
- */
-Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__["withDispatch"])(function (dispatch) {
-  var setMeta = function setMeta(key, value) {
-    var meta = {};
-    meta[key] = value;
-    dispatch('core/editor').editPost({
-      meta: meta
-    });
-  };
-
-  return {
-    setType: function setType(value) {
-      return setMeta('_registration_type', value);
-    },
-    setUrl: function setUrl(value) {
-      return setMeta('_registration_url', value);
-    },
-    setPrice: function setPrice(value) {
-      return setMeta('_price', Number(value));
-    }
-  };
-}))(function (_ref) {
+var render = Object(_util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_7__["default"])({
+  type: {
+    key: '_registration_type'
+  },
+  url: {
+    key: '_registration_url'
+  },
+  price: {
+    key: '_price',
+    type: 'number'
+  }
+})(function (_ref) {
   var _typeData$urlLabel;
 
   var postType = _ref.postType,
@@ -38360,10 +38331,10 @@ Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__["withDispatch"])(function (d
     urlLabel: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Tickets Link', 'full-score-events')
   }];
   var typeData = lodash_find__WEBPACK_IMPORTED_MODULE_1___default()(types, ['value', type]);
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_6__["PluginDocumentSettingPanel"], {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_4__["PluginDocumentSettingPanel"], {
     className: "fse-event-registration",
     title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Tickets/Registration', 'full-score-events')
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__["RadioControl"], {
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["RadioControl"], {
     className: "fse-event-registration-type",
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Type', 'full-score-events'),
     options: types,
@@ -38371,13 +38342,13 @@ Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__["withDispatch"])(function (d
       return setType(value);
     },
     selected: type
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_7__["URLInput"], {
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__["URLInput"], {
     label: (_typeData$urlLabel = typeData.urlLabel) !== null && _typeData$urlLabel !== void 0 ? _typeData$urlLabel : Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('URL', 'full-score-events'),
     value: url,
     onChange: function onChange(value) {
       return setUrl(value);
     }
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__["TextControl"], {
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["TextControl"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Price ($)', 'full-score-events'),
     type: "number",
     min: 0,
@@ -38387,7 +38358,7 @@ Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__["withDispatch"])(function (d
   }));
 }); // register the sidebar plugin
 
-Object(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_5__["registerPlugin"])('fse-event-registration', {
+Object(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_3__["registerPlugin"])('fse-event-registration', {
   render: render,
   icon: 'tickets-alt'
 });

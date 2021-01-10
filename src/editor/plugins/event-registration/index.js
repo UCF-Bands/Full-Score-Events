@@ -7,50 +7,27 @@
 import find from 'lodash/find';
 
 import { __ } from '@wordpress/i18n';
-import { compose } from '@wordpress/compose';
-import { withSelect, withDispatch } from '@wordpress/data';
 import { registerPlugin } from '@wordpress/plugins';
 import { PluginDocumentSettingPanel } from '@wordpress/edit-post';
 import { URLInput } from '@wordpress/block-editor';
 import { TextControl, RadioControl } from '@wordpress/components';
 
+import pluginMetaHandler from '../../util/plugin-meta-handler';
+
 import './index.scss';
 
-const render = compose(
-	/*
-	 * withSelect allows us to get existing meta values
-	 */
-	withSelect( ( select ) => {
-		const meta = Object.assign(
-			{},
-			select( 'core/editor' ).getEditedPostAttribute( 'meta' )
-		);
-
-		return {
-			postType: select( 'core/editor' ).getCurrentPostType(),
-			type: meta._registration_type,
-			url: meta._registration_url,
-			price: meta._price,
-		};
-	} ),
-
-	/*
-	 * withDispatch allows us to save meta values
-	 */
-	withDispatch( ( dispatch ) => {
-		const setMeta = ( key, value ) => {
-			const meta = {};
-			meta[ key ] = value;
-			dispatch( 'core/editor' ).editPost( { meta } );
-		};
-
-		return {
-			setType: ( value ) => setMeta( '_registration_type', value ),
-			setUrl: ( value ) => setMeta( '_registration_url', value ),
-			setPrice: ( value ) => setMeta( '_price', Number( value ) ),
-		};
-	} )
-)( ( { postType, type, url, price, setType, setUrl, setPrice } ) => {
+const render = pluginMetaHandler( {
+	type: {
+		key: '_registration_type',
+	},
+	url: {
+		key: '_registration_url',
+	},
+	price: {
+		key: '_price',
+		type: 'number',
+	},
+} )( ( { postType, type, url, price, setType, setUrl, setPrice } ) => {
 	// sanity check for event
 	if ( postType !== 'fse_event' ) {
 		return null;
