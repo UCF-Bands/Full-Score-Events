@@ -17,33 +17,24 @@ const render = compose(
 	/*
 	 * withDispatch allows us to save meta values
 	 */
-	withDispatch( ( dispatch ) => ( {
-		setDateStart: ( value ) => {
-			dispatch( 'core/editor' ).editPost( {
-				meta: { _date_start: value },
-			} );
-		},
-		setDateFinish: ( value ) => {
-			dispatch( 'core/editor' ).editPost( {
-				meta: { _date_finish: value },
-			} );
-		},
-		setShowFinish: ( value ) => {
-			dispatch( 'core/editor' ).editPost( {
-				meta: { _show_finish: Boolean( value ) },
-			} );
-		},
-		setIsAllDay: ( value ) => {
-			dispatch( 'core/editor' ).editPost( {
-				meta: { _is_all_day: Boolean( value ) },
-			} );
-		},
-		setIsTimeTba: ( value ) => {
-			dispatch( 'core/editor' ).editPost( {
-				meta: { _is_time_tba: Boolean( value ) },
-			} );
-		},
-	} ) ),
+	withDispatch( ( dispatch ) => {
+		const setMeta = ( key, value ) => {
+			const meta = {};
+			meta[ key ] = value;
+			dispatch( 'core/editor' ).editPost( { meta } );
+		};
+
+		return {
+			setDateStart: ( value ) => setMeta( '_date_start', value ),
+			setDateFinish: ( value ) => setMeta( '_date_finish', value ),
+			setShowFinish: ( value ) =>
+				setMeta( '_show_finish', Boolean( value ) ),
+			setIsAllDay: ( value ) =>
+				setMeta( '_is_all_day', Boolean( value ) ),
+			setIsTimeTba: ( value ) =>
+				setMeta( '_is_time_tba', Boolean( value ) ),
+		};
+	} ),
 
 	/*
 	 * withSelect allows us to get existing meta values

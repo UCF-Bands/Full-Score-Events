@@ -37919,41 +37919,29 @@ var render = Object(_wordpress_compose__WEBPACK_IMPORTED_MODULE_2__["compose"])(
  * withDispatch allows us to save meta values
  */
 Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__["withDispatch"])(function (dispatch) {
+  var setMeta = function setMeta(key, value) {
+    var meta = {};
+    meta[key] = value;
+    dispatch('core/editor').editPost({
+      meta: meta
+    });
+  };
+
   return {
     setDateStart: function setDateStart(value) {
-      dispatch('core/editor').editPost({
-        meta: {
-          _date_start: value
-        }
-      });
+      return setMeta('_date_start', value);
     },
     setDateFinish: function setDateFinish(value) {
-      dispatch('core/editor').editPost({
-        meta: {
-          _date_finish: value
-        }
-      });
+      return setMeta('_date_finish', value);
     },
     setShowFinish: function setShowFinish(value) {
-      dispatch('core/editor').editPost({
-        meta: {
-          _show_finish: Boolean(value)
-        }
-      });
+      return setMeta('_show_finish', Boolean(value));
     },
     setIsAllDay: function setIsAllDay(value) {
-      dispatch('core/editor').editPost({
-        meta: {
-          _is_all_day: Boolean(value)
-        }
-      });
+      return setMeta('_is_all_day', Boolean(value));
     },
     setIsTimeTba: function setIsTimeTba(value) {
-      dispatch('core/editor').editPost({
-        meta: {
-          _is_time_tba: Boolean(value)
-        }
-      });
+      return setMeta('_is_time_tba', Boolean(value));
     }
   };
 }),
