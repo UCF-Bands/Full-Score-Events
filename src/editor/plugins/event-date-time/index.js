@@ -15,6 +15,25 @@ import DateTimeControl from '../../components/date-time-control';
 
 const render = compose(
 	/*
+	 * withSelect allows us to get existing meta values
+	 */
+	withSelect( ( select ) => {
+		const meta = Object.assign(
+			{},
+			select( 'core/editor' ).getEditedPostAttribute( 'meta' )
+		);
+
+		return {
+			postType: select( 'core/editor' ).getCurrentPostType(),
+			dateStart: meta._date_start,
+			dateFinish: meta._date_finish,
+			showFinish: meta._show_finish,
+			isAllDay: meta._is_all_day,
+			isTimeTba: meta._is_time_tba,
+		};
+	} ),
+
+	/*
 	 * withDispatch allows us to save meta values
 	 */
 	withDispatch( ( dispatch ) => {
@@ -33,25 +52,6 @@ const render = compose(
 				setMeta( '_is_all_day', Boolean( value ) ),
 			setIsTimeTba: ( value ) =>
 				setMeta( '_is_time_tba', Boolean( value ) ),
-		};
-	} ),
-
-	/*
-	 * withSelect allows us to get existing meta values
-	 */
-	withSelect( ( select ) => {
-		const meta = Object.assign(
-			{},
-			select( 'core/editor' ).getEditedPostAttribute( 'meta' )
-		);
-
-		return {
-			postType: select( 'core/editor' ).getCurrentPostType(),
-			dateStart: meta._date_start,
-			dateFinish: meta._date_finish,
-			showFinish: meta._show_finish,
-			isAllDay: meta._is_all_day,
-			isTimeTba: meta._is_time_tba,
 		};
 	} )
 )(

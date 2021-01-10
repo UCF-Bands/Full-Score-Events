@@ -37916,6 +37916,20 @@ __webpack_require__.r(__webpack_exports__);
 
 var render = Object(_wordpress_compose__WEBPACK_IMPORTED_MODULE_2__["compose"])(
 /*
+ * withSelect allows us to get existing meta values
+ */
+Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__["withSelect"])(function (select) {
+  var meta = Object.assign({}, select('core/editor').getEditedPostAttribute('meta'));
+  return {
+    postType: select('core/editor').getCurrentPostType(),
+    dateStart: meta._date_start,
+    dateFinish: meta._date_finish,
+    showFinish: meta._show_finish,
+    isAllDay: meta._is_all_day,
+    isTimeTba: meta._is_time_tba
+  };
+}),
+/*
  * withDispatch allows us to save meta values
  */
 Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__["withDispatch"])(function (dispatch) {
@@ -37943,20 +37957,6 @@ Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__["withDispatch"])(function (d
     setIsTimeTba: function setIsTimeTba(value) {
       return setMeta('_is_time_tba', Boolean(value));
     }
-  };
-}),
-/*
- * withSelect allows us to get existing meta values
- */
-Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__["withSelect"])(function (select) {
-  var meta = Object.assign({}, select('core/editor').getEditedPostAttribute('meta'));
-  return {
-    postType: select('core/editor').getCurrentPostType(),
-    dateStart: meta._date_start,
-    dateFinish: meta._date_finish,
-    showFinish: meta._show_finish,
-    isAllDay: meta._is_all_day,
-    isTimeTba: meta._is_time_tba
   };
 }))(function (_ref) {
   var postType = _ref.postType,
