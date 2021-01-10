@@ -7,34 +7,11 @@
 import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
 import { withSelect, withDispatch } from '@wordpress/data';
-import { format, __experimentalGetSettings } from '@wordpress/date';
 import { registerPlugin } from '@wordpress/plugins';
 import { PluginDocumentSettingPanel } from '@wordpress/edit-post';
-import {
-	PanelRow,
-	Dropdown,
-	Button,
-	DateTimePicker,
-	ToggleControl,
-} from '@wordpress/components';
+import { ToggleControl } from '@wordpress/components';
 
-/**
- * Get time format
- *
- * @see https://github.com/WordPress/gutenberg/tree/master/packages/components/src/date-time
- */
-const settings = __experimentalGetSettings();
-
-// To know if the current timezone is a 12 hour time with look for an "a" in the time format.
-// We also make sure this a is not escaped by a "/".
-const is12HourTime = /a(?!\\)/i.test(
-	settings.formats.time
-		.toLowerCase() // Test only the lower case a
-		.replace( /\\\\/g, '' ) // Replace "//" with empty strings
-		.split( '' )
-		.reverse()
-		.join( '' ) // Reverse the string and test for "a" not followed by a slash
-);
+import DateTimeControl from './date-time-control';
 
 const render = compose(
 	/*
@@ -105,75 +82,21 @@ const render = compose(
 			return null;
 		}
 
-		const getDate = ( date ) =>
-			format(
-				`${ settings.formats.date } ${ settings.formats.time }`,
-				date
-			);
-
-		const dateStartControl = (
-			<PanelRow className="fse-date-panel-row">
-				<span>{ __( 'Start Date', 'full-score-events' ) }</span>
-				<Dropdown
-					position="bottom left"
-					contentClassName="edit-post-post-schedule__dialog"
-					renderToggle={ ( { onToggle, isOpen } ) => (
-						<>
-							<Button
-								onClick={ onToggle }
-								aria-expanded={ isOpen }
-								isTertiary
-							>
-								{ getDate( dateStart ) }
-							</Button>
-						</>
-					) }
-					renderContent={ () => (
-						<DateTimePicker
-							currentDate={ dateStart }
-							onChange={ ( value ) => setDateStart( value ) }
-							is12Hour={ is12HourTime }
-						/>
-					) }
-				/>
-			</PanelRow>
-		);
-
-		const dateFinishControl = (
-			<PanelRow className="fse-date-panel-row">
-				<span>{ __( 'Finish Date', 'full-score-events' ) }</span>
-				<Dropdown
-					position="bottom left"
-					contentClassName="edit-post-post-schedule__dialog"
-					renderToggle={ ( { onToggle, isOpen } ) => (
-						<>
-							<Button
-								onClick={ onToggle }
-								aria-expanded={ isOpen }
-								isTertiary
-							>
-								{ getDate( dateFinish ) }
-							</Button>
-						</>
-					) }
-					renderContent={ () => (
-						<DateTimePicker
-							currentDate={ dateFinish }
-							onChange={ ( value ) => setDateFinish( value ) }
-							is12Hour={ is12HourTime }
-						/>
-					) }
-				/>
-			</PanelRow>
-		);
-
 		return (
 			<PluginDocumentSettingPanel
 				className="fse-event-date-time"
 				title={ __( 'Date & Time', 'full-score-events' ) }
 			>
-				{ dateStartControl }
-				{ dateFinishControl }
+				<DateTimeControl
+					label={ __( 'Start Date', 'full-score-events' ) }
+					date={ dateStart }
+					onChange={ ( value ) => setDateStart( value ) }
+				/>
+				<DateTimeControl
+					label={ __( 'Finish Date', 'full-score-events' ) }
+					date={ dateFinish }
+					onChange={ ( value ) => setDateFinish( value ) }
+				/>
 				<ToggleControl
 					label={ __( 'All-Day Event', 'full-score-events' ) }
 					help={ __(
