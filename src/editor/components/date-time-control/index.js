@@ -12,6 +12,8 @@ import {
 	DateTimePicker,
 } from '@wordpress/components';
 
+import './index.scss';
+
 /**
  * Get time format
  *
