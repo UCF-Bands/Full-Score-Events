@@ -37928,22 +37928,58 @@ Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__["withSelect"])(function (sel
     return null;
   }
 
+  var dateStartControl = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["PanelRow"], {
+    className: "fse-date-panel-row"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Start Date', 'full-score-events')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["Dropdown"], {
+    position: "bottom left",
+    contentClassName: "edit-post-post-schedule__dialog",
+    renderToggle: function renderToggle(_ref2) {
+      var onToggle = _ref2.onToggle,
+          isOpen = _ref2.isOpen;
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["Button"], {
+        onClick: onToggle,
+        "aria-expanded": isOpen,
+        isTertiary: true
+      }, Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_4__["format"])("".concat(settings.formats.date, " ").concat(settings.formats.time), dateStart)));
+    },
+    renderContent: function renderContent() {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["DateTimePicker"], {
+        currentDate: dateStart,
+        onChange: function onChange(value) {
+          return setDateStart(value);
+        },
+        is12Hour: is12HourTime
+      });
+    }
+  }));
+  var dateFinishControl = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["PanelRow"], {
+    className: "fse-date-panel-row"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Finish Date', 'full-score-events')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["Dropdown"], {
+    position: "bottom left",
+    contentClassName: "edit-post-post-schedule__dialog",
+    renderToggle: function renderToggle(_ref3) {
+      var onToggle = _ref3.onToggle,
+          isOpen = _ref3.isOpen;
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["Button"], {
+        onClick: onToggle,
+        "aria-expanded": isOpen,
+        isTertiary: true
+      }, Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_4__["format"])("".concat(settings.formats.date, " ").concat(settings.formats.time), dateFinish)));
+    },
+    renderContent: function renderContent() {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["DateTimePicker"], {
+        currentDate: dateFinish,
+        onChange: function onChange(value) {
+          return setDateFinish(value);
+        },
+        is12Hour: is12HourTime
+      });
+    }
+  }));
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_6__["PluginDocumentSettingPanel"], {
     className: "fse-event-date-time",
     title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Date & Time', 'full-score-events')
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["DateTimePicker"], {
-    currentDate: dateStart,
-    onChange: function onChange(value) {
-      return setDateStart(value);
-    },
-    is12Hour: is12HourTime
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["DateTimePicker"], {
-    currentDate: dateFinish,
-    onChange: function onChange(value) {
-      return setDateFinish(value);
-    },
-    is12Hour: is12HourTime
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["ToggleControl"], {
+  }, dateStartControl, dateFinishControl, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["ToggleControl"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('All-Day Event', 'full-score-events'),
     help: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Displays "Daily" instead of the start/finish time', 'full-score-events'),
     checked: isAllDay,
