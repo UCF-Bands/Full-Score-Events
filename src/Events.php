@@ -8,6 +8,8 @@
 
 namespace Full_Score_Events;
 
+use DateTime;
+
 // exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -69,9 +71,13 @@ class Events extends Post_Type {
 	 */
 	public function do_meta_registration() {
 
+		// Set default date in ISO format.
+		$date = new DateTime();
+		$date = $date->format( 'c' );
+
 		foreach ( [
-			'_date_start'        => [ 'string', '' ],
-			'_date_finish'       => [ 'string', '' ],
+			'_date_start'        => [ 'string', $date ],
+			'_date_finish'       => [ 'string', $date ],
 			'_show_finish'       => [ 'boolean', false ],
 			'_is_all_day'        => [ 'boolean', false ],
 			'_is_time_tba'       => [ 'boolean', false ],
