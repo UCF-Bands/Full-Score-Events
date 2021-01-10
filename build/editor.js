@@ -37928,6 +37928,10 @@ Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__["withSelect"])(function (sel
     return null;
   }
 
+  var getDate = function getDate(date) {
+    return Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_4__["format"])("".concat(settings.formats.date, " ").concat(settings.formats.time), date);
+  };
+
   var dateStartControl = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["PanelRow"], {
     className: "fse-date-panel-row"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Start Date', 'full-score-events')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["Dropdown"], {
@@ -37940,7 +37944,7 @@ Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__["withSelect"])(function (sel
         onClick: onToggle,
         "aria-expanded": isOpen,
         isTertiary: true
-      }, Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_4__["format"])("".concat(settings.formats.date, " ").concat(settings.formats.time), dateStart)));
+      }, getDate(dateStart)));
     },
     renderContent: function renderContent() {
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["DateTimePicker"], {
@@ -37964,7 +37968,7 @@ Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__["withSelect"])(function (sel
         onClick: onToggle,
         "aria-expanded": isOpen,
         isTertiary: true
-      }, Object(_wordpress_date__WEBPACK_IMPORTED_MODULE_4__["format"])("".concat(settings.formats.date, " ").concat(settings.formats.time), dateFinish)));
+      }, getDate(dateFinish)));
     },
     renderContent: function renderContent() {
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["DateTimePicker"], {

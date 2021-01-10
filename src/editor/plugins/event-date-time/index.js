@@ -105,6 +105,12 @@ const render = compose(
 			return null;
 		}
 
+		const getDate = ( date ) =>
+			format(
+				`${ settings.formats.date } ${ settings.formats.time }`,
+				date
+			);
+
 		const dateStartControl = (
 			<PanelRow className="fse-date-panel-row">
 				<span>{ __( 'Start Date', 'full-score-events' ) }</span>
@@ -118,10 +124,7 @@ const render = compose(
 								aria-expanded={ isOpen }
 								isTertiary
 							>
-								{ format(
-									`${ settings.formats.date } ${ settings.formats.time }`,
-									dateStart
-								) }
+								{ getDate( dateStart ) }
 							</Button>
 						</>
 					) }
@@ -149,10 +152,7 @@ const render = compose(
 								aria-expanded={ isOpen }
 								isTertiary
 							>
-								{ format(
-									`${ settings.formats.date } ${ settings.formats.time }`,
-									dateFinish
-								) }
+								{ getDate( dateFinish ) }
 							</Button>
 						</>
 					) }
