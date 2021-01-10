@@ -128,7 +128,7 @@ abstract class Post_Type {
 
 		return array_merge(
 			[
-				'label'             => $this->get_label(),
+				'label'             => $this->get_label(), // @todo differentiate this with singular_name propertly so editor toolbar and admin listing labels make sense.
 				'labels'            => [
 					'singular_name'         => $this->get_label(),
 					'name_admin_bar'        => $this->get_label(),
