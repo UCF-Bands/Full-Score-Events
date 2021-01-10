@@ -7,6 +7,15 @@
 .fse-date-time-control {
   margin-bottom: 8px; }
 
+/**
+ * Event registration editor sidebar plugin
+ *
+ * @since   1.0.0
+ * @package Full_Score_Events
+ */
+.fse-event-registration-type {
+  margin-bottom: 10px; }
+
 /* Taco block editor-only styles */
 body {
 	background: var(--color-red);

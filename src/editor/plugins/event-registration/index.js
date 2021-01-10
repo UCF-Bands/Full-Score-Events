@@ -14,6 +14,8 @@ import { PluginDocumentSettingPanel } from '@wordpress/edit-post';
 import { URLInput } from '@wordpress/block-editor';
 import { TextControl, RadioControl } from '@wordpress/components';
 
+import './index.scss';
+
 const render = compose(
 	/*
 	 * withSelect allows us to get existing meta values

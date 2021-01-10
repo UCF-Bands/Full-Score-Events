@@ -38217,6 +38217,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./index.scss */ "./src/editor/plugins/event-registration/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_10__);
 
 
 /**
@@ -38224,6 +38226,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @since 1.0.0
  */
+
 
 
 
@@ -38325,6 +38328,17 @@ Object(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_5__["registerPlugin"])('fse-e
   render: render,
   icon: 'tickets-alt'
 });
+
+/***/ }),
+
+/***/ "./src/editor/plugins/event-registration/index.scss":
+/*!**********************************************************!*\
+  !*** ./src/editor/plugins/event-registration/index.scss ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 
