@@ -131,7 +131,7 @@ class Events extends Post_Type {
 				'items_list_navigation' => __( 'Events list navigation', 'full-score-events' ),
 				'filter_items_list'     => __( 'Filter events list', 'full-score-events' ),
 			],
-			'supports'            => [ 'title', 'editor', 'custom-fields', 'revisions' ],
+			'supports'            => [ 'title', 'editor', 'thumbnail', 'custom-fields', 'revisions' ],
 			'public'              => true,
 			'show_ui'             => true,
 			'menu_icon'           => 'dashicons-calendar-alt',
