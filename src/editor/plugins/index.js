@@ -7,4 +7,5 @@
 import './event-featured';
 import './event-date-time';
 import './event-registration';
+import './event-location-contact';
 // import './zombie-schedule-upload';

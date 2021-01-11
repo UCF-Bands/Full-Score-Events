@@ -35,6 +35,15 @@ export default function pluginMetaHandler( meta ) {
 		// get meta value for reach of the keys
 		for ( const [ key, props ] of Object.entries( meta ) ) {
 			selected[ key ] = postMeta[ props.key ];
+
+			// add extra %key%Post object prop if postId type
+			if ( props.type === 'postId' && selected[ key ] ) {
+				selected[ `${ key }Post` ] = select( 'core' ).getEntityRecord(
+					'postType',
+					'fse_location',
+					selected[ key ]
+				);
+			}
 		}
 
 		return selected;
@@ -55,6 +64,7 @@ export default function pluginMetaHandler( meta ) {
 			const postMeta = {};
 			switch ( type ) {
 				case 'number':
+				case 'postId':
 					value = Number( value );
 					break;
 
