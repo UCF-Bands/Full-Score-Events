@@ -6,16 +6,16 @@
  */
 
 import AsyncSelect from 'react-select/async';
-import { debounce } from 'lodash';
 
 import { __ } from '@wordpress/i18n';
-import { useState, useEffect } from '@wordpress/element';
 import { registerPlugin } from '@wordpress/plugins';
 import { PluginDocumentSettingPanel } from '@wordpress/edit-post';
-import { BaseControl, Button, ComboboxControl } from '@wordpress/components';
+import { BaseControl, Button } from '@wordpress/components';
 
 import pluginMetaHandler from '../../util/plugin-meta-handler';
 import getApiOptions from '../../util/get-api-options';
+
+import ContactControl from './contact-control';
 
 const render = pluginMetaHandler( {
 	location: {
@@ -41,54 +41,6 @@ const render = pluginMetaHandler( {
 		if ( postType !== 'fse_event' ) {
 			return null;
 		}
-
-		/**
-		 * Track the state of the user selector
-		 *
-		 * contactValue is required for setContactValue to work.
-		 */
-		const [ contactValue, setContactValue ] = useState();
-
-		// build ComboBox options array if we got users and we aren't still
-		// looking for more
-		let contactAvatar = false;
-
-		const contactOptions = // @todo blog this?
-			! contactUsers || contactIsRequesting
-				? false
-				: contactUsers.map( ( user ) => {
-						// check for selected user's avatar
-						if ( user.id === contact ) {
-							contactAvatar =
-								user.avatar_urls[ 48 ] ??
-								user.avatar_urls[ 24 ] ??
-								false;
-						}
-
-						return {
-							value: user.id,
-							label: user.name,
-						};
-				  } );
-
-		/**
-		 * Ensure that the contact is set? (author selector does this)
-		 */
-		useEffect( () => {
-			if ( contact ) {
-				setContactValue( contact );
-			}
-		}, [ contact ] );
-
-		/**
-		 * Handle primary contact input
-		 *
-		 * @param {Object} inputValue
-		 *
-		 */
-		const handleKeydown = ( inputValue ) => {
-			setContactValue( inputValue );
-		};
 
 		// location post select control
 		const locationControl = (
@@ -133,48 +85,18 @@ const render = pluginMetaHandler( {
 			</BaseControl>
 		);
 
-		// primary contact (user) select control
-		const contactControl = (
-			<div className="fse-user-control">
-				{ contactAvatar && (
-					<img
-						src={ contactAvatar }
-						width="48"
-						height="48"
-						alt={ __(
-							"Selected primary contact's avatar",
-							'full-score-events'
-						) }
-					/>
-				) }
-
-				{ contactOptions ? (
-					<ComboboxControl
-						label={ __( 'Primary Contact', 'full-score-events' ) }
-						options={ contactOptions }
-						value={ contact }
-						onFilterValueChange={ debounce( handleKeydown, 300 ) }
-						onChange={ ( userId ) => setContact( userId ) }
-						isLoading={ contactIsRequesting }
-						allowReset={ true }
-					/>
-				) : (
-					<p className="fse-loading-users">
-						<strong>
-							{ __( 'Loading users…', 'full-score-events' ) }
-						</strong>
-					</p>
-				) }
-			</div>
-		);
-
 		return (
 			<PluginDocumentSettingPanel
 				className="fse-event-location-contact"
 				title={ __( 'Location & Contact', 'full-score-events' ) }
 			>
 				{ locationControl }
-				{ contactControl }
+				<ContactControl
+					contact={ contact }
+					contactUsers={ contactUsers }
+					contactIsRequesting={ contactIsRequesting }
+					setContact={ setContact }
+				/>
 			</PluginDocumentSettingPanel>
 		);
 	}

@@ -38252,11 +38252,11 @@ Object(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_2__["registerPlugin"])('fse-e
 
 /***/ }),
 
-/***/ "./src/editor/plugins/event-location-contact/index.js":
-/*!************************************************************!*\
-  !*** ./src/editor/plugins/event-location-contact/index.js ***!
-  \************************************************************/
-/*! no exports provided */
+/***/ "./src/editor/plugins/event-location-contact/contact-control.js":
+/*!**********************************************************************!*\
+  !*** ./src/editor/plugins/event-location-contact/contact-control.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -38265,67 +38265,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_select_async__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-select/async */ "./node_modules/react-select/async/dist/react-select.browser.esm.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash */ "lodash");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/plugins */ "@wordpress/plugins");
-/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/edit-post */ "@wordpress/edit-post");
-/* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../util/plugin-meta-handler */ "./src/editor/util/plugin-meta-handler.js");
-/* harmony import */ var _util_get_api_options__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../util/get-api-options */ "./src/editor/util/get-api-options.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
 
 
 
 /**
- * Event location/contact settings
+ * Event primary contact user selection control
  *
- * @see   https://github.com/WordPress/gutenberg/blob/c88866cd91ea3eb7990a68978e03e2366ed7106c/packages/editor/src/components/post-author/index.js
  * @since 1.0.0
  */
 
 
 
+ // import './index.css';
 
-
-
-
-
-
-var render = Object(_util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_8__["default"])({
-  location: {
-    key: '_location_id',
-    type: 'postId'
-  },
-  contact: {
-    key: '_contact_id',
-    type: 'userId'
-  }
-})(function (_ref) {
-  var postType = _ref.postType,
-      location = _ref.location,
-      locationPost = _ref.locationPost,
-      contact = _ref.contact,
+var ContactControl = function ContactControl(_ref) {
+  var contact = _ref.contact,
       contactUsers = _ref.contactUsers,
       contactIsRequesting = _ref.contactIsRequesting,
-      setLocation = _ref.setLocation,
       setContact = _ref.setContact;
 
-  // sanity check for event
-  if (postType !== 'fse_event') {
-    return null;
-  }
   /**
    * Track the state of the user selector
    *
    * contactValue is required for setContactValue to work.
    */
-
-
   var _useState = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["useState"])(),
       _useState2 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_useState, 2),
       contactValue = _useState2[0],
@@ -38358,7 +38327,7 @@ var render = Object(_util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_8__["defa
     }
   }, [contact]);
   /**
-   * Handle primary contact input
+   * Handle search input
    *
    * @param {Object} inputValue
    *
@@ -38366,13 +38335,102 @@ var render = Object(_util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_8__["defa
 
   var handleKeydown = function handleKeydown(inputValue) {
     setContactValue(inputValue);
-  }; // location post select control
+  };
+
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+    className: "fse-user-control"
+  }, contactAvatar && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("img", {
+    src: contactAvatar,
+    width: "48",
+    height: "48",
+    alt: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])("Selected primary contact's avatar", 'full-score-events')
+  }), contactOptions ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ComboboxControl"], {
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('Primary Contact', 'full-score-events'),
+    options: contactOptions,
+    value: contact,
+    onFilterValueChange: Object(lodash__WEBPACK_IMPORTED_MODULE_2__["debounce"])(handleKeydown, 300),
+    onChange: function onChange(userId) {
+      return setContact(userId);
+    },
+    isLoading: contactIsRequesting,
+    allowReset: true
+  }) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("p", {
+    className: "fse-loading-users"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("strong", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('Loading users…', 'full-score-events'))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ContactControl);
+
+/***/ }),
+
+/***/ "./src/editor/plugins/event-location-contact/index.js":
+/*!************************************************************!*\
+  !*** ./src/editor/plugins/event-location-contact/index.js ***!
+  \************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_select_async__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-select/async */ "./node_modules/react-select/async/dist/react-select.browser.esm.js");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/plugins */ "@wordpress/plugins");
+/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/edit-post */ "@wordpress/edit-post");
+/* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../util/plugin-meta-handler */ "./src/editor/util/plugin-meta-handler.js");
+/* harmony import */ var _util_get_api_options__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../util/get-api-options */ "./src/editor/util/get-api-options.js");
+/* harmony import */ var _contact_control__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./contact-control */ "./src/editor/plugins/event-location-contact/contact-control.js");
 
 
-  var locationControl = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["BaseControl"], {
+/**
+ * Event location/contact settings
+ *
+ * @see   https://github.com/WordPress/gutenberg/blob/c88866cd91ea3eb7990a68978e03e2366ed7106c/packages/editor/src/components/post-author/index.js
+ * @since 1.0.0
+ */
+
+
+
+
+
+
+
+
+var render = Object(_util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_6__["default"])({
+  location: {
+    key: '_location_id',
+    type: 'postId'
+  },
+  contact: {
+    key: '_contact_id',
+    type: 'userId'
+  }
+})(function (_ref) {
+  var postType = _ref.postType,
+      location = _ref.location,
+      locationPost = _ref.locationPost,
+      contact = _ref.contact,
+      contactUsers = _ref.contactUsers,
+      contactIsRequesting = _ref.contactIsRequesting,
+      setLocation = _ref.setLocation,
+      setContact = _ref.setContact;
+
+  // sanity check for event
+  if (postType !== 'fse_event') {
+    return null;
+  } // location post select control
+
+
+  var locationControl = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["BaseControl"], {
     id: "fse-location-select",
-    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Location', 'full-score-events')
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(react_select_async__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Location', 'full-score-events')
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(react_select_async__WEBPACK_IMPORTED_MODULE_1__["default"], {
     name: "kb-post-select",
     value: locationPost ? {
       label: locationPost.title.rendered,
@@ -38382,47 +38440,31 @@ var render = Object(_util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_8__["defa
       return setLocation(option.value);
     },
     loadOptions: function loadOptions(inputValue, callback) {
-      return Object(_util_get_api_options__WEBPACK_IMPORTED_MODULE_9__["default"])('fse_location', inputValue, callback);
+      return Object(_util_get_api_options__WEBPACK_IMPORTED_MODULE_7__["default"])('fse_location', inputValue, callback);
     },
-    placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Start typing location name', 'full-score-events'),
+    placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Start typing location name', 'full-score-events'),
     noOptionsMessage: function noOptionsMessage() {
-      return Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('No options. Start typing location name', 'full-score-events');
+      return Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('No options. Start typing location name', 'full-score-events');
     }
-  }), locationPost && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["Button"], {
+  }), locationPost && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["Button"], {
     isLink: true,
     isDestructive: true,
     onClick: function onClick() {
       return setLocation(0);
     }
-  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Remove', 'full-score-events'))); // primary contact (user) select control
-
-  var contactControl = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
-    className: "fse-user-control"
-  }, contactAvatar && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("img", {
-    src: contactAvatar,
-    width: "48",
-    height: "48",
-    alt: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])("Selected primary contact's avatar", 'full-score-events')
-  }), contactOptions ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["ComboboxControl"], {
-    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Primary Contact', 'full-score-events'),
-    options: contactOptions,
-    value: contact,
-    onFilterValueChange: Object(lodash__WEBPACK_IMPORTED_MODULE_3__["debounce"])(handleKeydown, 300),
-    onChange: function onChange(userId) {
-      return setContact(userId);
-    },
-    isLoading: contactIsRequesting,
-    allowReset: true
-  }) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("p", {
-    className: "fse-loading-users"
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("strong", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Loading users…', 'full-score-events'))));
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_6__["PluginDocumentSettingPanel"], {
+  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Remove', 'full-score-events')));
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_4__["PluginDocumentSettingPanel"], {
     className: "fse-event-location-contact",
-    title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Location & Contact', 'full-score-events')
-  }, locationControl, contactControl);
+    title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Location & Contact', 'full-score-events')
+  }, locationControl, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_contact_control__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    contact: contact,
+    contactUsers: contactUsers,
+    contactIsRequesting: contactIsRequesting,
+    setContact: setContact
+  }));
 }); // register the sidebar plugin
 
-Object(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_5__["registerPlugin"])('fse-event-location-contact', {
+Object(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_3__["registerPlugin"])('fse-event-location-contact', {
   render: render,
   icon: 'location'
 });
