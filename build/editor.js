@@ -38374,18 +38374,15 @@ var ContactControl = function ContactControl(_ref) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_select_async__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-select/async */ "./node_modules/react-select/async/dist/react-select.browser.esm.js");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/plugins */ "@wordpress/plugins");
-/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/edit-post */ "@wordpress/edit-post");
-/* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../util/plugin-meta-handler */ "./src/editor/util/plugin-meta-handler.js");
-/* harmony import */ var _util_get_api_options__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../util/get-api-options */ "./src/editor/util/get-api-options.js");
-/* harmony import */ var _contact_control__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./contact-control */ "./src/editor/plugins/event-location-contact/contact-control.js");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/plugins */ "@wordpress/plugins");
+/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/edit-post */ "@wordpress/edit-post");
+/* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util/plugin-meta-handler */ "./src/editor/util/plugin-meta-handler.js");
+/* harmony import */ var _contact_control__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./contact-control */ "./src/editor/plugins/event-location-contact/contact-control.js");
+/* harmony import */ var _location_control__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./location-control */ "./src/editor/plugins/event-location-contact/location-control.js");
 
 
 /**
@@ -38400,9 +38397,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-var render = Object(_util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_6__["default"])({
+var render = Object(_util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_4__["default"])({
   location: {
     key: '_location_id',
     type: 'postId'
@@ -38424,10 +38419,64 @@ var render = Object(_util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_6__["defa
   // sanity check for event
   if (postType !== 'fse_event') {
     return null;
-  } // location post select control
+  }
+
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_3__["PluginDocumentSettingPanel"], {
+    className: "fse-event-location-contact",
+    title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Location & Contact', 'full-score-events')
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_location_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    location: location,
+    locationPost: locationPost,
+    setLocation: setLocation
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_contact_control__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    contact: contact,
+    contactUsers: contactUsers,
+    contactIsRequesting: contactIsRequesting,
+    setContact: setContact
+  }));
+}); // register the sidebar plugin
+
+Object(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_2__["registerPlugin"])('fse-event-location-contact', {
+  render: render,
+  icon: 'location'
+});
+
+/***/ }),
+
+/***/ "./src/editor/plugins/event-location-contact/location-control.js":
+/*!***********************************************************************!*\
+  !*** ./src/editor/plugins/event-location-contact/location-control.js ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_select_async__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-select/async */ "./node_modules/react-select/async/dist/react-select.browser.esm.js");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _util_get_api_options__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util/get-api-options */ "./src/editor/util/get-api-options.js");
 
 
-  var locationControl = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["BaseControl"], {
+/**
+ * Event location post selection control
+ *
+ * @since 1.0.0
+ */
+
+
+
+ // import './index.css';
+
+var LocationControl = function LocationControl(_ref) {
+  var location = _ref.location,
+      locationPost = _ref.locationPost,
+      setLocation = _ref.setLocation;
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["BaseControl"], {
     id: "fse-location-select",
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Location', 'full-score-events')
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(react_select_async__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -38440,34 +38489,22 @@ var render = Object(_util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_6__["defa
       return setLocation(option.value);
     },
     loadOptions: function loadOptions(inputValue, callback) {
-      return Object(_util_get_api_options__WEBPACK_IMPORTED_MODULE_7__["default"])('fse_location', inputValue, callback);
+      return Object(_util_get_api_options__WEBPACK_IMPORTED_MODULE_4__["default"])('fse_location', inputValue, callback);
     },
     placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Start typing location name', 'full-score-events'),
     noOptionsMessage: function noOptionsMessage() {
       return Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('No options. Start typing location name', 'full-score-events');
     }
-  }), locationPost && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["Button"], {
+  }), locationPost && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Button"], {
     isLink: true,
     isDestructive: true,
     onClick: function onClick() {
       return setLocation(0);
     }
   }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Remove', 'full-score-events')));
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_4__["PluginDocumentSettingPanel"], {
-    className: "fse-event-location-contact",
-    title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Location & Contact', 'full-score-events')
-  }, locationControl, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_contact_control__WEBPACK_IMPORTED_MODULE_8__["default"], {
-    contact: contact,
-    contactUsers: contactUsers,
-    contactIsRequesting: contactIsRequesting,
-    setContact: setContact
-  }));
-}); // register the sidebar plugin
+};
 
-Object(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_3__["registerPlugin"])('fse-event-location-contact', {
-  render: render,
-  icon: 'location'
-});
+/* harmony default export */ __webpack_exports__["default"] = (LocationControl);
 
 /***/ }),
 

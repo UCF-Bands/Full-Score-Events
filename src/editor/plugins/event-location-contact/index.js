@@ -5,17 +5,14 @@
  * @since 1.0.0
  */
 
-import AsyncSelect from 'react-select/async';
-
 import { __ } from '@wordpress/i18n';
 import { registerPlugin } from '@wordpress/plugins';
 import { PluginDocumentSettingPanel } from '@wordpress/edit-post';
-import { BaseControl, Button } from '@wordpress/components';
 
 import pluginMetaHandler from '../../util/plugin-meta-handler';
-import getApiOptions from '../../util/get-api-options';
 
 import ContactControl from './contact-control';
+import LocationControl from './location-control';
 
 const render = pluginMetaHandler( {
 	location: {
@@ -42,55 +39,16 @@ const render = pluginMetaHandler( {
 			return null;
 		}
 
-		// location post select control
-		const locationControl = (
-			<BaseControl
-				id="fse-location-select"
-				label={ __( 'Location', 'full-score-events' ) }
-			>
-				<AsyncSelect
-					name="kb-post-select"
-					value={
-						locationPost
-							? {
-									label: locationPost.title.rendered,
-									value: location,
-							  }
-							: {}
-					}
-					onChange={ ( option ) => setLocation( option.value ) }
-					loadOptions={ ( inputValue, callback ) =>
-						getApiOptions( 'fse_location', inputValue, callback )
-					}
-					placeholder={ __(
-						'Start typing location name',
-						'full-score-events'
-					) }
-					noOptionsMessage={ () =>
-						__(
-							'No options. Start typing location name',
-							'full-score-events'
-						)
-					}
-				/>
-				{ locationPost && (
-					<Button
-						isLink
-						isDestructive
-						onClick={ () => setLocation( 0 ) }
-					>
-						{ __( 'Remove', 'full-score-events' ) }
-					</Button>
-				) }
-			</BaseControl>
-		);
-
 		return (
 			<PluginDocumentSettingPanel
 				className="fse-event-location-contact"
 				title={ __( 'Location & Contact', 'full-score-events' ) }
 			>
-				{ locationControl }
+				<LocationControl
+					location={ location }
+					locationPost={ locationPost }
+					setLocation={ setLocation }
+				/>
 				<ContactControl
 					contact={ contact }
 					contactUsers={ contactUsers }
