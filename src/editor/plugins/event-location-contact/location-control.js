@@ -11,10 +11,9 @@ import { BaseControl, Button } from '@wordpress/components';
 
 import getApiOptions from '../../util/get-api-options';
 
-// import './index.css';
-
 const LocationControl = ( { location, locationPost, setLocation } ) => (
 	<BaseControl
+		className="fse-location-control"
 		id="fse-location-select"
 		label={ __( 'Location', 'full-score-events' ) }
 	>
@@ -44,7 +43,12 @@ const LocationControl = ( { location, locationPost, setLocation } ) => (
 			}
 		/>
 		{ locationPost && (
-			<Button isLink isDestructive onClick={ () => setLocation( 0 ) }>
+			<Button
+				className="fse-location-remove"
+				isLink
+				isDestructive
+				onClick={ () => setLocation( 0 ) }
+			>
 				{ __( 'Remove', 'full-score-events' ) }
 			</Button>
 		) }

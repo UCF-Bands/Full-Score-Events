@@ -38282,7 +38282,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- // import './index.css';
+
 
 var ContactControl = function ContactControl(_ref) {
   var contact = _ref.contact,
@@ -38339,12 +38339,7 @@ var ContactControl = function ContactControl(_ref) {
 
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
     className: "fse-user-control"
-  }, contactAvatar && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("img", {
-    src: contactAvatar,
-    width: "48",
-    height: "48",
-    alt: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])("Selected primary contact's avatar", 'full-score-events')
-  }), contactOptions ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ComboboxControl"], {
+  }, contactOptions ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ComboboxControl"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('Primary Contact', 'full-score-events'),
     options: contactOptions,
     value: contact,
@@ -38356,7 +38351,12 @@ var ContactControl = function ContactControl(_ref) {
     allowReset: true
   }) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("p", {
     className: "fse-loading-users"
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("strong", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('Loading users…', 'full-score-events'))));
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("strong", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('Loading users…', 'full-score-events'))), contactAvatar && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("img", {
+    src: contactAvatar,
+    width: "48",
+    height: "48",
+    alt: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])("Selected primary contact's avatar", 'full-score-events')
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ContactControl);
@@ -38383,6 +38383,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util/plugin-meta-handler */ "./src/editor/util/plugin-meta-handler.js");
 /* harmony import */ var _contact_control__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./contact-control */ "./src/editor/plugins/event-location-contact/contact-control.js");
 /* harmony import */ var _location_control__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./location-control */ "./src/editor/plugins/event-location-contact/location-control.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./index.scss */ "./src/editor/plugins/event-location-contact/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_8__);
 
 
 /**
@@ -38391,6 +38393,7 @@ __webpack_require__.r(__webpack_exports__);
  * @see   https://github.com/WordPress/gutenberg/blob/c88866cd91ea3eb7990a68978e03e2366ed7106c/packages/editor/src/components/post-author/index.js
  * @since 1.0.0
  */
+
 
 
 
@@ -38443,6 +38446,17 @@ Object(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_2__["registerPlugin"])('fse-e
 
 /***/ }),
 
+/***/ "./src/editor/plugins/event-location-contact/index.scss":
+/*!**************************************************************!*\
+  !*** ./src/editor/plugins/event-location-contact/index.scss ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "./src/editor/plugins/event-location-contact/location-control.js":
 /*!***********************************************************************!*\
   !*** ./src/editor/plugins/event-location-contact/location-control.js ***!
@@ -38470,13 +38484,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- // import './index.css';
+
 
 var LocationControl = function LocationControl(_ref) {
   var location = _ref.location,
       locationPost = _ref.locationPost,
       setLocation = _ref.setLocation;
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["BaseControl"], {
+    className: "fse-location-control",
     id: "fse-location-select",
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Location', 'full-score-events')
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(react_select_async__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -38496,6 +38511,7 @@ var LocationControl = function LocationControl(_ref) {
       return Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('No options. Start typing location name', 'full-score-events');
     }
   }), locationPost && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Button"], {
+    className: "fse-location-remove",
     isLink: true,
     isDestructive: true,
     onClick: function onClick() {

@@ -14,6 +14,8 @@ import pluginMetaHandler from '../../util/plugin-meta-handler';
 import ContactControl from './contact-control';
 import LocationControl from './location-control';
 
+import './index.scss';
+
 const render = pluginMetaHandler( {
 	location: {
 		key: '_location_id',

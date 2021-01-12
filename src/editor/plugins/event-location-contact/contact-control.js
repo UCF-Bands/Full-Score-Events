@@ -10,8 +10,6 @@ import { __ } from '@wordpress/i18n';
 import { useState, useEffect } from '@wordpress/element';
 import { ComboboxControl } from '@wordpress/components';
 
-// import './index.css';
-
 const ContactControl = ( {
 	contact,
 	contactUsers,
@@ -68,18 +66,6 @@ const ContactControl = ( {
 
 	return (
 		<div className="fse-user-control">
-			{ contactAvatar && (
-				<img
-					src={ contactAvatar }
-					width="48"
-					height="48"
-					alt={ __(
-						"Selected primary contact's avatar",
-						'full-score-events'
-					) }
-				/>
-			) }
-
 			{ contactOptions ? (
 				<ComboboxControl
 					label={ __( 'Primary Contact', 'full-score-events' ) }
@@ -96,6 +82,18 @@ const ContactControl = ( {
 						{ __( 'Loading users…', 'full-score-events' ) }
 					</strong>
 				</p>
+			) }
+
+			{ contactAvatar && (
+				<img
+					src={ contactAvatar }
+					width="48"
+					height="48"
+					alt={ __(
+						"Selected primary contact's avatar",
+						'full-score-events'
+					) }
+				/>
 			) }
 		</div>
 	);
