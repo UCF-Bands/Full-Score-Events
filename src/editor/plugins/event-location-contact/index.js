@@ -133,50 +133,48 @@ const render = pluginMetaHandler( {
 			</BaseControl>
 		);
 
+		// primary contact (user) select control
+		const contactControl = (
+			<div className="fse-user-control">
+				{ contactAvatar && (
+					<img
+						src={ contactAvatar }
+						width="48"
+						height="48"
+						alt={ __(
+							"Selected primary contact's avatar",
+							'full-score-events'
+						) }
+					/>
+				) }
+
+				{ contactOptions ? (
+					<ComboboxControl
+						label={ __( 'Primary Contact', 'full-score-events' ) }
+						options={ contactOptions }
+						value={ contact }
+						onFilterValueChange={ debounce( handleKeydown, 300 ) }
+						onChange={ ( userId ) => setContact( userId ) }
+						isLoading={ contactIsRequesting }
+						allowReset={ true }
+					/>
+				) : (
+					<p className="fse-loading-users">
+						<strong>
+							{ __( 'Loading users…', 'full-score-events' ) }
+						</strong>
+					</p>
+				) }
+			</div>
+		);
+
 		return (
 			<PluginDocumentSettingPanel
 				className="fse-event-location-contact"
 				title={ __( 'Location & Contact', 'full-score-events' ) }
 			>
 				{ locationControl }
-
-				<div className="fse-user-control">
-					{ contactAvatar && (
-						<img
-							src={ contactAvatar }
-							width="48"
-							height="48"
-							alt={ __(
-								"Selected primary contact's avatar",
-								'full-score-events'
-							) }
-						/>
-					) }
-
-					{ contactOptions ? (
-						<ComboboxControl
-							label={ __(
-								'Primary Contact',
-								'full-score-events'
-							) }
-							options={ contactOptions }
-							value={ contact }
-							onFilterValueChange={ debounce(
-								handleKeydown,
-								300
-							) }
-							onChange={ ( userId ) => setContact( userId ) }
-							isLoading={ contactIsRequesting }
-							allowReset={ true }
-						/>
-					) : (
-						<p className="fse-loading-users">
-							<strong>
-								{ __( 'Loading users…', 'full-score-events' ) }
-							</strong>
-						</p>
-					) }
-				</div>
+				{ contactControl }
 			</PluginDocumentSettingPanel>
 		);
 	}
