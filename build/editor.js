@@ -38333,7 +38333,16 @@ var render = Object(_util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_8__["defa
   // looking for more
 
 
-  var contactOptions = !contactUsers || contactIsRequesting ? false : contactUsers.map(function (user) {
+  var contactAvatar = false;
+  var contactOptions = // @todo blog this?
+  !contactUsers || contactIsRequesting ? false : contactUsers.map(function (user) {
+    // check for selected user's avatar
+    if (user.id === contact) {
+      var _ref2, _user$avatar_urls$;
+
+      contactAvatar = (_ref2 = (_user$avatar_urls$ = user.avatar_urls[48]) !== null && _user$avatar_urls$ !== void 0 ? _user$avatar_urls$ : user.avatar_urls[24]) !== null && _ref2 !== void 0 ? _ref2 : false;
+    }
+
     return {
       value: user.id,
       label: user.name
@@ -38387,7 +38396,14 @@ var render = Object(_util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_8__["defa
     onClick: function onClick() {
       return setLocation(0);
     }
-  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Remove', 'full-score-events'))), contactOptions ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["ComboboxControl"], {
+  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Remove', 'full-score-events'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+    className: "fse-user-control"
+  }, contactAvatar && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("img", {
+    src: contactAvatar,
+    width: "48",
+    height: "48",
+    alt: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])("Selected primary contact's avatar", 'full-score-events')
+  }), contactOptions ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["ComboboxControl"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Primary Contact', 'full-score-events'),
     options: contactOptions,
     value: contact,
@@ -38399,7 +38415,7 @@ var render = Object(_util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_8__["defa
     allowReset: true
   }) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("p", {
     className: "fse-loading-users"
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("strong", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Loading users…', 'full-score-events'))));
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("strong", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Loading users…', 'full-score-events')))));
 }); // register the sidebar plugin
 
 Object(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_5__["registerPlugin"])('fse-event-location-contact', {

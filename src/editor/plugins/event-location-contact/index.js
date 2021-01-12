@@ -51,10 +51,20 @@ const render = pluginMetaHandler( {
 
 		// build ComboBox options array if we got users and we aren't still
 		// looking for more
-		const contactOptions =
+		let contactAvatar = false;
+
+		const contactOptions = // @todo blog this?
 			! contactUsers || contactIsRequesting
 				? false
 				: contactUsers.map( ( user ) => {
+						// check for selected user's avatar
+						if ( user.id === contact ) {
+							contactAvatar =
+								user.avatar_urls[ 48 ] ??
+								user.avatar_urls[ 24 ] ??
+								false;
+						}
+
 						return {
 							value: user.id,
 							label: user.name,
@@ -129,23 +139,43 @@ const render = pluginMetaHandler( {
 					) }
 				</BaseControl>
 
-				{ contactOptions ? (
-					<ComboboxControl
-						label={ __( 'Primary Contact', 'full-score-events' ) }
-						options={ contactOptions }
-						value={ contact }
-						onFilterValueChange={ debounce( handleKeydown, 300 ) }
-						onChange={ ( userId ) => setContact( userId ) }
-						isLoading={ contactIsRequesting }
-						allowReset={ true }
-					/>
-				) : (
-					<p className="fse-loading-users">
-						<strong>
-							{ __( 'Loading users…', 'full-score-events' ) }
-						</strong>
-					</p>
-				) }
+				<div className="fse-user-control">
+					{ contactAvatar && (
+						<img
+							src={ contactAvatar }
+							width="48"
+							height="48"
+							alt={ __(
+								"Selected primary contact's avatar",
+								'full-score-events'
+							) }
+						/>
+					) }
+
+					{ contactOptions ? (
+						<ComboboxControl
+							label={ __(
+								'Primary Contact',
+								'full-score-events'
+							) }
+							options={ contactOptions }
+							value={ contact }
+							onFilterValueChange={ debounce(
+								handleKeydown,
+								300
+							) }
+							onChange={ ( userId ) => setContact( userId ) }
+							isLoading={ contactIsRequesting }
+							allowReset={ true }
+						/>
+					) : (
+						<p className="fse-loading-users">
+							<strong>
+								{ __( 'Loading users…', 'full-score-events' ) }
+							</strong>
+						</p>
+					) }
+				</div>
 			</PluginDocumentSettingPanel>
 		);
 	}
