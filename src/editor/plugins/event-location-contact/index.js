@@ -1,15 +1,18 @@
 /**
  * Event location/contact settings
  *
+ * @see   https://github.com/WordPress/gutenberg/blob/c88866cd91ea3eb7990a68978e03e2366ed7106c/packages/editor/src/components/post-author/index.js
  * @since 1.0.0
  */
 
 import AsyncSelect from 'react-select/async';
+import { debounce } from 'lodash';
 
 import { __ } from '@wordpress/i18n';
+import { useState, useEffect } from '@wordpress/element';
 import { registerPlugin } from '@wordpress/plugins';
 import { PluginDocumentSettingPanel } from '@wordpress/edit-post';
-import { BaseControl, Button } from '@wordpress/components';
+import { BaseControl, Button, ComboboxControl } from '@wordpress/components';
 
 import pluginMetaHandler from '../../util/plugin-meta-handler';
 import getApiOptions from '../../util/get-api-options';
@@ -29,7 +32,8 @@ const render = pluginMetaHandler( {
 		location,
 		locationPost,
 		contact,
-		contactUser,
+		contactUsers,
+		contactIsRequesting,
 		setLocation,
 		setContact,
 	} ) => {
@@ -37,6 +41,44 @@ const render = pluginMetaHandler( {
 		if ( postType !== 'fse_event' ) {
 			return null;
 		}
+
+		/**
+		 * Track the state of the user selector
+		 *
+		 * contactValue is required for setContactValue to work.
+		 */
+		const [ contactValue, setContactValue ] = useState();
+
+		// build ComboBox options array if we got users and we aren't still
+		// looking for more
+		const contactOptions =
+			! contactUsers || contactIsRequesting
+				? false
+				: contactUsers.map( ( user ) => {
+						return {
+							value: user.id,
+							label: user.name,
+						};
+				  } );
+
+		/**
+		 * Ensure that the contact is set? (author selector does this)
+		 */
+		useEffect( () => {
+			if ( contact ) {
+				setContactValue( contact );
+			}
+		}, [ contact ] );
+
+		/**
+		 * Handle primary contact input
+		 *
+		 * @param {Object} inputValue
+		 *
+		 */
+		const handleKeydown = ( inputValue ) => {
+			setContactValue( inputValue );
+		};
 
 		return (
 			<PluginDocumentSettingPanel
@@ -86,6 +128,24 @@ const render = pluginMetaHandler( {
 						</Button>
 					) }
 				</BaseControl>
+
+				{ contactOptions ? (
+					<ComboboxControl
+						label={ __( 'Primary Contact', 'full-score-events' ) }
+						options={ contactOptions }
+						value={ contact }
+						onFilterValueChange={ debounce( handleKeydown, 300 ) }
+						onChange={ ( userId ) => setContact( userId ) }
+						isLoading={ contactIsRequesting }
+						allowReset={ true }
+					/>
+				) : (
+					<p className="fse-loading-users">
+						<strong>
+							{ __( 'Loading users…', 'full-score-events' ) }
+						</strong>
+					</p>
+				) }
 			</PluginDocumentSettingPanel>
 		);
 	}

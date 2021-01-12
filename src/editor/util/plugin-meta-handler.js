@@ -36,12 +36,37 @@ export default function pluginMetaHandler( meta ) {
 		for ( const [ key, props ] of Object.entries( meta ) ) {
 			selected[ key ] = postMeta[ props.key ];
 
-			// add extra %key%Post object prop if postId type
+			/**
+			 * Add extra %key%Post prop if postId type
+			 */
 			if ( props.type === 'postId' && selected[ key ] ) {
 				selected[ `${ key }Post` ] = select( 'core' ).getEntityRecord(
 					'postType',
 					'fse_location',
 					selected[ key ]
+				);
+
+				/**
+				 * Add extra %key%Users and %key%IsRequesting prop if userId
+				 *
+				 * @see https://wordpress.stackexchange.com/questions/363285/how-to-use-getentityrecords-for-user-data
+				 */
+			} else if ( props.type === 'userId' ) {
+				const { isResolving } = select( 'core/data' );
+				const query = { per_page: 5 };
+
+				// get some users
+				selected[ `${ key }Users` ] = select( 'core' ).getEntityRecords(
+					'root',
+					'user',
+					query
+				);
+
+				// see if we're still requesting users
+				selected[ `${ key }IsRequesting` ] = isResolving(
+					'core',
+					'getEntityRecords',
+					[ 'root', 'user', query ]
 				);
 			}
 		}
