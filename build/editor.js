@@ -38366,12 +38366,10 @@ var render = Object(_util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_8__["defa
 
   var handleKeydown = function handleKeydown(inputValue) {
     setContactValue(inputValue);
-  };
+  }; // location post select control
 
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_6__["PluginDocumentSettingPanel"], {
-    className: "fse-event-location-contact",
-    title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Location & Contact', 'full-score-events')
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["BaseControl"], {
+
+  var locationControl = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["BaseControl"], {
     id: "fse-location-select",
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Location', 'full-score-events')
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(react_select_async__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -38396,7 +38394,11 @@ var render = Object(_util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_8__["defa
     onClick: function onClick() {
       return setLocation(0);
     }
-  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Remove', 'full-score-events'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Remove', 'full-score-events')));
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_6__["PluginDocumentSettingPanel"], {
+    className: "fse-event-location-contact",
+    title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Location & Contact', 'full-score-events')
+  }, locationControl, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
     className: "fse-user-control"
   }, contactAvatar && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("img", {
     src: contactAvatar,
