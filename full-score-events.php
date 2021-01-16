@@ -68,6 +68,7 @@ class Plugin {
 		new Events();
 		new Blocks\Blocks();
 		new Settings();
+		new Template_Loader();
 	}
 
 	/**
