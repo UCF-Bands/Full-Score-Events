@@ -87,37 +87,48 @@ function do_attrs_class() {
 /**
  * Locate a template part in the theme, then fall back to plugin.
  *
- * @param  string $name  Template part file name (excluding .php).
- * @return string        Template part path.
+ * @param  string $slug  Template slug (excluding .php).
+ * @param  string $name  Template file name (excluding .php).
+ * @return string        Template path.
  *
  * @since  1.0.0
  */
-function locate_plugin_template( $name ) {
+function locate_plugin_template( $slug, $name = '' ) {
 
-	$template = locate_template( "full-score-events/{$name}.php" );
+	$template = false;
 
-	// Found in theme--bounce.
-	if ( $template ) {
-		return $template;
+	if ( $name ) {
+		$template = locate_template( "full-score-events/{$slug}-{$name}.php" );
+
+		if ( ! $template ) {
+			$fallback = FULL_SCORE_EVENTS_DIR . "src/templates/{$slug}-{$name}.php";
+			$template = file_exists( $fallback ) ? $fallback : false;
+		}
 	}
 
-	// Try to find it in this plugin.
-	$template = FULL_SCORE_EVENTS_DIR . "src/templates/{$name}.php";
+	// Check for non-named template if there wasn't a named template found.
+	if ( ! $template ) {
+		$template = locate_template( "full-score-events/{$slug}.php" );
+	}
 
-	return file_exists( $template )
-		? $template
-		: false;
+	if ( ! $template ) {
+		$fallback = FULL_SCORE_EVENTS_DIR . "src/templates/{$slug}.php";
+		$template = file_exists( $fallback ) ? $fallback : false;
+	}
+
+	return $template;
 }
 
 /**
  * Get a plugin template
  *
+ * @param string $slug  Template slug (excluding .php).
  * @param string $name  Template part name (excluding .php).
  * @param array  $args  Template arguments (extracted to vars).
  *
  * @since 1.0.0
  */
-function get_plugin_template( $name, $args = [] ) {
+function get_plugin_template( $slug, $name = '', $args = [] ) {
 
 	// Make vars for all the args.
 	if ( ! empty( $args ) && is_array( $args ) ) {
@@ -125,7 +136,7 @@ function get_plugin_template( $name, $args = [] ) {
 	}
 
 	// Set the path and ensure the template is there.
-	$template = locate_plugin_template( $name );
+	$template = locate_plugin_template( $slug, $name );
 
 	if ( $template ) {
 		include $template;
