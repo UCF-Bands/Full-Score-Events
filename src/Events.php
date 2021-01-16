@@ -47,14 +47,6 @@ class Events extends Post_Type {
 	// protected $loop_global_name = 'event';
 
 	/**
-	 * Singular view redirect flag
-	 *
-	 * @since 1.0.0
-	 * @var   boolean
-	 */
-	protected $singular_redirect = true;
-
-	/**
 	 * Get general post type label
 	 *
 	 * @return string
