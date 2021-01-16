@@ -68,7 +68,11 @@ class Plugin {
 		new Events();
 		new Blocks\Blocks();
 		new Settings();
-		new Template_Loader();
+
+		if ( $this->is_request( 'frontend' ) ) {
+			new Template_Loader();
+			new Template_Hooks();
+		}
 	}
 
 	/**
