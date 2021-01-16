@@ -72,6 +72,32 @@ class Plugin {
 	}
 
 	/**
+	 * What type of request is this?
+	 *
+	 * @see WooCommerce's WooCommerce->is_request()
+	 *
+	 * @param  string $type  admin, ajax, cron or frontend.
+	 * @return boolean
+	 *
+	 * @since  1.0.0
+	 */
+	private function is_request( $type ) {
+		switch ( $type ) {
+			case 'admin':
+				return is_admin();
+
+			case 'ajax':
+				return defined( 'DOING_AJAX' );
+
+			case 'cron':
+				return defined( 'DOING_CRON' );
+
+			case 'frontend':
+				return ( ! is_admin() || defined( 'DOING_AJAX' ) ) && ! defined( 'DOING_CRON' );
+		}
+	}
+
+	/**
 	 * Handle activation tasks
 	 *
 	 * @since 1.0.0
