@@ -38383,8 +38383,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util/plugin-meta-handler */ "./src/editor/util/plugin-meta-handler.js");
 /* harmony import */ var _contact_control__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./contact-control */ "./src/editor/plugins/event-location-contact/contact-control.js");
 /* harmony import */ var _location_control__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./location-control */ "./src/editor/plugins/event-location-contact/location-control.js");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./index.scss */ "./src/editor/plugins/event-location-contact/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./index.scss */ "./src/editor/plugins/event-location-contact/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_7__);
 
 
 /**
