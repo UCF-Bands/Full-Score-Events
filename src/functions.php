@@ -229,3 +229,21 @@ function is_event() {
 function is_event_archive() {
 	return is_post_type_archive( Events::CPT_KEY );
 }
+
+/**
+ * Output opening main wrapper tag
+ *
+ * @since 1.0.0
+ */
+function output_content_wrapper() {
+	get_plugin_template( 'global/wrapper-open' );
+}
+
+/**
+ * Output closing main wrapper tag
+ *
+ * @since 1.0.0
+ */
+function output_content_wrapper_close() {
+	get_plugin_template( 'global/wrapper-close' );
+}
