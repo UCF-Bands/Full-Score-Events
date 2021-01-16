@@ -2,7 +2,7 @@
 /**
  * Template for displaying single events
  *
- * This template can be overridden by compying it to
+ * This template can be overridden by copying it to
  * yourtheme/full-score-events/single-event.php.
  *
  * However, Full Score Events may need to update template files and you (the
