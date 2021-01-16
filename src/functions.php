@@ -85,6 +85,31 @@ function do_attrs_class() {
 }
 
 /**
+ * Locate a template part in the theme, then fall back to plugin.
+ *
+ * @param  string $name  Template part file name (excluding .php).
+ * @return string        Template part path.
+ *
+ * @since  1.0.0
+ */
+function locate_plugin_template( $name ) {
+
+	$template = locate_template( "full-score-events/{$name}.php" );
+
+	// Found in theme--bounce.
+	if ( $template ) {
+		return $template;
+	}
+
+	// Try to find it in this plugin.
+	$template = FULL_SCORE_EVENTS_DIR . "src/templates/{$name}.php";
+
+	return file_exists( $template )
+		? $template
+		: false;
+}
+
+/**
  * Get a plugin template
  *
  * @param string $name  Template part name (excluding .php).
@@ -94,20 +119,17 @@ function do_attrs_class() {
  */
 function get_plugin_template( $name, $args = [] ) {
 
-	// Maker vars for all the args.
+	// Make vars for all the args.
 	if ( ! empty( $args ) && is_array( $args ) ) {
 		extract( $args ); // phpcs:ignore WordPress.PHP.DontExtract.extract_extract
 	}
 
 	// Set the path and ensure the template is there.
-	$template = FULL_SCORE_EVENTS_DIR . "src/templates/{$name}.php";
+	$template = locate_plugin_template( $name );
 
-	if ( ! file_exists( $template ) ) {
-		return;
+	if ( $template ) {
+		include $template;
 	}
-
-	// Load the template part.
-	include $template;
 }
 
 /**
@@ -176,3 +198,23 @@ function add_allowed_mimes( $mimes ) {
 	return $mimes;
 }
 add_filter( 'upload_mimes', __NAMESPACE__ . '\\add_allowed_mimes' );
+
+/**
+ * Is this an event single?
+ *
+ * @return boolean
+ * @since  1.0.0
+ */
+function is_event() {
+	return is_singular( Events::CPT_KEY );
+}
+
+/**
+ * Is this an event archive?
+ *
+ * @return boolean
+ * @since  1.0.0
+ */
+function is_event_archive() {
+	return is_post_type_archive( Events::CPT_KEY );
+}
