@@ -34,7 +34,11 @@ class Ensembles extends Taxonomy {
 	 * @since 1.0.0
 	 * @var   array
 	 */
-	const POST_TYPES = [ Programs::CPT_KEY, Schedules::CPT_KEY ];
+	const POST_TYPES = [
+		Programs::CPT_KEY,
+		Schedules::CPT_KEY,
+		Events::CPT_KEY,
+	];
 
 	/**
 	 * Get general taxonomy label
