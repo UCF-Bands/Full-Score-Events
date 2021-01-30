@@ -30,5 +30,7 @@ class Template_Hooks {
 	public function __construct() {
 		add_action( 'full_score_events_before_main_content', 'Full_Score_Events\output_content_wrapper' );
 		add_action( 'full_score_events_after_main_content', 'Full_Score_Events\output_content_wrapper_close' );
+
+		add_action( 'full_score_events_before_main_content', 'Full_Score_Events\output_archive_header', 50 );
 	}
 }
