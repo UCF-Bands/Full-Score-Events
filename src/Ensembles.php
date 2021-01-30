@@ -35,6 +35,7 @@ class Ensembles extends Taxonomy {
 	 * @var   array
 	 */
 	const POST_TYPES = [
+		'post',
 		Programs::CPT_KEY,
 		Schedules::CPT_KEY,
 		Events::CPT_KEY,
