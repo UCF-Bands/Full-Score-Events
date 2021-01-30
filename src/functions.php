@@ -247,3 +247,15 @@ function output_content_wrapper() {
 function output_content_wrapper_close() {
 	get_plugin_template( 'global/wrapper-close' );
 }
+
+/**
+ * Output archive header
+ *
+ * @since 1.0.0
+ */
+function output_archive_header() {
+
+	if ( is_archive() ) {
+		get_plugin_template( 'archive-header' );
+	}
+}
