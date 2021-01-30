@@ -138,10 +138,25 @@ class Events extends Post_Type {
 				'pages'      => true,
 				'feeds'      => true,
 			],
-			// 'template'            => [
-			// 	[ 'full-score-events/location-details' ],
-			// ],
-			// 'template_lock'       => true,
+			'template'            => [
+				[
+					'core/paragraph',
+					[
+						'content'   => __( 'Use this introductory paragraph to describe the event. You can also put a heading above it.', 'full-score-events' ),
+						'className' => 'is-style-featured',
+					],
+				],
+				[
+					'core/heading',
+					[ 'content' => __( 'Schedule', 'full-score-events' ) ],
+				],
+				[ 'full-score-events/schedule' ],
+				[
+					'core/heading',
+					[ 'content' => __( 'Program', 'full-score-events' ) ],
+				],
+				[ 'full-score-events/program' ],
+			],
 		];
 	}
 
