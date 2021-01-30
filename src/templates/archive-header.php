@@ -14,7 +14,7 @@
  * @since   1.0.0
  */
 
-use function Full_Score_Events\do_attrs_class;
+namespace Full_Score_Events;
 
 global $post_type;
 
@@ -23,6 +23,8 @@ $post_type_obj = get_post_type_object( $post_type );
 
 <header <?php do_attrs_class( 'fse-archive-header', "{$post_type}-archive-header" ); ?>>
 
-	<h1 <?php do_attrs_class( 'fse-archive-header-title', "{$post_type}-archive-header-title", 'page-title' ); ?>><?php echo esc_html( $post_type_obj->label ); ?></h1>
+	<h1 <?php do_attrs_class( 'fse-archive-header-title', "{$post_type}-archive-header-title", 'page-title' ); ?>>
+		<?php echo esc_html( implode( ' ', [ Ensembles::get_current_terms_list(), $post_type_obj->label ] ) ); ?>
+	</h1>
 
 </header>
