@@ -23,31 +23,30 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header( 'event' );
 ?>
 
-	<?php
-	/**
-	 * Hook: full_score_events_before_main_content
-	 *
-	 * @hooked Full_Score_Events\output_content_wrapper - 10
-	 */
-	do_action( 'full_score_events_before_main_content' );
-	?>
-
-
-		<?php
-		while ( have_posts() ) :
-			the_post();
-			get_plugin_template( 'content', 'single-event' );
-		endwhile;
-		?>
+<?php
+/**
+ * Hook: full_score_events_before_main_content
+ *
+ * @hooked Full_Score_Events\output_content_wrapper - 10
+ */
+do_action( 'full_score_events_before_main_content' );
+?>
 
 	<?php
-	/**
-	 * Hook: full_score_events_after_main_content
-	 *
-	 * @hooked Full_Score_Events\output_content_wrapper_end - 10
-	 */
-	do_action( 'full_score_events_after_main_content' );
+	while ( have_posts() ) :
+		the_post();
+		get_plugin_template( 'content', 'single-event' );
+	endwhile;
 	?>
+
+<?php
+/**
+ * Hook: full_score_events_after_main_content
+ *
+ * @hooked Full_Score_Events\output_content_wrapper_end - 10
+ */
+do_action( 'full_score_events_after_main_content' );
+?>
 
 <?php
 get_footer( 'event' );
