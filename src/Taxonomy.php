@@ -90,4 +90,34 @@ abstract class Taxonomy {
 	protected function get_tax_args() {
 		return [];
 	}
+
+	/**
+	 * Get current query's terms for the taxonomy
+	 *
+	 * Compatible with archives and singular posts.
+	 *
+	 * @param  string $fields  Term fields to return. "all" is full term objects.
+	 * @return array           Term objects for this taxonomy.
+	 *
+	 * @since  1.0.0
+	 */
+	public static function get_current_terms( $fields = 'all' ) {
+
+		$terms = is_archive()
+			? get_terms(
+				[
+					'taxonomy' => static::TAX_KEY,
+					'slug'     => explode( ',', get_query_var( static::TAX_KEY ) ),
+				]
+			)
+			: get_the_terms( get_the_ID(), static::TAX_KEY );
+
+		if ( empty( $terms ) ) {
+			return [];
+		} elseif ( 'names' === $fields ) {
+			return wp_list_pluck( $terms, 'name' );
+		} else {
+			return $terms;
+		}
+	}
 }
