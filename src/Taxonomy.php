@@ -120,4 +120,28 @@ abstract class Taxonomy {
 			return $terms;
 		}
 	}
+
+	/**
+	 * Get current query's terms in a human-readable list
+	 *
+	 * @return string
+	 * @since  1.0.0
+	 */
+	public static function get_current_terms_list() {
+		$terms = static::get_current_terms( 'names' );
+
+		// Sanity check.
+		if ( ! $terms ) {
+			return '';
+
+			// Add "and " to the last term and separate with commas/spaces.
+		} elseif ( count( $terms ) > 2 ) {
+			$terms[ count( $terms ) - 1 ] = __( 'and', 'full-score-events' ) . ' ' . $terms[ count( $terms ) - 1 ];
+			return implode( ', ', $terms );
+
+			// Just two: put "and" between them.
+		} else {
+			return implode( ' ' . __( 'and', 'full-score-events' ) . ' ', $terms );
+		}
+	}
 }
