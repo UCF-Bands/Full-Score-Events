@@ -90,13 +90,11 @@ class Ensembles extends Taxonomy {
 			'items_list_navigation'      => __( 'Ensembles list navigation', 'full-score-events' ),
 		];
 
-		// phpcs:disable
-		// $rewrite = [
-		// 	'slug'         => 'sample-type',
-		// 	'with_front'   => false,
-		// 	'hierarchical' => false,
-		// ];
-		// phpcs:enable
+		$rewrite = [
+			'slug'         => 'ensemble',
+			'with_front'   => false,
+			'hierarchical' => true,
+		];
 
 		return [
 			'labels'            => $labels,
@@ -106,7 +104,7 @@ class Ensembles extends Taxonomy {
 			'show_admin_column' => true,
 			'show_in_nav_menus' => true,
 			'show_tagcloud'     => false,
-			'rewrite'           => false,
+			'rewrite'           => $rewrite,
 			'show_in_rest'      => true,
 		];
 	}
