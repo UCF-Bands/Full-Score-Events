@@ -129,7 +129,7 @@ class Events extends Post_Type {
 			'menu_icon'           => 'dashicons-calendar-alt',
 			'show_in_nav_menus'   => false,
 			'has_archive'         => 'events',
-			'exclude_from_search' => true,
+			'exclude_from_search' => false,
 			'publicly_queryable'  => true,
 			'rewrite'             => false,
 			'rewrite'             => [
