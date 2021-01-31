@@ -247,6 +247,20 @@ function get_can_view_post( $post_id ) {
 }
 
 /**
+ * Get a location
+ *
+ * Make sure the post exists and it's a location, then get its object.
+ *
+ * @param  integer $post_id  Post ID to check.
+ * @return boolean|Location
+ *
+ * @since  1.0.0
+ */
+function get_location( $post_id ) {
+	return get_can_view_post( $post_id ) ? new Location( $post_id ) : false;
+}
+
+/**
  * Is this an event single?
  *
  * @return boolean
