@@ -182,7 +182,7 @@ function get_block( $name, $post_id = null ) {
  */
 function get_block_template( $name, $args = [] ) {
 	ob_start();
-	get_plugin_template( "block/$name", $args );
+	get_plugin_template( "block/$name", '', $args );
 	return ob_get_clean();
 }
 
