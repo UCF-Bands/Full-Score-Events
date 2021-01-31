@@ -379,4 +379,14 @@ class Event extends Post {
 	public function do_price() {
 		echo $this->get_price( 'label' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
+
+	/**
+	 * Get contact's user ID
+	 *
+	 * @return integer
+	 * @since  1.0.0
+	 */
+	public function get_contact() {
+		return intval( $this->get( '_contact_id' ) );
+	}
 }
