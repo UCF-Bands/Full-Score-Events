@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Get autoloader and helper functions.
+// Get autoloader and helper + template functions.
 require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/src/functions.php';
 require_once __DIR__ . '/src/template-functions.php';
