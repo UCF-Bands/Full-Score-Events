@@ -36,7 +36,7 @@ class Events extends Post_Type {
 	 * @since 1.0.0
 	 * @var   string
 	 */
-	// protected $singular_class = 'Event';
+	protected $singular_class = 'Event';
 
 	/**
 	 * Flag for global post variable in look
@@ -44,7 +44,7 @@ class Events extends Post_Type {
 	 * @since 1.0.0
 	 * @var   boolean
 	 */
-	// protected $loop_global_name = 'event';
+	protected $loop_global_name = 'event';
 
 	/**
 	 * Get general post type label
