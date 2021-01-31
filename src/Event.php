@@ -162,12 +162,23 @@ class Event extends Post {
 	/**
 	 * Get the starting time of day
 	 *
-	 * @return string  Start date time of day.
+	 * @param  string $format  Format.
+	 * @return string          Start date time of day.
+	 *
 	 * @since  1.0.0
 	 */
-	public function get_time_start() {
-		$date = $this->get_date_start();
-		return $date ? $date->format( 'g:i a' ) : false;
+	public function get_time_start( $format = 'view' ) {
+		return $this->get_time( 'start', $format );
+	}
+
+	/**
+	 * Output the starting time of day
+	 *
+	 * @param string $format  Format.
+	 * @since 1.0.0
+	 */
+	public function do_time_start( $format = 'view' ) {
+		echo $this->get_time_start( $format ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
 	/**
@@ -213,12 +224,53 @@ class Event extends Post {
 	/**
 	 * Get the finishing time of day
 	 *
-	 * @return string  Finish date time of day.
+	 * @param  string $format  Format.
+	 * @return string          Finish date time of day.
+	 *
 	 * @since  1.0.0
 	 */
-	public function get_time_finish() {
-		$date = $this->get_date_finish();
-		return $date ? $date->format( 'g:i a' ) : false;
+	public function get_time_finish( $format = 'view' ) {
+		return $this->get_time( 'finish', $format );
+	}
+
+	/**
+	 * Output the finishing time of day
+	 *
+	 * @param string $format  Format.
+	 * @since 1.0.0
+	 */
+	public function do_time_finish( $format = 'view' ) {
+		echo $this->get_time_finish( $format ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	}
+
+	/**
+	 * Is daily (all-day)?
+	 *
+	 * @return boolean
+	 * @since  1.0.0
+	 */
+	public function is_daily() {
+		return $this->get( '_is_all_day' );
+	}
+
+	/**
+	 * Is the time TBA?
+	 *
+	 * @return boolean
+	 * @since  1.0.0
+	 */
+	public function is_time_tba() {
+		return $this->get( '_is_time_tba' );
+	}
+
+	/**
+	 * Display the finish date/time?
+	 *
+	 * @return boolean
+	 * @since  1.0.0
+	 */
+	public function get_show_finish() {
+		return $this->get( '_show_finish' );
 	}
 
 	public function get_location() {
