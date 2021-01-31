@@ -38607,14 +38607,14 @@ var render = Object(_util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_7__["defa
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_4__["PluginDocumentSettingPanel"], {
     className: "fse-event-registration",
     title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Tickets/Registration', 'full-score-events')
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["RadioControl"], {
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["SelectControl"], {
     className: "fse-event-registration-type",
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Type', 'full-score-events'),
     options: types,
     onChange: function onChange(value) {
       return setType(value);
     },
-    selected: type
+    value: type
   }), typeData.urlLabel && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__["URLInput"], {
     label: typeData.urlLabel,
     value: url,

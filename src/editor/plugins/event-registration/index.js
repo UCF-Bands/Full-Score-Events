@@ -10,7 +10,7 @@ import { __ } from '@wordpress/i18n';
 import { registerPlugin } from '@wordpress/plugins';
 import { PluginDocumentSettingPanel } from '@wordpress/edit-post';
 import { URLInput } from '@wordpress/block-editor';
-import { TextControl, RadioControl } from '@wordpress/components';
+import { TextControl, SelectControl } from '@wordpress/components';
 
 import pluginMetaHandler from '../../util/plugin-meta-handler';
 
@@ -58,12 +58,12 @@ const render = pluginMetaHandler( {
 			className="fse-event-registration"
 			title={ __( 'Tickets/Registration', 'full-score-events' ) }
 		>
-			<RadioControl
+			<SelectControl
 				className="fse-event-registration-type"
 				label={ __( 'Type', 'full-score-events' ) }
 				options={ types }
 				onChange={ ( value ) => setType( value ) }
-				selected={ type }
+				value={ type }
 			/>
 
 			{ typeData.urlLabel && (
