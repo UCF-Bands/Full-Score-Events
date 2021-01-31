@@ -54,6 +54,39 @@ class Event extends Post {
 	}
 
 	/**
+	 * Get abbreviated human-readable month
+	 *
+	 * @param  string $which  Month to get (start or finish).
+	 * @return string
+	 *
+	 * @since  1.0.0
+	 */
+	private function get_month( $which ) {
+		$date = $this->get_date( $which );
+		return $date ? $date->format( 'M' ) : false;
+	}
+
+	/**
+	 * Get day
+	 *
+	 * @param string $which   Day to get (start or finish).
+	 * @param string $format  Format to return.
+	 *
+	 * @since 1.0.0
+	 */
+	private function get_day( $which, $format = 'view' ) {
+		$date = $this->get_date( $which );
+
+		if ( ! $date ) {
+			return false;
+		}
+
+		return 'attr' === $format
+			? $date->format( 'Y-m-d' )
+			: $date->format( 'j' );
+	}
+
+	/**
 	 * Get the starting date
 	 *
 	 * @return DateTime
