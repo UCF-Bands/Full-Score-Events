@@ -234,6 +234,19 @@ function do_icon( $name ) {
 }
 
 /**
+ * Do a basic permissions check on viewing a post
+ *
+ * @param  integer $post_id  Post ID to check against.
+ * @return boolean
+ *
+ * @since  1.0.0
+ */
+function get_can_view_post( $post_id ) {
+	$status = get_post_status( $post_id );
+	return 'publish' === $status || ( 'private' === $status && get_can_user_edit_posts() );
+}
+
+/**
  * Is this an event single?
  *
  * @return boolean
