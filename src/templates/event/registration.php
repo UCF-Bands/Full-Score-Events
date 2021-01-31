@@ -3,7 +3,7 @@
  * Template for displaying an event's registration call to action button
  *
  * This template can be overridden by copying it to
- * yourtheme/full-score-events/event/cta.php
+ * yourtheme/full-score-events/event/registration.php
  *
  * However, Full Score Events may need to update template files and you (the
  * theme developer) will need to copy the new file to your theme to maintain
