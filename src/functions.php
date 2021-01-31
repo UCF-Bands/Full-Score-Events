@@ -210,6 +210,29 @@ function add_allowed_mimes( $mimes ) {
 }
 add_filter( 'upload_mimes', __NAMESPACE__ . '\\add_allowed_mimes' );
 
+
+/**
+ * Get the contents of an icon SVG
+ *
+ * @param  string $name  File name of icon in icons/.
+ * @return string
+ *
+ * @since 1.0.0
+ */
+function get_icon( $name ) {
+	return file_get_contents( FULL_SCORE_EVENTS_DIR . "src/icons/{$name}.svg" ); // phpcs:ignore
+}
+
+/**
+ * Output an SVG icon
+ *
+ * @param string $name  Icon file name.
+ * @since 1.0.0
+ */
+function do_icon( $name ) {
+	echo get_icon( $name ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+}
+
 /**
  * Is this an event single?
  *
