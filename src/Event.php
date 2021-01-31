@@ -103,19 +103,38 @@ class Event extends Post {
 	 * @since  1.0.0
 	 */
 	public function get_month_start() {
-		$date = $this->get_date_start();
-		return $date ? $date->format( 'M' ) : false;
+		return $this->get_month( 'start' );
+	}
+
+	/**
+	 * Output the starting month
+	 *
+	 * @since 1.0.0
+	 */
+	public function do_month_start() {
+		echo $this->get_month_start(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
 	/**
 	 * Get the starting day of the month
 	 *
-	 * @return string  Start date day of the month.
+	 * @param  string $format  Format.
+	 * @return string          Start date day of the month.
+	 *
 	 * @since  1.0.0
 	 */
-	public function get_day_start() {
-		$date = $this->get_date_start();
-		return $date ? $date->format( 'j' ) : false;
+	public function get_day_start( $format = 'view' ) {
+		return $this->get_day( 'start', $format );
+	}
+
+	/**
+	 * Output the starting day of the month
+	 *
+	 * @param string $format  Format.
+	 * @since 1.0.0
+	 */
+	public function do_day_start( $format = 'view' ) {
+		echo $this->get_day_start( $format ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
 	/**
@@ -146,8 +165,7 @@ class Event extends Post {
 	 * @since  1.0.0
 	 */
 	public function get_month_finish() {
-		$date = $this->get_date_finish();
-		return $date ? $date->format( 'M' ) : false;
+		return $this->get_month( 'finish' );
 	}
 
 	/**
@@ -157,8 +175,17 @@ class Event extends Post {
 	 * @since  1.0.0
 	 */
 	public function get_day_finish() {
-		$date = $this->get_date_finish();
-		return $date ? $date->format( 'j' ) : false;
+		return $this->get_day( 'finish' );
+	}
+
+	/**
+	 * Output the finishing day of the month
+	 *
+	 * @param string $format  Format.
+	 * @since 1.0.0
+	 */
+	public function do_day_finish( $format = 'view' ) {
+		echo $this->get_day_finish( $format ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
 	/**
