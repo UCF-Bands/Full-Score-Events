@@ -24,7 +24,7 @@ if ( ! $fse_event->get_time_start() ) {
 }
 ?>
 
-<span class="fse-time">
+<span class="fse-event-time">
 	<?php
 	do_icon( 'clock' );
 
