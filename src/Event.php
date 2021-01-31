@@ -33,6 +33,14 @@ class Event extends Post {
 	private $dates = [];
 
 	/**
+	 * Location post
+	 *
+	 * @var   Location
+	 * @since 1.0.0
+	 */
+	private $location;
+
+	/**
 	 * Get a DateTime object for a date field
 	 *
 	 * @param  string $which  Which datetime to get from meta (ex: start).
@@ -273,11 +281,19 @@ class Event extends Post {
 		return $this->get( '_show_finish' );
 	}
 
+	/**
+	 * Get location
+	 *
+	 * @return boolean|Location
+	 * @since 1.0.0
+	 */
 	public function get_location() {
 
-	}
+		if ( isset( $this->location ) ) {
+			return $this->location;
+		}
 
-	public function get_location_title() {
-
+		$this->location = get_location( $this->get( '_location_id' ) );
+		return $this->location;
 	}
 }
