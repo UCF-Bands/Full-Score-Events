@@ -88,6 +88,27 @@ class Event extends Post {
 	}
 
 	/**
+	 * Get time
+	 *
+	 * @param  string $which   Time to get (start or finish).
+	 * @param  string $format  Format to return.
+	 * @return string
+	 *
+	 * @since 1.0.0
+	 */
+	private function get_time( $which, $format = 'view' ) {
+		$date = $this->get_date( $which );
+
+		if ( ! $date ) {
+			return false;
+		}
+
+		return 'attr' === $format
+			? $date->format( 'H:i' )
+			: $date->format( 'g:i a' );
+	}
+
+	/**
 	 * Get the starting date
 	 *
 	 * @return DateTime
