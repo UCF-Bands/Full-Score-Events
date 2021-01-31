@@ -29,11 +29,11 @@ class Template_Hooks {
 	 */
 	public function __construct() {
 		// Global.
-		add_action( 'full_score_events_before_main_content', 'Full_Score_Events\output_content_wrapper' );
-		add_action( 'full_score_events_after_main_content', 'Full_Score_Events\output_content_wrapper_close' );
+		add_action( 'full_score_events_before_main_content', 'Full_Score_Events\do_content_wrapper' );
+		add_action( 'full_score_events_after_main_content', 'Full_Score_Events\do_content_wrapper_close' );
 
 		// Archives.
-		add_action( 'full_score_events_before_main_content', 'Full_Score_Events\output_archive_header', 50 );
+		add_action( 'full_score_events_before_main_content', 'Full_Score_Events\do_archive_header', 50 );
 
 		// Event.
 		add_action( 'full_score_events_event_header_content', 'Full_Score_Events\do_event_title' );

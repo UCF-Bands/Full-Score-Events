@@ -285,7 +285,7 @@ function is_event_archive() {
  *
  * @since 1.0.0
  */
-function output_content_wrapper() {
+function do_content_wrapper() {
 	get_plugin_template( 'global/wrapper-open' );
 }
 
@@ -294,7 +294,7 @@ function output_content_wrapper() {
  *
  * @since 1.0.0
  */
-function output_content_wrapper_close() {
+function do_content_wrapper_close() {
 	get_plugin_template( 'global/wrapper-close' );
 }
 
@@ -303,7 +303,7 @@ function output_content_wrapper_close() {
  *
  * @since 1.0.0
  */
-function output_archive_header() {
+function do_archive_header() {
 
 	if ( is_archive() ) {
 		get_plugin_template( 'archive-header' );
