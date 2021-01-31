@@ -69,8 +69,9 @@ class Event extends Post {
 	/**
 	 * Get day
 	 *
-	 * @param string $which   Day to get (start or finish).
-	 * @param string $format  Format to return.
+	 * @param  string $which   Day to get (start or finish).
+	 * @param  string $format  Format to return.
+	 * @return string
 	 *
 	 * @since 1.0.0
 	 */
