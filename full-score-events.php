@@ -67,6 +67,7 @@ class Plugin {
 		new Ensembles();
 		new Events();
 		new Blocks\Blocks();
+		new Users();
 		new Settings();
 
 		if ( $this->is_request( 'frontend' ) ) {
