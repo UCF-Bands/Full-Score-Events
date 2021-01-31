@@ -77,6 +77,7 @@ class Events extends Post_Type {
 			'_registration_type' => [ 'string', '' ],
 			'_registration_url'  => [ 'string', '' ],
 			'_price'             => [ 'number', 0 ],
+			'_show_price'        => [ 'boolean', true ],
 			'_location_id'       => [ 'integer', 0 ],
 			'_contact_id'        => [ 'integer', 0 ],
 		] as $key => $args ) {

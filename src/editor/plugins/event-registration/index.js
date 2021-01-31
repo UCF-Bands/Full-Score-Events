@@ -10,7 +10,11 @@ import { __ } from '@wordpress/i18n';
 import { registerPlugin } from '@wordpress/plugins';
 import { PluginDocumentSettingPanel } from '@wordpress/edit-post';
 import { URLInput } from '@wordpress/block-editor';
-import { TextControl, SelectControl } from '@wordpress/components';
+import {
+	TextControl,
+	SelectControl,
+	ToggleControl,
+} from '@wordpress/components';
 
 import pluginMetaHandler from '../../util/plugin-meta-handler';
 
@@ -27,64 +31,88 @@ const render = pluginMetaHandler( {
 		key: '_price',
 		type: 'number',
 	},
-} )( ( { postType, type, url, price, setType, setUrl, setPrice } ) => {
-	// sanity check for event
-	if ( postType !== 'fse_event' ) {
-		return null;
-	}
+	showPrice: {
+		key: '_show_price',
+		type: 'boolean',
+	},
+} )(
+	( {
+		postType,
+		type,
+		url,
+		price,
+		showPrice,
+		setType,
+		setUrl,
+		setPrice,
+		setShowPrice,
+	} ) => {
+		// sanity check for event
+		if ( postType !== 'fse_event' ) {
+			return null;
+		}
 
-	const types = [
-		{
-			label: __( 'None', 'full-score-events' ),
-			value: '',
-			urlLabel: false,
-		},
-		{
-			label: __( 'Registration', 'full-score-events' ),
-			value: 'register',
-			urlLabel: __( 'Registration Link', 'full-score-events' ),
-		},
-		{
-			label: __( 'Tickets', 'full-score-events' ),
-			value: 'ticket',
-			urlLabel: __( 'Tickets Link', 'full-score-events' ),
-		},
-	];
+		const types = [
+			{
+				label: __( 'None', 'full-score-events' ),
+				value: '',
+				urlLabel: false,
+			},
+			{
+				label: __( 'Registration', 'full-score-events' ),
+				value: 'register',
+				urlLabel: __( 'Registration Link', 'full-score-events' ),
+			},
+			{
+				label: __( 'Tickets', 'full-score-events' ),
+				value: 'ticket',
+				urlLabel: __( 'Tickets Link', 'full-score-events' ),
+			},
+		];
 
-	const typeData = find( types, [ 'value', type ] );
+		const typeData = find( types, [ 'value', type ] );
 
-	return (
-		<PluginDocumentSettingPanel
-			className="fse-event-registration"
-			title={ __( 'Tickets/Registration', 'full-score-events' ) }
-		>
-			<SelectControl
-				className="fse-event-registration-type"
-				label={ __( 'Type', 'full-score-events' ) }
-				options={ types }
-				onChange={ ( value ) => setType( value ) }
-				value={ type }
-			/>
-
-			{ typeData.urlLabel && (
-				<URLInput
-					label={ typeData.urlLabel }
-					value={ url }
-					onChange={ ( value ) => setUrl( value ) }
+		return (
+			<PluginDocumentSettingPanel
+				className="fse-event-registration"
+				title={ __( 'Tickets/Registration', 'full-score-events' ) }
+			>
+				<SelectControl
+					className="fse-event-registration-type"
+					label={ __( 'Type', 'full-score-events' ) }
+					options={ types }
+					onChange={ ( value ) => setType( value ) }
+					value={ type }
 				/>
-			) }
 
-			<TextControl
-				label={ __( 'Price ($)', 'full-score-events' ) }
-				type="number"
-				min={ 0 }
-				step={ 0.01 }
-				value={ price }
-				onChange={ setPrice }
-			/>
-		</PluginDocumentSettingPanel>
-	);
-} );
+				{ typeData.urlLabel && (
+					<URLInput
+						label={ typeData.urlLabel }
+						value={ url }
+						onChange={ ( value ) => setUrl( value ) }
+					/>
+				) }
+
+				<ToggleControl
+					label={ __( 'Show Price', 'full-score-events' ) }
+					checked={ showPrice }
+					onChange={ ( value ) => setShowPrice( value ) }
+				/>
+
+				{ showPrice && (
+					<TextControl
+						label={ __( 'Price ($)', 'full-score-events' ) }
+						type="number"
+						min={ 0 }
+						step={ 0.01 }
+						value={ price }
+						onChange={ setPrice }
+					/>
+				) }
+			</PluginDocumentSettingPanel>
+		);
+	}
+);
 
 // register the sidebar plugin
 registerPlugin( 'fse-event-registration', { render, icon: 'tickets-alt' } );

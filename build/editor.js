@@ -38575,15 +38575,21 @@ var render = Object(_util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_7__["defa
   price: {
     key: '_price',
     type: 'number'
+  },
+  showPrice: {
+    key: '_show_price',
+    type: 'boolean'
   }
 })(function (_ref) {
   var postType = _ref.postType,
       type = _ref.type,
       url = _ref.url,
       price = _ref.price,
+      showPrice = _ref.showPrice,
       setType = _ref.setType,
       setUrl = _ref.setUrl,
-      setPrice = _ref.setPrice;
+      setPrice = _ref.setPrice,
+      setShowPrice = _ref.setShowPrice;
 
   // sanity check for event
   if (postType !== 'fse_event') {
@@ -38621,7 +38627,13 @@ var render = Object(_util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_7__["defa
     onChange: function onChange(value) {
       return setUrl(value);
     }
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["TextControl"], {
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["ToggleControl"], {
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Show Price', 'full-score-events'),
+    checked: showPrice,
+    onChange: function onChange(value) {
+      return setShowPrice(value);
+    }
+  }), showPrice && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["TextControl"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Price ($)', 'full-score-events'),
     type: "number",
     min: 0,
