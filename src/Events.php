@@ -74,7 +74,7 @@ class Events extends Post_Type {
 			'_show_finish'       => [ 'boolean', false ],
 			'_is_all_day'        => [ 'boolean', false ],
 			'_is_time_tba'       => [ 'boolean', false ],
-			'_registration_type' => [ 'string', 'register' ],
+			'_registration_type' => [ 'string', '' ],
 			'_registration_url'  => [ 'string', '' ],
 			'_price'             => [ 'number', 0 ],
 			'_location_id'       => [ 'integer', 0 ],

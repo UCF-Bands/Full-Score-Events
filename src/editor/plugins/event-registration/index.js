@@ -35,6 +35,11 @@ const render = pluginMetaHandler( {
 
 	const types = [
 		{
+			label: __( 'None', 'full-score-events' ),
+			value: '',
+			urlLabel: false,
+		},
+		{
 			label: __( 'Registration', 'full-score-events' ),
 			value: 'register',
 			urlLabel: __( 'Registration Link', 'full-score-events' ),
@@ -61,11 +66,13 @@ const render = pluginMetaHandler( {
 				selected={ type }
 			/>
 
-			<URLInput
-				label={ typeData.urlLabel ?? __( 'URL', 'full-score-events' ) }
-				value={ url }
-				onChange={ ( value ) => setUrl( value ) }
-			/>
+			{ typeData.urlLabel && (
+				<URLInput
+					label={ typeData.urlLabel }
+					value={ url }
+					onChange={ ( value ) => setUrl( value ) }
+				/>
+			) }
 
 			<TextControl
 				label={ __( 'Price ($)', 'full-score-events' ) }

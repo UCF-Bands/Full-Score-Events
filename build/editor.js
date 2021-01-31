@@ -38577,8 +38577,6 @@ var render = Object(_util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_7__["defa
     type: 'number'
   }
 })(function (_ref) {
-  var _typeData$urlLabel;
-
   var postType = _ref.postType,
       type = _ref.type,
       url = _ref.url,
@@ -38593,6 +38591,10 @@ var render = Object(_util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_7__["defa
   }
 
   var types = [{
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('None', 'full-score-events'),
+    value: '',
+    urlLabel: false
+  }, {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Registration', 'full-score-events'),
     value: 'register',
     urlLabel: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Registration Link', 'full-score-events')
@@ -38613,8 +38615,8 @@ var render = Object(_util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_7__["defa
       return setType(value);
     },
     selected: type
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__["URLInput"], {
-    label: (_typeData$urlLabel = typeData.urlLabel) !== null && _typeData$urlLabel !== void 0 ? _typeData$urlLabel : Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('URL', 'full-score-events'),
+  }), typeData.urlLabel && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__["URLInput"], {
+    label: typeData.urlLabel,
     value: url,
     onChange: function onChange(value) {
       return setUrl(value);
