@@ -11,6 +11,7 @@
 namespace Full_Score_Events;
 
 use DateTime;
+use NumberFormatter;
 
 // exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -295,5 +296,87 @@ class Event extends Post {
 
 		$this->location = get_location( $this->get( '_location_id' ) );
 		return $this->location;
+	}
+
+	/**
+	 * Get registration type
+	 *
+	 * @param  string $format  Raw or human-readable "label" format.
+	 * @return string
+	 *
+	 * @since 1.0.0
+	 */
+	public function get_registration_type( $format = null ) {
+		$type = $this->get( '_registration_type' );
+
+		if ( 'label' === $format ) {
+			switch ( $type ) {
+				case '':
+					return false;
+				case 'ticket':
+					return esc_html__( 'Get Tickets', 'full-score-events' );
+				default:
+					return esc_html__( 'Register', 'full-score-events' );
+			}
+		} else {
+			return $type;
+		}
+	}
+
+	/**
+	 * Output registration type
+	 *
+	 * @since 1.0.0
+	 */
+	public function do_registration_type() {
+		echo $this->get_registration_type( 'label' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	}
+
+	/**
+	 * Get registration URL
+	 *
+	 * @return string
+	 * @since  1.0.0
+	 */
+	public function get_registration_url() {
+		return $this->get( '_registration_url' );
+	}
+
+	/**
+	 * Should the price be shown?
+	 *
+	 * @return boolean
+	 * @since  1.0.0
+	 */
+	public function get_show_price() {
+		return $this->get( '_show_price' );
+	}
+
+	/**
+	 * Get price
+	 *
+	 * @param  string $format  Raw or human-readable "label" format.
+	 * @return string|float
+	 */
+	public function get_price( $format = null ) {
+		$price = $this->get( '_price' );
+
+		if ( 'label' === $format ) {
+			$formatter = new NumberFormatter( 'en', NumberFormatter::CURRENCY );
+			return $price
+				? $formatter->formatCurrency( $price, 'USD' )
+				: esc_html__( 'Free', 'full-score-events' );
+		} else {
+			return floatval( $price );
+		}
+	}
+
+	/**
+	 * Output human-readable price
+	 *
+	 * @since 1.0.0
+	 */
+	public function do_price() {
+		echo $this->get_price( 'label' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 }
