@@ -309,3 +309,92 @@ function output_archive_header() {
 		get_plugin_template( 'archive-header' );
 	}
 }
+
+/**
+ * Output event date
+ *
+ * @since 1.0.0
+ */
+function do_event_date() {
+	get_plugin_template( 'event/date' );
+}
+
+/**
+ * Output main event header contents
+ *
+ * @since 1.0.0
+ */
+function do_event_header_content() {
+	get_plugin_template( 'event/header-content' );
+}
+
+/**
+ * Output event registration CTA
+ *
+ * @since 1.0.0
+ */
+function do_event_registration() {
+	get_plugin_template( 'event/registration' );
+}
+
+/**
+ * Output event title
+ *
+ * @since 1.0.0
+ */
+function do_event_title() {
+	$level = is_singular() ? 1 : 2;
+	the_title( "<h{$level} class='fse-event-title'>", "</h{$level}>" );
+}
+
+/**
+ * Output event meta (time and location name)
+ *
+ * @since 1.0.0
+ */
+function do_event_meta() {
+	get_plugin_template( 'event/meta' );
+}
+
+/**
+ * Output event single header
+ *
+ * @since 1.0.0
+ */
+function do_single_event_header() {
+	get_plugin_template( 'event/single/header' );
+}
+
+/**
+ * Output event single header wrapper tag
+ *
+ * @since 1.0.0
+ */
+function do_single_event_header_wrapper() {
+	echo '<div class="fse-event-single-header-wrap">';
+}
+
+/**
+ * Output event single header wrapper closing tag
+ *
+ * @since 1.0.0
+ */
+function do_single_event_header_wrapper_close() {
+	echo '</div>';
+}
+
+function do_single_event_thumbnail() {
+	the_post_thumbnail( 'large', [ 'class' => 'fse-event-single-thumbnail' ] );
+}
+
+function do_single_event_content() {
+	get_plugin_template( 'event/single/content' );
+}
+
+function do_single_event_location() {
+	get_plugin_template( 'event/single/location' );
+}
+
+function do_single_event_contact() {
+	get_plugin_template( 'event/single/contact' );
+}

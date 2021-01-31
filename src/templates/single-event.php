@@ -43,7 +43,7 @@ do_action( 'full_score_events_before_main_content' );
 /**
  * Hook: full_score_events_after_main_content
  *
- * @hooked Full_Score_Events\output_content_wrapper_end - 10
+ * @hooked Full_Score_Events\output_content_wrapper_close - 10
  */
 do_action( 'full_score_events_after_main_content' );
 ?>

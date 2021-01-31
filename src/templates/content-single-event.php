@@ -14,4 +14,37 @@
  * @since   1.0.0
  */
 
-the_title( '<h2>', '</h2>' );
+namespace Full_Score_Events;
+
+/**
+ * Hook: full_score_events_before_single_event
+ */
+do_action( 'full_score_events_before_single_event' );
+
+if ( post_password_required() ) {
+	echo get_the_password_form(); // phpcs:ignore XSS
+	return;
+}
+?>
+<article id="fse-event-<?php the_ID(); ?>" <?php post_class(); ?>>
+	<?php
+	/**
+	 * Hook: full_score_events_single_event_content
+	 *
+	 * @hooked Full_Score_Events\do_single_event_header - 10
+	 * @hooked Full_Score_Events\do_single_event_thumbnail - 20
+	 * @hooked Full_Score_Events\do_single_event_content - 50
+	 * @hooked Full_Score_Events\do_event_location - 70
+	 * @hooked Full_Score_Events\do_event_contact - 80
+	 *
+	 * @since 1.0.0
+	 */
+	do_action( 'full_score_events_single_event_content' );
+	?>
+</article>
+
+<?php
+/**
+ * Hook: full_score_events_before_single_event
+ */
+do_action( 'full_score_events_after_single_event' );
