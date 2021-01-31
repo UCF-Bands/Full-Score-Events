@@ -14,8 +14,6 @@
  * @since   1.0.0
  */
 
-namespace Full_Score_Events;
-
 global $fse_event;
 
 $location = $fse_event->get_location();
