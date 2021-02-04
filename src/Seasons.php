@@ -188,4 +188,44 @@ class Seasons extends Taxonomy {
 			$date_start->format( 'Ymd' )
 		);
 	}
+
+	/**
+	 * Add custom admin columns for term meta
+	 *
+	 * @param  array $columns  Term columns.
+	 * @return array $columns
+	 *
+	 * @since  1.0.0
+	 */
+	public function add_custom_columns( $columns ) {
+
+		// Remove count since we aren't really attaching this to stuff.
+		unset( $columns['posts'] );
+
+		$columns['fse_date_start'] = __( 'Start Date', 'full-score-events' );
+
+		return $columns;
+	}
+
+	/**
+	 * Set the contents of one of this taxonomy term's columns
+	 *
+	 * @param  string  $content  Column content.
+	 * @param  string  $column   Column name.
+	 * @param  integer $term_id  Term ID.
+	 * @return string  $content
+	 *
+	 * @since 1.0.0
+	 */
+	public function set_custom_column( $content, $column, $term_id ) {
+
+		switch ( $column ) {
+			case 'fse_date_start':
+				$date = DateTime::createFromFormat( 'Ymd', get_term_meta( $term_id, 'fse_date_start', true ) );
+				return $date->format( 'M j, Y' );
+
+			default:
+				return $content;
+		}
+	}
 }
