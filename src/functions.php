@@ -21,6 +21,21 @@ function get( $key ) {
 }
 
 /**
+ * Returns a posted value
+ *
+ * Nonce verification should happen before this.
+ *
+ * @param  string $key  $_POST superglobal key.
+ * @return mixed
+ * @see    https://github.com/WordPress/WordPress-Coding-Standards/wiki/Fixing-errors-for-input-data
+ * @since  1.0.0
+ */
+function postval( $key ) {
+	// phpcs:ignore WordPress.Security.NonceVerification.Missing
+	return isset( $_POST[ $key ] ) ? sanitize_text_field( wp_unslash( $_POST[ $key ] ) ) : null;
+}
+
+/**
  * Break array into string of attributes
  *
  * Has special cases for "class" and "data" keys if their values are arrays, so
