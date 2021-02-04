@@ -50,6 +50,8 @@ abstract class Taxonomy {
 		add_action( "{$key}_edit_form_fields", [ $this, 'do_edit_term_nonce' ] );
 		add_action( "created_{$key}", [ $this, 'do_term_nonce_check' ] );
 		add_action( "edited_{$key}", [ $this, 'do_term_nonce_check' ] );
+		add_filter( "manage_edit-{$key}_columns", [ $this, 'add_custom_columns' ] );
+		add_filter( "manage_{$key}_custom_column", [ $this, 'set_custom_column' ], 15, 3 );
 	}
 
 	/**
@@ -190,6 +192,32 @@ abstract class Taxonomy {
 	 * @since 1.0.0
 	 */
 	public function set_term_meta( $term_id ) {
+	}
+
+	/**
+	 * Add custom admin columns for term meta
+	 *
+	 * @param  array $columns  Term columns.
+	 * @return array $columns
+	 *
+	 * @since  1.0.0
+	 */
+	public function add_custom_columns( $columns ) {
+		return $columns;
+	}
+
+	/**
+	 * Set the contents of one of this taxonomy term's columns
+	 *
+	 * @param  string  $content  Column content.
+	 * @param  string  $column   Column name.
+	 * @param  integer $term_id  Term ID.
+	 * @return string  $content
+	 *
+	 * @since 1.0.0
+	 */
+	public function set_custom_column( $content, $column, $term_id ) {
+		return $content;
 	}
 
 	/**
