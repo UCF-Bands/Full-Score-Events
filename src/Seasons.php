@@ -237,6 +237,19 @@ class Seasons extends Taxonomy {
 	}
 
 	/**
+	 * Manage sortable term admin columns
+	 *
+	 * @param  array $columns  Sortable term columns.
+	 * @return array $columns
+	 *
+	 * @since  1.0.0
+	 */
+	public function set_sortable_columns( $columns ) {
+		$columns['fse_date_start'] = 'fse_date_start';
+		return $columns;
+	}
+
+	/**
 	 * Set the contents of one of this taxonomy term's columns
 	 *
 	 * @param  string  $content  Column content.
