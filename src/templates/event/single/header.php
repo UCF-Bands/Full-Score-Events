@@ -23,8 +23,8 @@ global $fse_event;
 	 * Hook: full_score_events_single_event_header
 	 *
 	 * @hooked Full_Score_Events\do_single_event_header_wrapper - 5
-	 * @hooked Full_Score_Events\do_single_event_date - 15
-	 * @hooked Full_Score_Events\do_single_event_header_content - 30
+	 * @hooked Full_Score_Events\do_event_date - 15
+	 * @hooked Full_Score_Events\do_event_header_content - 30
 	 * @hooked Full_Score_Events\do_single_event_registration - 50
 	 * @hooked Full_Score_Events\do_single_event_header_wrapper_close - 100
 	 *
