@@ -1,6 +1,6 @@
 <?php
 /**
- * Template for displaying the events archive
+ * Template for displaying an event single's content
  *
  * This template can be overridden by copying it to
  * yourtheme/full-score-events/content-single-event.php
@@ -45,6 +45,6 @@ if ( post_password_required() ) {
 
 <?php
 /**
- * Hook: full_score_events_before_single_event
+ * Hook: full_score_events_after_single_event
  */
 do_action( 'full_score_events_after_single_event' );
