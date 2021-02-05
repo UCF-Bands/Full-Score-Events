@@ -85,6 +85,25 @@ function do_event_meta() {
 }
 
 /**
+ * Output event excerpt
+ *
+ * @todo  Shouldn't we just hook in the_excerpt?
+ * @since 1.0.0
+ */
+function do_event_excerpt() {
+	the_excerpt();
+}
+
+/**
+ * Output events loop event header
+ *
+ * @since 1.0.0
+ */
+function do_loop_event_header() {
+	get_plugin_template( 'event/loop/header' );
+}
+
+/**
  * Output event single header
  *
  * @since 1.0.0
