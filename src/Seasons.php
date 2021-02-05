@@ -124,6 +124,35 @@ class Seasons extends Taxonomy {
 	}
 
 	/**
+	 * Override arguments in get_terms()
+	 *
+	 * We're using this to order seasons from earliest to latest by default.
+	 *
+	 * Unfortunatey we have to use get_terms_defaults instead of get_terms_args
+	 * because there's an orderby arg bug where 'meta_value_num' (probably
+	 * amoung other things) isn't respected:
+	 *
+	 * @see    https://core.trac.wordpress.org/ticket/42005
+	 *
+	 * @param  array $defaults    get_terms() default arguments.
+	 * @param  array $taxonomies  Taxonomies currently being queried.
+	 * @return array $defaults
+	 *
+	 * @since 1.0.0
+	 */
+	public function set_terms_query( $defaults, $taxonomies ) {
+
+		if ( [ $this::TAX_KEY ] !== $taxonomies ) {
+			return $defaults;
+		}
+
+		$defaults['meta_key'] = 'fse_date_start';
+		$defaults['orderby']  = 'meta_value_num';
+
+		return $defaults;
+	}
+
+	/**
 	 * Output new term form fields
 	 *
 	 * @since 1.0.0
