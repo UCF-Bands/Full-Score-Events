@@ -46,6 +46,7 @@ abstract class Taxonomy {
 		add_action( 'init', [ $this, 'do_registration' ] );
 		add_action( 'full_score_events_activate', [ $this, 'do_registration' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
+		add_filter( 'get_terms_defaults', [ $this, 'set_terms_query' ], 15, 2 );
 		add_action( "{$key}_add_form_fields", [ $this, 'do_new_term_nonce' ] );
 		add_action( "{$key}_edit_form_fields", [ $this, 'do_edit_term_nonce' ] );
 		add_action( "created_{$key}", [ $this, 'do_term_nonce_check' ] );
@@ -118,6 +119,25 @@ abstract class Taxonomy {
 	 * @since 1.0.0
 	 */
 	public function enqueue_scripts() {
+	}
+
+	/**
+	 * Override arguments in get_terms()
+	 *
+	 * Unfortunatey we have to use get_terms_defaults instead of get_terms_args
+	 * because there's an orderby arg bug where 'meta_value_num' (probably
+	 * amoung other things) isn't respected:
+	 *
+	 * @see    https://core.trac.wordpress.org/ticket/42005
+	 *
+	 * @param  array $defaults    get_terms() default arguments.
+	 * @param  array $taxonomies  Taxonomies currently being queried.
+	 * @return array $defaults
+	 *
+	 * @since 1.0.0
+	 */
+	public function set_terms_query( $defaults, $taxonomies ) {
+		return $defaults;
 	}
 
 	/**
