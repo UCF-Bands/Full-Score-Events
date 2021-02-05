@@ -37,7 +37,7 @@ do_action( 'full_score_events_before_main_content' );
 	<?php
 	while ( have_posts() ) :
 		the_post();
-		get_plugin_template( 'content', 'single-event' );
+		get_plugin_template( 'content', 'event' );
 	endwhile;
 	?>
 
