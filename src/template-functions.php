@@ -95,6 +95,15 @@ function do_event_excerpt() {
 }
 
 /**
+ * Output event link overlay
+ *
+ * @since 1.0.0
+ */
+function do_event_link_overlay() {
+	get_plugin_template( 'event/link-overlay' );
+}
+
+/**
  * Output events loop event header
  *
  * @since 1.0.0
