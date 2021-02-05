@@ -52,6 +52,7 @@ abstract class Taxonomy {
 		add_action( "created_{$key}", [ $this, 'do_term_nonce_check' ] );
 		add_action( "edited_{$key}", [ $this, 'do_term_nonce_check' ] );
 		add_filter( "manage_edit-{$key}_columns", [ $this, 'add_custom_columns' ] );
+		add_filter( "manage_edit-{$key}_sortable_columns", [ $this, 'set_sortable_columns' ], 15 );
 		add_filter( "manage_{$key}_custom_column", [ $this, 'set_custom_column' ], 15, 3 );
 	}
 
@@ -223,6 +224,18 @@ abstract class Taxonomy {
 	 * @since  1.0.0
 	 */
 	public function add_custom_columns( $columns ) {
+		return $columns;
+	}
+
+	/**
+	 * Manage sortable term admin columns
+	 *
+	 * @param  array $columns  Sortable term columns.
+	 * @return array $columns
+	 *
+	 * @since  1.0.0
+	 */
+	public function set_sortable_columns( $columns ) {
 		return $columns;
 	}
 
