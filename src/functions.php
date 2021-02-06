@@ -272,7 +272,7 @@ function get_can_view_post( $post_id ) {
  * @since  1.0.0
  */
 function get_location( $post_id ) {
-	return get_can_view_post( $post_id ) ? new Location( $post_id ) : false;
+	return $post_id && get_can_view_post( $post_id ) ? new Location( $post_id ) : false;
 }
 
 /**
