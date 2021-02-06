@@ -87,6 +87,7 @@ abstract class Post_Type {
 		add_action( 'the_post', [ $this, 'do_post_setup' ] );
 		add_action( 'template_redirect', [ $this, 'do_singular_redirect' ] );
 		add_filter( "manage_{$key}_posts_columns", [ $this, 'set_posts_columns' ] );
+		add_filter( "manage_edit-{$key}_sortable_columns", [ $this, 'set_sortable_columns' ], 15 );
 		add_action( "manage_{$key}_posts_custom_column", [ $this, 'do_custom_column' ], 20, 2 );
 	}
 
@@ -269,6 +270,18 @@ abstract class Post_Type {
 	 * @since 1.0.0
 	 */
 	public function set_posts_columns( $columns ) {
+		return $columns;
+	}
+
+	/**
+	 * Manage sortable admin columns
+	 *
+	 * @param  array $columns  Sortable columns.
+	 * @return array $columns
+	 *
+	 * @since  1.0.0
+	 */
+	public function set_sortable_columns( $columns ) {
 		return $columns;
 	}
 
