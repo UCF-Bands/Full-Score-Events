@@ -171,21 +171,31 @@ class Events extends Post_Type {
 
 		$meta_query = $query->get( 'meta_query' ) ?: [];
 
-		if ( $query->is_admin ) {
-
-			// These $meta_query indexes line up with orderby arg values.
-			if ( $query->get( 'orderby' ) ) {
-				$meta_query['date_start']  = [
-					'key'  => '_date_start',
-					'type' => 'DATETIME',
-				];
-				$meta_query['date_finish'] = [
-					'key'  => '_date_finish',
-					'type' => 'DATETIME',
-				];
-			}
+		// Require and add orderby names for start/finish dates.
+		if ( ! $query->is_admin || ( $query->is_admin && $query->get( 'orderby' ) ) ) {
+			$meta_query['date_start']  = [
+				'key'  => '_date_start',
+				'type' => 'DATETIME',
+			];
+			$meta_query['date_finish'] = [
+				'key'  => '_date_finish',
+				'type' => 'DATETIME',
+			];
 		}
 
+		// Order from earliest to latest on front end, excluding passed dates.
+		if ( ! $query->is_admin ) {
+
+			$query->set( 'orderby', 'date_start' );
+			$query->set( 'order', 'ASC' );
+
+			$now = current_datetime();
+
+			$meta_query['date_finish']['value']   = $now->format( 'c' );
+			$meta_query['date_finish']['compare'] = '>';
+		}
+
+		// Set our modified meta query.
 		$query->set( 'meta_query', $meta_query );
 	}
 
