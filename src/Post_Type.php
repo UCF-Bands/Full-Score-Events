@@ -82,7 +82,7 @@ abstract class Post_Type {
 		add_action( 'init', [ $this, 'do_registration' ] );
 		add_action( 'full_score_events_activate', [ $this, 'do_registration' ] );
 		add_action( 'init', [ $this, 'do_meta_registration' ] );
-		add_action( 'pre_get_posts', [ $this, 'maybe_set_main_query' ] );
+		add_action( 'pre_get_posts', [ $this, 'maybe_set_query' ] );
 		add_filter( 'enter_title_here', [ $this, 'set_title_placeholder' ] );
 		add_action( 'the_post', [ $this, 'do_post_setup' ] );
 		add_action( 'template_redirect', [ $this, 'do_singular_redirect' ] );
@@ -169,24 +169,25 @@ abstract class Post_Type {
 	 * @param WP_Query $query  Current query.
 	 * @since 1.0.0
 	 */
-	public function maybe_set_main_query( $query ) {
+	public function maybe_set_query( $query ) {
 
-		if ( ! $query->is_main_query() || ! $query->is_post_type_archive( static::CPT_KEY ) ) {
-			return;
+		if (
+			( $query->is_main_query() && $query->is_post_type_archive( static::CPT_KEY ) )
+			|| $query->get( 'post_type' ) === static::CPT_KEY
+		) {
+			$this->set_query( $query );
 		}
-
-		$this->set_main_query( $query );
 	}
 
 	/**
-	 * Make adjustments to main WP_Query
+	 * Make adjustments to WP_Query
 	 *
 	 * It should already be a main query for the current post type's archive.
 	 *
 	 * @param WP_Query $query  Main query object.
 	 * @since 1.0.0
 	 */
-	protected function set_main_query( $query ) {
+	protected function set_query( $query ) {
 	}
 
 	/**
