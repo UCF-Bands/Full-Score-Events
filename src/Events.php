@@ -162,6 +162,34 @@ class Events extends Post_Type {
 	}
 
 	/**
+	 * Conditionally set main query arguments
+	 *
+	 * @param WP_Query $query  Main query for current post type archive.
+	 * @since 1.0.0
+	 */
+	protected function set_main_query( $query ) {
+
+		$meta_query = $query->get( 'meta_query' ) ?: [];
+
+		if ( $query->is_admin ) {
+
+			// These $meta_query indexes line up with orderby arg values.
+			if ( $query->get( 'orderby' ) ) {
+				$meta_query['date_start']  = [
+					'key'  => '_date_start',
+					'type' => 'DATETIME',
+				];
+				$meta_query['date_finish'] = [
+					'key'  => '_date_finish',
+					'type' => 'DATETIME',
+				];
+			}
+		}
+
+		$query->set( 'meta_query', $meta_query );
+	}
+
+	/**
 	 * Manage admin columns
 	 *
 	 * @param  array $columns Column headings.
@@ -192,6 +220,20 @@ class Events extends Post_Type {
 			$columns['date'] = __( 'Post Date', 'full-score-events' );
 		}
 
+		return $columns;
+	}
+
+	/**
+	 * Manage sortable admin columns
+	 *
+	 * @param  array $columns  Sortable columns.
+	 * @return array $columns
+	 *
+	 * @since  1.0.0
+	 */
+	public function set_sortable_columns( $columns ) {
+		$columns['date_start']  = 'date_start';
+		$columns['date_finish'] = 'date_finish';
 		return $columns;
 	}
 
