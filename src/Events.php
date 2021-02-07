@@ -244,6 +244,11 @@ class Events extends Post_Type {
 			// Location.
 			case 'location':
 				$location = $fse_event->get_location();
+
+				if ( ! $location ) {
+					return;
+				}
+
 				echo '<a href="' . esc_attr( get_edit_post_link( $location->get_id() ) ) . '">';
 				$location->do_title();
 				echo '</a><br>';
@@ -253,8 +258,13 @@ class Events extends Post_Type {
 			// Contact (user).
 			case 'contact':
 				$contact = $fse_event->get_contact();
-				$edit    = get_edit_profile_url( $contact );
-				$name    = get_the_author_meta( 'display_name', $contact );
+
+				if ( ! $contact ) {
+					return;
+				}
+
+				$edit = get_edit_profile_url( $contact );
+				$name = get_the_author_meta( 'display_name', $contact );
 				echo '<a href="' . esc_attr( $edit ) . '">' . esc_html( $name ) . '</a><br>';
 				return;
 		}
