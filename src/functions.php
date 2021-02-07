@@ -100,6 +100,46 @@ function do_attrs_class() {
 }
 
 /**
+ * Custom kses allowed HTML for "inlined" entities.
+ *
+ * @return array Allowed HTML entities/attributes.
+ * @since  1.0.0
+ */
+function get_allowed_inline_html() {
+	return [
+		'a'      => [
+			'href'  => [],
+			'rel'   => [],
+			'title' => [],
+		],
+		'b'      => [],
+		'strong' => [],
+		'i'      => [],
+		'em'     => [],
+		'code'   => [],
+	];
+}
+
+/**
+ * Configure "allowed inline HTML" message for block editor.
+ *
+ * @param  array $object Data to be localized in JS object.
+ * @return array $object Data to be localized + "allowed inline HTML" help text.
+ *
+ * @since  1.0.0
+ */
+function set_blocks_js_allowed_inline_html_help( $object ) {
+
+	$object['allowedInlineHTML'] = sprintf(
+		__( 'Allowed HTML: %s', 'full-score-events' ),
+		implode( ', ', array_keys( get_allowed_inline_html() ) )
+	);
+
+	return $object;
+}
+add_filter( 'full_score_events_editor_js_object', __NAMESPACE__ . '\set_blocks_js_allowed_inline_html_help' );
+
+/**
  * Locate a template part in the theme, then fall back to plugin.
  *
  * @param  string $slug  Template slug (excluding .php).
