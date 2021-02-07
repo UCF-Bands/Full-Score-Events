@@ -321,4 +321,23 @@ class Events extends Post_Type {
 				return;
 		}
 	}
+
+	/**
+	 * Get upcoming events
+	 *
+	 * The start_date meta query should be included by default via pre_get_posts
+	 * hook.
+	 *
+	 * @param integer $number  Posts to get.
+	 * @since 1.0.0
+	 */
+	public static function get_upcoming( $number = 3 ) {
+
+		return new \WP_Query(
+			[
+				'post_type'      => self::CPT_KEY,
+				'posts_per_page' => $number,
+			]
+		);
+	}
 }
