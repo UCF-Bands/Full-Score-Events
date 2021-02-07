@@ -44,9 +44,13 @@ class Upcoming_Events extends Block {
 	 */
 	protected function get_attributes() {
 		return [
-			'number' => [
+			'number'    => [
 				'type'    => 'number',
 				'default' => 3,
+			],
+			'noneFound' => [
+				'type'    => 'string',
+				'default' => __( "There aren't any scheduled events at this time.", 'full-score-events' ),
 			],
 		];
 	}

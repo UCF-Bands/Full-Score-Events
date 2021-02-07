@@ -9,6 +9,12 @@
 namespace Full_Score_Events;
 
 $events = Events::get_upcoming();
+d( $noneFound );
+
+// Don't output block at all if there aren't any events and no message.
+if ( ! $events->have_posts() && ! $noneFound ) {
+	return;
+}
 ?>
 
 <div <?php do_attrs_class( 'fse-upcoming-events', $className ?? '' ); ?>>
@@ -38,7 +44,7 @@ $events = Events::get_upcoming();
 	<?php else : ?>
 
 		<div class="fse-no-upcoming-events">
-			<p><?php esc_html_e( "There aren't any scheduled events at this time.", 'full-score-events' ); ?></p>
+			<p><?php echo wp_kses( $noneFound, get_allowed_inline_html() ); ?></p>
 		</div>
 
 	<?php endif; ?>

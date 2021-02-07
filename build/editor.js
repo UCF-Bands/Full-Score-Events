@@ -37826,7 +37826,8 @@ __webpack_require__.r(__webpack_exports__);
 function edit(_ref) {
   var attributes = _ref.attributes,
       setAttributes = _ref.setAttributes;
-  var number = attributes.number;
+  var number = attributes.number,
+      noneFound = attributes.noneFound;
   var numberControl = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["TextControl"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Number to show', 'full-score-events'),
     type: "number",
@@ -37839,12 +37840,24 @@ function edit(_ref) {
       });
     }
   });
+  var noneFoundControl = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["TextareaControl"], {
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('"None found" message', 'full-score-events'),
+    value: noneFound,
+    onChange: function onChange(value) {
+      return setAttributes({
+        noneFound: value
+      });
+    },
+    help: fullScoreEventsEditor.allowedInlineHTML
+  });
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["InspectorControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["PanelBody"], {
     title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Title', 'full-score-events')
-  }, numberControl)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["useBlockProps"])(), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_2___default.a, {
+  }, numberControl, noneFoundControl)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["useBlockProps"])(), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_2___default.a, {
     block: "full-score-events/upcoming-events",
     attributes: attributes
-  })));
+  }), !noneFound && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
+    className: "no-events-found-message-note"
+  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("There currently isn't a \"none found\" message, so this block won't display at all if there aren't any upcoming events found.", 'full-score-events'))));
 }
 
 /***/ }),
@@ -37883,6 +37896,10 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('ful
   attributes: {
     number: {
       type: 'number'
+    },
+    noneFound: {
+      type: 'string',
+      default: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("There aren't any scheduled events at this time.", 'full-score-events')
     }
   },
   edit: _edit__WEBPACK_IMPORTED_MODULE_3__["default"],

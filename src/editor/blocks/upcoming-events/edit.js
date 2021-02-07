@@ -7,10 +7,10 @@
 import { __ } from '@wordpress/i18n';
 import ServerSideRender from '@wordpress/server-side-render';
 import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, TextControl } from '@wordpress/components';
+import { PanelBody, TextControl, TextareaControl } from '@wordpress/components';
 
 export default function edit( { attributes, setAttributes } ) {
-	const { number } = attributes;
+	const { number, noneFound } = attributes;
 
 	const numberControl = (
 		<TextControl
@@ -25,11 +25,21 @@ export default function edit( { attributes, setAttributes } ) {
 		/>
 	);
 
+	const noneFoundControl = (
+		<TextareaControl
+			label={ __( '"None found" message', 'full-score-events' ) }
+			value={ noneFound }
+			onChange={ ( value ) => setAttributes( { noneFound: value } ) }
+			help={ fullScoreEventsEditor.allowedInlineHTML }
+		/>
+	);
+
 	return (
 		<>
 			<InspectorControls>
 				<PanelBody title={ __( 'Title', 'full-score-events' ) }>
 					{ numberControl }
+					{ noneFoundControl }
 				</PanelBody>
 			</InspectorControls>
 
@@ -38,6 +48,14 @@ export default function edit( { attributes, setAttributes } ) {
 					block="full-score-events/upcoming-events"
 					attributes={ attributes }
 				/>
+				{ ! noneFound && (
+					<p className="no-events-found-message-note">
+						{ __(
+							"There currently isn't a \"none found\" message, so this block won't display at all if there aren't any upcoming events found.",
+							'full-score-events'
+						) }
+					</p>
+				) }
 			</div>
 		</>
 	);

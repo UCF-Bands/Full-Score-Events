@@ -26,6 +26,13 @@ registerBlockType( 'full-score-events/upcoming-events', {
 		number: {
 			type: 'number',
 		},
+		noneFound: {
+			type: 'string',
+			default: __(
+				"There aren't any scheduled events at this time.",
+				'full-score-events'
+			),
+		},
 	},
 
 	edit,
