@@ -167,7 +167,7 @@ class Events extends Post_Type {
 	 * @param WP_Query $query  Main query for current post type archive.
 	 * @since 1.0.0
 	 */
-	protected function set_main_query( $query ) {
+	protected function set_query( $query ) {
 
 		$meta_query = $query->get( 'meta_query' ) ?: [];
 
