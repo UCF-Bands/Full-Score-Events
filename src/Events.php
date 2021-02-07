@@ -216,7 +216,7 @@ class Events extends Post_Type {
 				elseif ( $fse_event->is_time_tba() ) :
 					// phpcs:ignore
 					// Translators: %1$sTBA%2$s (%3$s).
-					printf( esc_html__( '%1$sTBA%2$s (%3$s)', 'full-score-events' ), '<b>', '</b>', esc_html( $fse_event->get_time_finish() ) );
+					printf( esc_html__( '%1$sTBA%2$s (%3$s)', 'full-score-events' ), '<b>', '</b>', esc_html( $fse_event->get_time_start() ) );
 				else :
 					$fse_event->do_time_start();
 				endif;
