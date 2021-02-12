@@ -49,6 +49,7 @@ abstract class Taxonomy {
 		add_filter( 'get_terms_defaults', [ $this, 'set_terms_query' ], 15, 2 );
 		add_action( "{$key}_add_form_fields", [ $this, 'do_new_term_nonce' ] );
 		add_action( "{$key}_edit_form_fields", [ $this, 'do_edit_term_nonce' ] );
+		add_action( 'quick_edit_custom_box', [ $this, 'do_quick_edit_term_nonce' ], 10, 3 );
 		add_action( "created_{$key}", [ $this, 'do_term_nonce_check' ] );
 		add_action( "edited_{$key}", [ $this, 'do_term_nonce_check' ] );
 		add_filter( "manage_edit-{$key}_columns", [ $this, 'add_custom_columns' ] );
@@ -170,6 +171,23 @@ abstract class Taxonomy {
 	public function do_edit_term_nonce( $term ) {
 		$this->do_term_nonce_field();
 		$this->do_edit_term_fields( $term );
+	}
+
+	/**
+	 * Output term quick edit nonce
+	 *
+	 * @param string $column     Current admin column.
+	 * @param string $post_type  Post type.
+	 * @param string $taxonomy   Taxonomy.
+	 * @since 1.0.0
+	 */
+	public function do_quick_edit_term_nonce( $column, $post_type, $taxonomy ) {
+
+		if ( static::TAX_KEY !== $taxonomy ) {
+			return;
+		}
+
+		$this->do_term_nonce_field();
 	}
 
 	/**

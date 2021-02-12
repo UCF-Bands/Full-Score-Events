@@ -209,7 +209,16 @@ class Seasons extends Taxonomy {
 	 * @since 1.0.0
 	 */
 	public function set_term_meta( $term_id ) {
-		$date_start = DateTime::createFromFormat( 'm/d/Y', postval( 'fse_date_start' ) );
+
+		$date_start = postval( 'fse_date_start' );
+
+		// date_start field is required where shown, but it isn't part of the
+		// quick edit form.
+		if ( ! $date_start ) {
+			return;
+		}
+
+		$date_start = DateTime::createFromFormat( 'm/d/Y', $date_start );
 
 		update_term_meta(
 			$term_id,
