@@ -104,6 +104,15 @@ function do_event_link_overlay() {
 }
 
 /**
+ * Output "all events" link/button
+ *
+ * @since 1.0.0
+ */
+function do_all_events_link() {
+	get_plugin_template( 'event/all-events-link' );
+}
+
+/**
  * Output events loop event header
  *
  * @since 1.0.0
