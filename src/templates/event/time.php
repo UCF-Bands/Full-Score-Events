@@ -28,10 +28,12 @@ if ( ! $fse_event->get_time_start() ) {
 	<?php
 	do_icon( 'clock' );
 
+	if ( $fse_event->is_time_tba() ) :
+		return esc_html_e( 'TBA', 'full-score-events' );
+	endif;
+
 	if ( $fse_event->is_daily() ) :
 		esc_html_e( 'Daily', 'full-score-events' );
-	elseif ( $fse_event->is_time_tba() ) :
-		esc_html_e( 'TBA', 'full-score-events' );
 	else :
 		?>
 		<time datetime="<?php $fse_event->do_time_start( 'attr' ); ?>"><?php $fse_event->do_time_start(); ?></time>
