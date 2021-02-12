@@ -61,5 +61,10 @@ class Template_Hooks {
 		add_action( 'full_score_events_single_event_header', 'Full_Score_Events\do_event_header_content', 30 );
 		add_action( 'full_score_events_single_event_header', 'Full_Score_Events\do_event_registration', 50 );
 		add_action( 'full_score_events_single_event_header', 'Full_Score_Events\do_single_event_header_wrapper_close', 100 );
+
+		// Upcoming event(s).
+		add_action( 'full_score_events_upcoming_event_content', 'Full_Score_Events\do_loop_event_header' );
+		add_action( 'full_score_events_upcoming_event_content', 'Full_Score_Events\do_event_link_overlay', 40 );
+		add_action( 'full_score_events_after_upcoming_events', 'Full_Score_Events\do_all_events_link' );
 	}
 }
