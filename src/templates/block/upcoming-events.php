@@ -32,7 +32,7 @@ if ( ! $events->have_posts() && ! $noneFound ) {
 				$events->the_post();
 				?>
 				<li class="fse-upcoming-event">
-					<?php get_plugin_template( 'content', 'event' ); ?>
+					<?php get_plugin_template( 'content', 'upcoming-event' ); ?>
 				</li>
 				<?php
 			endwhile;
@@ -51,6 +51,8 @@ if ( ! $events->have_posts() && ! $noneFound ) {
 	<?php
 	/**
 	 * Hook: full_score_events_after_upcoming_events
+	 *
+	 * @hooked Full_Score_Events\do_all_events_link - 10
 	 */
 	do_action( 'full_score_events_after_upcoming_events' );
 	?>
