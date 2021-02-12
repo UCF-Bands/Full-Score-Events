@@ -295,4 +295,14 @@ abstract class Post_Type {
 	public function do_custom_column( $name ) {
 		return null;
 	}
+
+	/**
+	 * Get post type's archive URL
+	 *
+	 * @return string  Post type archive link/URL.
+	 * @since  1.0.0
+	 */
+	public static function get_archive_url() {
+		return get_post_type_archive_link( static::CPT_KEY );
+	}
 }
