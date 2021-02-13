@@ -18,6 +18,8 @@ namespace Full_Score_Events;
 
 /**
  * Hook: full_score_events_loop_before_event
+ *
+ * @hooked Seasons\do_season_label - 10
  */
 do_action( 'full_score_events_loop_before_event' );
 ?>
