@@ -21,9 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 get_header( 'event' );
-?>
 
-<?php
 /**
  * Hook: full_score_events_before_main_content
  *
@@ -33,12 +31,29 @@ get_header( 'event' );
 do_action( 'full_score_events_before_main_content' );
 ?>
 
-
 	<?php
-	while ( have_posts() ) :
-		the_post();
-		get_plugin_template( 'content', 'single-event' );
-	endwhile;
+	if ( have_posts() ) :
+
+		/**
+		 * Hook: full_score_events_loop_before_events
+		 */
+		do_action( 'full_score_events_loop_before_events' );
+
+		while ( have_posts() ) :
+			the_post();
+			get_plugin_template( 'content', 'event' );
+		endwhile;
+
+		/**
+		 * Hook: full_score_events_loop_after_events
+		 *
+		 * @hooked the_posts_pagination - 10
+		 */
+		do_action( 'full_score_events_loop_after_events' );
+
+	else :
+		get_plugin_template( 'content-none', 'event' );
+	endif;
 	?>
 
 <?php
@@ -48,7 +63,5 @@ do_action( 'full_score_events_before_main_content' );
  * @hooked Full_Score_Events\do_content_wrapper_end - 10
  */
 do_action( 'full_score_events_after_main_content' );
-?>
 
-<?php
 get_footer( 'event' );

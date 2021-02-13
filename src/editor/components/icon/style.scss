@@ -1,0 +1,12 @@
+/**
+ * Misc icon helper styles
+ *
+ * @since   1.0.0
+ * @package Full_Score_Events
+ */
+[data-fse-icon] {
+	width: 1rem;
+	width: var(--global--font-size-base);
+	height: 1em;
+	vertical-align: -0.125em;
+}

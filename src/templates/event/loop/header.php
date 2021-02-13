@@ -1,9 +1,9 @@
 <?php
 /**
- * Template for displaying an event single's header
+ * Template for displaying a event loop's event header
  *
  * This template can be overridden by copying it to
- * yourtheme/full-score-events/event/single/header.php
+ * yourtheme/full-score-events/event/loop/header.php
  *
  * However, Full Score Events may need to update template files and you (the
  * theme developer) will need to copy the new file to your theme to maintain
@@ -17,19 +17,16 @@
 global $fse_event;
 
 ?>
-<header class="fse-event-single-header">
+<header class="fse-events-loop-event-header">
 	<?php
 	/**
-	 * Hook: full_score_events_single_event_header
+	 * Hook: full_score_events_loop_event_header
 	 *
-	 * @hooked Full_Score_Events\do_single_event_header_wrapper - 5
 	 * @hooked Full_Score_Events\do_event_date - 15
 	 * @hooked Full_Score_Events\do_event_header_content - 30
-	 * @hooked Full_Score_Events\do_single_event_registration - 50
-	 * @hooked Full_Score_Events\do_single_event_header_wrapper_close - 100
 	 *
 	 * @since 1.0.0
 	 */
-	do_action( 'full_score_events_single_event_header' );
+	do_action( 'full_score_events_loop_event_header' );
 	?>
 </header>

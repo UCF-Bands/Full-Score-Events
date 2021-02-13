@@ -42,8 +42,30 @@ abstract class Taxonomy {
 	 * @since 1.0.0
 	 */
 	public function __construct() {
+		$key = static::TAX_KEY;
+		add_action( 'init', [ $this, 'do_init' ] );
 		add_action( 'init', [ $this, 'do_registration' ] );
 		add_action( 'full_score_events_activate', [ $this, 'do_registration' ] );
+		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
+		add_filter( 'get_terms_defaults', [ $this, 'set_terms_query' ], 15, 2 );
+		add_action( "{$key}_add_form_fields", [ $this, 'do_new_term_nonce' ] );
+		add_action( "{$key}_edit_form_fields", [ $this, 'do_edit_term_nonce' ] );
+		add_action( 'quick_edit_custom_box', [ $this, 'do_quick_edit_term_nonce' ], 10, 3 );
+		add_action( "created_{$key}", [ $this, 'do_term_nonce_check' ] );
+		add_action( "edited_{$key}", [ $this, 'do_term_nonce_check' ] );
+		add_action( "saved_{$key}", [ $this, 'do_saved_term' ] );
+		add_action( "delete_{$key}", [ $this, 'do_deleted_term' ] );
+		add_filter( "manage_edit-{$key}_columns", [ $this, 'add_custom_columns' ] );
+		add_filter( "manage_edit-{$key}_sortable_columns", [ $this, 'set_sortable_columns' ], 15 );
+		add_filter( "manage_{$key}_custom_column", [ $this, 'set_custom_column' ], 15, 3 );
+	}
+
+	/**
+	 * Do WP init actions
+	 *
+	 * @since 1.0.0
+	 */
+	public function do_init() {
 	}
 
 	/**
@@ -89,6 +111,193 @@ abstract class Taxonomy {
 	 */
 	protected function get_tax_args() {
 		return [];
+	}
+
+	/**
+	 * Are we currently on a term creation/edit screen for this taxonomy?
+	 *
+	 * @return boolean
+	 * @since  1.0.0
+	 */
+	protected function is_term_edit() {
+		$screen = get_current_screen();
+		$base   = $screen->base;
+
+		return static::TAX_KEY === $screen->taxonomy && ( 'term' === $base || 'edit-tags' === $base );
+	}
+
+	/**
+	 * Enqueue taxonomy-specific admin scripts
+	 *
+	 * @since 1.0.0
+	 */
+	public function enqueue_scripts() {
+	}
+
+	/**
+	 * Override arguments in get_terms()
+	 *
+	 * Unfortunatey we have to use get_terms_defaults instead of get_terms_args
+	 * because there's an orderby arg bug where 'meta_value_num' (probably
+	 * amoung other things) isn't respected:
+	 *
+	 * @see    https://core.trac.wordpress.org/ticket/42005
+	 *
+	 * @param  array $defaults    get_terms() default arguments.
+	 * @param  array $taxonomies  Taxonomies currently being queried.
+	 * @return array $defaults
+	 *
+	 * @since 1.0.0
+	 */
+	public function set_terms_query( $defaults, $taxonomies ) {
+		return $defaults;
+	}
+
+	/**
+	 * Output a nonce field for the term being edited/created
+	 *
+	 * @since 1.0.0
+	 */
+	private function do_term_nonce_field() {
+		$key = static::TAX_KEY;
+		wp_nonce_field( "{$key}_term_edit", "{$key}_nonce" );
+	}
+
+	/**
+	 * Output new term nonce and other fields
+	 *
+	 * @since 1.0.0
+	 */
+	public function do_new_term_nonce() {
+		$this->do_term_nonce_field();
+		$this->do_new_term_fields();
+	}
+
+	/**
+	 * Output term edit nonce and other fields
+	 *
+	 * @param WP_Term $term  Term being edited.
+	 * @since 1.0.0
+	 */
+	public function do_edit_term_nonce( $term ) {
+		$this->do_term_nonce_field();
+		$this->do_edit_term_fields( $term );
+	}
+
+	/**
+	 * Output term quick edit nonce
+	 *
+	 * @param string $column     Current admin column.
+	 * @param string $post_type  Post type.
+	 * @param string $taxonomy   Taxonomy.
+	 * @since 1.0.0
+	 */
+	public function do_quick_edit_term_nonce( $column, $post_type, $taxonomy ) {
+
+		if ( static::TAX_KEY !== $taxonomy ) {
+			return;
+		}
+
+		$this->do_term_nonce_field();
+	}
+
+	/**
+	 * Output new term form fields
+	 *
+	 * @since 1.0.0
+	 */
+	protected function do_new_term_fields() {
+	}
+
+	/**
+	 * Output term edit form fields
+	 *
+	 * @param WP_Term $term  Term being edited.
+	 * @since 1.0.0
+	 */
+	protected function do_edit_term_fields( $term ) {
+	}
+
+	/**
+	 * Perform a nonce check and send to processing
+	 *
+	 * @param integer $term_id  New or edited term ID.
+	 * @since 1.0.0
+	 */
+	public function do_term_nonce_check( $term_id ) {
+		$key = static::TAX_KEY;
+
+		if (
+			check_ajax_referer( "{$key}_term_edit", "{$key}_nonce" ) ||
+			check_admin_referer( "{$key}_term_edit", "{$key}_nonce" )
+		) {
+			$this->set_term_meta( $term_id );
+		}
+	}
+
+	/**
+	 * Do actions on updated/created term
+	 *
+	 * @param integer $term_id  Created/updated term ID.
+	 * @since 1.0.0
+	 */
+	public function do_saved_term( $term_id ) {
+	}
+
+	/**
+	 * Do actions on deleted term
+	 *
+	 * @param integer $term_id  Deleted term ID.
+	 * @since 1.0.0
+	 */
+	public function do_deleted_term( $term_id ) {
+	}
+
+	/**
+	 * Run term meta saving/updating
+	 *
+	 * @param integer $term_id  Term ID.
+	 * @since 1.0.0
+	 */
+	public function set_term_meta( $term_id ) {
+	}
+
+	/**
+	 * Add custom admin columns for term meta
+	 *
+	 * @param  array $columns  Term columns.
+	 * @return array $columns
+	 *
+	 * @since  1.0.0
+	 */
+	public function add_custom_columns( $columns ) {
+		return $columns;
+	}
+
+	/**
+	 * Manage sortable term admin columns
+	 *
+	 * @param  array $columns  Sortable term columns.
+	 * @return array $columns
+	 *
+	 * @since  1.0.0
+	 */
+	public function set_sortable_columns( $columns ) {
+		return $columns;
+	}
+
+	/**
+	 * Set the contents of one of this taxonomy term's columns
+	 *
+	 * @param  string  $content  Column content.
+	 * @param  string  $column   Column name.
+	 * @param  integer $term_id  Term ID.
+	 * @return string  $content
+	 *
+	 * @since 1.0.0
+	 */
+	public function set_custom_column( $content, $column, $term_id ) {
+		return $content;
 	}
 
 	/**

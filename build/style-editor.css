@@ -1,4 +1,16 @@
 /**
+ * Misc icon helper styles
+ *
+ * @since   1.0.0
+ * @package Full_Score_Events
+ */
+[data-fse-icon] {
+  width: 1rem;
+  width: var(--global--font-size-base);
+  height: 1em;
+  vertical-align: -0.125em; }
+
+/**
  * Shared block styling
  *
  * @since   1.0.0
@@ -45,8 +57,6 @@ body {
   padding: 0.5rem 1rem;
   font-weight: 700;
   border: 2px solid var(--global--color-border); }
-  .wp-block-full-score-events-callout [data-icon] {
-    width: var(--global--font-size-base); }
 
 /**
  * Schedule displaying block

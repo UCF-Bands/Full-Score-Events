@@ -124,7 +124,7 @@ class Events extends Post_Type {
 				'items_list_navigation' => __( 'Events list navigation', 'full-score-events' ),
 				'filter_items_list'     => __( 'Filter events list', 'full-score-events' ),
 			],
-			'supports'            => [ 'title', 'editor', 'thumbnail', 'custom-fields', 'revisions' ],
+			'supports'            => [ 'title', 'editor', 'excerpt', 'thumbnail', 'custom-fields', 'revisions' ],
 			'public'              => true,
 			'show_ui'             => true,
 			'menu_icon'           => 'dashicons-calendar-alt',
@@ -161,53 +161,183 @@ class Events extends Post_Type {
 		];
 	}
 
-	// /**
-	//  * Manage admin columns
-	//  *
-	//  * @param  array $columns Column headings.
-	//  * @return array $columns
-	//  *
-	//  * @since 1.0.0
-	//  */
-	// public function set_posts_columns( $columns ) {
+	/**
+	 * Conditionally set main query arguments
+	 *
+	 * @param WP_Query $query  Main query for current post type archive.
+	 * @since 1.0.0
+	 */
+	protected function set_query( $query ) {
 
-	// 	// Move date column to end.
-	// 	$date = $columns['date'] ?? false;
-	// 	unset( $columns['date'] );
+		$meta_query = $query->get( 'meta_query' ) ?: [];
 
-	// 	$columns['address'] = __( 'Address', 'full-score-events' );
+		// Require and add orderby names for start/finish dates.
+		if ( ! $query->is_admin || ( $query->is_admin && $query->get( 'orderby' ) ) ) {
+			$meta_query['date_start']  = [
+				'key'  => '_date_start',
+				'type' => 'DATETIME',
+			];
+			$meta_query['date_finish'] = [
+				'key'  => '_date_finish',
+				'type' => 'DATETIME',
+			];
+		}
 
-	// 	if ( $date ) {
-	// 		$columns['date'] = $date;
-	// 	}
+		// Order from earliest to latest on front end, excluding passed dates.
+		if ( ! $query->is_admin ) {
 
-	// 	return $columns;
-	// }
+			$query->set( 'orderby', 'date_start' );
+			$query->set( 'order', 'ASC' );
 
-	// /**
-	//  * Set value of custom admin column
-	//  *
-	//  * @param string $name  Column name.
-	//  * @since 1.0.0
-	//  */
-	// public function do_custom_column( $name ) {
+			$now = current_datetime();
 
-	// 	if ( 'address' !== $name ) {
-	// 		return;
-	// 	}
+			$meta_query['date_finish']['value']   = $now->format( 'c' );
+			$meta_query['date_finish']['compare'] = '>';
+		}
 
-	// 	global $fse_location;
+		// Set our modified meta query.
+		$query->set( 'meta_query', $meta_query );
+	}
 
-	// 	$fse_location->do_address( true, false );
+	/**
+	 * Manage admin columns
+	 *
+	 * @param  array $columns Column headings.
+	 * @return array $columns
+	 *
+	 * @since 1.0.0
+	 */
+	public function set_posts_columns( $columns ) {
 
-	// 	$map = $fse_location->get_map_url();
+		$ensembles_key = 'taxonomy-' . Ensembles::TAX_KEY;
 
-	// 	if ( $map ) {
-	// 		printf(
-	// 			'<a href="%s" target="_blank" rel="nofollow noopener">%s <span class="dashicons dashicons-external"></span></a>',
-	// 			esc_attr( $map ),
-	// 			esc_html__( 'View Map', 'full-score-events' )
-	// 		);
-	// 	}
-	// }
+		// Move date and ensemble columns to end.
+		$date      = $columns['date'] ?? false;
+		$ensembles = $columns[ $ensembles_key ] ?? false;
+		unset( $columns['date'], $columns[ $ensembles_key ] );
+
+		// Add start/finish, location, and contact.
+		$columns['date_start']  = __( 'Start', 'full-score-events' );
+		$columns['date_finish'] = __( 'Finish', 'full-score-events' );
+		$columns['location']    = __( 'Location', 'full-score-events' );
+		$columns['contact']     = __( 'Contact', 'full-score-events' );
+
+		if ( $ensembles ) {
+			$columns[ $ensembles_key ] = $ensembles;
+		}
+
+		if ( $date ) {
+			$columns['date'] = __( 'Post Date', 'full-score-events' );
+		}
+
+		return $columns;
+	}
+
+	/**
+	 * Manage sortable admin columns
+	 *
+	 * @param  array $columns  Sortable columns.
+	 * @return array $columns
+	 *
+	 * @since  1.0.0
+	 */
+	public function set_sortable_columns( $columns ) {
+		$columns['date_start']  = 'date_start';
+		$columns['date_finish'] = 'date_finish';
+		return $columns;
+	}
+
+	/**
+	 * Set value of custom admin column
+	 *
+	 * @param string $name  Column name.
+	 * @since 1.0.0
+	 */
+	public function do_custom_column( $name ) {
+
+		global $fse_event;
+
+		switch ( $name ) {
+			// Start date.
+			case 'date_start':
+				echo esc_html( $fse_event->get_date_start()->format( 'M j, Y' ) ) . '<br>';
+
+				if ( $fse_event->is_daily() ) :
+					// Translators: Daily (%s).
+					printf( esc_html__( 'Daily (%s)', 'full-score-events' ), esc_html( $fse_event->get_time_start() ) );
+				elseif ( $fse_event->is_time_tba() ) :
+					// phpcs:ignore
+					// Translators: %1$sTBA%2$s (%3$s).
+					printf( esc_html__( '%1$sTBA%2$s (%3$s)', 'full-score-events' ), '<b>', '</b>', esc_html( $fse_event->get_time_start() ) );
+				else :
+					$fse_event->do_time_start();
+				endif;
+				return;
+
+			// Finish date.
+			case 'date_finish':
+				echo esc_html( $fse_event->get_date_finish()->format( 'M j, Y' ) ) . '<br>';
+
+				if ( $fse_event->is_daily() ) :
+					// Translators: Daily (%s).
+					printf( esc_html__( 'Daily (%s)', 'full-score-events' ), esc_html( $fse_event->get_time_finish() ) );
+				elseif ( $fse_event->is_time_tba() ) :
+					// phpcs:ignore
+					// Translators: %1$sTBA%2$s (%3$s).
+					printf( esc_html__( '%1$sTBA%2$s (%3$s)', 'full-score-events' ), '<b>', '</b>', esc_html( $fse_event->get_time_finish() ) );
+				elseif ( $fse_event->get_show_finish() ) :
+					$fse_event->do_time_finish();
+				else :
+					// Translators: %s (not shown).
+					printf( esc_html__( '%s (not shown)', 'full-score-events' ), esc_html( $fse_event->get_time_finish() ) );
+				endif;
+				return;
+
+			// Location.
+			case 'location':
+				$location = $fse_event->get_location();
+
+				if ( ! $location ) {
+					return;
+				}
+
+				echo '<a href="' . esc_attr( get_edit_post_link( $location->get_id() ) ) . '">';
+				$location->do_title();
+				echo '</a><br>';
+				$location->do_address( false );
+				return;
+
+			// Contact (user).
+			case 'contact':
+				$contact = $fse_event->get_contact();
+
+				if ( ! $contact ) {
+					return;
+				}
+
+				$edit = get_edit_profile_url( $contact );
+				$name = get_the_author_meta( 'display_name', $contact );
+				echo '<a href="' . esc_attr( $edit ) . '">' . esc_html( $name ) . '</a><br>';
+				return;
+		}
+	}
+
+	/**
+	 * Get upcoming events
+	 *
+	 * The start_date meta query should be included by default via pre_get_posts
+	 * hook.
+	 *
+	 * @param integer $number  Posts to get.
+	 * @since 1.0.0
+	 */
+	public static function get_upcoming( $number = 3 ) {
+
+		return new \WP_Query(
+			[
+				'post_type'      => self::CPT_KEY,
+				'posts_per_page' => $number,
+			]
+		);
+	}
 }

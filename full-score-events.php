@@ -66,6 +66,7 @@ class Plugin {
 		new Programs();
 		new Locations();
 		new Ensembles();
+		new Seasons();
 		new Events();
 		new Blocks\Blocks();
 		new Users();

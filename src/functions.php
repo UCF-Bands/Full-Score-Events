@@ -21,6 +21,21 @@ function get( $key ) {
 }
 
 /**
+ * Returns a posted value
+ *
+ * Nonce verification should happen before this.
+ *
+ * @param  string $key  $_POST superglobal key.
+ * @return mixed
+ * @see    https://github.com/WordPress/WordPress-Coding-Standards/wiki/Fixing-errors-for-input-data
+ * @since  1.0.0
+ */
+function postval( $key ) {
+	// phpcs:ignore WordPress.Security.NonceVerification.Missing
+	return isset( $_POST[ $key ] ) ? sanitize_text_field( wp_unslash( $_POST[ $key ] ) ) : null;
+}
+
+/**
  * Break array into string of attributes
  *
  * Has special cases for "class" and "data" keys if their values are arrays, so
@@ -83,6 +98,46 @@ function get_attrs_class() {
 function do_attrs_class() {
 	echo get_attrs( [ 'class' => func_get_args() ] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 }
+
+/**
+ * Custom kses allowed HTML for "inlined" entities.
+ *
+ * @return array Allowed HTML entities/attributes.
+ * @since  1.0.0
+ */
+function get_allowed_inline_html() {
+	return [
+		'a'      => [
+			'href'  => [],
+			'rel'   => [],
+			'title' => [],
+		],
+		'b'      => [],
+		'strong' => [],
+		'i'      => [],
+		'em'     => [],
+		'code'   => [],
+	];
+}
+
+/**
+ * Configure "allowed inline HTML" message for block editor.
+ *
+ * @param  array $object Data to be localized in JS object.
+ * @return array $object Data to be localized + "allowed inline HTML" help text.
+ *
+ * @since  1.0.0
+ */
+function set_blocks_js_allowed_inline_html_help( $object ) {
+
+	$object['allowedInlineHTML'] = sprintf(
+		__( 'Allowed HTML: %s', 'full-score-events' ),
+		implode( ', ', array_keys( get_allowed_inline_html() ) )
+	);
+
+	return $object;
+}
+add_filter( 'full_score_events_editor_js_object', __NAMESPACE__ . '\set_blocks_js_allowed_inline_html_help' );
 
 /**
  * Locate a template part in the theme, then fall back to plugin.
@@ -257,7 +312,7 @@ function get_can_view_post( $post_id ) {
  * @since  1.0.0
  */
 function get_location( $post_id ) {
-	return get_can_view_post( $post_id ) ? new Location( $post_id ) : false;
+	return $post_id && get_can_view_post( $post_id ) ? new Location( $post_id ) : false;
 }
 
 /**
