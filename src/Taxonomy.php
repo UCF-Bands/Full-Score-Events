@@ -53,6 +53,8 @@ abstract class Taxonomy {
 		add_action( 'quick_edit_custom_box', [ $this, 'do_quick_edit_term_nonce' ], 10, 3 );
 		add_action( "created_{$key}", [ $this, 'do_term_nonce_check' ] );
 		add_action( "edited_{$key}", [ $this, 'do_term_nonce_check' ] );
+		add_action( "saved_{$key}", [ $this, 'do_saved_term' ] );
+		add_action( "delete_{$key}", [ $this, 'do_deleted_term' ] );
 		add_filter( "manage_edit-{$key}_columns", [ $this, 'add_custom_columns' ] );
 		add_filter( "manage_edit-{$key}_sortable_columns", [ $this, 'set_sortable_columns' ], 15 );
 		add_filter( "manage_{$key}_custom_column", [ $this, 'set_custom_column' ], 15, 3 );
@@ -231,6 +233,24 @@ abstract class Taxonomy {
 		) {
 			$this->set_term_meta( $term_id );
 		}
+	}
+
+	/**
+	 * Do actions on updated/created term
+	 *
+	 * @param integer $term_id  Created/updated term ID.
+	 * @since 1.0.0
+	 */
+	public function do_saved_term( $term_id ) {
+	}
+
+	/**
+	 * Do actions on deleted term
+	 *
+	 * @param integer $term_id  Deleted term ID.
+	 * @since 1.0.0
+	 */
+	public function do_deleted_term( $term_id ) {
 	}
 
 	/**
