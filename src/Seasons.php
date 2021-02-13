@@ -31,6 +31,33 @@ class Seasons extends Taxonomy {
 	const TAX_KEY = 'fse_season';
 
 	/**
+	 * Season date list cache
+	 *
+	 * @since 1.0.0
+	 * @var   array
+	 */
+	private $date_list;
+
+	/**
+	 * Unpassed season date list cache
+	 *
+	 * @since 1.0.0
+	 * @var   array
+	 */
+	private $unpassed_date_list;
+
+	/**
+	 * Season labels tracker
+	 *
+	 * This is used to keep track of the unpassed date list in an archive
+	 * listing.
+	 *
+	 * @var   array|boolean
+	 * @since 1.0.0
+	 */
+	private $season_labels;
+
+	/**
 	 * Associated post types
 	 *
 	 * @since 1.0.0
@@ -353,5 +380,93 @@ class Seasons extends Taxonomy {
 		set_transient( 'fse_seasons', $seasons );
 		$this->date_list = $seasons;
 		return $seasons;
+	}
+
+	/**
+	 * Get unpassed season dates list.
+	 *
+	 * Iterate season dates list in reverse order, adding each one to a list
+	 * until we stop at the "last" season (that most recently passed).
+	 *
+	 * @return array
+	 * @since  1.0.0
+	 */
+	private function get_unpassed_date_list() {
+
+		if ( isset( $this->unpassed_date_list ) ) {
+			return $this->unpassed_date_list;
+		}
+
+		$this->unpassed_date_list = [];
+
+		$today = current_datetime();
+		$today = $today->format( 'Ymd' );
+
+		foreach ( array_reverse( $this->get_date_list(), true ) as $season ) {
+			array_unshift( $this->unpassed_date_list, $season );
+
+			if ( $season['date'] <= $today ) {
+				break;
+			}
+		}
+
+		return $this->unpassed_date_list;
+	}
+
+	/**
+	 * Output a label for the event's season
+	 *
+	 * @since 1.0.0
+	 */
+	public function do_season_label() {
+
+		global $fse_event;
+
+		// Set up our cached/tracked unpassed season dates list.
+		if ( ! isset( $this->season_labels ) ) {
+			$date_list           = $this->get_unpassed_date_list();
+			$this->season_labels = $date_list ?: false;
+		}
+
+		// Bounce if there aren't any unpassed seasons.
+		if ( ! $this->season_labels ) {
+			return;
+		}
+
+		// Get current event's start date as Ymd.
+		$event_date = $fse_event->get_day_start( 'Ymd' );
+
+		/**
+		 * Iterate over each unpassed season.
+		 */
+		foreach ( $this->season_labels as $index => $season ) {
+
+			if (
+				$event_date >= $season['date']                               // past or equal to season date.
+				&& empty( $this->season_labels[ $index + 1 ] )               // and there aren't any more.
+			) {
+				unset( $this->season_labels[ $index ] );
+				get_plugin_template( 'season/label', '', $season );
+				break;
+
+			} elseif (
+				$event_date > $season['date']                                // past season date.
+				&& ! empty( $this->season_labels[ $index + 1 ] )             // and there's still another season.
+				&& $event_date >= $this->season_labels[ $index + 1 ]['date'] // and we're still past that season.
+			) {
+				// kill the current season and move on.
+				unset( $this->season_labels[ $index ] );
+
+			} elseif (
+				$event_date >= $season['date']                               // past or equal to season date.
+				&& ! empty( $this->season_labels[ $index + 1 ] )             // and there's still another season.
+				&& $event_date < $this->season_labels[ $index + 1 ]          // but we haven't reached it yet.
+			) {
+				// Output the current season label and bounce it, then bounce.
+				unset( $this->season_labels[ $index ] );
+				get_plugin_template( 'season/label', '', $season );
+				break;
+			}
+		}
 	}
 }
