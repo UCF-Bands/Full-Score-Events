@@ -79,7 +79,7 @@ class Event extends Post {
 	 * Get day
 	 *
 	 * @param  string $which   Day to get (start or finish).
-	 * @param  string $format  Format to return.
+	 * @param  string $format  Format to return (view, attr, custom).
 	 * @return string
 	 *
 	 * @since 1.0.0
@@ -89,18 +89,20 @@ class Event extends Post {
 
 		if ( ! $date ) {
 			return false;
+		} elseif ( 'view' === $format ) {
+			return $date->format( 'j' );
+		} elseif ( 'attr' === $format ) {
+			return $date->format( 'Y-m-d' );
+		} else {
+			return $date->format( $format );
 		}
-
-		return 'attr' === $format
-			? $date->format( 'Y-m-d' )
-			: $date->format( 'j' );
 	}
 
 	/**
 	 * Get time
 	 *
 	 * @param  string $which   Time to get (start or finish).
-	 * @param  string $format  Format to return.
+	 * @param  string $format  Format to return (view, attr, custom).
 	 * @return string
 	 *
 	 * @since 1.0.0
@@ -110,11 +112,13 @@ class Event extends Post {
 
 		if ( ! $date ) {
 			return false;
+		} elseif ( 'view' === $format ) {
+			return $date->format( 'g:i a' );
+		} elseif ( 'attr' === $format ) {
+			return $date->format( 'H:i' );
+		} else {
+			return $date->format( $format );
 		}
-
-		return 'attr' === $format
-			? $date->format( 'H:i' )
-			: $date->format( 'g:i a' );
 	}
 
 	/**
