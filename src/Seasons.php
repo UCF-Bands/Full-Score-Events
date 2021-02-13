@@ -66,6 +66,15 @@ class Seasons extends Taxonomy {
 	const POST_TYPES = [ Events::CPT_KEY ];
 
 	/**
+	 * Do WP init actions
+	 *
+	 * @since 1.0.0
+	 */
+	public function do_init() {
+		add_action( 'full_score_events_loop_before_event', [ $this, 'do_season_label' ] );
+	}
+
+	/**
 	 * Get general taxonomy label
 	 *
 	 * @return string
