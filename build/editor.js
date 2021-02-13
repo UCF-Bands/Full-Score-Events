@@ -37854,6 +37854,7 @@ function edit(_ref) {
   var noneFoundControl = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["TextareaControl"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('"None found" message', 'full-score-events'),
     value: noneFound,
+    placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Ex: There aren't any scheduled events at this time.", 'full-score-events'),
     onChange: function onChange(value) {
       return setAttributes({
         noneFound: value

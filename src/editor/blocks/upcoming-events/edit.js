@@ -29,6 +29,10 @@ export default function edit( { attributes, setAttributes } ) {
 		<TextareaControl
 			label={ __( '"None found" message', 'full-score-events' ) }
 			value={ noneFound }
+			placeholder={ __(
+				"Ex: There aren't any scheduled events at this time.",
+				'full-score-events'
+			) }
 			onChange={ ( value ) => setAttributes( { noneFound: value } ) }
 			help={ fullScoreEventsEditor.allowedInlineHTML }
 		/>

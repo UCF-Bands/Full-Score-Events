@@ -17,5 +17,5 @@
 ?>
 
 <div class="fse-none-found fse-no-events-found">
-	<h2 class="fse-none-found-heading"><?php esc_html_e( "There currently aren't any scheduled events.", 'full-score-events' ); ?></h2>
+	<h2 class="fse-none-found-heading"><?php esc_html_e( "There aren't any scheduled events at this time.", 'full-score-events' ); ?></h2>
 </div>
