@@ -228,6 +228,28 @@ class Seasons extends Taxonomy {
 	}
 
 	/**
+	 * Set seasons cache on season term update
+	 *
+	 * @param integer $term_id  Created/updated term ID.
+	 *
+	 * @since 1.0.0
+	 */
+	public function do_saved_term( $term_id ) {
+		$this->get_date_list( true );
+	}
+
+	/**
+	 * Set seasons cache on season term delete
+	 *
+	 * @param integer $term_id  Deleted term ID.
+	 *
+	 * @since 1.0.0
+	 */
+	public function do_deleted_term( $term_id ) {
+		$this->get_date_list( true );
+	}
+
+	/**
 	 * Add custom admin columns for term meta
 	 *
 	 * @param  array $columns  Term columns.
