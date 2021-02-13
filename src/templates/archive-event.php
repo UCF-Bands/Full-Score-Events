@@ -33,13 +33,30 @@ get_header( 'event' );
 do_action( 'full_score_events_before_main_content' );
 ?>
 
+	<?php if ( have_posts() ) : ?>
 
-	<?php
-	while ( have_posts() ) :
-		the_post();
-		get_plugin_template( 'content', 'event' );
-	endwhile;
-	?>
+		<?php
+		/**
+		 * Hook: full_score_events_loop_before_events
+		 */
+		do_action( 'full_score_events_loop_before_events' );
+
+		while ( have_posts() ) :
+			the_post();
+			get_plugin_template( 'content', 'event' );
+		endwhile;
+
+		/**
+		 * Hook: full_score_events_loop_after_events
+		 *
+		 * @hooked the_posts_pagination - 10
+		 */
+		do_action( 'full_score_events_loop_after_events' );
+		?>
+
+	<?php else : ?>
+		NO POSTS G
+	<?php endif; ?>
 
 <?php
 /**
