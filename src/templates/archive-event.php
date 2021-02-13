@@ -21,9 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 get_header( 'event' );
-?>
 
-<?php
 /**
  * Hook: full_score_events_before_main_content
  *
@@ -33,9 +31,9 @@ get_header( 'event' );
 do_action( 'full_score_events_before_main_content' );
 ?>
 
-	<?php if ( have_posts() ) : ?>
+	<?php
+	if ( have_posts() ) :
 
-		<?php
 		/**
 		 * Hook: full_score_events_loop_before_events
 		 */
@@ -52,11 +50,11 @@ do_action( 'full_score_events_before_main_content' );
 		 * @hooked the_posts_pagination - 10
 		 */
 		do_action( 'full_score_events_loop_after_events' );
-		?>
 
-	<?php else : ?>
-		NO POSTS G
-	<?php endif; ?>
+	else :
+		get_plugin_template( 'content-none', 'event' );
+	endif;
+	?>
 
 <?php
 /**
@@ -65,7 +63,5 @@ do_action( 'full_score_events_before_main_content' );
  * @hooked Full_Score_Events\do_content_wrapper_end - 10
  */
 do_action( 'full_score_events_after_main_content' );
-?>
 
-<?php
 get_footer( 'event' );
