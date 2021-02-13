@@ -43,6 +43,7 @@ abstract class Taxonomy {
 	 */
 	public function __construct() {
 		$key = static::TAX_KEY;
+		add_action( 'init', [ $this, 'do_init' ] );
 		add_action( 'init', [ $this, 'do_registration' ] );
 		add_action( 'full_score_events_activate', [ $this, 'do_registration' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
@@ -55,6 +56,14 @@ abstract class Taxonomy {
 		add_filter( "manage_edit-{$key}_columns", [ $this, 'add_custom_columns' ] );
 		add_filter( "manage_edit-{$key}_sortable_columns", [ $this, 'set_sortable_columns' ], 15 );
 		add_filter( "manage_{$key}_custom_column", [ $this, 'set_custom_column' ], 15, 3 );
+	}
+
+	/**
+	 * Do WP init actions
+	 *
+	 * @since 1.0.0
+	 */
+	public function do_init() {
 	}
 
 	/**
