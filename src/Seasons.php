@@ -161,7 +161,7 @@ class Seasons extends Taxonomy {
 		?>
 		<div class="form-field form-required">
 			<label for="fse_date_start"><?php esc_html_e( 'Start Date', 'full-score-events' ); ?></label>
-			<input name="fse_date_start" id="fse_date_start" type="text"  class="fse-date-picker">
+			<input name="fse_date_start" id="fse_date_start" type="text"  class="fse-date-picker" autocomplete="off">
 		</div>
 		<?php
 		$this->do_date_picker_script();
@@ -179,7 +179,7 @@ class Seasons extends Taxonomy {
 		?>
 		<tr class="form-field form-required">
 			<th scope="row"><label for="fse_date_start"><?php esc_html_e( 'Start Date', 'full-score-events' ); ?></label></th>
-			<td><input name="fse_date_start" id="fse_date_start" type="text" value="<?php echo esc_html( $date_start ); ?>" class="fse-date-picker"></td>
+			<td><input name="fse_date_start" id="fse_date_start" type="text" value="<?php echo esc_html( $date_start ); ?>" class="fse-date-picker" autocomplete="off"></td>
 		</tr>
 		<?php
 		$this->do_date_picker_script();
