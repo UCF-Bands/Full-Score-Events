@@ -301,4 +301,57 @@ class Seasons extends Taxonomy {
 				return $content;
 		}
 	}
+
+	/**
+	 * Get seasons "date list"
+	 *
+	 * Try to grab from transient cache first and re-compile if expired/gone.
+	 *
+	 * @param  boolean $skip_cache  Always set and get new list.
+	 * @return array
+	 *
+	 * @since  1.0.0
+	 */
+	public function get_date_list( $skip_cache = false ) {
+
+		// See if we need to get and cache a fresh term list.
+		if ( ! $skip_cache ) {
+
+			// Check current request cache.
+			if ( isset( $this->date_list ) ) {
+				return $this->date_list;
+			}
+
+			$seasons = get_transient( 'fse_seasons' );
+
+			if ( false !== $seasons ) {
+				$this->date_list = $seasons;
+				return $seasons;
+			}
+		}
+
+		$seasons = [];
+
+		foreach (
+			get_terms(
+				[
+					// Terms should already be ordered earliest → latest.
+					'taxonomy'   => $this::TAX_KEY,
+					'hide_empty' => false,
+					'fields'     => 'id=>name',
+				]
+			)
+			as $id => $name
+		) {
+			$seasons[] = [
+				'id'   => $id,
+				'date' => get_term_meta( $id, 'fse_date_start', true ),
+				'name' => $name,
+			];
+		}
+
+		set_transient( 'fse_seasons', $seasons );
+		$this->date_list = $seasons;
+		return $seasons;
+	}
 }
