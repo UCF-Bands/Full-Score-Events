@@ -36,12 +36,27 @@ do_action( 'full_score_events_before_main_content' );
 
 		/**
 		 * Hook: full_score_events_loop_before_events
+		 *
+		 * @hooked Full_Score_Events\do_featured_events - 10
 		 */
 		do_action( 'full_score_events_loop_before_events' );
 
 		while ( have_posts() ) :
 			the_post();
+
+			/**
+			 * Hook: full_score_events_loop_before_event
+			 *
+			 * @hooked Seasons\do_season_label - 10
+			 */
+			do_action( 'full_score_events_loop_before_event' );
+
 			get_plugin_template( 'content', 'event' );
+
+			/**
+			 * Hook: full_score_events_loop_after_event
+			 */
+			do_action( 'full_score_events_loop_after_event' );
 		endwhile;
 
 		/**

@@ -16,12 +16,6 @@
 
 namespace Full_Score_Events;
 
-/**
- * Hook: full_score_events_loop_before_event
- *
- * @hooked Seasons\do_season_label - 10
- */
-do_action( 'full_score_events_loop_before_event' );
 ?>
 
 <article id="fse-event-<?php the_ID(); ?>" <?php post_class( 'fse-event-card' ); ?>>
@@ -38,9 +32,3 @@ do_action( 'full_score_events_loop_before_event' );
 	do_action( 'full_score_events_loop_event_content' );
 	?>
 </article>
-
-<?php
-/**
- * Hook: full_score_events_loop_after_event
- */
-do_action( 'full_score_events_loop_after_event' );
