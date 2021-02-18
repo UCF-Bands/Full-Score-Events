@@ -38392,7 +38392,7 @@ var render = Object(_util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_5__["defa
   }
 
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_3__["PluginPostStatusInfo"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ToggleControl"], {
-    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Special Event', 'full-score-events'),
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Featured Event', 'full-score-events'),
     help: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Feature this event on the events page.', 'full-score-events'),
     checked: isFeatured,
     onChange: function onChange(value) {

@@ -24,7 +24,7 @@ const render = pluginMetaHandler( {
 	return (
 		<PluginPostStatusInfo>
 			<ToggleControl
-				label={ __( 'Special Event', 'full-score-events' ) }
+				label={ __( 'Featured Event', 'full-score-events' ) }
 				help={ __(
 					'Feature this event on the events page.',
 					'full-score-events'
