@@ -34,6 +34,7 @@ class Template_Hooks {
 
 		// Archives.
 		add_action( 'full_score_events_before_main_content', 'Full_Score_Events\do_archive_header', 50 );
+		add_action( 'full_score_events_loop_before_events', 'Full_Score_Events\do_featured_events' );
 
 		// Event.
 		add_action( 'full_score_events_event_header_content', 'Full_Score_Events\do_event_title' );
@@ -64,6 +65,10 @@ class Template_Hooks {
 		add_action( 'full_score_events_single_event_header', 'Full_Score_Events\do_event_header_content', 30 );
 		add_action( 'full_score_events_single_event_header', 'Full_Score_Events\do_event_registration', 50 );
 		add_action( 'full_score_events_single_event_header', 'Full_Score_Events\do_single_event_header_wrapper_close', 100 );
+
+		// Featured events.
+		add_action( 'full_score_events_featured_header_content', 'Full_Score_Events\do_featured_heading' );
+		add_action( 'full_score_events_featured_header_content', 'Full_Score_Events\do_featured_body', 20 );
 
 		// Upcoming event(s).
 		add_action( 'full_score_events_upcoming_event_content', 'Full_Score_Events\do_loop_event_header' );
