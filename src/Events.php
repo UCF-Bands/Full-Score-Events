@@ -9,6 +9,7 @@
 namespace Full_Score_Events;
 
 use DateTime;
+use WP_Query;
 
 // exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -128,7 +129,7 @@ class Events extends Post_Type {
 			'public'              => true,
 			'show_ui'             => true,
 			'menu_icon'           => 'dashicons-calendar-alt',
-			'show_in_nav_menus'   => false,
+			'show_in_nav_menus'   => true,
 			'has_archive'         => 'events',
 			'exclude_from_search' => false,
 			'publicly_queryable'  => true,
@@ -334,15 +335,42 @@ class Events extends Post_Type {
 	 * The start_date meta query should be included by default via pre_get_posts
 	 * hook.
 	 *
-	 * @param integer $number  Posts to get.
+	 * @param  integer $number  Posts to get.
+	 * @return WP_Query
+	 *
 	 * @since 1.0.0
 	 */
 	public static function get_upcoming( $number = 3 ) {
 
-		return new \WP_Query(
+		return new WP_Query(
 			[
 				'post_type'      => self::CPT_KEY,
 				'posts_per_page' => $number,
+			]
+		);
+	}
+
+	/**
+	 * Get featured events
+	 *
+	 * The start_date meta query should be include by default via pre_get_posts
+	 * hook.
+	 *
+	 * @return WP_Query
+	 * @since  1.0.0
+	 */
+	public static function get_featured() {
+
+		return new WP_Query(
+			[
+				'post_type'      => self::CPT_KEY,
+				'posts_per_page' => 20,
+				'meta_query'     => [
+					'is_featured' => [
+						'key'   => '_is_featured',
+						'value' => 1,
+					],
+				],
 			]
 		);
 	}
