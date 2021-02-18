@@ -39,6 +39,15 @@ function do_archive_header() {
 }
 
 /**
+ * Output featured events loop
+ *
+ * @since 1.0.0
+ */
+function do_featured_events() {
+	get_plugin_template( 'featured-events' );
+}
+
+/**
  * Output event date
  *
  * @since 1.0.0
@@ -182,4 +191,22 @@ function do_single_event_location() {
  */
 function do_single_event_contact() {
 	get_plugin_template( 'event/single/contact' );
+}
+
+/**
+ * Output featured events loop header title
+ *
+ * @since 1.0.0
+ */
+function do_featured_heading() {
+	get_plugin_template( 'event/featured-heading' );
+}
+
+/**
+ * Output featured events loop header body
+ *
+ * @since 1.0.0
+ */
+function do_featured_body() {
+	get_plugin_template( 'event/featured-body' );
 }
