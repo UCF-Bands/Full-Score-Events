@@ -42,6 +42,16 @@ class Event extends Post {
 	private $location;
 
 	/**
+	 * Is the event featured?
+	 *
+	 * @return boolean
+	 * @since  1.0.0
+	 */
+	public function is_featured() {
+		return $this->get( '_is_featured' );
+	}
+
+	/**
 	 * Get a DateTime object for a date field
 	 *
 	 * @param  string $which  Which datetime to get from meta (ex: start).
