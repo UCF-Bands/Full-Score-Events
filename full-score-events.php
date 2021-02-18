@@ -70,6 +70,7 @@ class Plugin {
 		new Events();
 		new Blocks\Blocks();
 		new Users();
+		new Customizer();
 		new Settings();
 
 		if ( $this->is_request( 'frontend' ) ) {
