@@ -217,6 +217,7 @@ class Events extends Post_Type {
 		unset( $columns['date'], $columns[ $ensembles_key ] );
 
 		// Add start/finish, location, and contact.
+		$columns['featured']    = __( 'Featured', 'full-score-events' );
 		$columns['date_start']  = __( 'Start', 'full-score-events' );
 		$columns['date_finish'] = __( 'Finish', 'full-score-events' );
 		$columns['location']    = __( 'Location', 'full-score-events' );
@@ -258,6 +259,11 @@ class Events extends Post_Type {
 		global $fse_event;
 
 		switch ( $name ) {
+			// Featured.
+			case 'featured':
+				echo $fse_event->is_featured() ? '<span class="dashicons dashicons-star-filled"></span>' : '';
+				return;
+
 			// Start date.
 			case 'date_start':
 				echo esc_html( $fse_event->get_date_start()->format( 'M j, Y' ) ) . '<br>';
