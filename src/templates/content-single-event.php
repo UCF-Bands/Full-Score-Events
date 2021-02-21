@@ -34,8 +34,7 @@ if ( post_password_required() ) {
 	 * @hooked Full_Score_Events\do_single_event_header - 10
 	 * @hooked Full_Score_Events\do_single_event_thumbnail - 20
 	 * @hooked Full_Score_Events\do_single_event_content - 50
-	 * @hooked Full_Score_Events\do_event_location - 70
-	 * @hooked Full_Score_Events\do_event_contact - 80
+	 * @hooked Full_Score_Events\do_single_event_aside - 70
 	 *
 	 * @since 1.0.0
 	 */

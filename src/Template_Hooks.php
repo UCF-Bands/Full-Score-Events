@@ -56,8 +56,9 @@ class Template_Hooks {
 		add_action( 'full_score_events_single_event_content', 'Full_Score_Events\do_single_event_header' );
 		add_action( 'full_score_events_single_event_content', 'Full_Score_Events\do_single_event_thumbnail', 20 );
 		add_action( 'full_score_events_single_event_content', 'Full_Score_Events\do_single_event_content', 50 );
-		add_action( 'full_score_events_single_event_content', 'Full_Score_Events\do_single_event_location', 70 );
-		add_action( 'full_score_events_single_event_content', 'Full_Score_Events\do_single_event_contact', 80 );
+		add_action( 'full_score_events_single_event_content', 'Full_Score_Events\do_single_event_aside', 70 );
+		add_action( 'full_score_events_single_event_aside', 'Full_Score_Events\do_single_event_location', 10 );
+		add_action( 'full_score_events_single_event_aside', 'Full_Score_Events\do_single_event_contact', 20 );
 
 		// Event single header.
 		add_action( 'full_score_events_single_event_header', 'Full_Score_Events\do_single_event_header_wrapper', 5 );

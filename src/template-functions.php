@@ -200,6 +200,15 @@ function do_single_event_content() {
 }
 
 /**
+ * Output event single "aside" content
+ *
+ * @since 1.0.0
+ */
+function do_single_event_aside() {
+	get_plugin_template( 'event/single/aside' );
+}
+
+/**
  * Output event single location section
  *
  * @since 1.0.0
