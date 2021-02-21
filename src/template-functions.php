@@ -216,3 +216,24 @@ function do_featured_heading() {
 function do_featured_body() {
 	get_plugin_template( 'event/featured-body' );
 }
+
+/**
+ * Remove inline style attribute from attachment image
+ *
+ * This was mostly added because Twenty Twentyone inlines height and max-width
+ * styles on attachment images.
+ *
+ * @param  array $attr  Attachment image attributes.
+ * @return array $attr
+ *
+ * @since 1.0.0
+ */
+function remove_attachment_image_style_attribute( $attr ) {
+
+	if ( ! empty( $attr['class'] ) && strpos( $attr['class'], 'fse-cover-image' ) !== false ) {
+		unset( $attr['style'] );
+	}
+
+	return $attr;
+}
+add_filter( 'wp_get_attachment_image_attributes', __NAMESPACE__ . '\remove_attachment_image_style_attribute', 50 );
