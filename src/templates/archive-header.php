@@ -21,7 +21,7 @@ global $post_type;
 $post_type_obj = get_post_type_object( $post_type );
 ?>
 
-<header <?php do_attrs_class( 'fse-archive-header', "{$post_type}-archive-header" ); ?>>
+<header <?php do_attrs_class( 'fse-archive-header', "{$post_type}-archive-header", 'fse-wrap' ); ?>>
 
 	<h1 <?php do_attrs_class( 'fse-archive-header-title', "{$post_type}-archive-header-title", 'page-title' ); ?>>
 		<?php echo esc_html( implode( ' ', [ Ensembles::get_current_terms_list(), $post_type_obj->label ] ) ); ?>
