@@ -4,3 +4,4 @@
  * @since 1.0.0
  */
 import './global.scss';
+import './featured-events.scss';
