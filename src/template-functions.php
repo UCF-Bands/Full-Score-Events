@@ -187,7 +187,7 @@ function do_single_event_header_wrapper_close() {
  * @since 1.0.0
  */
 function do_single_event_thumbnail() {
-	the_post_thumbnail( 'large', [ 'class' => 'fse-event-single-thumbnail' ] );
+	the_post_thumbnail( 'fse-banner', [ 'class' => 'fse-wrap fse-event-single-thumbnail' ] );
 }
 
 /**

@@ -39,6 +39,7 @@ class Template_Loader {
 	public function __construct() {
 		add_filter( 'template_include', [ __CLASS__, 'set_template' ] );
 		add_action( 'wp_enqueue_scripts', [ __CLASS__, 'enqueue_scripts' ] );
+		add_action( 'after_setup_theme', [ __CLASS__, 'add_image_sizes' ] );
 	}
 
 	/**
@@ -89,5 +90,14 @@ class Template_Loader {
 			[],
 			filemtime( "{$build_dir}/public.css" )
 		);
+	}
+
+	/**
+	 * Register custom image sizes
+	 *
+	 * @since 1.0.0
+	 */
+	public static function add_image_sizes() {
+		add_image_size( 'fse-banner', 1440, 440, true );
 	}
 }
