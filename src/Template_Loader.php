@@ -24,12 +24,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Template_Loader {
 
 	/**
+	 * CSS/JS asset handle
+	 *
+	 * @var   string
+	 * @since 1.0.0
+	 */
+	const ASSET_HANDLE = 'full-score-events-public';
+
+	/**
 	 * Hook things in
 	 *
 	 * @since 1.0.0
 	 */
 	public function __construct() {
 		add_filter( 'template_include', [ __CLASS__, 'set_template' ] );
+		add_action( 'wp_enqueue_scripts', [ __CLASS__, 'enqueue_scripts' ] );
 	}
 
 	/**
@@ -62,5 +71,23 @@ class Template_Loader {
 		$override = locate_plugin_template( $name );
 
 		return $override ?: $template;
+	}
+
+	/**
+	 * Enqueue front-end scripts/styles
+	 *
+	 * @since 1.0.0
+	 */
+	public static function enqueue_scripts() {
+		$build_dir = FULL_SCORE_EVENTS_DIR . 'build';
+		$build_url = FULL_SCORE_EVENTS_URL . 'build';
+
+		// Register CSS.
+		wp_enqueue_style(
+			self::ASSET_HANDLE,
+			"{$build_url}/public.css",
+			[],
+			filemtime( "{$build_dir}/public.css" )
+		);
 	}
 }

@@ -1,1 +1,6 @@
-console.log( 'Full Score Events public JS loaded.' ); // eslint-disable-line no-console
+/**
+ * Front end-only CSS and JS
+ *
+ * @since 1.0.0
+ */
+import './global.scss';
