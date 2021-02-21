@@ -169,7 +169,7 @@ function do_single_event_header() {
  * @since 1.0.0
  */
 function do_single_event_header_wrapper() {
-	echo '<div class="fse-event-single-header-wrap">';
+	echo '<div class="fse-wrap fse-event-single-header-wrap">';
 }
 
 /**
