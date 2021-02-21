@@ -248,7 +248,17 @@ function do_featured_body() {
  */
 function remove_attachment_image_style_attribute( $attr ) {
 
-	if ( ! empty( $attr['class'] ) && strpos( $attr['class'], 'fse-cover-image' ) !== false ) {
+	// Sanity-check class attribute.
+	if ( empty( $attr['class'] ) ) {
+		return $attr;
+	}
+
+	$blacklist = [ 'fse-cover-image', 'fse-event-single-thumbnail' ];
+	$classes   = explode( ' ', $attr['class'] );
+
+	// If any of the images classes are the single-thumb or cover image, bounce
+	// the inline CSS.
+	if ( array_intersect( $classes, $blacklist ) ) {
 		unset( $attr['style'] );
 	}
 
