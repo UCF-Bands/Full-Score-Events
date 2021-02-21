@@ -38,6 +38,7 @@ do_action( 'full_score_events_before_main_content' );
 		 * Hook: full_score_events_loop_before_events
 		 *
 		 * @hooked Full_Score_Events\do_featured_events - 10
+		 * @hooked Full_Score_Events\do_events_loop_wrapper - 25
 		 */
 		do_action( 'full_score_events_loop_before_events' );
 
@@ -63,6 +64,7 @@ do_action( 'full_score_events_before_main_content' );
 		 * Hook: full_score_events_loop_after_events
 		 *
 		 * @hooked the_posts_pagination - 10
+		 * @hooked Full_Score_Events\do_events_loop_wrapper_close - 25
 		 */
 		do_action( 'full_score_events_loop_after_events' );
 
@@ -75,7 +77,7 @@ do_action( 'full_score_events_before_main_content' );
 /**
  * Hook: full_score_events_after_main_content
  *
- * @hooked Full_Score_Events\do_content_wrapper_end - 10
+ * @hooked Full_Score_Events\do_content_wrapper_close - 10
  */
 do_action( 'full_score_events_after_main_content' );
 

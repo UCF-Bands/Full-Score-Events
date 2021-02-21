@@ -35,6 +35,9 @@ class Template_Hooks {
 		// Archives.
 		add_action( 'full_score_events_before_main_content', 'Full_Score_Events\do_archive_header', 50 );
 		add_action( 'full_score_events_loop_before_events', 'Full_Score_Events\do_featured_events' );
+		add_action( 'full_score_events_loop_before_events', 'Full_Score_Events\do_events_loop_wrapper', 25 );
+		add_action( 'full_score_events_loop_after_events', 'the_posts_pagination' );
+		add_action( 'full_score_events_loop_after_events', 'Full_Score_Events\do_events_loop_wrapper_close', 25 );
 
 		// Event.
 		add_action( 'full_score_events_event_header_content', 'Full_Score_Events\do_event_title' );
@@ -48,9 +51,6 @@ class Template_Hooks {
 		// Events archive event header.
 		add_action( 'full_score_events_loop_event_header', 'Full_Score_Events\do_event_date', 15 );
 		add_action( 'full_score_events_loop_event_header', 'Full_Score_Events\do_event_header_content', 30 );
-
-		// Events archive loop.
-		add_action( 'full_score_events_loop_after_events', 'the_posts_pagination' );
 
 		// Event single.
 		add_action( 'full_score_events_single_event_content', 'Full_Score_Events\do_single_event_header' );

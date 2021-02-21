@@ -128,6 +128,24 @@ function do_all_events_link() {
 }
 
 /**
+ * Output events loop wrapper
+ *
+ * @since 1.0.0
+ */
+function do_events_loop_wrapper() {
+	echo '<section class="fse-wrap fse-events-loop">';
+}
+
+/**
+ * Output closing events loop wrapper tag
+ *
+ * @since 1.0.0
+ */
+function do_events_loop_wrapper_close() {
+	echo '</section>';
+}
+
+/**
  * Output events loop event header
  *
  * @since 1.0.0
