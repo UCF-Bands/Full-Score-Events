@@ -21,9 +21,13 @@ $events = Events::get_featured();
 if ( ! $events->have_posts() ) {
 	return;
 }
+
+$background = Customizer::get( 'featured_background' );
 ?>
 
 <section class="fse-featured-events">
+
+	<?php echo wp_get_attachment_image( $background, [ 1600, 1000 ], false, [ 'class' => 'fse-featured-events-background' ] ); ?>
 
 	<header class="fse-featured-events-header">
 		<?php
