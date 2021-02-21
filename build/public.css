@@ -3,6 +3,37 @@
  *
  * @since 1.0.0
  */
+:root {
+  --fse-color-white: #fff; }
+
+.fse-wrap {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 87.5rem;
+  max-width: var(--responsive--alignwide-width); }
+
+.fse-cover-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover; }
+
+.fse-has-background {
+  color: #fff;
+  color: var(--fse-color-white);
+  color: var(--global--color-white); }
+
+/**
+ * Featured events
+ *
+ * @since 1.0.0
+ */
+.fse-featured-events,
+.fse-featured-events-wrap {
+  position: relative; }
 
 
 /*# sourceMappingURL=public.css.map*/
