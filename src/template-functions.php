@@ -44,6 +44,12 @@ function do_archive_header() {
  * @since 1.0.0
  */
 function do_featured_events() {
+
+	// Only show on first page.
+	if ( get_query_var( 'paged' ) ) {
+		return;
+	}
+
 	get_plugin_template( 'featured-events' );
 }
 
