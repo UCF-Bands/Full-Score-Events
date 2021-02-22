@@ -8,3 +8,7 @@
 .fse-featured-events-wrap {
 	position: relative;
 }
+
+.fse-featured-events-wrap .fse-featured-events-header {
+	grid-column: var(--fse-column-cards-column-column);
+}

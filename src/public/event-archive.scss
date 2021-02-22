@@ -1,0 +1,16 @@
+/**
+ * Event archive
+ *
+ * @since 1.0.0
+ */
+
+.fse-events-loop .fse-season-label {
+	grid-column: var(--fse-column-cards-column-column);
+}
+
+@media (min-width: 64rem) {
+
+	.fse-season-label {
+		text-align: right;
+	}
+}

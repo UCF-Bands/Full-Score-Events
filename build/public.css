@@ -4,7 +4,18 @@
  * @since 1.0.0
  */
 :root {
-  --fse-color-white: #fff; }
+  --fse-color-white: #fff;
+  --fse-column-cards-template: repeat(1fr);
+  --fse-column-cards-gap: 2rem;
+  --fse-column-cards-column-column: auto;
+  --fse-column-cards-cards-column: auto; }
+
+@media (min-width: 64rem) {
+  :root {
+    --fse-column-cards-template: 1fr 20rem 30rem 1fr;
+    --fse-column-cards-gap: 2rem 4rem;
+    --fse-column-cards-column-column: 2;
+    --fse-column-cards-cards-column: 3; } }
 
 .fse-wrap {
   margin-left: auto;
@@ -26,6 +37,33 @@
   color: var(--fse-color-white);
   color: var(--global--color-white); }
 
+.fse-featured-events-wrap,
+.fse-events-loop {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: ()[1fr];
+  grid-template-columns: repeat(1fr);
+  -ms-grid-columns: var(--fse-column-cards-template);
+  grid-template-columns: var(--fse-column-cards-template);
+  gap: 2rem;
+  gap: var(--fse-column-cards-gap); }
+  .fse-featured-events-wrap > *,
+  .fse-events-loop > * {
+    grid-column: auto;
+    grid-column: var(--fse-column-cards-cards-column); }
+
+/**
+ * Event archive
+ *
+ * @since 1.0.0
+ */
+.fse-events-loop .fse-season-label {
+  grid-column: var(--fse-column-cards-column-column); }
+
+@media (min-width: 64rem) {
+  .fse-season-label {
+    text-align: right; } }
+
 /**
  * Featured events
  *
@@ -34,6 +72,9 @@
 .fse-featured-events,
 .fse-featured-events-wrap {
   position: relative; }
+
+.fse-featured-events-wrap .fse-featured-events-header {
+  grid-column: var(--fse-column-cards-column-column); }
 
 /**
  * Event single
