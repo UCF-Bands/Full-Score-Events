@@ -1,0 +1,36 @@
+/**
+ * Event single
+ *
+ * @since 1.0.0
+ */
+
+.fse-event-single-thumbnail {
+	width: 100%;
+}
+
+.fse-event-content-wrap {
+	display: grid;
+	align-items: start;
+	gap: 2rem;
+
+	@media (min-width: 80rem) { // 1280px
+		grid-template-columns: 1fr auto;
+	}
+}
+
+.fse-event-aside {
+	display: grid;
+	gap: 2rem;
+
+	@media (min-width: 64rem) and (max-width: 79.9375rem) { // 1024px to 1279px
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (min-width: 94rem) { // 1504px
+
+	.fse-event-content-wrap,
+	.fse-event-aside {
+		gap: 4rem;
+	}
+}

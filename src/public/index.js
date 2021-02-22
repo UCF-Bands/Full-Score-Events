@@ -5,3 +5,4 @@
  */
 import './global.scss';
 import './featured-events.scss';
+import './event-single.scss';

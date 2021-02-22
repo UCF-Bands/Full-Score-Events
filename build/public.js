@@ -86,6 +86,17 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/public/event-single.scss":
+/*!**************************************!*\
+  !*** ./src/public/event-single.scss ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "./src/public/featured-events.scss":
 /*!*****************************************!*\
   !*** ./src/public/featured-events.scss ***!
@@ -121,11 +132,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _global_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_global_scss__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _featured_events_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./featured-events.scss */ "./src/public/featured-events.scss");
 /* harmony import */ var _featured_events_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_featured_events_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _event_single_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./event-single.scss */ "./src/public/event-single.scss");
+/* harmony import */ var _event_single_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_event_single_scss__WEBPACK_IMPORTED_MODULE_2__);
 /**
  * Front end-only CSS and JS
  *
  * @since 1.0.0
  */
+
 
 
 

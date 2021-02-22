@@ -35,5 +35,37 @@
 .fse-featured-events-wrap {
   position: relative; }
 
+/**
+ * Event single
+ *
+ * @since 1.0.0
+ */
+.fse-event-single-thumbnail {
+  width: 100%; }
+
+.fse-event-content-wrap {
+  display: -ms-grid;
+  display: grid;
+  align-items: start;
+  gap: 2rem; }
+  @media (min-width: 80rem) {
+    .fse-event-content-wrap {
+      -ms-grid-columns: 1fr auto;
+      grid-template-columns: 1fr auto; } }
+
+.fse-event-aside {
+  display: -ms-grid;
+  display: grid;
+  gap: 2rem; }
+  @media (min-width: 64rem) and (max-width: 79.9375rem) {
+    .fse-event-aside {
+      -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr); } }
+
+@media (min-width: 94rem) {
+  .fse-event-content-wrap,
+  .fse-event-aside {
+    gap: 4rem; } }
+
 
 /*# sourceMappingURL=public.css.map*/
