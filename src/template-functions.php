@@ -191,6 +191,24 @@ function do_single_event_thumbnail() {
 }
 
 /**
+ * Output event single content wrapper tag
+ *
+ * @since 1.0.0
+ */
+function do_single_event_content_wrap() {
+	echo '<div class="fse-wrap fse-event-content-wrap">';
+}
+
+/**
+ * Output closing event single content wrapper tag
+ *
+ * @since 1.0.0
+ */
+function do_single_event_content_wrap_close() {
+	echo '</div>';
+}
+
+/**
  * Output event single main content
  *
  * @since 1.0.0
