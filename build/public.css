@@ -4,7 +4,13 @@
  * @since 1.0.0
  */
 :root {
+  --fse-color-black: #000;
   --fse-color-white: #fff;
+  --fse-letter-spacing-semi-wide: 0.05em;
+  --fse-transition-timing-function: ease-in-out;
+  --fse-transition-duration: 150ms;
+  --fse-event-meta-spacing: 0.5rem;
+  --fse-event-card-link-offset: 2.5rem;
   --fse-column-cards-template: repeat(1fr);
   --fse-column-cards-gap: 2rem;
   --fse-column-cards-column-column: auto;
@@ -12,8 +18,10 @@
 
 @media (min-width: 64rem) {
   :root {
-    --fse-column-cards-template: 1fr 20rem 30rem 1fr;
-    --fse-column-cards-gap: 2rem 4rem;
+    --fse-column-cards-template: 1fr 20rem 32rem 1fr;
+    --fse-column-cards-gap-y: 3rem;
+    --fse-column-cards-gap-x: 4rem;
+    --fse-column-cards-gap: var(--fse-column-cards-gap-y) var(--fse-column-cards-gap-x);
     --fse-column-cards-column-column: 2;
     --fse-column-cards-cards-column: 3; } }
 
@@ -37,6 +45,105 @@
   color: var(--fse-color-white);
   color: var(--global--color-white); }
 
+.fse-date,
+.fse-event-header-content {
+  line-height: 1.1;
+  line-height: var(--global--line-height-page-title); }
+
+.fse-date {
+  display: -ms-grid;
+  display: grid;
+  gap: 4px;
+  min-width: 5rem;
+  padding: 2px;
+  text-align: center;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #000;
+  border-color: var(--fse-color-black);
+  border-color: var(--global--color-border); }
+
+.fse-date-days {
+  padding: 0.25rem 0.5rem;
+  font-size: 1.5rem;
+  font-size: var(--global--font-size-xl); }
+
+.fse-date-month {
+  padding: 0.25rem 0.5rem;
+  font-size: 1rem;
+  font-size: var(--global--font-size-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  letter-spacing: var(--fse-letter-spacing-semi-wide);
+  color: #fff;
+  color: var(--fse-color-white);
+  background: #000;
+  background: var(--fse-color-black);
+  background: var(--global--color-border);
+  mix-blend-mode: darken; }
+
+.fse-days-separator {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem; }
+
+.fse-event-meta {
+  margin: calc(0.5rem / 2 * -1) calc(0.5rem * -1);
+  margin: calc(var(--fse-event-meta-spacing) / 2 * -1) calc(var(--fse-event-meta-spacing) * -1);
+  display: flex;
+  flex-flow: row wrap; }
+  .fse-event-meta > * {
+    flex: 0 1 auto;
+    display: block;
+    margin: calc(0.5rem / 2) 0.5rem;
+    margin: calc(var(--fse-event-meta-spacing) / 2) var(--fse-event-meta-spacing); }
+
+.fse-events-loop-event-header {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto 1fr;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 1rem; }
+
+.fse-event-header-content {
+  display: -ms-grid;
+  display: grid;
+  gap: 0.5rem; }
+
+.fse-event-link-overlay-message {
+  font-weight: 700;
+  text-transform: uppercase; }
+  .fse-event-link-overlay-message [data-fse-icon] {
+    margin-left: 0.25rem;
+    transition: transform ease-in-out 150ms;
+    transition: transform var(--fse-transition-timing-function) var(--fse-transition-duration); }
+
+.fse-event-link-overlay {
+  display: flex;
+  align-items: flex-end;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  letter-spacing: var(--fse-letter-spacing-semi-wide);
+  font-size: 1rem;
+  font-size: var(--global--font-size-xs); }
+  .fse-event-link-overlay:hover .fse-event-link-overlay-message [data-fse-icon],
+  .fse-event-link-overlay:focus .fse-event-link-overlay-message [data-fse-icon] {
+    transform: translateX(0.25rem); }
+
+.fse-event-card {
+  display: -ms-grid;
+  display: grid;
+  gap: 1rem;
+  position: relative;
+  padding-bottom: 2.5rem;
+  padding-bottom: var(--fse-event-card-link-offset); }
+
 .fse-featured-events-wrap,
 .fse-events-loop {
   display: -ms-grid;
@@ -45,6 +152,7 @@
   grid-template-columns: repeat(1fr);
   -ms-grid-columns: var(--fse-column-cards-template);
   grid-template-columns: var(--fse-column-cards-template);
+  align-items: start;
   gap: 2rem;
   gap: var(--fse-column-cards-gap); }
   .fse-featured-events-wrap > *,
@@ -52,11 +160,22 @@
     grid-column: auto;
     grid-column: var(--fse-column-cards-cards-column); }
 
+@media (min-width: 64rem) {
+  .fse-events-loop-event-header {
+    gap: 1.5rem; } }
+
 /**
  * Event archive
  *
  * @since 1.0.0
  */
+.fse-season-label {
+  display: -ms-grid;
+  display: grid; }
+
+.fse-season-label-year {
+  font-weight: 700; }
+
 .fse-events-loop .fse-season-label {
   grid-column: var(--fse-column-cards-column-column); }
 

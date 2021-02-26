@@ -4,8 +4,22 @@
  * @since 1.0.0
  */
 
+.fse-season-label {
+	display: grid;
+	// align-content: start;
+}
+
+.fse-season-label-year {
+	font-weight: 700;
+}
+
 .fse-events-loop .fse-season-label {
 	grid-column: var(--fse-column-cards-column-column);
+	// padding-top: var(--fse-column-cards-gap-y);
+
+	// &:first-child {
+	// 	padding-top: 0;
+	// }
 }
 
 @media (min-width: 64rem) {
