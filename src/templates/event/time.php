@@ -29,7 +29,8 @@ if ( ! $fse_event->get_time_start() ) {
 	do_icon( 'clock' );
 
 	if ( $fse_event->is_time_tba() ) :
-		return esc_html_e( 'TBA', 'full-score-events' );
+		echo esc_html__( 'TBA', 'full-score-events' ) . '</span>';
+		return;
 	endif;
 
 	if ( $fse_event->is_daily() ) :
