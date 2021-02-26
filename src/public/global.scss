@@ -130,14 +130,12 @@
 .fse-event-link-overlay {
 	display: flex;
 	align-items: flex-end;
-	// justify-content: f`;
 	position: absolute;
 	top: 0;
 	right: 0;
 	bottom: 0;
 	left: 0;
 	text-decoration: none;
-	// background: lightgreen;
 	letter-spacing: var(--fse-letter-spacing-semi-wide);
 	font-size: 1rem;
 	font-size: var(--global--font-size-xs);
@@ -153,16 +151,6 @@
 	gap: 1rem;
 	position: relative;
 	padding-bottom: var(--fse-event-card-link-offset);
-	// padding-top: var(--fse-column-cards-gap-y);
-	// border-top-width: 2px;
-	// border-top-style: solid;
-	// border-top-color: var(--fse-color-black);
-	// border-top-color: var(--global--color-border);
-
-	// &:first-of-type {
-	// 	padding-top: 0;
-	// 	border-top: none;
-	// }
 }
 
 // column + cards column layout
