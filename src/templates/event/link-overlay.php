@@ -14,7 +14,9 @@
  * @since   1.0.0
  */
 
+namespace Full_Score_Events;
+
 ?>
 <a href="<?php the_permalink(); ?>" class="fse-event-link-overlay">
-	<span class="fse-event-link-overlay-message"><?php esc_html_e( 'View Event', 'full-score-events' ); ?></span>
+	<span class="fse-event-link-overlay-message"><?php esc_html_e( 'View Event', 'full-score-events' ); ?><?php do_icon( 'arrow-right' ); ?></span>
 </a>
