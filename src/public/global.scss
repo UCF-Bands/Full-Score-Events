@@ -30,6 +30,7 @@
 	}
 }
 
+// general wrapper
 .fse-wrap {
 	margin-left: auto;
 	margin-right: auto;
@@ -37,6 +38,7 @@
 	max-width: var(--responsive--alignwide-width);
 }
 
+// image fully covering background
 .fse-cover-image {
 	position: absolute;
 	top: 0;
@@ -46,17 +48,27 @@
 	object-fit: cover;
 }
 
+// dark theme?
 .fse-has-background {
 	color: var(--fse-color-white);
 	color: var(--global--color-white);
 }
 
+// list reset
+.fse-featured-events-list {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+// reduce line heights
 .fse-date,
 .fse-event-header-content {
 	line-height: 1.1;
 	line-height: var(--global--line-height-page-title);
 }
 
+// date calendar icon thing
 .fse-date {
 	display: grid;
 	gap: 4px;
@@ -93,6 +105,7 @@
 	margin-right: 0.25rem;
 }
 
+// event time, location name, etc
 .fse-event-meta {
 	margin: calc(var(--fse-event-meta-spacing) / 2 * -1) calc(var(--fse-event-meta-spacing) * -1);
 	display: flex;
@@ -105,6 +118,7 @@
 	}
 }
 
+// loop item header
 .fse-events-loop-event-header {
 	display: grid;
 	grid-template-columns: auto 1fr;
@@ -117,6 +131,7 @@
 	gap: 0.5rem;
 }
 
+// event link overlay
 .fse-event-link-overlay-message {
 	font-weight: 700;
 	text-transform: uppercase;

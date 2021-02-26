@@ -45,6 +45,11 @@
   color: var(--fse-color-white);
   color: var(--global--color-white); }
 
+.fse-featured-events-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none; }
+
 .fse-date,
 .fse-event-header-content {
   line-height: 1.1;
