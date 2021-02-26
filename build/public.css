@@ -193,9 +193,16 @@
  *
  * @since 1.0.0
  */
+.fse-featured-events {
+  padding-top: 2rem;
+  padding-bottom: 2rem; }
+
 .fse-featured-events,
 .fse-featured-events-wrap {
   position: relative; }
+
+.fse-featured-events-header {
+  text-align: right; }
 
 .fse-featured-events-wrap .fse-featured-events-header {
   grid-column: var(--fse-column-cards-column-column); }
