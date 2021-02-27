@@ -22,14 +22,23 @@ if ( ! $events->have_posts() ) {
 	return;
 }
 
-$background = Customizer::get( 'featured_background' );
+$background       = Customizer::get( 'featured_background' );
+$background_image = Customizer::get( 'featured_background_image' );
+
+$attrs = [
+	'class' => [
+		'fse-featured-events',
+		$background || $background_image ? 'fse-has-background' : null,
+		$background_image ? 'fse-has-background-image' : null,
+	],
+];
 ?>
 
-<section class="fse-featured-events">
+<section <?php do_attrs( $attrs ); ?>>
 
 	<?php
 	echo wp_get_attachment_image(
-		$background,
+		$background_image,
 		[ 1600, 1000 ],
 		false,
 		[ 'class' => 'fse-featured-events-background fse-cover-image' ]
@@ -38,7 +47,7 @@ $background = Customizer::get( 'featured_background' );
 
 	<div class="fse-wrap fse-featured-events-wrap">
 
-		<header <?php do_attrs_class( 'fse-featured-events-header', $background ? 'fse-has-background' : null ); ?>>
+		<header <?php do_attrs_class( 'fse-featured-events-header', $background_image ? 'fse-has-background' : null ); ?>>
 			<?php
 			/**
 			 * Hook: full_score_events_featured_header_content
