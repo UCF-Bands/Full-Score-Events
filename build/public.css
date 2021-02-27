@@ -242,7 +242,7 @@
   .fse-featured-events-header {
     text-align: right; } }
 
-@media (min-width: 120rem) {
+@media (min-width: 105rem) {
   .fse-featured-events.fse-has-background {
     padding-top: 6rem;
     padding-bottom: 6rem; } }
