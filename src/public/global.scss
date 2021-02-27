@@ -174,6 +174,12 @@
 	gap: 1rem;
 	position: relative;
 	padding-bottom: var(--fse-event-card-link-offset);
+
+	// excerpt
+	> p {
+		font-size: 1.125rem;
+		font-size: var(--global--font-size-sm);
+	}
 }
 
 // column + cards column layout

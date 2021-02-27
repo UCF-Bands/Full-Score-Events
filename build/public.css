@@ -152,6 +152,9 @@
   position: relative;
   padding-bottom: 2.5rem;
   padding-bottom: var(--fse-event-card-link-offset); }
+  .fse-event-card > p {
+    font-size: 1.125rem;
+    font-size: var(--global--font-size-sm); }
 
 .fse-featured-events-wrap,
 .fse-events-loop {
