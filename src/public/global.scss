@@ -62,12 +62,6 @@
 	object-fit: cover;
 }
 
-// dark theme?
-.fse-has-background {
-	color: var(--fse-color-white);
-	color: var(--global--color-white);
-}
-
 // list reset
 .fse-featured-events-list {
 	margin: 0;
@@ -109,9 +103,9 @@
 	text-transform: uppercase;
 	letter-spacing: var(--fse-letter-spacing-semi-wide);
 	color: var(--fse-color-white);
+	color: var(--global--color-background);
 	background: var(--fse-color-black);
 	background: var(--global--color-border);
-	mix-blend-mode: darken; // try to make text see through to background.
 }
 
 .fse-days-separator {

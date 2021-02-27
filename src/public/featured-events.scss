@@ -5,8 +5,37 @@
  */
 
 .fse-featured-events {
-	padding-top: 2rem;
-	padding-bottom: 2rem;
+	background: var(--fse-featured-background);
+
+	&,
+	a {
+		color: var(--fse-featured-color);
+	}
+
+	&.fse-has-background {
+		padding-top: 2rem;
+		padding-bottom: 2rem;
+	}
+
+	&.fse-has-background-image::after {
+		content: "";
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background: var(--fse-featured-background-overlay);
+		opacity: 0.8;
+	}
+
+	.fse-date {
+		border-color: var(--fse-featured-color);
+	}
+
+	.fse-date-month {
+		background-color: var(--fse-featured-color);
+		color: var(--fse-featured-background);
+	}
 }
 
 .fse-featured-events,
@@ -14,10 +43,34 @@
 	position: relative;
 }
 
-.fse-featured-events-header {
-	text-align: right;
+.fse-featured-events-wrap {
+	z-index: 1; // layer over backround image overlay
+
+	.fse-featured-events-header {
+		grid-column: var(--fse-column-cards-column-column);
+	}
 }
 
-.fse-featured-events-wrap .fse-featured-events-header {
-	grid-column: var(--fse-column-cards-column-column);
+.fse-featured-body p {
+	margin-top: 1rem;
+}
+
+@media (min-width: 64rem) {
+
+	.fse-featured-events.fse-has-background {
+		padding-top: 4rem;
+		padding-bottom: 4rem;
+	}
+
+	.fse-featured-events-header {
+		text-align: right;
+	}
+}
+
+@media (min-width: 120rem) {
+
+	.fse-featured-events.fse-has-background {
+		padding-top: 6rem;
+		padding-bottom: 6rem;
+	}
 }
