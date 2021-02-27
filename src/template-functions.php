@@ -292,3 +292,39 @@ function remove_attachment_image_style_attribute( $attr ) {
 	return $attr;
 }
 add_filter( 'wp_get_attachment_image_attributes', __NAMESPACE__ . '\remove_attachment_image_style_attribute', 50 );
+
+/**
+ * Set excerpt "more" to ellipsis in event card
+ *
+ * @param  string $excerpt_more  Excerpt "more" text.
+ * @return string
+ *
+ * @since 1.0.0
+ */
+function remove_excerpt_more( $excerpt_more ) {
+
+	if ( doing_action( 'full_score_events_loop_event_content' ) ) {
+		return '…';
+	}
+
+	return $excerpt_more;
+}
+add_filter( 'excerpt_more', __NAMESPACE__ . '\remove_excerpt_more', 25 );
+
+/**
+ * Set event card's excerpt length
+ *
+ * @param  integer $length  Excerpt length.
+ * @return integer
+ *
+ * @since 1.0.0
+ */
+function set_excerpt_length( $length ) {
+
+	if ( doing_action( 'full_score_events_loop_event_content' ) ) {
+		return 40;
+	}
+
+	return $length;
+}
+add_filter( 'excerpt_length', __NAMESPACE__ . '\set_excerpt_length', 25 );
