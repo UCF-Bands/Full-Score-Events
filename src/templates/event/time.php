@@ -27,6 +27,7 @@ if ( ! $fse_event->get_time_start() ) {
 <span class="fse-event-time">
 	<?php
 	do_icon( 'clock' );
+	echo ' ';
 
 	if ( $fse_event->is_time_tba() ) :
 		echo esc_html__( 'TBA', 'full-score-events' ) . '</span>';
