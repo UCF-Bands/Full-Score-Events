@@ -26,8 +26,6 @@ if ( ! $location ) {
 ?>
 
 <span class="fse-event-location-name">
-	<?php
-	do_icon( 'map-marker' );
-	$location->do_title();
-	?>
+	<?php do_icon( 'map-marker' ); ?>
+	<?php $location->do_title(); ?>
 </span>
