@@ -162,11 +162,22 @@
 	letter-spacing: var(--fse-letter-spacing-semi-wide);
 	font-size: 1rem;
 	font-size: var(--global--font-size-xs);
+	outline: 2px dotted transparent;
+	outline-offset: 1rem;
+	transition: outline ease-in-out var(--fse-transition-duration);
 
 	&:hover .fse-event-link-overlay-message [data-fse-icon],
 	&:focus .fse-event-link-overlay-message [data-fse-icon] {
 		transform: translateX(0.25rem);
 	}
+}
+
+// Twenty Twenty-One fix
+.fse-event-link-overlay:hover,
+.fse-event-link-overlay:focus,
+.site .fse-event-link-overlay:not(.wp-block-button__link):not(.wp-block-file__button):focus {
+	background: none;
+	outline: 2px dotted var(--global--color-border);
 }
 
 .fse-event-card {

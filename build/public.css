@@ -140,10 +140,20 @@
   letter-spacing: 0.05em;
   letter-spacing: var(--fse-letter-spacing-semi-wide);
   font-size: 1rem;
-  font-size: var(--global--font-size-xs); }
+  font-size: var(--global--font-size-xs);
+  outline: 2px dotted transparent;
+  outline-offset: 1rem;
+  transition: outline ease-in-out 150ms;
+  transition: outline ease-in-out var(--fse-transition-duration); }
   .fse-event-link-overlay:hover .fse-event-link-overlay-message [data-fse-icon],
   .fse-event-link-overlay:focus .fse-event-link-overlay-message [data-fse-icon] {
     transform: translateX(0.25rem); }
+
+.fse-event-link-overlay:hover,
+.fse-event-link-overlay:focus,
+.site .fse-event-link-overlay:not(.wp-block-button__link):not(.wp-block-file__button):focus {
+  background: none;
+  outline: 2px dotted var(--global--color-border); }
 
 .fse-event-card {
   display: -ms-grid;
@@ -208,6 +218,10 @@
   .fse-featured-events.fse-has-background {
     padding-top: 2rem;
     padding-bottom: 2rem; }
+    .fse-featured-events.fse-has-background .fse-event-link-overlay:hover,
+    .fse-featured-events.fse-has-background .fse-event-link-overlay:focus,
+    .fse-featured-events.fse-has-background .fse-event-link-overlay:not(.wp-block-button__link):focus {
+      outline-color: var(--fse-featured-color); }
   .fse-featured-events.fse-has-background-image::after {
     content: "";
     position: absolute;
