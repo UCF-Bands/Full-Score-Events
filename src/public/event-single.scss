@@ -4,6 +4,13 @@
  * @since 1.0.0
  */
 
+.fse-event-single-header-wrap {
+	display: grid;
+	align-items: start;
+	justify-items: start;
+	gap: 1rem;
+}
+
 .fse-event-single-thumbnail {
 	width: 100%;
 }
@@ -18,12 +25,50 @@
 	}
 }
 
+.fse-event-entry-content.entry-content {
+	margin-top: 0;
+}
+
 .fse-event-aside {
 	display: grid;
 	gap: 2rem;
 
 	@media (min-width: 64rem) and (max-width: 79.9375rem) { // 1024px to 1279px
 		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+.fse-event-aside-heading {
+	margin-bottom: var(--fse-aside-heading-spacing);
+}
+
+@media (min-width: 31.25rem) { // 500px
+
+	.fse-event-single-header-wrap {
+		grid-template-columns: auto 1fr;
+		gap: 1.5rem;
+	}
+
+	.fse-event-registration-label {
+		grid-column: span 2;
+	}
+}
+
+@media (min-width: 50rem) { // 800px
+
+	.fse-event-single-header-wrap {
+		grid-template-columns: auto 1fr auto;
+	}
+
+	.fse-event-registration-label {
+		grid-column: span 1;
+	}
+}
+
+@media (min-width: 64rem) { // 1024px
+
+	.fse-event-single-header-wrap {
+		gap: 2rem;
 	}
 }
 
