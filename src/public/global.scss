@@ -127,6 +127,37 @@
 	}
 }
 
+// location & contact
+.fse-location-address,
+.fse-contact-card {
+	font-style: normal;
+}
+
+.fse-contact-card {
+	display: grid;
+	gap: 1rem;
+	grid-template-columns: auto 1fr;
+
+	@media (min-width: 64rem) {
+		gap: 1.5rem;
+	}
+}
+
+.fse-contact-card-name {
+	display: block;
+}
+
+.fse-contact-card-methods {
+	display: grid;
+}
+
+.fse-contact-method {
+	display: grid;
+	grid-template-columns: 1.5rem 1fr;
+	align-items: center;
+	gap: 0.5rem;
+}
+
 // loop item header
 .fse-events-loop-event-header {
 	display: grid;

@@ -45,13 +45,13 @@ $phone      = get_the_author_meta( 'phone', $contact );
 			<?php endif; ?>
 
 			<div class="fse-contact-card-methods">
-				<a href="mailto:<?php echo esc_attr( $email ); ?>" class="fse-contact-email">
+				<a href="mailto:<?php echo esc_attr( $email ); ?>" class="fse-contact-method fse-contact-email">
 					<?php do_icon( 'envelope' ); ?>
 					<?php echo esc_html( $email ); ?>
 				</a>
 
 				<?php if ( $phone ) : ?>
-					<a href="tel:<?php echo esc_attr( $phone ); ?>" class="fse-contact-phone">
+					<a href="tel:<?php echo esc_attr( $phone ); ?>" class="fse-contact-method fse-contact-phone">
 						<?php do_icon( 'phone' ); ?>
 						<?php echo esc_html( $phone ); ?>
 					</a>
