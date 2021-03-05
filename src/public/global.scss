@@ -16,6 +16,7 @@
 	--fse-column-cards-gap: 2rem;
 	--fse-column-cards-column-column: auto;
 	--fse-column-cards-cards-column: auto;
+	--fse-aside-heading-spacing: 1rem;
 }
 
 // 1024px and up
@@ -30,6 +31,7 @@
 		--fse-column-cards-gap-y: 3rem;
 		--fse-column-cards-gap-x: 4rem;
 		--fse-column-cards-gap: var(--fse-column-cards-gap-y) var(--fse-column-cards-gap-x);
+		--fse-aside-heading-spacing: 1.5rem;
 	}
 }
 
