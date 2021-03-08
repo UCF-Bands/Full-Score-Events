@@ -6,9 +6,15 @@
 :root {
   --fse-color-black: #000;
   --fse-color-white: #fff;
+  --fse-font-size-xsmall: var(--global--font-size-xs, 1rem);
+  --fse-font-size-small: var(--global--font-size-sm, 1.125rem);
+  --fse-font-size-large: var(--global--font-size-xl, 1.5rem);
+  --fse-line-height-small: var(--global--line-height-page-title, 1.1);
   --fse-letter-spacing-semi-wide: 0.05em;
+  --fse-border-color: var(--global--color-border, var(--fse-color-black));
   --fse-transition-timing-function: ease-in-out;
   --fse-transition-duration: 150ms;
+  --fse-wrap-max-width: var(--responsive--alignwide-width, 1240px);
   --fse-event-meta-spacing: 0.5rem;
   --fse-event-card-link-offset: 2.5rem;
   --fse-column-cards-template: auto;
@@ -39,8 +45,8 @@
 .fse-wrap {
   margin-left: auto;
   margin-right: auto;
-  max-width: 1240px;
-  max-width: var(--responsive--alignwide-width, 1240px); }
+  max-width: var(--responsive--alignwide-width, 1240px);
+  max-width: var(--fse-wrap-max-width); }
 
 .fse-cover-image {
   position: absolute;
@@ -58,8 +64,8 @@
 
 .fse-date,
 .fse-event-header-content {
-  line-height: 1.1;
-  line-height: var(--global--line-height-page-title); }
+  line-height: var(--global--line-height-page-title, 1.1);
+  line-height: var(--fse-line-height-small); }
 
 .fse-date {
   display: -ms-grid;
@@ -70,29 +76,26 @@
   text-align: center;
   border-width: 2px;
   border-style: solid;
-  border-color: #000;
-  border-color: var(--fse-color-black);
-  border-color: var(--global--color-border); }
+  border-color: var(--global--color-border, var(--fse-color-black));
+  border-color: var(--fse-border-color); }
 
 .fse-date-days {
   padding: 0.25rem 0.5rem;
-  font-size: 1.5rem;
-  font-size: var(--global--font-size-xl); }
+  font-size: var(--global--font-size-xl, 1.5rem);
+  font-size: var(--fse-font-size-large); }
 
 .fse-date-month {
   padding: 0.25rem 0.5rem;
-  font-size: 1rem;
-  font-size: var(--global--font-size-xs);
+  font-size: var(--global--font-size-xs, 1rem);
+  font-size: var(--fse-font-size-xsmall);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   letter-spacing: var(--fse-letter-spacing-semi-wide);
-  color: #fff;
   color: var(--fse-color-white);
-  color: var(--global--color-background);
-  background: #000;
-  background: var(--fse-color-black);
-  background: var(--global--color-border); }
+  color: var(--global--color-background, var(--fse-color-white));
+  background: var(--global--color-border, var(--fse-color-black));
+  background: var(--fse-border-color); }
 
 .fse-days-separator {
   margin-left: 0.25rem;
@@ -170,8 +173,8 @@
   text-decoration: none;
   letter-spacing: 0.05em;
   letter-spacing: var(--fse-letter-spacing-semi-wide);
-  font-size: 1rem;
-  font-size: var(--global--font-size-xs);
+  font-size: var(--global--font-size-xs, 1rem);
+  font-size: var(--fse-font-size-xsmall);
   outline: 2px dotted transparent;
   outline-offset: 1rem;
   transition: outline ease-in-out 150ms;
@@ -184,7 +187,8 @@
 .fse-event-link-overlay:focus,
 .site .fse-event-link-overlay:not(.wp-block-button__link):not(.wp-block-file__button):focus {
   background: none;
-  outline: 2px dotted var(--global--color-border); }
+  outline: 2px dotted var(--global--color-border, var(--fse-color-black));
+  outline: 2px dotted var(--fse-border-color); }
 
 .fse-event-card {
   display: -ms-grid;
@@ -194,8 +198,8 @@
   padding-bottom: 2.5rem;
   padding-bottom: var(--fse-event-card-link-offset); }
   .fse-event-card > p {
-    font-size: 1.125rem;
-    font-size: var(--global--font-size-sm); }
+    font-size: var(--global--font-size-sm, 1.125rem);
+    font-size: var(--fse-font-size-small); }
 
 .fse-featured-events-wrap,
 .fse-events-loop {

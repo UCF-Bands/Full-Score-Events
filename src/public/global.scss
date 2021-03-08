@@ -7,9 +7,15 @@
 :root {
 	--fse-color-black: #000;
 	--fse-color-white: #fff;
+	--fse-font-size-xsmall: var(--global--font-size-xs, 1rem);
+	--fse-font-size-small: var(--global--font-size-sm, 1.125rem);
+	--fse-font-size-large: var(--global--font-size-xl, 1.5rem);
+	--fse-line-height-small: var(--global--line-height-page-title, 1.1);
 	--fse-letter-spacing-semi-wide: 0.05em;
+	--fse-border-color: var(--global--color-border, var(--fse-color-black));
 	--fse-transition-timing-function: ease-in-out;
 	--fse-transition-duration: 150ms;
+	--fse-wrap-max-width: var(--responsive--alignwide-width, 1240px);
 	--fse-event-meta-spacing: 0.5rem;
 	--fse-event-card-link-offset: 2.5rem;
 	--fse-column-cards-template: auto; // repeat(1fr);
@@ -50,7 +56,7 @@
 .fse-wrap {
 	margin-left: auto;
 	margin-right: auto;
-	max-width: var(--responsive--alignwide-width, 1240px);
+	max-width: var(--fse-wrap-max-width);
 }
 
 // image fully covering background
@@ -73,8 +79,7 @@
 // reduce line heights
 .fse-date,
 .fse-event-header-content {
-	line-height: 1.1;
-	line-height: var(--global--line-height-page-title);
+	line-height: var(--fse-line-height-small);
 }
 
 // date calendar icon thing
@@ -86,27 +91,22 @@
 	text-align: center;
 	border-width: 2px;
 	border-style: solid;
-	border-color: var(--fse-color-black);
-	border-color: var(--global--color-border);
+	border-color: var(--fse-border-color);
 }
 
 .fse-date-days {
 	padding: 0.25rem 0.5rem;
-	font-size: 1.5rem;
-	font-size: var(--global--font-size-xl);
+	font-size: var(--fse-font-size-large);
 }
 
 .fse-date-month {
 	padding: 0.25rem 0.5rem;
-	font-size: 1rem;
-	font-size: var(--global--font-size-xs);
+	font-size: var(--fse-font-size-xsmall);
 	font-weight: 700;
 	text-transform: uppercase;
 	letter-spacing: var(--fse-letter-spacing-semi-wide);
-	color: var(--fse-color-white);
-	color: var(--global--color-background);
-	background: var(--fse-color-black);
-	background: var(--global--color-border);
+	color: var(--global--color-background, var(--fse-color-white)); // @todo color var?
+	background: var(--fse-border-color);
 }
 
 .fse-days-separator {
@@ -192,8 +192,7 @@
 	left: 0;
 	text-decoration: none;
 	letter-spacing: var(--fse-letter-spacing-semi-wide);
-	font-size: 1rem;
-	font-size: var(--global--font-size-xs);
+	font-size: var(--fse-font-size-xsmall);
 	outline: 2px dotted transparent;
 	outline-offset: 1rem;
 	transition: outline ease-in-out var(--fse-transition-duration);
@@ -209,7 +208,7 @@
 .fse-event-link-overlay:focus,
 .site .fse-event-link-overlay:not(.wp-block-button__link):not(.wp-block-file__button):focus {
 	background: none;
-	outline: 2px dotted var(--global--color-border);
+	outline: 2px dotted var(--fse-border-color);
 }
 
 .fse-event-card {
@@ -220,8 +219,7 @@
 
 	// excerpt
 	> p {
-		font-size: 1.125rem;
-		font-size: var(--global--font-size-sm);
+		font-size: var(--fse-font-size-small);
 	}
 }
 
