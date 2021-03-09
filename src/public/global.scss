@@ -5,28 +5,6 @@
  */
 
 :root {
-	--fse-bsu: 16px;
-	--fse-bsu-x2: calc(var(--fse-bsu) * 2);
-	--fse-bsu-x3: calc(var(--fse-bsu) * 3);
-	--fse-bsu-x4: calc(var(--fse-bsu) * 4);
-	--fse-bsu-half: calc(var(--fse-bsu) / 2);
-	--fse-bsu-third: calc(var(--fse-bsu) / 3);
-	--fse-bsu-fourth: calc(var(--fse-bsu) / 4);
-
-	--fse-color-black: #000;
-	--fse-color-white: #fff;
-
-	--fse-font-size-xsmall: var(--global--font-size-xs, 14px); //1rem);
-	--fse-font-size-regular: var(--global--font-size-sm, 16px);
-	--fse-font-size-large: var(--global--font-size-xl, 36px);
-	--fse-line-height-small: var(--global--line-height-page-title, 1.1);
-	--fse-letter-spacing-semi-wide: 0.05em;
-
-	--fse-border-color: var(--global--color-border, var(--fse-color-black));
-
-	--fse-transition-timing-function: ease-in-out;
-	--fse-transition-duration: 150ms;
-
 	--fse-wrap-width: 90%;
 	--fse-wrap-max-width: var(--responsive--alignwide-width, 1240px);
 	--fse-event-header-title-offset: 9%;

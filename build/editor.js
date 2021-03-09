@@ -119,6 +119,17 @@
 
 // extracted by mini-css-extract-plugin
 
+/***/ }),
+
+/***/ "./src/editor/style.scss":
+/*!*******************************!*\
+  !*** ./src/editor/style.scss ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
 /***/ })
 
 }]);
@@ -38186,15 +38197,19 @@ var PostSelectWrapper = function PostSelectWrapper(blockConfig) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components */ "./src/editor/components/index.js");
-/* harmony import */ var _plugins__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./plugins */ "./src/editor/plugins/index.js");
-/* harmony import */ var _blocks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./blocks */ "./src/editor/blocks/index.js");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.scss */ "./src/editor/style.scss");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components */ "./src/editor/components/index.js");
+/* harmony import */ var _plugins__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./plugins */ "./src/editor/plugins/index.js");
+/* harmony import */ var _blocks__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./blocks */ "./src/editor/blocks/index.js");
 /**
  * Block editor blocks + helpers
  *
  * @since 1.0.0
  */
-// components
+// global helpers
+ // components
+
  // plugins
 
  // blocks

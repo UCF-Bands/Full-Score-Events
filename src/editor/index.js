@@ -4,6 +4,9 @@
  * @since 1.0.0
  */
 
+// global helpers
+import './style.scss';
+
 // components
 import './components';
 
