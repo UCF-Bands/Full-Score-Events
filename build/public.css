@@ -23,6 +23,7 @@
   --fse-transition-duration: 150ms;
   --fse-wrap-width: 90%;
   --fse-wrap-max-width: var(--responsive--alignwide-width, 1240px);
+  --fse-event-header-title-offset: 9%;
   --fse-event-meta-spacing: 0.5rem;
   --fse-event-card-link-offset: 2.5rem;
   --fse-column-cards-template: auto;
@@ -89,6 +90,7 @@
   min-width: calc(16px * 5);
   min-width: calc(var(--fse-bsu) * 5);
   margin-top: 9%;
+  margin-top: var(--fse-event-header-title-offset);
   padding: 2px;
   text-align: center;
   border-width: 2px;
@@ -351,6 +353,17 @@
   justify-items: start;
   gap: var(--fse-bsu); }
 
+span.fse-event-registration-label {
+  background: none;
+  border: 2px solid var(--fse-border-color);
+  color: var(--fse-border-color);
+  cursor: default; }
+  span.fse-event-registration-label:hover {
+    text-decoration: none; }
+
+.fse-event-single-header .fse-event-registration-label {
+  margin-top: var(--fse-event-header-title-offset); }
+
 .fse-event-single-thumbnail {
   width: 100%; }
 
@@ -383,6 +396,9 @@
 .fse-event-location,
 .fse-event-contact {
   padding: 0; }
+
+.fse-event-location .fse-location-map {
+  margin-bottom: var(--fse-bsu); }
 
 @media (min-width: 31.25rem) {
   .fse-event-single-header-wrap {

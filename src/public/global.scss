@@ -29,6 +29,7 @@
 
 	--fse-wrap-width: 90%;
 	--fse-wrap-max-width: var(--responsive--alignwide-width, 1240px);
+	--fse-event-header-title-offset: 9%;
 	--fse-event-meta-spacing: 0.5rem;
 	--fse-event-card-link-offset: 2.5rem;
 	--fse-column-cards-template: auto; // repeat(1fr);
@@ -108,7 +109,7 @@
 	display: grid;
 	gap: 4px;
 	min-width: calc(var(--fse-bsu) * 5);
-	margin-top: 9%; // offset for heading line height
+	margin-top: var(--fse-event-header-title-offset);
 	padding: 2px;
 	text-align: center;
 	border-width: 2px;
