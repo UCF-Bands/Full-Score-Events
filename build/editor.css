@@ -82,7 +82,7 @@ body {
   margin-top: 1rem; }
 
 .wp-block-full-score-events-schedule-item + .wp-block-full-score-events-schedule-item {
-  border-top: 1px solid var(--global--color-border); }
+  border-top: 1px solid var(--fse-border-color); }
 
 .fse-schedule-download-wrapper {
   margin-top: 1.5rem; }

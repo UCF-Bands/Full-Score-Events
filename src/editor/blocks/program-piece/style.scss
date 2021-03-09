@@ -8,15 +8,15 @@
 .wp-block-full-score-events-program-piece {
 	display: grid;
 	padding: 1rem 0;
-	font-size: var(--global--font-size-sm);
-	line-height: var(--global--line-height-heading);
+	font-size: var(--fse-font-size-regular);
+	line-height: var(--fse-line-height-small);
 
 	& + & {
-		border-top: 1px solid var(--global--color-border);
+		border-top: 1px solid var(--fse-border-color);
 	}
 
 	small {
-		font-size: var(--global--font-size-xs);
+		font-size: var(--fse-font-size-xsmall);
 	}
 }
 

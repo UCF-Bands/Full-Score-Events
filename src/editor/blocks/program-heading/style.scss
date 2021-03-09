@@ -8,8 +8,8 @@
 .wp-block-full-score-events-program-heading {
 	display: grid;
 	column-gap: 1rem;
-	line-height: var(--global--line-height-heading);
-	box-shadow: inset 6px 0 0 0 var(--global--color-border);
+	line-height: var(--fse-line-height-small);
+	box-shadow: inset 6px 0 0 0 var(--fse-border-color);
 }
 
 * + .wp-block-full-score-events-program-heading {
