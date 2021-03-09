@@ -5,6 +5,7 @@
  * @package Full_Score_Events
  */
 [data-fse-icon] {
+  display: inline-block;
   width: 1rem;
   width: var(--global--font-size-base);
   height: 1em;

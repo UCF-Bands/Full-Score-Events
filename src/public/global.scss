@@ -27,6 +27,7 @@
 	--fse-transition-timing-function: ease-in-out;
 	--fse-transition-duration: 150ms;
 
+	--fse-wrap-width: 90%;
 	--fse-wrap-max-width: var(--responsive--alignwide-width, 1240px);
 	--fse-event-meta-spacing: 0.5rem;
 	--fse-event-card-link-offset: 2.5rem;
@@ -68,6 +69,7 @@
 .fse-wrap {
 	margin-left: auto;
 	margin-right: auto;
+	width: var(--fse-wrap-width);
 	max-width: var(--fse-wrap-max-width);
 }
 
@@ -79,6 +81,13 @@
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
+}
+
+// heading reset
+.fse-featured-heading,
+.fse-event-title,
+.fse-season-label {
+	margin: 0;
 }
 
 // list reset
@@ -99,6 +108,7 @@
 	display: grid;
 	gap: 4px;
 	min-width: calc(var(--fse-bsu) * 5);
+	margin-top: 9%; // offset for heading line height
 	padding: 2px;
 	text-align: center;
 	border-width: 2px;
