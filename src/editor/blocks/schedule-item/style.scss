@@ -6,9 +6,9 @@
  */
 .fse-schedule-item {
 	display: grid;
-	grid-template-columns: 6rem 1fr;
-	gap: 1.5rem;
-	padding: 0.5rem 0;
+	grid-template-columns: calc(var(--fse-bsu) * 6) 1fr;
+	gap: var(--fse-bsu-x1-5);
+	padding: var(--fse-bsu-half) 0;
 
 	time {
 		font-weight: 700;

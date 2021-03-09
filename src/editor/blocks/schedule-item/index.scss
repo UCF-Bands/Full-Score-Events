@@ -8,10 +8,10 @@
 .wp-block-full-score-events-schedule-item {
 	display: grid;
 	grid-template-columns: auto 1fr;
-	gap: 2rem;
+	gap: var(--fse-bsu-x2);
 	max-width: none;
-	padding-top: 1.25rem; // USE THEME TO ADD SIDE PADDING BACK
-	padding-bottom: 1.25rem; // USE THEME TO ADD SIDE PADDING BACK
+	padding-top: calc(var(--fse-bsu) * 1.25); // USE THEME TO ADD SIDE PADDING BACK
+	padding-bottom: calc(var(--fse-bsu) * 1.25); // USE THEME TO ADD SIDE PADDING BACK
 
 	// &:nth-child(even) {
 	// 	background: #f1f1f1;
@@ -36,7 +36,7 @@
 
 		.block-editor-block-list__layout > * + *,
 		[data-type="core/paragraph"] + [data-type="core/paragraph"] {
-			margin-top: 1rem;
+			margin-top: var(--fse-bsu);
 		}
 	}
 }

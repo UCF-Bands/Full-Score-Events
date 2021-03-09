@@ -71,7 +71,7 @@ body {
 .wp-block-full-score-events-schedule-edit > .block-editor-inner-blocks > .block-editor-block-list__layout {
   display: -ms-grid;
   display: grid;
-  gap: 1rem; }
+  gap: var(--fse-bsu); }
 
 .editor-styles-wrapper .wp-block-full-score-events-schedule-edit .wp-block,
 .editor-styles-wrapper .wp-block-full-score-events-schedule-edit p,
@@ -79,13 +79,13 @@ body {
   margin: 0; }
 
 .editor-styles-wrapper .wp-block-full-score-events-schedule-heading.wp-block {
-  margin-top: 1rem; }
+  margin-top: var(--fse-bsu); }
 
 .wp-block-full-score-events-schedule-item + .wp-block-full-score-events-schedule-item {
   border-top: 1px solid var(--fse-border-color); }
 
 .fse-schedule-download-wrapper {
-  margin-top: 1.5rem; }
+  margin-top: var(--fse-bsu-x1-5); }
 
 /**
  * Schedule item editor adjustments
@@ -98,10 +98,10 @@ body {
   display: grid;
   -ms-grid-columns: auto 1fr;
   grid-template-columns: auto 1fr;
-  gap: 2rem;
+  gap: var(--fse-bsu-x2);
   max-width: none;
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem; }
+  padding-top: calc(var(--fse-bsu) * 1.25);
+  padding-bottom: calc(var(--fse-bsu) * 1.25); }
   .wp-block-full-score-events-schedule-item .components-datetime__time {
     padding-bottom: 0; }
     .wp-block-full-score-events-schedule-item .components-datetime__time fieldset:first-child {
@@ -112,7 +112,7 @@ body {
       height: 30px; }
   .editor-styles-wrapper .wp-block-full-score-events-schedule-item .block-editor-block-list__layout > * + *,
   .editor-styles-wrapper .wp-block-full-score-events-schedule-item [data-type="core/paragraph"] + [data-type="core/paragraph"] {
-    margin-top: 1rem; }
+    margin-top: var(--fse-bsu); }
 
 /* stylelint-enable selector-class-pattern */
 
@@ -123,21 +123,21 @@ body {
  * @package Full_Score_Events
  */
 .wp-block-full-score-events-program-edit {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  padding-top: var(--fse-bsu-x1-5);
+  padding-bottom: var(--fse-bsu-x1-5);
   border: 2px solid var(--fse-border-color); }
   .wp-block-full-score-events-program-edit > .block-editor-inner-blocks > .block-editor-block-list__layout {
     display: -ms-grid;
     display: grid;
-    gap: 1rem; }
+    gap: var(--fse-bsu); }
   @media (min-width: 50rem) {
     .wp-block-full-score-events-program-edit {
-      padding-top: 2rem;
-      padding-bottom: 2rem; } }
+      padding-top: var(--fse-bsu-x2);
+      padding-bottom: var(--fse-bsu-x2); } }
 
 .fse-piece-arranger-name {
   display: inline-block;
-  min-width: 0.5rem; }
+  min-width: var(--fse-bsu-half); }
 
 .editor-styles-wrapper .fse-program-heading-heading,
 .editor-styles-wrapper .fse-program-subheading,
@@ -151,15 +151,15 @@ body {
 .editor-styles-wrapper .wp-block-full-score-events-program-heading,
 .editor-styles-wrapper .wp-block-full-score-events-program-pieces,
 .editor-styles-wrapper .fse-program-pieces {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem; }
+  padding-left: var(--fse-bsu-x1-5);
+  padding-right: var(--fse-bsu-x1-5); }
 
 @media (min-width: 50rem) {
   .editor-styles-wrapper .wp-block-full-score-events-program-heading,
   .editor-styles-wrapper .wp-block-full-score-events-program-pieces,
   .editor-styles-wrapper .fse-program-pieces {
-    padding-left: 2rem;
-    padding-right: 2rem; } }
+    padding-left: var(--fse-bsu-x2);
+    padding-right: var(--fse-bsu-x2); } }
 
 /**
  * Location details block
@@ -168,7 +168,7 @@ body {
  * @package Full_Score_Events
  */
 .fse-location-details-map {
-  margin-top: 2rem; }
+  margin-top: var(--fse-bsu-x2); }
 
 
 /*# sourceMappingURL=editor.css.map*/

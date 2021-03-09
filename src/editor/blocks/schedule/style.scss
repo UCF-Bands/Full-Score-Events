@@ -5,16 +5,16 @@
  * @package Full_Score_Events
  */
 .fse-schedule {
-	padding-left: 1.5rem;
-	padding-right: 1.5rem;
+	padding-left: var(--fse-bsu-x1-5);
+	padding-right: var(--fse-bsu-x1-5);
 
 	[role="button"] {
-		margin-top: 0.5rem;
+		margin-top: var(--fse-bsu-half);
 		text-align: center;
 	}
 
 	@media (min-width: 50rem) {
-		padding-left: 2rem;
-		padding-right: 2rem;
+		padding-left: var(--fse-bsu-x2);
+		padding-right: var(--fse-bsu-x2);
 	}
 }

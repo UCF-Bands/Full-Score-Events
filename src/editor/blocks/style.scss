@@ -8,7 +8,7 @@
 .fse-schedule,
 .fse-program {
 	display: grid;
-	gap: 1rem;
+	gap: var(--fse-bsu);
 	padding-top: var(--fse-bsu-x1-5);
 	padding-bottom: var(--fse-bsu-x1-5);
 	border: 2px solid var(--fse-border-color);
