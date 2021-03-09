@@ -5,8 +5,13 @@
  * @package Full_Score_Events
  */
 
+.fse-schedule-title,
+.entry-content .fse-schedule-title,
+.fse-schedule-heading-heading,
+.entry-content .fse-schedule-heading-heading,
 .fse-program-heading-heading,
 .entry-content .fse-program-heading-heading,
+.fse-schedule p,
 .fse-program p {
 	margin: 0;
 }
@@ -32,6 +37,7 @@
 	list-style-type: none;
 }
 
+.fse-schedule-item,
 .wp-block-full-score-events-program-piece {
 	margin: 0;
 }

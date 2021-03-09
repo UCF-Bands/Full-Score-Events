@@ -36145,7 +36145,9 @@ function edit(_ref) {
       address = attributes.address,
       addressHTML = attributes.addressHTML,
       mapUrl = attributes.mapUrl;
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", blockProps, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Location Details', 'full-score-events')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_util_place_search__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", blockProps, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", {
+    className: "fse-schedule-title"
+  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Location Details', 'full-score-events')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_util_place_search__WEBPACK_IMPORTED_MODULE_4__["default"], {
     googleMapURL: Object(_wordpress_url__WEBPACK_IMPORTED_MODULE_2__["addQueryArgs"])(googleMapsURL, {
       key: googleAPIKey
     }),
