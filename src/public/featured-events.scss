@@ -13,8 +13,8 @@
 	}
 
 	&.fse-has-background {
-		padding-top: 2rem;
-		padding-bottom: 2rem;
+		padding-top: var(--fse-bsu-x2);
+		padding-bottom: var(--fse-bsu-x2);
 
 		& .fse-event-link-overlay:hover,
 		& .fse-event-link-overlay:focus,
@@ -62,14 +62,14 @@
 }
 
 .fse-featured-body p {
-	margin-top: 1rem;
+	margin-top: var(--fse-bsu);
 }
 
 @media (min-width: 64rem) {
 
 	.fse-featured-events.fse-has-background {
-		padding-top: 4rem;
-		padding-bottom: 4rem;
+		padding-top: var(--fse-bsu-x4);
+		padding-bottom: var(--fse-bsu-x4);
 	}
 
 	.fse-featured-events-header {
@@ -80,7 +80,7 @@
 @media (min-width: 105rem) {
 
 	.fse-featured-events.fse-has-background {
-		padding-top: 6rem;
-		padding-bottom: 6rem;
+		padding-top: calc(var(--fse-bsu) * 6);
+		padding-bottom: calc(var(--fse-bsu) * 6);
 	}
 }
