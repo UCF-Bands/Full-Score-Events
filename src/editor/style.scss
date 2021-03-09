@@ -6,6 +6,7 @@
  */
 :root {
 	--fse-bsu: 16px;
+	--fse-bsu-x1-5: calc(var(--fse-bsu) * 1.5);
 	--fse-bsu-x2: calc(var(--fse-bsu) * 2);
 	--fse-bsu-x3: calc(var(--fse-bsu) * 3);
 	--fse-bsu-x4: calc(var(--fse-bsu) * 4);

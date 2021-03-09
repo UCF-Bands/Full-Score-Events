@@ -29,7 +29,7 @@
 		--fse-column-cards-gap-y: var(--fse-bsu-x3);
 		--fse-column-cards-gap-x: var(--fse-bsu-x4);
 		--fse-column-cards-gap: var(--fse-column-cards-gap-y) var(--fse-column-cards-gap-x);
-		--fse-aside-heading-spacing: calc(var(--fse-bsu) * 1.5);
+		--fse-aside-heading-spacing: var(--fse-bsu-x1-5);
 	}
 }
 
@@ -143,7 +143,7 @@
 	grid-template-columns: auto 1fr;
 
 	@media (min-width: 64rem) {
-		gap: calc(var(--fse-bsu) * 1.5);
+		gap: var(--fse-bsu-x1-5);
 	}
 }
 
@@ -157,7 +157,7 @@
 
 .fse-contact-method {
 	display: grid;
-	grid-template-columns: calc(var(--fse-bsu) * 1.5) 1fr;
+	grid-template-columns: var(--fse-bsu-x1-5) 1fr;
 	align-items: center;
 	gap: var(--fse-bsu-half);
 }
@@ -243,6 +243,6 @@
 @media (min-width: 64rem) {
 
 	.fse-events-loop-event-header {
-		gap: calc(var(--fse-bsu) * 1.5);
+		gap: var(--fse-bsu-x1-5);
 	}
 }

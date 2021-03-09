@@ -7,8 +7,8 @@
 .fse-event-single-header,
 .fse-event-single-thumbnail,
 .fse-event-content-wrap {
-	margin-top: calc(var(--fse-bsu) * 1.5);
-	margin-bottom: calc(var(--fse-bsu) * 1.5);
+	margin-top: var(--fse-bsu-x1-5);
+	margin-bottom: var(--fse-bsu-x1-5);
 }
 
 .fse-event-single-header-wrap {
@@ -79,7 +79,7 @@ span.fse-event-registration-label {
 
 	.fse-event-single-header-wrap {
 		grid-template-columns: auto 1fr;
-		gap: calc(var(--fse-bsu) * 1.5);
+		gap: var(--fse-bsu-x1-5);
 	}
 
 	.fse-event-registration-label {

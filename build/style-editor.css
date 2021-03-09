@@ -6,6 +6,7 @@
  */
 :root {
   --fse-bsu: 16px;
+  --fse-bsu-x1-5: calc(var(--fse-bsu) * 1.5);
   --fse-bsu-x2: calc(var(--fse-bsu) * 2);
   --fse-bsu-x3: calc(var(--fse-bsu) * 3);
   --fse-bsu-x4: calc(var(--fse-bsu) * 4);
@@ -47,14 +48,14 @@
   display: -ms-grid;
   display: grid;
   gap: 1rem;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  padding-top: var(--fse-bsu-x1-5);
+  padding-bottom: var(--fse-bsu-x1-5);
   border: 2px solid var(--global--color-border); }
   @media (min-width: 50rem) {
     .fse-schedule,
     .fse-program {
-      padding-top: 2rem;
-      padding-bottom: 2rem; } }
+      padding-top: var(--fse-bsu-x2);
+      padding-bottom: var(--fse-bsu-x2); } }
 
 .fse-schedule-items,
 .fse-program-pieces {
