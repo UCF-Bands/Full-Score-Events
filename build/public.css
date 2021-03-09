@@ -63,7 +63,7 @@
 
 .fse-date,
 .fse-event-header-content {
-  line-height: var(--fse-line-height-small); }
+  line-height: var(--fse-line-height-xsmall); }
 
 .fse-date {
   display: -ms-grid;

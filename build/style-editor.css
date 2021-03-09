@@ -18,7 +18,8 @@
   --fse-font-size-xsmall: var(--global--font-size-xs, 14px);
   --fse-font-size-regular: var(--global--font-size-sm, 16px);
   --fse-font-size-large: var(--global--font-size-xl, 36px);
-  --fse-line-height-small: var(--global--line-height-page-title, 1.1);
+  --fse-line-height-xsmall: var(--global--line-height-page-title, 1.1);
+  --fse-line-height-small: var(--global--line-height-heading, 1.3);
   --fse-letter-spacing-semi-wide: 0.05em;
   --fse-border-color: var(--global--color-border, var(--fse-color-black));
   --fse-transition-timing-function: ease-in-out;
