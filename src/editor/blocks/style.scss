@@ -5,6 +5,12 @@
  * @package Full_Score_Events
  */
 
+.fse-program-heading-heading,
+.entry-content .fse-program-heading-heading,
+.fse-program p {
+	margin: 0;
+}
+
 .fse-schedule,
 .fse-program {
 	display: grid;
@@ -24,4 +30,8 @@
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
+}
+
+.wp-block-full-score-events-program-piece {
+	margin: 0;
 }
