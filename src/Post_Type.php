@@ -140,7 +140,7 @@ abstract class Post_Type {
 
 		return array_merge_recursive(
 			[
-				'label'             => $this->get_label(), // @todo differentiate this with singular_name propertly so editor toolbar and admin listing labels make sense.
+				'label'             => $this->get_label(),
 				'labels'            => [
 					'name'                  => $this->get_plural_label(),
 					'menu_name'             => $this->get_plural_label(),
