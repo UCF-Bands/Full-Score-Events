@@ -55,6 +55,16 @@ class Schedules extends Post_Type {
 	}
 
 	/**
+	 * Get plural post type label
+	 *
+	 * @return string
+	 * @since 1.0.0
+	 */
+	public function get_plural_label() {
+		return __( 'Schedules', 'full-score-events' );
+	}
+
+	/**
 	 * Get non-default post type args
 	 *
 	 * @return array
@@ -64,8 +74,6 @@ class Schedules extends Post_Type {
 		return [
 			'description'         => __( 'A schedule of events.', 'full-score-events' ),
 			'labels'              => [
-				'name'                  => _x( 'Schedule', 'Post Type General Name', 'full-score-events' ),
-				'menu_name'             => __( 'Schedules', 'full-score-events' ),
 				'archives'              => __( 'Schedule Archives', 'full-score-events' ),
 				'attributes'            => __( 'Schedule Attributes', 'full-score-events' ),
 				'parent_item_colon'     => __( 'Parent Schedule:', 'full-score-events' ),

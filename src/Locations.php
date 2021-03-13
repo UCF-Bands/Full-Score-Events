@@ -63,6 +63,16 @@ class Locations extends Post_Type {
 	}
 
 	/**
+	 * Get plural post type label
+	 *
+	 * @return string
+	 * @since 1.0.0
+	 */
+	public function get_plural_label() {
+		return __( 'Locations', 'full-score-events' );
+	}
+
+	/**
 	 * Register location meta
 	 *
 	 * @since 1.0.0
@@ -118,8 +128,6 @@ class Locations extends Post_Type {
 		return [
 			'description'         => __( 'Event venues.', 'full-score-events' ),
 			'labels'              => [
-				'name'                  => _x( 'Locations', 'Post Type General Name', 'full-score-events' ),
-				'menu_name'             => __( 'Locations', 'full-score-events' ),
 				'archives'              => __( 'Location Archives', 'full-score-events' ),
 				'attributes'            => __( 'Location Attributes', 'full-score-events' ),
 				'parent_item_colon'     => __( 'Parent Location:', 'full-score-events' ),

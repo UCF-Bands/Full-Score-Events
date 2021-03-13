@@ -58,6 +58,16 @@ class Events extends Post_Type {
 	}
 
 	/**
+	 * Get plural post type label
+	 *
+	 * @return string
+	 * @since 1.0.0
+	 */
+	public function get_plural_label() {
+		return __( 'Events', 'full-score-events' );
+	}
+
+	/**
 	 * Register location meta
 	 *
 	 * @since 1.0.0
@@ -106,8 +116,6 @@ class Events extends Post_Type {
 		return [
 			'description'         => __( "Our ensembles' events.", 'full-score-events' ),
 			'labels'              => [
-				'name'                  => _x( 'Events', 'Post Type General Name', 'full-score-events' ),
-				'menu_name'             => __( 'Events', 'full-score-events' ),
 				'archives'              => __( 'Event Archives', 'full-score-events' ),
 				'attributes'            => __( 'Event Attributes', 'full-score-events' ),
 				'parent_item_colon'     => __( 'Parent Event:', 'full-score-events' ),
