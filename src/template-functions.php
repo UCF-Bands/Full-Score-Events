@@ -187,7 +187,12 @@ function do_single_event_header_wrapper_close() {
  * @since 1.0.0
  */
 function do_single_event_thumbnail() {
-	the_post_thumbnail( 'fse-banner', [ 'class' => 'fse-wrap fse-event-single-thumbnail' ] );
+
+	if ( get_post_thumbnail_id() ) {
+		the_post_thumbnail( 'fse-banner', [ 'class' => 'fse-wrap fse-event-single-thumbnail' ] );
+	} else {
+		echo '<hr class="fse-wrap fse-no-event-thumbnail-divider">';
+	}
 }
 
 /**
