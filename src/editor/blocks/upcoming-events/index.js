@@ -20,6 +20,7 @@ registerBlockType( 'full-score-events/upcoming-events', {
 		'full-score-events'
 	),
 	icon,
+	category: 'fse-event',
 	keywords: [ __( 'upcoming' ), __( 'next events' ), __( 'event list' ) ],
 
 	attributes: {

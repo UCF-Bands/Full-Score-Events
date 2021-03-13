@@ -52,6 +52,7 @@ if ( fullScoreEventsEditor.currentCPT === 'fse_program' ) {
 			'full-score-events'
 		),
 		icon,
+		category: 'fse-event',
 		keywords: [ __( 'program' ), __( 'concert' ), __( 'ensemble' ) ],
 
 		edit: () => (

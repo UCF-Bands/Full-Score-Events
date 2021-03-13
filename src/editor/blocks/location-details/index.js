@@ -19,6 +19,7 @@ if ( fullScoreEventsEditor.currentCPT === 'fse_location' ) {
 		title: __( 'Location Details', 'full-score-events' ),
 		icon,
 		keywords: [ __( 'location' ), __( 'address' ), __( 'venue' ) ],
+		category: 'fse-event',
 
 		attributes: {
 			placeName: {

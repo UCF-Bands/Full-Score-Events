@@ -24,7 +24,7 @@ const config = {
 		'full-score-events'
 	),
 	icon,
-	category: 'design', // @todo audit all categories
+	category: 'fse-event',
 	keywords: [ __( 'program' ), __( 'concert' ), __( 'ensemble' ) ],
 
 	edit: ( { attributes } ) => {

@@ -46,6 +46,7 @@ class Blocks {
 	public function __construct() {
 		add_action( 'init', [ __CLASS__, 'do_asset_registration' ] );
 		add_action( 'enqueue_block_editor_assets', [ __CLASS__, 'enqueue_editor_assets' ] );
+		add_filter( 'block_categories', [ __CLASS__, 'add_block_categories' ] );
 
 		new Block( 'taco' );
 		new Block( 'callout' );
@@ -125,6 +126,28 @@ class Blocks {
 					'googleMapsURL' => add_query_arg( 'libraries', 'places', 'https://maps.googleapis.com/maps/api/js' ),
 				]
 			)
+		);
+	}
+
+	/**
+	 * Add custom block categories
+	 *
+	 * @param  array $categories  Categories.
+	 * @return array
+	 *
+	 * @since 1.0.0
+	 */
+	public static function add_block_categories( $categories ) {
+
+		return array_merge(
+			$categories,
+			[
+				[
+					'slug'  => 'fse-event',
+					'title' => __( 'Event', 'full-score-events' ),
+					'icon'  => 'calendar-alt',
+				],
+			]
 		);
 	}
 }

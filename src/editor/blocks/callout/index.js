@@ -18,6 +18,7 @@ registerBlockType( 'full-score-events/callout', {
 	title: __( 'Callout', 'full-score-events' ),
 	description: __( 'Display a notice or warning.', 'full-score-events' ),
 	icon,
+	category: 'fse-event',
 	keywords: [ __( 'schedule' ), __( 'notice' ), __( 'message' ) ],
 
 	attributes: {

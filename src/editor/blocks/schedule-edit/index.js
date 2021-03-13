@@ -23,6 +23,7 @@ if ( fullScoreEventsEditor.currentCPT === 'fse_schedule' ) {
 			'full-score-events'
 		),
 		icon,
+		category: 'fse-event',
 		keywords: [ __( 'schedule' ), __( 'plan' ), __( 'edit' ) ],
 
 		attributes: {

@@ -35992,6 +35992,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('ful
   title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Callout', 'full-score-events'),
   description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Display a notice or warning.', 'full-score-events'),
   icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_2__["info"],
+  category: 'fse-event',
   keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('schedule'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('notice'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('message')],
   attributes: {
     type: {
@@ -36227,6 +36228,7 @@ if (fullScoreEventsEditor.currentCPT === 'fse_location') {
     title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Location Details', 'full-score-events'),
     icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_2__["mapMarker"],
     keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('location'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('address'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('venue')],
+    category: 'fse-event',
     attributes: {
       placeName: {
         type: 'string',
@@ -36390,8 +36392,7 @@ var config = {
   title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Location', 'full-score-events'),
   description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Display an event location/venue address and/or map embed', 'full-score-events'),
   icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_2__["mapMarker"],
-  category: 'common',
-  // @todo audit all categories
+  category: 'fse-event',
   keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('location'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('address'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('venue')],
   attributes: {
     showAddress: {
@@ -36471,6 +36472,7 @@ if (fullScoreEventsEditor.currentCPT === 'fse_program') {
     title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Program Editor', 'full-score-events'),
     description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Edit a program's pieces/ensembles/notes.", 'full-score-events'),
     icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__["formatListBullets"],
+    category: 'fse-event',
     keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('program'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('concert'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('ensemble')],
     edit: function edit() {
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["useBlockProps"])(), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["InnerBlocks"], {
@@ -36593,6 +36595,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('ful
   description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Heading for an emsemble + notes in a program', 'full-score-events'),
   icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_2__["heading"],
   keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('program'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('heading'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('message')],
+  category: 'fse-event',
   parent: ['full-score-events/program-edit'],
   attributes: {
     heading: {
@@ -36790,6 +36793,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('ful
   description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('A piece of music in a program', 'full-score-events'),
   icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_2__["formatListBullets"],
   keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('program'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('piece'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('song')],
+  category: 'fse-event',
   parent: ['full-score-events/program-pieces'],
   attributes: {
     title: {
@@ -36926,6 +36930,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('ful
   title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Pieces', 'full-score-events'),
   description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Edit a program's pieces.", 'full-score-events'),
   icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__["formatListBullets"],
+  category: 'fse-event',
   keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('program'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('pieces'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('songs')],
   parent: ['full-score-events/program-edit'],
   edit: function edit() {
@@ -36985,8 +36990,7 @@ var config = {
   title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Program', 'full-score-events'),
   description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Display a concert/performance program', 'full-score-events'),
   icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__["formatListBullets"],
-  category: 'design',
-  // @todo audit all categories
+  category: 'fse-event',
   keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('program'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('concert'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('ensemble')],
   edit: function edit(_ref) {
     var attributes = _ref.attributes;
@@ -37256,6 +37260,7 @@ if (fullScoreEventsEditor.currentCPT === 'fse_schedule') {
     title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Schedule Editor', 'full-score-events'),
     description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Edit a schedule's items and upload.", 'full-score-events'),
     icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__["formatListBullets"],
+    category: 'fse-event',
     keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('schedule'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('plan'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('edit')],
     attributes: {
       uploadId: {
@@ -37370,6 +37375,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('ful
   title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Schedule Heading', 'full-score-events'),
   description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Heading for a schedule or day in the schedule', 'full-score-events'),
   icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_2__["heading"],
+  category: 'fse-event',
   keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('schedule'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('heading'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('message')],
   parent: ['full-score-events/schedule-items'],
   // @todo isn't this supposed to be schedule-edit?
@@ -37547,6 +37553,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('ful
   title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Schedule Item', 'full-score-events'),
   description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Edit a schedule's schedule.", 'full-score-events'),
   icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__["formatListBullets"],
+  category: 'fse-event',
   keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('schedule'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('plan')],
   parent: ['full-score-events/schedule-items'],
   attributes: {
@@ -37611,6 +37618,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('ful
   title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Schedule Items', 'full-score-events'),
   description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Edit a schedule's activities.", 'full-score-events'),
   icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__["formatListBullets"],
+  category: 'fse-event',
   keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('schedule'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('plan')],
   parent: ['full-score-events/schedule-edit'],
   edit: function edit() {
@@ -37721,7 +37729,7 @@ var config = {
   title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('Schedule', 'full-score-events'),
   description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])("Display a schedule's activities and download", 'full-score-events'),
   icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__["formatListBullets"],
-  category: 'design',
+  category: 'fse-event',
   keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('schedule'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('activites'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('event')],
   attributes: {
     showTitle: {
@@ -37917,6 +37925,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('ful
   title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Upcoming Events', 'full-score-events'),
   description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('A listing of the next events to take place', 'full-score-events'),
   icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_2__["calendar"],
+  category: 'fse-event',
   keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('upcoming'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('next events'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('event list')],
   attributes: {
     number: {

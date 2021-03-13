@@ -24,7 +24,7 @@ const config = {
 		'full-score-events'
 	),
 	icon,
-	category: 'common', // @todo audit all categories
+	category: 'fse-event',
 	keywords: [ __( 'location' ), __( 'address' ), __( 'venue' ) ],
 
 	attributes: {

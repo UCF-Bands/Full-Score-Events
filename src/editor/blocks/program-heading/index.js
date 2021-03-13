@@ -22,6 +22,7 @@ registerBlockType( 'full-score-events/program-heading', {
 	),
 	icon,
 	keywords: [ __( 'program' ), __( 'heading' ), __( 'message' ) ],
+	category: 'fse-event',
 	parent: [ 'full-score-events/program-edit' ],
 
 	attributes: {
