@@ -7,7 +7,11 @@
 .fse-event-link-overlay {
   pointer-events: none; }
 
-.editor-styles-wrapper .wp-block .fse-event-title {
+.editor-styles-wrapper .wp-block .fse-event-title,
+.editor-styles-wrapper .wp-block-full-score-events-schedule-edit .wp-block,
+.editor-styles-wrapper .wp-block-full-score-events-schedule-edit p,
+.editor-styles-wrapper .wp-block .fse-schedule-heading-heading,
+.editor-styles-wrapper .wp-block .fse-program-heading-heading {
   margin: 0; }
 
 .editor-styles-wrapper .fse-upcoming-events-list {
@@ -90,11 +94,6 @@ body {
   display: grid;
   gap: var(--fse-bsu); }
 
-.editor-styles-wrapper .wp-block-full-score-events-schedule-edit .wp-block,
-.editor-styles-wrapper .wp-block-full-score-events-schedule-edit p,
-.editor-styles-wrapper .fse-schedule-heading-heading {
-  margin: 0; }
-
 .editor-styles-wrapper .wp-block-full-score-events-schedule-heading.wp-block {
   margin-top: var(--fse-bsu); }
 
@@ -156,7 +155,6 @@ body {
   display: inline-block;
   min-width: var(--fse-bsu-half); }
 
-.editor-styles-wrapper .fse-program-heading-heading,
 .editor-styles-wrapper .fse-program-subheading,
 .editor-styles-wrapper .fse-program-tertiary-heading,
 .editor-styles-wrapper .fse-piece-title,

@@ -12,7 +12,11 @@
 .editor-styles-wrapper {
 
 	// heading reset
-	.wp-block .fse-event-title {
+	.wp-block .fse-event-title,
+	.wp-block-full-score-events-schedule-edit .wp-block,
+	.wp-block-full-score-events-schedule-edit p,
+	.wp-block .fse-schedule-heading-heading,
+	.wp-block .fse-program-heading-heading {
 		margin: 0;
 	}
 
