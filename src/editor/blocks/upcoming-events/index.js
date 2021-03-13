@@ -8,7 +8,7 @@ import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 import { calendar as icon } from '@wordpress/icons';
 
-// import './style.scss';
+import './style.scss';
 
 import edit from './edit';
 
@@ -23,10 +23,20 @@ registerBlockType( 'full-score-events/upcoming-events', {
 	category: 'fse-event',
 	keywords: [ __( 'upcoming' ), __( 'next events' ), __( 'event list' ) ],
 
+	supports: {
+		align: [ 'wide' ],
+	},
+
 	attributes: {
+		align: {
+			type: 'string',
+			default: '',
+		},
+
 		number: {
 			type: 'number',
 		},
+
 		noneFound: {
 			type: 'string',
 			default: __(

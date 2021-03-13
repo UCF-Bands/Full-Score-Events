@@ -16,7 +16,7 @@ if ( ! $events->have_posts() && ! $noneFound ) {
 }
 ?>
 
-<div <?php do_attrs_class( 'fse-upcoming-events', $className ?? '' ); ?>>
+<div <?php do_attrs_class( 'fse-upcoming-events', $className ?? '', "align{$align}" ); ?>>
 	<?php
 	/**
 	 * Hook: full_score_events_before_upcoming_events

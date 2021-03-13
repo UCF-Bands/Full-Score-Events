@@ -22,7 +22,7 @@ namespace Full_Score_Events;
 do_action( 'full_score_events_before_upcoming_event' );
 ?>
 
-<article id="fse-event-<?php the_ID(); ?>" <?php post_class( 'fse-event-card' ); ?>>
+<article id="fse-event-<?php the_ID(); ?>" <?php post_class( 'fse-event-card fse-event-hide-link-overlay' ); ?>>
 	<?php
 	/**
 	 * Hook: full_score_events_upcoming_event_content

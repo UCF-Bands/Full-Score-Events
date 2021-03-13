@@ -9,7 +9,7 @@
 	--fse-wrap-max-width: var(--responsive--alignwide-width, 1240px);
 	--fse-event-header-title-offset: 9%;
 	--fse-event-meta-spacing: 0.5rem;
-	--fse-event-card-link-offset: 2.5rem;
+	--fse-event-card-link-offset: calc(var(--fse-bsu) * 2.5);
 	--fse-column-cards-template: auto; // repeat(1fr);
 	--fse-column-cards-gap: var(--fse-bsu-x2);
 	--fse-column-cards-column-column: auto;
@@ -65,12 +65,14 @@
 // heading reset
 .fse-featured-heading,
 .fse-event-title,
-.fse-season-label {
+.fse-season-label,
+.fse-upcoming-events .fse-event-title {
 	margin: 0;
 }
 
 // list reset
-.fse-featured-events-list {
+.fse-featured-events-list,
+.fse-upcoming-events-list {
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
@@ -198,7 +200,7 @@
 	letter-spacing: var(--fse-letter-spacing-semi-wide);
 	font-size: var(--fse-font-size-xsmall);
 	outline: 2px dotted transparent;
-	outline-offset: var(--fse-bsu);
+	outline-offset: var(--fse-bsu-half);
 	transition: outline ease-in-out var(--fse-transition-duration);
 
 	&:hover .fse-event-link-overlay-message [data-fse-icon],
@@ -224,6 +226,18 @@
 	// excerpt
 	> p {
 		font-size: var(--fse-font-size-regular);
+
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+	}
+}
+
+.fse-event-hide-link-overlay {
+	padding-bottom: 0;
+
+	.fse-event-link-overlay-message {
+		display: none;
 	}
 }
 
@@ -237,6 +251,13 @@
 
 	> * {
 		grid-column: var(--fse-column-cards-cards-column);
+	}
+}
+
+@media (min-width: 50rem) {
+
+	.fse-event-link-overlay {
+		outline-offset: var(--fse-bsu);
 	}
 }
 

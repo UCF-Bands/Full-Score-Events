@@ -44,6 +44,10 @@ class Upcoming_Events extends Block {
 	 */
 	protected function get_attributes() {
 		return [
+			'align'     => [
+				'type'    => 'string',
+				'default' => '',
+			],
 			'number'    => [
 				'type'    => 'number',
 				'default' => 3,

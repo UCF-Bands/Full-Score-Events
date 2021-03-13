@@ -86,7 +86,15 @@ function do_event_registration() {
  * @since 1.0.0
  */
 function do_event_title() {
-	$level = is_singular() ? 1 : 2;
+
+	if ( is_singular( Events::CPT_KEY ) ) {
+		$level = 1;
+	} elseif ( is_event_archive() ) {
+		$level = 2;
+	} else {
+		$level = 3;
+	}
+
 	the_title( "<h{$level} class='fse-event-title'>", "</h{$level}>" );
 }
 
