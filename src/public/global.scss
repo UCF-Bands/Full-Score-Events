@@ -109,7 +109,7 @@
 	font-weight: 700;
 	text-transform: uppercase;
 	letter-spacing: var(--fse-letter-spacing-semi-wide);
-	color: var(--global--color-background, var(--fse-color-white)); // @todo color var?
+	color: var(--global--color-background, var(--fse-color-white));
 	background: var(--fse-border-color);
 }
 
