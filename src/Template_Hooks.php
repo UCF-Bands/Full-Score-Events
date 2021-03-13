@@ -45,7 +45,7 @@ class Template_Hooks {
 
 		// Events archive event.
 		add_action( 'full_score_events_loop_event_content', 'Full_Score_Events\do_loop_event_header' );
-		add_action( 'full_score_events_loop_event_content', 'Full_Score_Events\do_event_excerpt', 20 );
+		add_action( 'full_score_events_loop_event_content', 'the_excerpt', 20 );
 		add_action( 'full_score_events_loop_event_content', 'Full_Score_Events\do_event_link_overlay', 40 );
 
 		// Events archive event header.

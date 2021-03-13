@@ -24,7 +24,7 @@ namespace Full_Score_Events;
 	 * Hook: full_score_events_loop_event
 	 *
 	 * @hooked Full_Score_Events\do_loop_event_header - 10
-	 * @hooked Full_Score_Events\do_event_excerpt - 20
+	 * @hooked Full_Score_Events\the_excerpt - 20
 	 * @hooked Full_Score_Events\do_event_link_overlay - 40
 	 *
 	 * @since 1.0.0

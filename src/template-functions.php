@@ -100,16 +100,6 @@ function do_event_meta() {
 }
 
 /**
- * Output event excerpt
- *
- * @todo  Shouldn't we just hook in the_excerpt?
- * @since 1.0.0
- */
-function do_event_excerpt() {
-	the_excerpt();
-}
-
-/**
  * Output event link overlay
  *
  * @since 1.0.0
