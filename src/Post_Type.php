@@ -269,7 +269,6 @@ abstract class Post_Type {
 			return;
 		}
 
-		// @todo have this go to event archive?
 		wp_safe_redirect( site_url() );
 		die;
 	}
