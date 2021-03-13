@@ -36601,7 +36601,6 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('ful
     heading: {
       type: 'string',
       source: 'html',
-      // @todo change these to text?
       selector: '.fse-program-heading-heading'
     },
     subheading: {
@@ -37377,8 +37376,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('ful
   icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_2__["heading"],
   category: 'fse-event',
   keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('schedule'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('heading'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('message')],
-  parent: ['full-score-events/schedule-items'],
-  // @todo isn't this supposed to be schedule-edit?
+  parent: ['full-score-events/schedule-edit'],
   attributes: {
     heading: {
       type: 'string',
@@ -37559,8 +37557,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('ful
   attributes: {
     dateTime: {
       type: 'string',
-      default: '' // @todo is this necessary?
-
+      default: ''
     }
   },
   edit: _edit__WEBPACK_IMPORTED_MODULE_7__["default"],
