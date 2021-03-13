@@ -6,6 +6,7 @@
 
 // global helpers
 import './style.scss';
+import './index.scss';
 
 // components
 import './components';

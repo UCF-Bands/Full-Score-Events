@@ -9,6 +9,7 @@ import { registerBlockType } from '@wordpress/blocks';
 import { calendar as icon } from '@wordpress/icons';
 
 import './style.scss';
+import './index.scss';
 
 import edit from './edit';
 

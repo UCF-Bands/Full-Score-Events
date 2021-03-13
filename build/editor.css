@@ -1,4 +1,21 @@
 /**
+ * Global block style editor fixes
+ *
+ * @since   1.0.0
+ * @package Full_Score_Events
+ */
+.fse-event-link-overlay {
+  pointer-events: none; }
+
+.editor-styles-wrapper .wp-block .fse-event-title {
+  margin: 0; }
+
+.editor-styles-wrapper .fse-upcoming-events-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none; }
+
+/**
  * DateTimeControl component styling
  *
  * @since   1.0.0
@@ -169,6 +186,15 @@ body {
  */
 .fse-location-details-map {
   margin-top: var(--fse-bsu-x2); }
+
+/**
+ * Upcoming events editor adjustments
+ *
+ * @since   1.0.0
+ * @package Full_Score_Events
+ */
+.editor-styles-wrapper .fse-upcoming-event .fse-event-title {
+  font-size: var(--fse-font-size-medium-large); }
 
 
 /*# sourceMappingURL=editor.css.map*/

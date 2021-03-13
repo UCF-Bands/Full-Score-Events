@@ -1,0 +1,25 @@
+/**
+ * Global block style editor fixes
+ *
+ * @since   1.0.0
+ * @package Full_Score_Events
+ */
+
+.fse-event-link-overlay {
+	pointer-events: none;
+}
+
+.editor-styles-wrapper {
+
+	// heading reset
+	.wp-block .fse-event-title {
+		margin: 0;
+	}
+
+	// list reset
+	.fse-upcoming-events-list {
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+	}
+}
