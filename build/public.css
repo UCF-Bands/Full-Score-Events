@@ -149,8 +149,10 @@
   .fse-featured-events .fse-date {
     border-color: var(--fse-featured-color); }
   .fse-featured-events .fse-date-month {
-    background-color: var(--fse-featured-color);
-    color: var(--fse-featured-background); }
+    background-color: var(--fse-border-color);
+    background-color: var(--fse-featured-color, var(--fse-border-color));
+    color: var(--fse-color-white);
+    color: var(--fse-featured-background, var(--fse-color-white)); }
 
 .fse-featured-events,
 .fse-featured-events-wrap {

@@ -39,8 +39,8 @@
 	}
 
 	.fse-date-month {
-		background-color: var(--fse-featured-color);
-		color: var(--fse-featured-background);
+		background-color: var(--fse-featured-color, var(--fse-border-color));
+		color: var(--fse-featured-background, var(--fse-color-white));
 	}
 }
 
