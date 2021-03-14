@@ -163,7 +163,7 @@ class Customizer {
 		$styles = get_transient( 'fse_global_styles' );
 
 		// Check if we need to re-build styles.
-		if ( false === $styles ) {
+		if ( false === $styles || is_customize_preview() ) {
 
 			$styles = [];
 
