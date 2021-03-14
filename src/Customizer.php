@@ -52,6 +52,7 @@ class Customizer {
 		add_action( 'customize_register', [ $this, 'add_section' ] );
 		add_action( 'wp_enqueue_scripts', [ $this, 'do_styles' ] );
 		add_action( 'customize_save_after', [ $this, 'remove_styles_transient' ] );
+		add_action( 'switch_theme', [ $this, 'remove_styles_transient' ] );
 	}
 
 	/**
