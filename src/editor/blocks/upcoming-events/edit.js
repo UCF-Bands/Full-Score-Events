@@ -34,14 +34,17 @@ export default function edit( { attributes, setAttributes } ) {
 				'full-score-events'
 			) }
 			onChange={ ( value ) => setAttributes( { noneFound: value } ) }
-			help={ fullScoreEventsEditor.allowedInlineHTML }
+			help={ `${ __(
+				"Leave empty to not display block if there aren't any upcoming events found.",
+				'full-score-events'
+			) } ${ fullScoreEventsEditor.allowedInlineHTML }` }
 		/>
 	);
 
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'Title', 'full-score-events' ) }>
+				<PanelBody title={ __( 'Layout', 'full-score-events' ) }>
 					{ numberControl }
 					{ noneFoundControl }
 				</PanelBody>
@@ -52,14 +55,6 @@ export default function edit( { attributes, setAttributes } ) {
 					block="full-score-events/upcoming-events"
 					attributes={ attributes }
 				/>
-				{ ! noneFound && (
-					<p className="no-events-found-message-note">
-						{ __(
-							"There currently isn't a \"none found\" message, so this block won't display at all if there aren't any upcoming events found.",
-							'full-score-events'
-						) }
-					</p>
-				) }
 			</div>
 		</>
 	);

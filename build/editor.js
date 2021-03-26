@@ -37889,16 +37889,14 @@ function edit(_ref) {
         noneFound: value
       });
     },
-    help: fullScoreEventsEditor.allowedInlineHTML
+    help: "".concat(Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Leave empty to not display block if there aren't any upcoming events found.", 'full-score-events'), " ").concat(fullScoreEventsEditor.allowedInlineHTML)
   });
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["InspectorControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["PanelBody"], {
-    title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Title', 'full-score-events')
+    title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Layout', 'full-score-events')
   }, numberControl, noneFoundControl)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["useBlockProps"])(), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_2___default.a, {
     block: "full-score-events/upcoming-events",
     attributes: attributes
-  }), !noneFound && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
-    className: "no-events-found-message-note"
-  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("There currently isn't a \"none found\" message, so this block won't display at all if there aren't any upcoming events found.", 'full-score-events'))));
+  })));
 }
 
 /***/ }),
