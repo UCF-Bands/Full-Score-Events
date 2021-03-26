@@ -110,4 +110,14 @@ class Schedules extends Post_Type {
 			],
 		];
 	}
+
+	/**
+	 * Get editor title field placeholder
+	 *
+	 * @return string
+	 * @since  1.0.0
+	 */
+	protected function get_title_placeholder() {
+		return __( 'Add schedule name', 'full-score-events' );
+	}
 }
