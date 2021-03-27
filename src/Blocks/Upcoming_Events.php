@@ -56,6 +56,10 @@ class Upcoming_Events extends Block {
 				'type'    => 'string',
 				'default' => __( "There aren't any scheduled events at this time.", 'full-score-events' ),
 			],
+			'ensembles' => [
+				'type'    => 'array',
+				'default' => [],
+			],
 		];
 	}
 }

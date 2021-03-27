@@ -8,7 +8,7 @@
 
 namespace Full_Score_Events;
 
-$events = Events::get_upcoming();
+$events = Events::get_upcoming( $number, $ensembles );
 
 // Don't output block at all if there aren't any events and no message.
 if ( ! $events->have_posts() && ! $noneFound ) {

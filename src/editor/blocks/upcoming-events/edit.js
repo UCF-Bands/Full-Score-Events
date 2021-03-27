@@ -4,13 +4,27 @@
  * @since 1.0.0
  */
 
-import { __ } from '@wordpress/i18n';
 import ServerSideRender from '@wordpress/server-side-render';
+import { __ } from '@wordpress/i18n';
+import { withSelect } from '@wordpress/data';
 import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, TextControl, TextareaControl } from '@wordpress/components';
 
-export default function edit( { attributes, setAttributes } ) {
+import EnsemblesControl from '../../components/ensembles-control';
+
+const edit = withSelect( ( select, { attributes } ) => ( {
+	ensembles: select( 'core' ).getEntityRecords( 'taxonomy', 'fse_ensemble', {
+		include: attributes.ensembles,
+	} ),
+	ensembleSuggestions: select( 'core' ).getEntityRecords(
+		'taxonomy',
+		'fse_ensemble'
+	),
+} ) )( ( { attributes, setAttributes, ensembles, ensembleSuggestions } ) => {
 	const { number, noneFound } = attributes;
+
+	// set default arrays in case there aren't any available yet
+	ensembleSuggestions = ensembleSuggestions || [];
 
 	const numberControl = (
 		<TextControl
@@ -47,6 +61,13 @@ export default function edit( { attributes, setAttributes } ) {
 				<PanelBody title={ __( 'Layout', 'full-score-events' ) }>
 					{ numberControl }
 					{ noneFoundControl }
+					<EnsemblesControl
+						ensembles={ ensembles }
+						suggestions={ ensembleSuggestions }
+						setEnsembles={ ( options ) => {
+							setAttributes( { ensembles: options } );
+						} }
+					/>
 				</PanelBody>
 			</InspectorControls>
 
@@ -58,4 +79,6 @@ export default function edit( { attributes, setAttributes } ) {
 			</div>
 		</>
 	);
-}
+} );
+
+export default edit;

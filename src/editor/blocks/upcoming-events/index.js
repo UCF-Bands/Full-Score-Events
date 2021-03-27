@@ -36,6 +36,7 @@ registerBlockType( 'full-score-events/upcoming-events', {
 
 		number: {
 			type: 'number',
+			default: 3,
 		},
 
 		noneFound: {
@@ -44,6 +45,11 @@ registerBlockType( 'full-score-events/upcoming-events', {
 				"There aren't any scheduled events at this time.",
 				'full-score-events'
 			),
+		},
+
+		ensembles: {
+			type: 'array',
+			default: [],
 		},
 	},
 
