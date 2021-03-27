@@ -353,19 +353,29 @@ class Events extends Post_Type {
 	 * The start_date meta query should be included by default via pre_get_posts
 	 * hook.
 	 *
-	 * @param  integer $number  Posts to get.
+	 * @param  integer $number     Posts to get.
+	 * @param  array   $ensembles  Array of ensemble term IDs.
 	 * @return WP_Query
 	 *
 	 * @since 1.0.0
 	 */
-	public static function get_upcoming( $number = 3 ) {
+	public static function get_upcoming( $number = 3, $ensembles = [] ) {
 
-		return new WP_Query(
-			[
-				'post_type'      => self::CPT_KEY,
-				'posts_per_page' => $number,
-			]
-		);
+		$args = [
+			'post_type'      => self::CPT_KEY,
+			'posts_per_page' => $number,
+		];
+
+		if ( $ensembles ) {
+			$args['tax_query'] = [
+				[
+					'taxonomy' => Ensembles::TAX_KEY,
+					'terms'    => $ensembles,
+				],
+			];
+		}
+
+		return new WP_Query( $args );
 	}
 
 	/**
