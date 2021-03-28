@@ -106,10 +106,6 @@
  *
  * @since 1.0.0
  */
-.fse-season-label {
-  display: -ms-grid;
-  display: grid; }
-
 .fse-season-label-year {
   font-weight: 700; }
 
@@ -118,6 +114,8 @@
 
 @media (min-width: 64rem) {
   .fse-season-label {
+    display: -ms-grid;
+    display: grid;
     text-align: right; } }
 
 /**
