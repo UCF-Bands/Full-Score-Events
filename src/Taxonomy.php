@@ -301,6 +301,16 @@ abstract class Taxonomy {
 	}
 
 	/**
+	 * Get currently queried terms
+	 *
+	 * @return array
+	 * @since  1.0.0
+	 */
+	public static function get_queried() {
+		return explode( ',', get_query_var( static::TAX_KEY ) );
+	}
+
+	/**
 	 * Get current query's terms for the taxonomy
 	 *
 	 * Compatible with archives and singular posts.
@@ -316,7 +326,7 @@ abstract class Taxonomy {
 			? get_terms(
 				[
 					'taxonomy' => static::TAX_KEY,
-					'slug'     => explode( ',', get_query_var( static::TAX_KEY ) ),
+					'slug'     => self::get_queried(),
 				]
 			)
 			: get_the_terms( get_the_ID(), static::TAX_KEY );
