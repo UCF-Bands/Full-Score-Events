@@ -266,6 +266,19 @@ function do_featured_body() {
 }
 
 /**
+ * Output "next event" heading
+ *
+ * @param string $heading  Heading attribute passed into block template.
+ * @since 1.0.0
+ */
+function do_next_event_heading( $heading ) {
+
+	if ( $heading ) {
+		get_plugin_template( 'next-event-heading', '', [ 'heading' => $heading ] );
+	}
+}
+
+/**
  * Remove inline style attribute from attachment image
  *
  * This was mostly added because Twenty Twentyone inlines height and max-width

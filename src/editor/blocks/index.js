@@ -27,3 +27,4 @@ import './location';
 // import './zombie-schedule-edit';
 
 import './upcoming-events';
+import './next-event';

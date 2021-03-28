@@ -63,6 +63,7 @@ class Blocks {
 		new Block( 'location-details' );
 		new Location();
 		new Upcoming_Events();
+		new Next_Event();
 
 		// new Zombie_Schedule_Edit(); This is just a placeholder since we have that Gutenberg issue.
 	}
