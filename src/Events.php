@@ -48,6 +48,14 @@ class Events extends Post_Type {
 	protected $loop_global_name = 'event';
 
 	/**
+	 * Featured events request cache
+	 *
+	 * @since 1.0.0
+	 * @var   WP_Query
+	 */
+	private static $featured_events;
+
+	/**
 	 * Get general post type label
 	 *
 	 * @return string
@@ -389,7 +397,11 @@ class Events extends Post_Type {
 	 */
 	public static function get_featured() {
 
-		return new WP_Query(
+		if ( isset( self::$featured_events ) ) {
+			return self::$featured_events;
+		}
+
+		self::$featured_events = new WP_Query(
 			[
 				'post_type'      => self::CPT_KEY,
 				'posts_per_page' => 20,
@@ -401,5 +413,7 @@ class Events extends Post_Type {
 				],
 			]
 		);
+
+		return self::$featured_events;
 	}
 }
