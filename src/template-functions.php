@@ -45,8 +45,8 @@ function do_archive_header() {
  */
 function do_featured_events() {
 
-	// Only show on first page.
-	if ( get_query_var( 'paged' ) ) {
+	// Only show on first page without ensemble filter.
+	if ( get_query_var( 'paged' ) || Ensembles::get_queried() ) {
 		return;
 	}
 
@@ -344,3 +344,22 @@ function set_excerpt_length( $length ) {
 	return $length;
 }
 add_filter( 'excerpt_length', __NAMESPACE__ . '\set_excerpt_length', 25 );
+
+
+/**
+ * Add misc. conditional body classes
+ *
+ * @param  array $classes  Body classes.
+ * @return array $classes
+ *
+ * @since 1.0.0
+ */
+function add_body_classes( $classes ) {
+
+	if ( is_event_archive() && Ensembles::get_queried() ) {
+		$classes[] = 'fse-ensemble-event-archive';
+	}
+
+	return $classes;
+}
+add_filter( 'body_class', __NAMESPACE__ . '\add_body_classes' );
