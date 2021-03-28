@@ -16,7 +16,7 @@
 
 namespace Full_Score_Events;
 
-$this_title = Customizer::get( 'feautred_title', __( 'Featured Events', 'full-score-events' ) );
+$this_title = Customizer::get( 'featured_title', __( 'Featured Events', 'full-score-events' ) );
 
 if ( ! $this_title ) {
 	return;
