@@ -17,7 +17,7 @@ const EnsemblesControl = ( { ensembles, suggestions, setEnsembles } ) => (
 	<BaseControl
 		className="fse-ensembles-control"
 		id="fse-ensembles-select"
-		label={ __( 'Filter by ensembles', 'full-score-events' ) }
+		label={ __( 'Filter to', 'full-score-events' ) }
 	>
 		<AsyncSelect
 			name="fse-post-select"

@@ -38106,7 +38106,7 @@ var EnsemblesControl = function EnsemblesControl(_ref) {
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["BaseControl"], {
     className: "fse-ensembles-control",
     id: "fse-ensembles-select",
-    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Filter by ensembles', 'full-score-events')
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Filter to', 'full-score-events')
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(react_select_async__WEBPACK_IMPORTED_MODULE_1__["default"], {
     name: "fse-post-select",
     isMulti: true,
@@ -38193,7 +38193,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
  * @since 1.0.0
  */
 
-var EnsemblesWrapper = function EnsemblesWrapper(blockConfig) {
+var EnsemblesSelectWrapper = function EnsemblesSelectWrapper(blockConfig) {
   var edit = blockConfig.edit,
       attributes = blockConfig.attributes; // add ensembles attribute
 
@@ -38240,7 +38240,7 @@ var EnsemblesWrapper = function EnsemblesWrapper(blockConfig) {
   return blockConfig;
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (EnsemblesWrapper);
+/* harmony default export */ __webpack_exports__["default"] = (EnsemblesSelectWrapper);
 
 /***/ }),
 
