@@ -17,8 +17,6 @@
 namespace Full_Score_Events;
 
 global $post_type;
-
-$post_type_obj = get_post_type_object( $post_type );
 ?>
 
 <header <?php do_attrs_class( 'fse-archive-header', "{$post_type}-archive-header", 'fse-wrap' ); ?>>
