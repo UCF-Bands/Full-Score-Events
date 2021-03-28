@@ -360,6 +360,14 @@ function add_body_classes( $classes ) {
 		$classes[] = 'fse-ensemble-event-archive';
 	}
 
+	if (
+		is_event_archive() && ! get_query_var( 'paged' ) // Is first page of main events archive.
+		&& ! Ensembles::get_queried()                    // Isn't being filtered to an ensemble(s).
+		&& Events::get_featured()->have_posts()          // Has featured events.
+	) {
+		$classes[] = 'fse-main-event-archive-has-featured-events';
+	}
+
 	return $classes;
 }
 add_filter( 'body_class', __NAMESPACE__ . '\add_body_classes' );
