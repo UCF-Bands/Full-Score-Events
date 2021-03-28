@@ -20,13 +20,15 @@ global $fse_event;
 if ( ! $fse_event->get_date_start() ) {
 	return;
 }
+
+$multi_day = $fse_event->get_day_start() !== $fse_event->get_day_finish();
 ?>
 
-<time datetime="<?php $fse_event->do_day_start( 'attr' ); ?>" class="fse-date">
+<time datetime="<?php $fse_event->do_day_start( 'attr' ); ?>" class="fse-date<?php echo $multi_day ? ' fse-date-multi-day' : ''; ?>">
 	<span class="fse-date-days">
 		<?php
 		$fse_event->do_day_start();
-		if ( $fse_event->get_day_start() !== $fse_event->get_day_finish() ) :
+		if ( $multi_day ) :
 			echo '<span class="fse-days-separator">–</span>';
 			$fse_event->do_day_finish();
 		endif;
