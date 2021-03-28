@@ -152,6 +152,12 @@ class Customizer {
 				]
 			)
 		);
+
+		do_action(
+			'full_score_events_after_customizer_events_controls',
+			$wp_customize,
+			$section
+		);
 	}
 
 	/**
