@@ -307,7 +307,7 @@ abstract class Taxonomy {
 	 * @since  1.0.0
 	 */
 	public static function get_queried() {
-		return explode( ',', get_query_var( static::TAX_KEY ) );
+		return array_filter( explode( ',', get_query_var( static::TAX_KEY ) ) );
 	}
 
 	/**
@@ -323,12 +323,14 @@ abstract class Taxonomy {
 	public static function get_current_terms( $fields = 'all' ) {
 
 		$terms = is_archive()
-			? get_terms(
+			// Only try to grab queried terms if something is actually queried
+			// since empty array results in all terms.
+			? ( self::get_queried() ? get_terms(
 				[
 					'taxonomy' => static::TAX_KEY,
 					'slug'     => self::get_queried(),
 				]
-			)
+			) : false )
 			: get_the_terms( get_the_ID(), static::TAX_KEY );
 
 		if ( empty( $terms ) ) {
