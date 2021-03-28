@@ -57,6 +57,11 @@
 	}
 }
 
+.fse-featured-events-list {
+	display: grid;
+	gap: var(--fse-column-cards-gap);
+}
+
 .fse-featured-events-list-event {
 	margin: 0;
 }

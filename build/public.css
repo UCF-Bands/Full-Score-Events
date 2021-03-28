@@ -161,6 +161,11 @@
   .fse-featured-events-wrap .fse-featured-events-header {
     grid-column: var(--fse-column-cards-column-column); }
 
+.fse-featured-events-list {
+  display: -ms-grid;
+  display: grid;
+  gap: var(--fse-column-cards-gap); }
+
 .fse-featured-events-list-event {
   margin: 0; }
 
