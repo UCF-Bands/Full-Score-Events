@@ -5,14 +5,13 @@
  * @since 1.0.0
  */
 
-import AsyncSelect from 'react-select/async';
-
-import { __, sprintf } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
+import { withSelect } from '@wordpress/data';
 import { Fragment } from '@wordpress/element';
 import { InspectorControls } from '@wordpress/block-editor';
 import { PanelBody } from '@wordpress/components';
 
-import getApiOptions from '../../util/get-api-options';
+import EnsemblesControl from '../ensembles-control';
 
 /**
  * Edit/save wrapper with ensemble selection functionality.
@@ -22,7 +21,7 @@ import getApiOptions from '../../util/get-api-options';
  *
  * @since 1.0.0
  */
-const EnsemblesWrapper = ( blockConfig ) => {
+const EnsemblesSelectWrapper = ( blockConfig ) => {
 	const { edit, attributes } = blockConfig;
 
 	// add ensembles attribute
@@ -42,9 +41,21 @@ const EnsemblesWrapper = ( blockConfig ) => {
 	 *
 	 * @since 1.0.0
 	 */
-	blockConfig.edit = ( props ) => {
-		const { setAttributes, attributes } = props;
-		const { selectedPost } = attributes;
+	blockConfig.edit = withSelect( ( select, props ) => ( {
+		ensembles: select( 'core' ).getEntityRecords(
+			'taxonomy',
+			'fse_ensemble',
+			{ include: props.attributes.ensembles }
+		),
+		ensembleSuggestions: select( 'core' ).getEntityRecords(
+			'taxonomy',
+			'fse_ensemble'
+		),
+	} ) )( ( props ) => {
+		const { setAttributes, ensembles } = props;
+
+		// set default arrays in case there aren't any available yet
+		const ensembleSuggestions = props.ensembleSuggestions || [];
 
 		return (
 			<Fragment>
@@ -53,16 +64,22 @@ const EnsemblesWrapper = ( blockConfig ) => {
 						title={ __( 'Ensembles', 'full-score-events' ) }
 						initialOpen={ true }
 					>
-						<p>BRICK!</p>
+						<EnsemblesControl
+							ensembles={ ensembles }
+							suggestions={ ensembleSuggestions }
+							setEnsembles={ ( options ) => {
+								setAttributes( { ensembles: options } );
+							} }
+						/>
 					</PanelBody>
 				</InspectorControls>
 
 				{ edit( props ) }
 			</Fragment>
 		);
-	};
+	} );
 
 	return blockConfig;
 };
 
-export default EnsemblesWrapper;
+export default EnsemblesSelectWrapper;

@@ -9,70 +9,53 @@ import { __ } from '@wordpress/i18n';
 import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, TextControl, TextareaControl } from '@wordpress/components';
 
-import withEnsembles from '../../util/with-ensembles';
-import EnsemblesControl from '../../components/ensembles-control';
+export default function edit( { attributes, setAttributes } ) {
+	const { number, noneFound } = attributes;
 
-const edit = withEnsembles(
-	( { attributes, setAttributes, ensembles, ensembleSuggestions } ) => {
-		const { number, noneFound } = attributes;
+	const numberControl = (
+		<TextControl
+			label={ __( 'Number to show', 'full-score-events' ) }
+			type="number"
+			min={ 1 }
+			step={ 1 }
+			value={ number }
+			onChange={ ( value ) =>
+				setAttributes( { number: Number( value ) } )
+			}
+		/>
+	);
 
-		// set default arrays in case there aren't any available yet
-		ensembleSuggestions = ensembleSuggestions || [];
+	const noneFoundControl = (
+		<TextareaControl
+			label={ __( '"None found" message', 'full-score-events' ) }
+			value={ noneFound }
+			placeholder={ __(
+				"Ex: There aren't any scheduled events at this time.",
+				'full-score-events'
+			) }
+			onChange={ ( value ) => setAttributes( { noneFound: value } ) }
+			help={ `${ __(
+				"Leave empty to not display block if there aren't any upcoming events found.",
+				'full-score-events'
+			) } ${ fullScoreEventsEditor.allowedInlineHTML }` }
+		/>
+	);
 
-		const numberControl = (
-			<TextControl
-				label={ __( 'Number to show', 'full-score-events' ) }
-				type="number"
-				min={ 1 }
-				step={ 1 }
-				value={ number }
-				onChange={ ( value ) =>
-					setAttributes( { number: Number( value ) } )
-				}
-			/>
-		);
+	return (
+		<>
+			<InspectorControls>
+				<PanelBody title={ __( 'Layout', 'full-score-events' ) }>
+					{ numberControl }
+					{ noneFoundControl }
+				</PanelBody>
+			</InspectorControls>
 
-		const noneFoundControl = (
-			<TextareaControl
-				label={ __( '"None found" message', 'full-score-events' ) }
-				value={ noneFound }
-				placeholder={ __(
-					"Ex: There aren't any scheduled events at this time.",
-					'full-score-events'
-				) }
-				onChange={ ( value ) => setAttributes( { noneFound: value } ) }
-				help={ `${ __(
-					"Leave empty to not display block if there aren't any upcoming events found.",
-					'full-score-events'
-				) } ${ fullScoreEventsEditor.allowedInlineHTML }` }
-			/>
-		);
-
-		return (
-			<>
-				<InspectorControls>
-					<PanelBody title={ __( 'Layout', 'full-score-events' ) }>
-						{ numberControl }
-						{ noneFoundControl }
-						<EnsemblesControl
-							ensembles={ ensembles }
-							suggestions={ ensembleSuggestions }
-							setEnsembles={ ( options ) => {
-								setAttributes( { ensembles: options } );
-							} }
-						/>
-					</PanelBody>
-				</InspectorControls>
-
-				<div { ...useBlockProps() }>
-					<ServerSideRender
-						block="full-score-events/upcoming-events"
-						attributes={ attributes }
-					/>
-				</div>
-			</>
-		);
-	}
-);
-
-export default edit;
+			<div { ...useBlockProps() }>
+				<ServerSideRender
+					block="full-score-events/upcoming-events"
+					attributes={ attributes }
+				/>
+			</div>
+		</>
+	);
+}

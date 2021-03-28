@@ -8,12 +8,14 @@ import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 import { calendar as icon } from '@wordpress/icons';
 
+import EnsemblesSelectWrapper from '../../components/ensembles-select-wrapper';
+
 import './style.scss';
 import './index.scss';
 
 import edit from './edit';
 
-registerBlockType( 'full-score-events/upcoming-events', {
+const config = {
 	apiVersion: 2,
 	title: __( 'Upcoming Events', 'full-score-events' ),
 	description: __(
@@ -46,13 +48,13 @@ registerBlockType( 'full-score-events/upcoming-events', {
 				'full-score-events'
 			),
 		},
-
-		ensembles: {
-			type: 'array',
-			default: [],
-		},
 	},
 
 	edit,
 	save: () => null,
-} );
+};
+
+registerBlockType(
+	'full-score-events/upcoming-events',
+	EnsemblesSelectWrapper( config )
+);
