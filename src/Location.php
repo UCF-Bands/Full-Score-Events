@@ -113,7 +113,7 @@ class Location extends Post {
 			'class'       => 'fse-location-map',
 			'title'       => __( 'Location map', 'full-score-events' ),
 			'width'       => '100%',
-			'height'      => '450', // @todo make this a block setting.
+			'height'      => '405', // @todo make this a block setting.
 			'frameborder' => '0',
 			'src'         => $this->get_map_src(),
 		];

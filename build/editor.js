@@ -36193,7 +36193,7 @@ function edit(_ref) {
     className: "fse-location-details-map",
     title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Google Map preview', 'full-score-events'),
     width: "100%",
-    height: "450",
+    height: "405",
     frameBorder: "0",
     style: {
       border: 0
