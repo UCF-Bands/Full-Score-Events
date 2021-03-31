@@ -27,6 +27,6 @@ switch ( get_option( 'template' ) ) {
 		break;
 
 	default:
-		echo '<main id="primary" class="site-main fse-main">';
+		echo '<main id="primary" class="site-main fse-main fse-main-' . ( is_archive() ? 'archive' : 'singular' ) . '">';
 		break;
 }
