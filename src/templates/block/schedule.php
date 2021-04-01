@@ -50,7 +50,11 @@ $upload_id = $edit_block['attrs']['uploadId'] ?? false;
 			'full_score_events_schedule_download_attrs',
 			[
 				'href'     => wp_get_attachment_url( $upload_id ),
-				'class'    => 'button',
+				'class'    => [
+					'button',
+					'fse-schedule-button',
+					'fse-schedule-download-button',
+				],
 				'role'     => 'button',
 				'download' => 'download',
 			]
@@ -63,6 +67,7 @@ $upload_id = $edit_block['attrs']['uploadId'] ?? false;
 				__( 'Download', 'full-score-events' ),
 				$upload_id
 			);
+			do_icon( 'download' );
 			?>
 		</a>
 	<?php endif; ?>
