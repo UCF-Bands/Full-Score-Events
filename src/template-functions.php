@@ -187,7 +187,10 @@ function do_single_event_header_wrapper_close() {
 function do_single_event_thumbnail() {
 
 	if ( get_post_thumbnail_id() ) {
-		the_post_thumbnail( 'fse-banner', [ 'class' => 'fse-wrap fse-event-single-thumbnail' ] );
+		the_post_thumbnail(
+			apply_filters( 'full_score_events_event_single_thumbnail_size', 'fse-banner' ),
+			[ 'class' => 'fse-wrap fse-event-single-thumbnail' ]
+		);
 	} else {
 		echo '<hr class="fse-wrap fse-no-event-thumbnail-divider">';
 	}
