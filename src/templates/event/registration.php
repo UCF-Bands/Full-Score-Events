@@ -18,9 +18,15 @@ namespace Full_Score_Events;
 
 global $fse_event;
 
-$this_type = $fse_event->get_registration_type();
-$this_tag  = $this_type ? 'a' : 'span';
-$attrs     = [
+$this_type  = $fse_event->get_registration_type();
+$show_price = $fse_event->get_show_price();
+
+if ( ! $this_type && ! $show_price ) {
+	return;
+}
+
+$this_tag = $this_type ? 'a' : 'span';
+$attrs    = [
 	'class' => [
 		'button',
 		$this_type ? 'fse-event-registration-button' : 'fse-event-registration-label',
@@ -38,11 +44,11 @@ $attrs     = [
 		</span>
 	<?php endif; ?>
 
-	<?php if ( $this_type && $fse_event->get_show_price() ) : ?>
+	<?php if ( $this_type && $show_price ) : ?>
 		<span class="fse-event-registration-separator">|</span>
 	<?php endif; ?>
 
-	<?php if ( $fse_event->get_show_price() ) : ?>
+	<?php if ( $show_price ) : ?>
 		<span class="fse-event-price"><?php $fse_event->do_price(); ?></span>
 	<?php endif; ?>
 
