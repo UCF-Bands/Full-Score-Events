@@ -33,6 +33,7 @@ $attrs    = [
 	],
 	'href'  => $this_type ? $fse_event->get_registration_url() : null,
 	'role'  => $this_type ? 'button' : null,
+	'title' => $this_type ? null : __( 'Registration is not required for this event.', 'full-score-events' ),
 ];
 ?>
 
