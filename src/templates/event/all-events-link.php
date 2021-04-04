@@ -21,7 +21,7 @@ $attrs = apply_filters(
 	[
 		'href'  => Events::get_archive_url(),
 		'class' => [
-			'button',
+			'wp-block-button__link',
 			'fse-button',
 			'fse-all-events-link',
 		],

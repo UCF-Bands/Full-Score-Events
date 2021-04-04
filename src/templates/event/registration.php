@@ -26,15 +26,19 @@ if ( ! $this_type && ! $show_price ) {
 }
 
 $this_tag = $this_type ? 'a' : 'span';
-$attrs    = [
-	'class' => [
-		'button',
-		$this_type ? 'fse-event-registration-button' : 'fse-event-registration-label',
-	],
-	'href'  => $this_type ? $fse_event->get_registration_url() : null,
-	'role'  => $this_type ? 'button' : null,
-	'title' => $this_type ? null : __( 'Registration is not required for this event.', 'full-score-events' ),
-];
+$attrs    = apply_filters(
+	'full_score_events_registration_link_attrs',
+	[
+		'class' => [
+			'wp-block-button__link',
+			'fse-button',
+			$this_type ? 'fse-event-registration-button' : 'fse-event-registration-label',
+		],
+		'href'  => $this_type ? $fse_event->get_registration_url() : null,
+		'role'  => $this_type ? 'button' : null,
+		'title' => $this_type ? null : __( 'Registration is not required for this event.', 'full-score-events' ),
+	]
+);
 ?>
 
 <<?php echo esc_attr( $this_tag ); ?> <?php do_attrs( $attrs ); ?>>
