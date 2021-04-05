@@ -48,7 +48,6 @@ class Blocks {
 		add_action( 'enqueue_block_editor_assets', [ __CLASS__, 'enqueue_editor_assets' ] );
 		add_filter( 'block_categories', [ __CLASS__, 'add_block_categories' ] );
 
-		new Block( 'taco' );
 		new Block( 'callout' );
 		new Renderless_Block( 'schedule-edit' );
 		new Block( 'schedule-heading' );

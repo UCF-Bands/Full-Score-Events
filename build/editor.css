@@ -63,11 +63,6 @@
   .fse-user-control .components-combobox-control__suggestions-container {
     margin-bottom: 0; }
 
-/* Taco block editor-only styles */
-body {
-	background: var(--color-red);
-}
-
 /**
  * Schedule block editor adjustments
  *

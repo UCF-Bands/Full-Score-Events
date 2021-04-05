@@ -8,7 +8,6 @@
 import './style.scss';
 // import './index.scss';
 
-import './taco';
 import './callout';
 import './schedule';
 import './schedule-edit';

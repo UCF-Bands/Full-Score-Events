@@ -99,17 +99,6 @@
 
 /***/ }),
 
-/***/ "./src/editor/blocks/taco/style.css":
-/*!******************************************!*\
-  !*** ./src/editor/blocks/taco/style.css ***!
-  \******************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-
 /***/ "./src/editor/blocks/upcoming-events/style.scss":
 /*!******************************************************!*\
   !*** ./src/editor/blocks/upcoming-events/style.scss ***!
@@ -36073,22 +36062,21 @@ function edit(_ref) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.scss */ "./src/editor/blocks/style.scss");
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _taco__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./taco */ "./src/editor/blocks/taco/index.js");
-/* harmony import */ var _callout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./callout */ "./src/editor/blocks/callout/index.js");
-/* harmony import */ var _schedule__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./schedule */ "./src/editor/blocks/schedule/index.js");
-/* harmony import */ var _schedule_edit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./schedule-edit */ "./src/editor/blocks/schedule-edit/index.js");
-/* harmony import */ var _schedule_items__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./schedule-items */ "./src/editor/blocks/schedule-items/index.js");
-/* harmony import */ var _schedule_item__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./schedule-item */ "./src/editor/blocks/schedule-item/index.js");
-/* harmony import */ var _schedule_heading__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./schedule-heading */ "./src/editor/blocks/schedule-heading/index.js");
-/* harmony import */ var _program_edit__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./program-edit */ "./src/editor/blocks/program-edit/index.js");
-/* harmony import */ var _program_pieces__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./program-pieces */ "./src/editor/blocks/program-pieces/index.js");
-/* harmony import */ var _program_piece__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./program-piece */ "./src/editor/blocks/program-piece/index.js");
-/* harmony import */ var _program_heading__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./program-heading */ "./src/editor/blocks/program-heading/index.js");
-/* harmony import */ var _program__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./program */ "./src/editor/blocks/program/index.js");
-/* harmony import */ var _location_details__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./location-details */ "./src/editor/blocks/location-details/index.js");
-/* harmony import */ var _location__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./location */ "./src/editor/blocks/location/index.js");
-/* harmony import */ var _upcoming_events__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./upcoming-events */ "./src/editor/blocks/upcoming-events/index.js");
-/* harmony import */ var _next_event__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./next-event */ "./src/editor/blocks/next-event/index.js");
+/* harmony import */ var _callout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./callout */ "./src/editor/blocks/callout/index.js");
+/* harmony import */ var _schedule__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./schedule */ "./src/editor/blocks/schedule/index.js");
+/* harmony import */ var _schedule_edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./schedule-edit */ "./src/editor/blocks/schedule-edit/index.js");
+/* harmony import */ var _schedule_items__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./schedule-items */ "./src/editor/blocks/schedule-items/index.js");
+/* harmony import */ var _schedule_item__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./schedule-item */ "./src/editor/blocks/schedule-item/index.js");
+/* harmony import */ var _schedule_heading__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./schedule-heading */ "./src/editor/blocks/schedule-heading/index.js");
+/* harmony import */ var _program_edit__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./program-edit */ "./src/editor/blocks/program-edit/index.js");
+/* harmony import */ var _program_pieces__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./program-pieces */ "./src/editor/blocks/program-pieces/index.js");
+/* harmony import */ var _program_piece__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./program-piece */ "./src/editor/blocks/program-piece/index.js");
+/* harmony import */ var _program_heading__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./program-heading */ "./src/editor/blocks/program-heading/index.js");
+/* harmony import */ var _program__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./program */ "./src/editor/blocks/program/index.js");
+/* harmony import */ var _location_details__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./location-details */ "./src/editor/blocks/location-details/index.js");
+/* harmony import */ var _location__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./location */ "./src/editor/blocks/location/index.js");
+/* harmony import */ var _upcoming_events__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./upcoming-events */ "./src/editor/blocks/upcoming-events/index.js");
+/* harmony import */ var _next_event__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./next-event */ "./src/editor/blocks/next-event/index.js");
 /**
  * Custom blocks
  *
@@ -36096,7 +36084,6 @@ __webpack_require__.r(__webpack_exports__);
  */
 // shared
  // import './index.scss';
-
 
 
 
@@ -37881,60 +37868,6 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_4__["registerBlockType"])('ful
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
-
-/***/ }),
-
-/***/ "./src/editor/blocks/taco/index.css":
-/*!******************************************!*\
-  !*** ./src/editor/blocks/taco/index.css ***!
-  \******************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-
-/***/ "./src/editor/blocks/taco/index.js":
-/*!*****************************************!*\
-  !*** ./src/editor/blocks/taco/index.js ***!
-  \*****************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.css */ "./src/editor/blocks/taco/style.css");
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _index_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./index.css */ "./src/editor/blocks/taco/index.css");
-/* harmony import */ var _index_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_index_css__WEBPACK_IMPORTED_MODULE_3__);
-
-
-/**
- * Taco block
- *
- * Look at this test bro.
- *
- * @since   1.0.0
- */
-
-
-
-Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('full-score-events/taco', {
-  title: 'Taco',
-  icon: 'smiley',
-  category: 'design',
-  edit: function edit() {
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, "Hola, mundo! #TacoBlock");
-  },
-  save: function save() {
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, "Hola, mundo! #TacoBlock");
-  }
-});
 
 /***/ }),
 
