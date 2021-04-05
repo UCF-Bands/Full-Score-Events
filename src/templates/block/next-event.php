@@ -20,15 +20,13 @@ if ( ! $events->have_posts() ) {
 	<?php
 	/**
 	 * Hook: full_score_events_before_next_event
-	 *
-	 * @hooked Full_Score_Events\do_next_event_heading - 10
 	 */
-	do_action( 'full_score_events_before_next_event', $heading );
+	do_action( 'full_score_events_before_next_event' );
 
 	while ( $events->have_posts() ) :
 		$events->the_post();
 		?>
-			<?php get_plugin_template( 'content', 'next-event' ); ?>
+			<?php get_plugin_template( 'content', 'next-event', [ 'heading' => $heading ] ); ?>
 		<?php
 	endwhile;
 	wp_reset_postdata();

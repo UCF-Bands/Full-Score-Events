@@ -79,7 +79,7 @@ class Template_Hooks {
 		add_action( 'full_score_events_after_upcoming_events', 'Full_Score_Events\do_all_events_link' );
 
 		// Next event.
-		add_action( 'full_score_events_before_next_event', 'Full_Score_Events\do_next_event_heading' );
+		add_action( 'full_score_events_next_event_content', 'Full_Score_Events\do_next_event_heading', 5 );
 		add_action( 'full_score_events_next_event_content', 'Full_Score_Events\do_loop_event_header' );
 		add_action( 'full_score_events_next_event_content', 'Full_Score_Events\do_event_link_overlay', 40 );
 	}

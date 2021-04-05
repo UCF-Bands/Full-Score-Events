@@ -23,11 +23,12 @@ namespace Full_Score_Events;
 	/**
 	 * Hook: full_score_events_next_event_content
 	 *
+	 * @hooked Full_Score_Events\do_next_event_heading - 5
 	 * @hooked Full_Score_Events\do_loop_event_header - 10
 	 * @hooked Full_Score_Events\do_event_link_overlay - 40
 	 *
 	 * @since 1.0.0
 	 */
-	do_action( 'full_score_events_next_event_content' );
+	do_action( 'full_score_events_next_event_content', $heading );
 	?>
 </article>
