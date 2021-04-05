@@ -202,7 +202,9 @@ function do_single_event_thumbnail() {
  * @since 1.0.0
  */
 function do_single_event_content_wrap() {
-	echo '<div class="fse-wrap fse-event-content-wrap">';
+	?>
+	<div <?php do_attrs_class( 'fse-wrap', 'fse-event-content-wrap', get_the_content() ? null : 'fse-event-no-content' ); ?>>
+	<?php
 }
 
 /**

@@ -44,7 +44,11 @@ span.fse-event-registration-label {
 	gap: var(--fse-bsu-x2);
 
 	@media (min-width: 80rem) { // 1280px
-		grid-template-columns: 1fr auto;
+
+		&,
+		&.fse-event-no-content .fse-event-aside {
+			grid-template-columns: 1fr auto;
+		}
 	}
 }
 
@@ -58,6 +62,17 @@ span.fse-event-registration-label {
 
 	@media (min-width: 64rem) and (max-width: 79.9375rem) { // 1024px to 1279px
 		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+.fse-event-no-content {
+
+	.fse-event-entry-content {
+		display: none;
+	}
+
+	.fse-event-aside {
+		grid-column: 1 / -1;
 	}
 }
 
