@@ -237,7 +237,25 @@ function get_block( $name, $post_id = null ) {
  */
 function get_block_template( $name, $args = [] ) {
 	ob_start();
+
+	/**
+	 * Hook: full_score_events_before_block
+	 *
+	 * @param string $name Block template part name (excluding .php).
+	 * @param array  $args Template arguments (extracted to vars).
+	 */
+	do_action( 'full_score_events_before_block', $name, $args );
+
 	get_plugin_template( "block/$name", '', $args );
+
+	/**
+	 * Hook: full_score_events_after_block
+	 *
+	 * @param string $name Block template part name (excluding .php).
+	 * @param array  $args Template arguments (extracted to vars).
+	 */
+	do_action( 'full_score_events_after_block', $name, $args );
+
 	return ob_get_clean();
 }
 
