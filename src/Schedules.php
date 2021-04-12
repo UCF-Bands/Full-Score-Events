@@ -96,15 +96,10 @@ class Schedules extends Post_Type {
 			'show_ui'             => true,
 			'menu_icon'           => 'dashicons-list-view',
 			'show_in_nav_menus'   => true,
-			'has_archive'         => true,
+			'has_archive'         => false,
 			'exclude_from_search' => true,
 			'publicly_queryable'  => true,
-			'rewrite'             => [
-				'slug'       => 'schedule',
-				'with_front' => true,
-				'pages'      => true,
-				'feeds'      => true,
-			],
+			'rewrite'             => false,
 			'template'            => [
 				[ 'full-score-events/schedule-edit' ],
 			],

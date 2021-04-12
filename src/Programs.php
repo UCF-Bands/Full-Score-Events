@@ -98,7 +98,7 @@ class Programs extends Post_Type {
 			'show_ui'             => true,
 			'menu_icon'           => 'dashicons-playlist-audio',
 			'show_in_nav_menus'   => true,
-			'has_archive'         => true,
+			'has_archive'         => 'programs',
 			'exclude_from_search' => true,
 			'publicly_queryable'  => true,
 			'rewrite'             => [

@@ -154,12 +154,6 @@ class Locations extends Post_Type {
 			'exclude_from_search' => true,
 			'publicly_queryable'  => true,
 			'rewrite'             => false,
-			// 'rewrite'             => [
-			// 	'slug'       => 'program',
-			// 	'with_front' => true,
-			// 	'pages'      => true,
-			// 	'feeds'      => true,
-			// ],
 			'template'            => [
 				[ 'full-score-events/location-details' ],
 			],
