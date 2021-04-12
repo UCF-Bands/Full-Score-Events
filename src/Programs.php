@@ -16,6 +16,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Program CPT registration and general handling
  *
+ * @todo add date meta (for archiving?)
+ *
  * @since 1.0.0
  */
 class Programs extends Post_Type {
@@ -55,6 +57,16 @@ class Programs extends Post_Type {
 	}
 
 	/**
+	 * Get plural post type label
+	 *
+	 * @return string
+	 * @since 1.0.0
+	 */
+	public function get_plural_label() {
+		return __( 'Programs', 'full-score-events' );
+	}
+
+	/**
 	 * Get non-default post type args
 	 *
 	 * @return array
@@ -64,8 +76,6 @@ class Programs extends Post_Type {
 		return [
 			'description'         => __( 'A performance program.', 'full-score-events' ),
 			'labels'              => [
-				'name'                  => _x( 'Programs', 'Post Type General Name', 'full-score-events' ),
-				'menu_name'             => __( 'Programs', 'full-score-events' ),
 				'archives'              => __( 'Program Archives', 'full-score-events' ),
 				'attributes'            => __( 'Program Attributes', 'full-score-events' ),
 				'parent_item_colon'     => __( 'Parent Program:', 'full-score-events' ),
@@ -88,7 +98,7 @@ class Programs extends Post_Type {
 			'show_ui'             => true,
 			'menu_icon'           => 'dashicons-playlist-audio',
 			'show_in_nav_menus'   => true,
-			'has_archive'         => true,
+			'has_archive'         => 'programs',
 			'exclude_from_search' => true,
 			'publicly_queryable'  => true,
 			'rewrite'             => [

@@ -21,6 +21,7 @@ registerBlockType( 'full-score-events/schedule-items', {
 	title: __( 'Schedule Items', 'full-score-events' ),
 	description: __( "Edit a schedule's activities.", 'full-score-events' ),
 	icon,
+	category: 'fse-event',
 	keywords: [ __( 'schedule' ), __( 'plan' ) ],
 	parent: [ 'full-score-events/schedule-edit' ],
 

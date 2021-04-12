@@ -18,7 +18,9 @@ export default function edit( { attributes, setAttributes } ) {
 
 	return (
 		<div { ...blockProps }>
-			<h2>{ __( 'Location Details', 'full-score-events' ) }</h2>
+			<h2 className="fse-schedule-title">
+				{ __( 'Location Details', 'full-score-events' ) }
+			</h2>
 
 			<PlaceSearch
 				googleMapURL={ addQueryArgs( googleMapsURL, {
@@ -71,7 +73,7 @@ export default function edit( { attributes, setAttributes } ) {
 					className="fse-location-details-map"
 					title={ __( 'Google Map preview', 'full-score-events' ) }
 					width="100%"
-					height="450"
+					height="405"
 					frameBorder="0"
 					style={ { border: 0 } }
 					src={ addQueryArgs(

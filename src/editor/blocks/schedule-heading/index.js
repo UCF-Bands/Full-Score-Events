@@ -21,8 +21,9 @@ registerBlockType( 'full-score-events/schedule-heading', {
 		'full-score-events'
 	),
 	icon,
+	category: 'fse-event',
 	keywords: [ __( 'schedule' ), __( 'heading' ), __( 'message' ) ],
-	parent: [ 'full-score-events/schedule-items' ], // @todo isn't this supposed to be schedule-edit?
+	parent: [ 'full-score-events/schedule-edit' ],
 
 	attributes: {
 		heading: {

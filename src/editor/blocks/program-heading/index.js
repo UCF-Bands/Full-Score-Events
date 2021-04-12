@@ -22,12 +22,13 @@ registerBlockType( 'full-score-events/program-heading', {
 	),
 	icon,
 	keywords: [ __( 'program' ), __( 'heading' ), __( 'message' ) ],
+	category: 'fse-event',
 	parent: [ 'full-score-events/program-edit' ],
 
 	attributes: {
 		heading: {
 			type: 'string',
-			source: 'html', // @todo change these to text?
+			source: 'html',
 			selector: '.fse-program-heading-heading',
 		},
 		subheading: {

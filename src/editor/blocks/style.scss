@@ -5,17 +5,28 @@
  * @package Full_Score_Events
  */
 
+.fse-schedule-title,
+.entry-content .fse-schedule-title,
+.fse-schedule-heading-heading,
+.entry-content .fse-schedule-heading-heading,
+.fse-program-heading-heading,
+.entry-content .fse-program-heading-heading,
+.fse-schedule p,
+.fse-program p {
+	margin: 0;
+}
+
 .fse-schedule,
 .fse-program {
 	display: grid;
-	gap: 1rem;
-	padding-top: 1.5rem;
-	padding-bottom: 1.5rem;
-	border: 2px solid var(--global--color-border);
+	gap: var(--fse-bsu);
+	padding-top: var(--fse-bsu-x1-5);
+	padding-bottom: var(--fse-bsu-x1-5);
+	border: 2px solid var(--fse-border-color);
 
 	@media (min-width: 50rem) {
-		padding-top: 2rem;
-		padding-bottom: 2rem;
+		padding-top: var(--fse-bsu-x2);
+		padding-bottom: var(--fse-bsu-x2);
 	}
 }
 
@@ -24,4 +35,9 @@
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
+}
+
+.fse-schedule-item,
+.wp-block-full-score-events-program-piece {
+	margin: 0;
 }

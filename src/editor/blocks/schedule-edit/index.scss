@@ -9,27 +9,21 @@
 
 	> .block-editor-inner-blocks > .block-editor-block-list__layout {
 		display: grid;
-		gap: 1rem;
+		gap: var(--fse-bsu);
 	}
 }
 
 .editor-styles-wrapper {
 
-	.wp-block-full-score-events-schedule-edit .wp-block,
-	.wp-block-full-score-events-schedule-edit p,
-	.fse-schedule-heading-heading {
-		margin: 0;
-	}
-
 	.wp-block-full-score-events-schedule-heading.wp-block {
-		margin-top: 1rem;
+		margin-top: var(--fse-bsu);
 	}
 }
 
 .wp-block-full-score-events-schedule-item + .wp-block-full-score-events-schedule-item {
-	border-top: 1px solid var(--global--color-border);
+	border-top: 1px solid var(--fse-border-color);
 }
 
 .fse-schedule-download-wrapper {
-	margin-top: 1.5rem;
+	margin-top: var(--fse-bsu-x1-5);
 }

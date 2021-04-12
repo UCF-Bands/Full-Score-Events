@@ -19,13 +19,14 @@ registerBlockType( 'full-score-events/schedule-item', {
 	title: __( 'Schedule Item', 'full-score-events' ),
 	description: __( "Edit a schedule's schedule.", 'full-score-events' ),
 	icon,
+	category: 'fse-event',
 	keywords: [ __( 'schedule' ), __( 'plan' ) ],
 	parent: [ 'full-score-events/schedule-items' ],
 
 	attributes: {
 		dateTime: {
 			type: 'string',
-			default: '', // @todo is this necessary?
+			default: '',
 		},
 	},
 

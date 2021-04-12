@@ -8,12 +8,8 @@
 	display: grid;
 	grid-template-columns: auto 1fr;
 	align-items: center;
-	gap: 0.5rem;
-	padding: 0.5rem 1rem;
+	gap: var(--fse-bsu-half);
+	padding: var(--fse-bsu-half) var(--fse-bsu);
 	font-weight: 700;
-	border: 2px solid var(--global--color-border);
-
-	[data-icon] {
-		width: var(--global--font-size-base);
-	}
+	border: 2px solid var(--fse-border-color);
 }

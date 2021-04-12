@@ -20,9 +20,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Get autoloader and helper functions.
+// Get autoloader and helper + template functions.
 require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/src/functions.php';
+require_once __DIR__ . '/src/template-functions.php';
 
 /**
  * Plugin wrapper
@@ -30,6 +31,130 @@ require_once __DIR__ . '/src/functions.php';
  * @since 1.0.0
  */
 class Plugin {
+
+	/**
+	 * The single instance of this class
+	 *
+	 * @var   Plugin
+	 * @since 1.0.0
+	 */
+	protected static $instance;
+
+	/**
+	 * Schedules handler
+	 *
+	 * @var   Schedules
+	 * @since 1.0.0
+	 */
+	public $schedules;
+
+	/**
+	 * Programs handler
+	 *
+	 * @var   Programs
+	 * @since 1.0.0
+	 */
+	public $programs;
+
+	/**
+	 * Locations handler
+	 *
+	 * @var   Locations
+	 * @since 1.0.0
+	 */
+	public $locations;
+
+	/**
+	 * Ensembles handler
+	 *
+	 * @var   Ensembles
+	 * @since 1.0.0
+	 */
+	public $ensembles;
+
+	/**
+	 * Seasons handler
+	 *
+	 * @var   Seasons
+	 * @since 1.0.0
+	 */
+	public $seasons;
+
+	/**
+	 * Events handler
+	 *
+	 * @var   Events
+	 * @since 1.0.0
+	 */
+	public $events;
+
+	/**
+	 * Blocks handler
+	 *
+	 * @var   Customizer
+	 * @since 1.0.0
+	 */
+	public $blocks;
+
+	/**
+	 * Users handler
+	 *
+	 * @var   Users
+	 * @since 1.0.0
+	 */
+	public $users;
+
+	/**
+	 * Customizer handler
+	 *
+	 * @var   Customizer
+	 * @since 1.0.0
+	 */
+	public $customizer;
+
+	/**
+	 * Settings handler
+	 *
+	 * @var   Settings
+	 * @since 1.0.0
+	 */
+	public $settings;
+
+	/**
+	 * Template loading handler
+	 *
+	 * False if not a front end request.
+	 *
+	 * @var   Template_Loader|boolean
+	 * @since 1.0.0
+	 */
+	public $template_loader = false;
+
+	/**
+	 * Template hooks handler
+	 *
+	 * False if not a front end request.
+	 *
+	 * @var   Template_Hooks|boolean
+	 * @since 1.0.0
+	 */
+	public $template_hooks = false;
+
+	/**
+	 * Get main plugin instance.
+	 *
+	 * @since  1.0.0
+	 * @see    instance()
+	 * @return Plugin
+	 */
+	public static function instance() {
+
+		if ( is_null( self::$instance ) ) {
+			self::$instance = new self();
+		}
+
+		return self::$instance;
+	}
 
 	/**
 	 * Spin up plugin
@@ -61,12 +186,49 @@ class Plugin {
 	 * @since 1.0.0
 	 */
 	public function init() {
-		new Schedules();
-		new Programs();
-		new Locations();
-		new Ensembles();
-		new Blocks\Blocks();
-		new Settings();
+		$this->schedules  = new Schedules();
+		$this->programs   = new Programs();
+		$this->locations  = new Locations();
+		$this->ensembles  = new Ensembles();
+		$this->seasons    = new Seasons();
+		$this->events     = new Events();
+		$this->blocks     = new Blocks\Blocks();
+		$this->users      = new Users();
+		$this->customizer = new Customizer();
+		$this->settings   = new Settings();
+
+		if ( $this->is_request( 'frontend' ) ) {
+			$this->template_loader = new Template_Loader();
+			$this->template_hooks  = new Template_Hooks();
+		}
+
+		do_action( 'full_score_events_loaded' );
+	}
+
+	/**
+	 * What type of request is this?
+	 *
+	 * @see WooCommerce's WooCommerce->is_request()
+	 *
+	 * @param  string $type  admin, ajax, cron or frontend.
+	 * @return boolean
+	 *
+	 * @since  1.0.0
+	 */
+	private function is_request( $type ) {
+		switch ( $type ) {
+			case 'admin':
+				return is_admin();
+
+			case 'ajax':
+				return defined( 'DOING_AJAX' );
+
+			case 'cron':
+				return defined( 'DOING_CRON' );
+
+			case 'frontend':
+				return ( ! is_admin() || defined( 'DOING_AJAX' ) ) && ! defined( 'DOING_CRON' );
+		}
 	}
 
 	/**
@@ -88,8 +250,18 @@ class Plugin {
 	}
 }
 
+/**
+ * Get instance of main plugin class
+ *
+ * @return Plugin
+ * @since  1.0.0
+ */
+function instance() {
+	return Plugin::instance();
+}
+
 // Instantiate plugin wrapper class.
-$full_score_events_plugin = new Plugin();
+$full_score_events_plugin = instance();
 
 // Register activation/deactivation stuff.
 register_activation_hook( __FILE__, [ $full_score_events_plugin, 'do_activate' ] );

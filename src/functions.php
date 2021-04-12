@@ -21,6 +21,21 @@ function get( $key ) {
 }
 
 /**
+ * Returns a posted value
+ *
+ * Nonce verification should happen before this.
+ *
+ * @param  string $key  $_POST superglobal key.
+ * @return mixed
+ * @see    https://github.com/WordPress/WordPress-Coding-Standards/wiki/Fixing-errors-for-input-data
+ * @since  1.0.0
+ */
+function postval( $key ) {
+	// phpcs:ignore WordPress.Security.NonceVerification.Missing
+	return isset( $_POST[ $key ] ) ? sanitize_text_field( wp_unslash( $_POST[ $key ] ) ) : null;
+}
+
+/**
  * Break array into string of attributes
  *
  * Has special cases for "class" and "data" keys if their values are arrays, so
@@ -85,29 +100,102 @@ function do_attrs_class() {
 }
 
 /**
+ * Custom kses allowed HTML for "inlined" entities.
+ *
+ * @return array Allowed HTML entities/attributes.
+ * @since  1.0.0
+ */
+function get_allowed_inline_html() {
+	return [
+		'a'      => [
+			'href'  => [],
+			'rel'   => [],
+			'title' => [],
+		],
+		'b'      => [],
+		'strong' => [],
+		'i'      => [],
+		'em'     => [],
+		'code'   => [],
+	];
+}
+
+/**
+ * Configure "allowed inline HTML" message for block editor.
+ *
+ * @param  array $object Data to be localized in JS object.
+ * @return array $object Data to be localized + "allowed inline HTML" help text.
+ *
+ * @since  1.0.0
+ */
+function set_blocks_js_allowed_inline_html_help( $object ) {
+
+	$object['allowedInlineHTML'] = sprintf(
+		__( 'Allowed HTML: %s', 'full-score-events' ),
+		implode( ', ', array_keys( get_allowed_inline_html() ) )
+	);
+
+	return $object;
+}
+add_filter( 'full_score_events_editor_js_object', __NAMESPACE__ . '\set_blocks_js_allowed_inline_html_help' );
+
+/**
+ * Locate a template part in the theme, then fall back to plugin.
+ *
+ * @param  string $slug  Template slug (excluding .php).
+ * @param  string $name  Template file name (excluding .php).
+ * @return string        Template path.
+ *
+ * @since  1.0.0
+ */
+function locate_plugin_template( $slug, $name = '' ) {
+
+	$template = false;
+
+	if ( $name ) {
+		$template = locate_template( "full-score-events/{$slug}-{$name}.php" );
+
+		if ( ! $template ) {
+			$fallback = FULL_SCORE_EVENTS_DIR . "src/templates/{$slug}-{$name}.php";
+			$template = file_exists( $fallback ) ? $fallback : false;
+		}
+	}
+
+	// Check for non-named template if there wasn't a named template found.
+	if ( ! $template ) {
+		$template = locate_template( "full-score-events/{$slug}.php" );
+	}
+
+	if ( ! $template ) {
+		$fallback = FULL_SCORE_EVENTS_DIR . "src/templates/{$slug}.php";
+		$template = file_exists( $fallback ) ? $fallback : false;
+	}
+
+	return $template;
+}
+
+/**
  * Get a plugin template
  *
+ * @param string $slug  Template slug (excluding .php).
  * @param string $name  Template part name (excluding .php).
  * @param array  $args  Template arguments (extracted to vars).
  *
  * @since 1.0.0
  */
-function get_plugin_template( $name, $args = [] ) {
+function get_plugin_template( $slug, $name = '', $args = [] ) {
 
-	// Maker vars for all the args.
+	// Make vars for all the args.
 	if ( ! empty( $args ) && is_array( $args ) ) {
 		extract( $args ); // phpcs:ignore WordPress.PHP.DontExtract.extract_extract
 	}
 
 	// Set the path and ensure the template is there.
-	$template = FULL_SCORE_EVENTS_DIR . "src/templates/{$name}.php";
+	$template = locate_plugin_template( $slug, $name );
 
-	if ( ! file_exists( $template ) ) {
-		return;
+	if ( $template ) {
+		include $template;
 	}
-
-	// Load the template part.
-	include $template;
 }
 
 /**
@@ -149,7 +237,25 @@ function get_block( $name, $post_id = null ) {
  */
 function get_block_template( $name, $args = [] ) {
 	ob_start();
-	get_plugin_template( "block/$name", $args );
+
+	/**
+	 * Hook: full_score_events_before_block
+	 *
+	 * @param string $name Block template part name (excluding .php).
+	 * @param array  $args Template arguments (extracted to vars).
+	 */
+	do_action( 'full_score_events_before_block', $name, $args );
+
+	get_plugin_template( "block/$name", '', $args );
+
+	/**
+	 * Hook: full_score_events_after_block
+	 *
+	 * @param string $name Block template part name (excluding .php).
+	 * @param array  $args Template arguments (extracted to vars).
+	 */
+	do_action( 'full_score_events_after_block', $name, $args );
+
 	return ob_get_clean();
 }
 
@@ -176,3 +282,73 @@ function add_allowed_mimes( $mimes ) {
 	return $mimes;
 }
 add_filter( 'upload_mimes', __NAMESPACE__ . '\\add_allowed_mimes' );
+
+
+/**
+ * Get the contents of an icon SVG
+ *
+ * @param  string $name  File name of icon in icons/.
+ * @return string
+ *
+ * @since 1.0.0
+ */
+function get_icon( $name ) {
+	return file_get_contents( FULL_SCORE_EVENTS_DIR . "src/icons/{$name}.svg" ); // phpcs:ignore
+}
+
+/**
+ * Output an SVG icon
+ *
+ * @param string $name  Icon file name.
+ * @since 1.0.0
+ */
+function do_icon( $name ) {
+	echo get_icon( $name ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+}
+
+/**
+ * Do a basic permissions check on viewing a post
+ *
+ * @param  integer $post_id  Post ID to check against.
+ * @return boolean
+ *
+ * @since  1.0.0
+ */
+function get_can_view_post( $post_id ) {
+	$status = get_post_status( $post_id );
+	return 'publish' === $status || ( 'private' === $status && get_can_user_edit_posts() );
+}
+
+/**
+ * Get a location
+ *
+ * Make sure the post exists and it's a location, then get its object.
+ *
+ * @param  integer $post_id  Post ID to check.
+ * @return boolean|Location
+ *
+ * @since  1.0.0
+ */
+function get_location( $post_id ) {
+	return $post_id && get_can_view_post( $post_id ) ? new Location( $post_id ) : false;
+}
+
+/**
+ * Is this an event single?
+ *
+ * @return boolean
+ * @since  1.0.0
+ */
+function is_event() {
+	return is_singular( Events::CPT_KEY );
+}
+
+/**
+ * Is this an event archive?
+ *
+ * @return boolean
+ * @since  1.0.0
+ */
+function is_event_archive() {
+	return is_post_type_archive( Events::CPT_KEY );
+}

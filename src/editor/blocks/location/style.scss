@@ -6,7 +6,7 @@
  */
 .fse-location {
 	display: grid;
-	gap: 2rem;
+	gap: var(--fse-bsu-x2);
 }
 
 .fse-location-map {

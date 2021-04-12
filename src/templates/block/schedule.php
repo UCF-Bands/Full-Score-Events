@@ -22,7 +22,7 @@ $upload_id = $edit_block['attrs']['uploadId'] ?? false;
 <div <?php do_attrs_class( 'fse-schedule', $className ?? '' ); ?>>
 
 	<?php if ( $showTitle ) : ?>
-		<h2><?php $fse_schedule->do_title(); ?></h2>
+		<h2 class="fse-schedule-title"><?php $fse_schedule->do_title(); ?></h2>
 	<?php endif; ?>
 
 	<?php
@@ -50,7 +50,12 @@ $upload_id = $edit_block['attrs']['uploadId'] ?? false;
 			'full_score_events_schedule_download_attrs',
 			[
 				'href'     => wp_get_attachment_url( $upload_id ),
-				'class'    => 'button',
+				'class'    => [
+					'wp-block-button__link',
+					'fse-button',
+					'fse-schedule-button',
+					'fse-schedule-download-button',
+				],
 				'role'     => 'button',
 				'download' => 'download',
 			]
@@ -63,6 +68,7 @@ $upload_id = $edit_block['attrs']['uploadId'] ?? false;
 				__( 'Download', 'full-score-events' ),
 				$upload_id
 			);
+			do_icon( 'download' );
 			?>
 		</a>
 	<?php endif; ?>

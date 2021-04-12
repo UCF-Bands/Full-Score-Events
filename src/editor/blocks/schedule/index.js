@@ -25,7 +25,7 @@ const config = {
 		'full-score-events'
 	),
 	icon,
-	category: 'design',
+	category: 'fse-event',
 	keywords: [ __( 'schedule' ), __( 'activites' ), __( 'event' ) ],
 
 	attributes: {

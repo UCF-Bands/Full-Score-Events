@@ -19,6 +19,7 @@ if ( fullScoreEventsEditor.currentCPT === 'fse_schedule' ) {
 		title: __( 'Schedule Editor', 'full-score-events' ),
 		description: __( "Edit a schedule's items.", 'full-score-events' ),
 		icon,
+		category: 'fse-event',
 		keywords: [ __( 'schedule' ), __( 'plan' ) ],
 
 		attributes: {

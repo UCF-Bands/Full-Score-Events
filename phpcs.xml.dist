@@ -111,7 +111,7 @@
 	<!-- Allow for block-cased attribute vars (from extract) and false-positived
 	     "global prefixes" -->
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound">
-		<exclude-pattern>*/src/templates/block/*</exclude-pattern>
+		<exclude-pattern>*/src/templates/*</exclude-pattern>
 	</rule>
 
 	<rule ref="WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase">

@@ -63,6 +63,16 @@ class Locations extends Post_Type {
 	}
 
 	/**
+	 * Get plural post type label
+	 *
+	 * @return string
+	 * @since 1.0.0
+	 */
+	public function get_plural_label() {
+		return __( 'Locations', 'full-score-events' );
+	}
+
+	/**
 	 * Register location meta
 	 *
 	 * @since 1.0.0
@@ -118,8 +128,6 @@ class Locations extends Post_Type {
 		return [
 			'description'         => __( 'Event venues.', 'full-score-events' ),
 			'labels'              => [
-				'name'                  => _x( 'Locations', 'Post Type General Name', 'full-score-events' ),
-				'menu_name'             => __( 'Locations', 'full-score-events' ),
 				'archives'              => __( 'Location Archives', 'full-score-events' ),
 				'attributes'            => __( 'Location Attributes', 'full-score-events' ),
 				'parent_item_colon'     => __( 'Parent Location:', 'full-score-events' ),
@@ -146,17 +154,21 @@ class Locations extends Post_Type {
 			'exclude_from_search' => true,
 			'publicly_queryable'  => true,
 			'rewrite'             => false,
-			// 'rewrite'             => [
-			// 	'slug'       => 'program',
-			// 	'with_front' => true,
-			// 	'pages'      => true,
-			// 	'feeds'      => true,
-			// ],
 			'template'            => [
 				[ 'full-score-events/location-details' ],
 			],
 			'template_lock'       => true,
 		];
+	}
+
+	/**
+	 * Get editor title field placeholder
+	 *
+	 * @return string
+	 * @since  1.0.0
+	 */
+	protected function get_title_placeholder() {
+		return __( 'Add location name', 'full-score-events' );
 	}
 
 	/**

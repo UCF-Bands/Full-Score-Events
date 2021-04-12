@@ -1,0 +1,186 @@
+/**
+ * Global block styling helpers
+ *
+ * @since   1.0.0
+ * @package Full_Score_Events
+ */
+:root {
+	--fse-bsu: 16px;
+	--fse-bsu-x1-5: calc(var(--fse-bsu) * 1.5);
+	--fse-bsu-x2: calc(var(--fse-bsu) * 2);
+	--fse-bsu-x3: calc(var(--fse-bsu) * 3);
+	--fse-bsu-x4: calc(var(--fse-bsu) * 4);
+	--fse-bsu-half: calc(var(--fse-bsu) / 2);
+	--fse-bsu-third: calc(var(--fse-bsu) / 3);
+	--fse-bsu-fourth: calc(var(--fse-bsu) / 4);
+
+	--fse-color-black: #000;
+	--fse-color-white: #fff;
+
+	--fse-font-size-xsmall: var(--global--font-size-xs, 14px); //1rem);
+	--fse-font-size-regular: var(--global--font-size-sm, 16px);
+	--fse-font-size-medium: var(--global-font-size-base, 20px);
+	--fse-font-size-medium-large: var(--global--font-size-lg, 26px);
+	--fse-font-size-large: var(--global--font-size-xl, 36px);
+	--fse-line-height-xsmall: var(--global--line-height-page-title, 1.1);
+	--fse-line-height-small: var(--global--line-height-heading, 1.3);
+	--fse-letter-spacing-semi-wide: 0.05em;
+
+	--fse-border-color: var(--global--color-border, var(--fse-color-black));
+
+	--fse-transition-timing-function: ease-in-out;
+	--fse-transition-duration: 150ms;
+
+	--fse-event-header-title-offset: 9%;
+	--fse-event-meta-spacing: 0.5rem;
+	--fse-event-card-link-offset: calc(var(--fse-bsu) * 2.5);
+}
+
+// heading reset
+.fse-featured-heading,
+.fse-event-title,
+.fse-season-label,
+.fse-upcoming-events .fse-event-title {
+	margin: 0;
+}
+
+// list reset
+.fse-featured-events-list,
+.fse-upcoming-events-list {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+// reduce line heights
+.fse-date,
+.fse-event-header-content {
+	line-height: var(--fse-line-height-xsmall);
+}
+
+// date calendar icon thing
+.fse-date {
+	display: grid;
+	gap: 4px;
+	min-width: calc(var(--fse-bsu) * 5);
+	margin-top: var(--fse-event-header-title-offset);
+	padding: 2px;
+	text-align: center;
+	border-width: 2px;
+	border-style: solid;
+	border-color: var(--fse-border-color);
+}
+
+.fse-date-days,
+.fse-date-month {
+	padding: var(--fse-bsu-fourth) var(--fse-bsu-half);
+}
+
+.fse-date-days {
+	font-size: var(--fse-font-size-large);
+}
+
+.fse-date-month {
+	font-size: var(--fse-font-size-xsmall);
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: var(--fse-letter-spacing-semi-wide);
+	color: var(--global--color-background, var(--fse-color-white));
+	background: var(--fse-border-color);
+}
+
+.fse-days-separator {
+	margin-left: var(--fse-bsu-fourth);
+	margin-right: var(--fse-bsu-fourth);
+}
+
+// event time, location name, etc
+.fse-event-meta {
+	margin: calc(var(--fse-event-meta-spacing) / 2 * -1) calc(var(--fse-event-meta-spacing) * -1);
+	display: flex;
+	flex-flow: row wrap;
+
+	> * {
+		flex: 0 1 auto;
+		display: block;
+		margin: calc(var(--fse-event-meta-spacing) / 2) var(--fse-event-meta-spacing);
+	}
+}
+
+
+// loop item header
+.fse-events-loop-event-header {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	align-items: start;
+	gap: var(--fse-bsu);
+}
+
+.fse-event-header-content {
+	display: grid;
+	gap: var(--fse-bsu-half);
+}
+
+// event link overlay
+.fse-event-link-overlay-message {
+	font-weight: 700;
+	text-transform: uppercase;
+
+	[data-fse-icon] {
+		margin-left: var(--fse-bsu-fourth);
+		transition: transform var(--fse-transition-timing-function) var(--fse-transition-duration);
+	}
+}
+
+.fse-event-link-overlay {
+	display: flex;
+	align-items: flex-end;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	text-decoration: none;
+	letter-spacing: var(--fse-letter-spacing-semi-wide);
+	font-size: var(--fse-font-size-xsmall);
+	outline: 2px dotted transparent;
+	outline-offset: var(--fse-bsu-half);
+	transition: outline ease-in-out var(--fse-transition-duration);
+
+	&:hover .fse-event-link-overlay-message [data-fse-icon],
+	&:focus .fse-event-link-overlay-message [data-fse-icon] {
+		transform: translateX(var(--fse-bsu-fourth));
+	}
+}
+
+// Twenty Twenty-One fix
+.fse-event-link-overlay:hover,
+.fse-event-link-overlay:focus,
+.site .fse-event-link-overlay:not(.wp-block-button__link):not(.wp-block-file__button):focus {
+	background: none;
+	outline: 2px dotted var(--fse-border-color);
+}
+
+.fse-event-card {
+	display: grid;
+	gap: var(--fse-bsu);
+	position: relative;
+	padding-bottom: var(--fse-event-card-link-offset);
+
+	// excerpt
+	> p {
+		font-size: var(--fse-font-size-regular);
+
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+	}
+}
+
+.fse-event-hide-link-overlay {
+	padding-bottom: 0;
+
+	.fse-event-link-overlay-message {
+		display: none;
+	}
+}

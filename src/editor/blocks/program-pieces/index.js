@@ -38,6 +38,7 @@ registerBlockType( 'full-score-events/program-pieces', {
 	title: __( 'Pieces', 'full-score-events' ),
 	description: __( "Edit a program's pieces.", 'full-score-events' ),
 	icon,
+	category: 'fse-event',
 	keywords: [ __( 'program' ), __( 'pieces' ), __( 'songs' ) ],
 	parent: [ 'full-score-events/program-edit' ],
 

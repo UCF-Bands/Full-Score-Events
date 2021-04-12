@@ -1,0 +1,45 @@
+/**
+ * Upcoming events block
+ *
+ * @since   1.0.0
+ * @package Full_Score_Events
+ */
+
+.fse-upcoming-events,
+.fse-upcoming-events-list {
+	display: grid;
+	gap: var(--fse-bsu-x1-5);
+}
+
+.fse-upcoming-event {
+	margin: 0;
+	font-size: var(--fse-font-size-regular);
+
+	.fse-date {
+		margin-top: 0;
+	}
+
+	.fse-event-title {
+		font-size: var(--fse-font-size-medium-large);
+	}
+}
+
+.fse-all-events-link {
+	text-align: center;
+}
+
+@media (min-width: 50rem) {
+
+	.fse-upcoming-events,
+	.fse-upcoming-events-list {
+		gap: var(--fse-bsu-x2);
+	}
+
+	.fse-upcoming-events.alignwide .fse-upcoming-events-list {
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	}
+
+	.fse-all-events-link {
+		justify-self: center;
+	}
+}

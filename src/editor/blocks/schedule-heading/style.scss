@@ -6,8 +6,8 @@
  */
 .wp-block-full-score-events-schedule-heading {
 	display: grid;
-	gap: 1rem;
-	margin-top: 1rem;
+	gap: var(--fse-bsu);
+	margin-top: var(--fse-bsu);
 
 	&:first-child {
 		margin-top: 0;

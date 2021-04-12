@@ -42,8 +42,8 @@ class Post_Block extends Block {
 			'selectedPost' => [
 				'type'    => 'object',
 				'default' => [
-					'label' => 'string',
-					'value' => 'string',
+					'label' => '',
+					'value' => '',
 				],
 			],
 		];

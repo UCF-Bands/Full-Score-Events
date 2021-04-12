@@ -19,6 +19,7 @@ registerBlockType( 'full-score-events/program-piece', {
 	description: __( 'A piece of music in a program', 'full-score-events' ),
 	icon,
 	keywords: [ __( 'program' ), __( 'piece' ), __( 'song' ) ],
+	category: 'fse-event',
 	parent: [ 'full-score-events/program-pieces' ],
 
 	attributes: {
