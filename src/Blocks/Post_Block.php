@@ -33,8 +33,9 @@ class Post_Block extends Block {
 	/**
 	 * Get block's attributes
 	 *
-	 * @return array
 	 * @since  1.0.0
+	 *
+	 * @return array
 	 */
 	public function get_attributes() {
 
@@ -52,11 +53,11 @@ class Post_Block extends Block {
 	/**
 	 * Render the block
 	 *
-	 * @param  array  $attrs   Block's attributes.
-	 * @param  string $content Block's contents (InnerBlocks).
-	 * @return string          Block HTML.
-	 *
 	 * @since 1.0.0
+	 *
+	 * @param  array  $attrs    Block's attributes.
+	 * @param  string $content  Block's contents (InnerBlocks).
+	 * @return string           Block HTML.
 	 */
 	public function render( $attrs, $content ) {
 

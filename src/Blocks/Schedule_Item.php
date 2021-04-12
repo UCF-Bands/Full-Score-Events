@@ -39,8 +39,9 @@ class Schedule_Item extends Block {
 	/**
 	 * Define block attributes
 	 *
-	 * @return array
 	 * @since  1.0.0
+	 *
+	 * @return array
 	 */
 	protected function get_attributes() {
 

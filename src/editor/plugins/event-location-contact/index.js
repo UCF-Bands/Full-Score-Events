@@ -1,8 +1,8 @@
 /**
  * Event location/contact settings
  *
- * @see   https://github.com/WordPress/gutenberg/blob/c88866cd91ea3eb7990a68978e03e2366ed7106c/packages/editor/src/components/post-author/index.js
  * @since 1.0.0
+ * @see   https://github.com/WordPress/gutenberg/blob/c88866cd91ea3eb7990a68978e03e2366ed7106c/packages/editor/src/components/post-author/index.js
  */
 
 import { __ } from '@wordpress/i18n';

@@ -44,8 +44,9 @@ class Ensembles extends Taxonomy {
 	/**
 	 * Get general taxonomy label
 	 *
-	 * @return string
 	 * @since 1.0.0
+	 *
+	 * @return string
 	 */
 	public function get_label() {
 		return __( 'Ensemble', 'full-score-events' );
@@ -63,8 +64,9 @@ class Ensembles extends Taxonomy {
 	/**
 	 * Get non-default post type args
 	 *
-	 * @return array
 	 * @since 1.0.0
+	 *
+	 * @return array
 	 */
 	public function get_tax_args() {
 

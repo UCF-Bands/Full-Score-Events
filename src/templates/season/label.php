@@ -10,12 +10,12 @@
  * compatibility. It is recommended that you make your customizations using
  * hooks/filters to reduce technical debt.
  *
+ * @package Full_Score_Events/templates
+ * @since   1.0.0
+ *
  * @param integer $id    Season term ID.
  * @param string  $date  Season term "start date" meta (Ymd).
  * @param string  $name  Season term name.
- *
- * @package Full_Score_Events/templates
- * @since   1.0.0
  */
 
 $date = DateTime::createFromFormat( 'Ymd', $date );

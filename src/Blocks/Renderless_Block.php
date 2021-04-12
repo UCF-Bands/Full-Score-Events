@@ -34,11 +34,11 @@ class Renderless_Block extends Block {
 	/**
 	 * Don't render anything
 	 *
-	 * @param  array  $attrs   Block's attributes.
-	 * @param  string $content Block's contents (InnerBlocks).
-	 * @return string          Block HTML.
-	 *
 	 * @since  1.0.0
+	 *
+	 * @param  array  $attrs    Block's attributes.
+	 * @param  string $content  Block's contents (InnerBlocks).
+	 * @return string           Block HTML.
 	 */
 	public function render( $attrs, $content ) {
 		return '';

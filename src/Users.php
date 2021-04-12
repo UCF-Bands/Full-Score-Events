@@ -32,10 +32,10 @@ class Users {
 	/**
 	 * Add additional user contact methods
 	 *
+	 * @since 1.0.0
+	 *
 	 * @param  array $methods  User contact methods.
 	 * @return array $methods
-	 *
-	 * @since 1.0.0
 	 */
 	public static function add_contact_methods( $methods ) {
 

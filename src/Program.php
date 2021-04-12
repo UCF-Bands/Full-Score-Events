@@ -25,8 +25,9 @@ class Program extends Post {
 	/**
 	 * Get program edit block
 	 *
+	 * @since 1.0.0
+	 *
 	 * @return array|boolean  Parsed program-edit block.
-	 * @since  1.0.0
 	 */
 	public function get_edit_block() {
 		return get_block( 'full-score-events/program-edit', $this->get_id() );

@@ -31,8 +31,9 @@ class Schedule extends Post_Block {
 	/**
 	 * Get block's attributes
 	 *
-	 * @return array
 	 * @since  1.0.0
+	 *
+	 * @return array
 	 */
 	public function get_attributes() {
 

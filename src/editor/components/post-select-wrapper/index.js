@@ -1,8 +1,8 @@
 /**
  * Higher order component for wrapping a block in a post selector.
  *
- * @see   https://jschof.com/gutenberg-blocks/sharing-functionality-between-gutenberg-blocks/
  * @since 1.0.0
+ * @see   https://jschof.com/gutenberg-blocks/sharing-functionality-between-gutenberg-blocks/
  */
 
 import AsyncSelect from 'react-select/async';
@@ -17,10 +17,10 @@ import getApiOptions from '../../util/get-api-options';
 /**
  * Edit/save wrapper with post selection functionality.
  *
+ * @since 1.0.0
+ *
  * @param  {Object} blockConfig   Base block configs that we're adding things to.
  * @return {Object} wrappedConfig Base block wrapped in extra post selection functionality.
- *
- * @since 1.0.0
  */
 const PostSelectWrapper = ( blockConfig ) => {
 	const {

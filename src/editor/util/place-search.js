@@ -1,8 +1,8 @@
 /**
  * Google place search
  *
- * @see     https://github.com/davilera/nelio-maps
  * @since   1.0.0
+ * @see     https://github.com/davilera/nelio-maps
  */
 
 import { withScriptjs } from 'react-google-maps';
