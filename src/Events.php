@@ -170,7 +170,7 @@ class Events extends Post_Type {
 					'core/heading',
 					[
 						'level'   => 3,
-						'content' => __( 'Schedule', 'full-score-events' )
+						'content' => __( 'Schedule', 'full-score-events' ),
 					],
 				],
 				[ 'full-score-events/schedule' ],
@@ -178,7 +178,7 @@ class Events extends Post_Type {
 					'core/heading',
 					[
 						'level'   => 3,
-						'content' => __( 'Program', 'full-score-events' )
+						'content' => __( 'Program', 'full-score-events' ),
 					],
 				],
 				[ 'full-score-events/program' ],

@@ -136,6 +136,7 @@ function get_allowed_inline_html() {
 function set_blocks_js_allowed_inline_html_help( $object ) {
 
 	$object['allowedInlineHTML'] = sprintf(
+		// Translators: Allowed HTML: %s.
 		__( 'Allowed HTML: %s', 'full-score-events' ),
 		implode( ', ', array_keys( get_allowed_inline_html() ) )
 	);
