@@ -97,6 +97,14 @@ class Plugin {
 	public $blocks;
 
 	/**
+	 * Staff handler
+	 *
+	 * @since 1.0.0
+	 * @var   Staff
+	 */
+	public $staff;
+
+	/**
 	 * Users handler
 	 *
 	 * @since 1.0.0
@@ -194,6 +202,7 @@ class Plugin {
 		$this->seasons    = new Seasons();
 		$this->events     = new Events();
 		$this->blocks     = new Blocks\Blocks();
+		$this->staff      = new Staff();
 		$this->users      = new Users();
 		$this->customizer = new Customizer();
 		$this->settings   = new Settings();

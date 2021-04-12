@@ -1,20 +1,193 @@
-.fse-event-link-overlay{pointer-events:none}.editor-styles-wrapper .wp-block .fse-event-title,.editor-styles-wrapper .wp-block-full-score-events-schedule-edit .wp-block,.editor-styles-wrapper .wp-block-full-score-events-schedule-edit p,.editor-styles-wrapper .wp-block .fse-schedule-heading-heading,.editor-styles-wrapper .wp-block .fse-program-heading-heading{margin:0}.editor-styles-wrapper .fse-upcoming-events-list{margin:0;padding:0;list-style-type:none}
+/**
+ * Global block style editor fixes
+ *
+ * @since   1.0.0
+ * @package Full_Score_Events
+ */
+.fse-event-link-overlay {
+  pointer-events: none; }
 
-.fse-date-time-control{margin-bottom:8px}
+.editor-styles-wrapper .wp-block .fse-event-title,
+.editor-styles-wrapper .wp-block-full-score-events-schedule-edit .wp-block,
+.editor-styles-wrapper .wp-block-full-score-events-schedule-edit p,
+.editor-styles-wrapper .wp-block .fse-schedule-heading-heading,
+.editor-styles-wrapper .wp-block .fse-program-heading-heading {
+  margin: 0; }
 
-.fse-event-registration-type{margin-bottom:10px}
+.editor-styles-wrapper .fse-upcoming-events-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none; }
 
-.fse-location-control{margin-bottom:16px}.fse-location-remove.is-link{margin-top:4px}.fse-user-control{display:-ms-grid;display:grid;-ms-grid-columns:1fr auto;grid-template-columns:1fr auto;align-items:center;gap:1rem;margin-bottom:8px}.fse-user-control .components-base-control__field,.fse-user-control .components-combobox-control__suggestions-container{margin-bottom:0}
+/**
+ * DateTimeControl component styling
+ *
+ * @since   1.0.0
+ * @package Full_Score_Events
+ */
+.fse-date-time-control {
+  margin-bottom: 8px; }
 
-.editor-styles-wrapper .fse-schedule h2,.editor-styles-wrapper .fse-callout-message,.editor-styles-wrapper .fse-schedule-items,.editor-styles-wrapper .fse-schedule-activity p{margin:0}.editor-styles-wrapper .fse-schedule-items{padding:0}
+/**
+ * Event registration editor sidebar plugin
+ *
+ * @since   1.0.0
+ * @package Full_Score_Events
+ */
+.fse-event-registration-type {
+  margin-bottom: 10px; }
 
-.wp-block-full-score-events-schedule-edit>.block-editor-inner-blocks>.block-editor-block-list__layout{display:-ms-grid;display:grid;gap:var(--fse-bsu)}.editor-styles-wrapper .wp-block-full-score-events-schedule-heading.wp-block{margin-top:var(--fse-bsu)}.wp-block-full-score-events-schedule-item+.wp-block-full-score-events-schedule-item{border-top:1px solid var(--fse-border-color)}.fse-schedule-download-wrapper{margin-top:var(--fse-bsu-x1-5)}
+/**
+ * Event location/contact editor sidebar plugin
+ *
+ * @since   1.0.0
+ * @package Full_Score_Events
+ */
+.fse-location-control {
+  margin-bottom: 16px; }
 
-.wp-block-full-score-events-schedule-item{display:-ms-grid;display:grid;-ms-grid-columns:auto 1fr;grid-template-columns:auto 1fr;gap:var(--fse-bsu-x2);max-width:none;padding-top:calc(var(--fse-bsu) * 1.25);padding-bottom:calc(var(--fse-bsu) * 1.25)}.wp-block-full-score-events-schedule-item .components-datetime__time{padding-bottom:0}.wp-block-full-score-events-schedule-item .components-datetime__time fieldset:first-child{display:none}.wp-block-full-score-events-schedule-item .components-datetime__time .components-button,.wp-block-full-score-events-schedule-item .components-datetime__time input[type="number"],.wp-block-full-score-events-schedule-item .components-datetime__time select{height:30px}.editor-styles-wrapper .wp-block-full-score-events-schedule-item .block-editor-block-list__layout>*+*,.editor-styles-wrapper .wp-block-full-score-events-schedule-item [data-type="core/paragraph"]+[data-type="core/paragraph"]{margin-top:var(--fse-bsu)}
+.fse-location-remove.is-link {
+  margin-top: 4px; }
 
-.wp-block-full-score-events-program-edit{padding-top:var(--fse-bsu-x1-5);padding-bottom:var(--fse-bsu-x1-5);border:2px solid var(--fse-border-color)}.wp-block-full-score-events-program-edit>.block-editor-inner-blocks>.block-editor-block-list__layout{display:-ms-grid;display:grid;gap:var(--fse-bsu)}@media (min-width: 50rem){.wp-block-full-score-events-program-edit{padding-top:var(--fse-bsu-x2);padding-bottom:var(--fse-bsu-x2)}}.fse-piece-arranger-name{display:inline-block;min-width:var(--fse-bsu-half)}.editor-styles-wrapper .fse-program-subheading,.editor-styles-wrapper .fse-program-tertiary-heading,.editor-styles-wrapper .fse-piece-title,.editor-styles-wrapper .fse-piece-composer,.editor-styles-wrapper .wp-block-full-score-events-program-edit .wp-block,.editor-styles-wrapper .fse-program-pieces{margin:0}.editor-styles-wrapper .wp-block-full-score-events-program-heading,.editor-styles-wrapper .wp-block-full-score-events-program-pieces,.editor-styles-wrapper .fse-program-pieces{padding-left:var(--fse-bsu-x1-5);padding-right:var(--fse-bsu-x1-5)}@media (min-width: 50rem){.editor-styles-wrapper .wp-block-full-score-events-program-heading,.editor-styles-wrapper .wp-block-full-score-events-program-pieces,.editor-styles-wrapper .fse-program-pieces{padding-left:var(--fse-bsu-x2);padding-right:var(--fse-bsu-x2)}}
+.fse-user-control {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr auto;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 8px;
+  /* stylelint-disable selector-class-pattern */
+  /* stylelint-enable selector-class-pattern */ }
+  .fse-user-control .components-base-control__field,
+  .fse-user-control .components-combobox-control__suggestions-container {
+    margin-bottom: 0; }
 
-.fse-location-details-map{margin-top:var(--fse-bsu-x2)}
+/**
+ * Schedule block editor adjustments
+ *
+ * @since   1.0.0
+ * @package Full_Score_Events
+ */
+.editor-styles-wrapper .fse-schedule h2,
+.editor-styles-wrapper .fse-callout-message,
+.editor-styles-wrapper .fse-schedule-items,
+.editor-styles-wrapper .fse-schedule-activity p {
+  margin: 0; }
 
-.editor-styles-wrapper .fse-upcoming-event .fse-event-title{font-size:var(--fse-font-size-medium-large)}
+.editor-styles-wrapper .fse-schedule-items {
+  padding: 0; }
 
+/**
+ * Schedule edit block editor adjustments
+ *
+ * @since   1.0.0
+ * @package Full_Score_Events
+ */
+.wp-block-full-score-events-schedule-edit > .block-editor-inner-blocks > .block-editor-block-list__layout {
+  display: -ms-grid;
+  display: grid;
+  gap: var(--fse-bsu); }
+
+.editor-styles-wrapper .wp-block-full-score-events-schedule-heading.wp-block {
+  margin-top: var(--fse-bsu); }
+
+.wp-block-full-score-events-schedule-item + .wp-block-full-score-events-schedule-item {
+  border-top: 1px solid var(--fse-border-color); }
+
+.fse-schedule-download-wrapper {
+  margin-top: var(--fse-bsu-x1-5); }
+
+/**
+ * Schedule item editor adjustments
+ *
+ * @since 1.0.0
+ */
+/* stylelint-disable selector-class-pattern */
+.wp-block-full-score-events-schedule-item {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto 1fr;
+  grid-template-columns: auto 1fr;
+  gap: var(--fse-bsu-x2);
+  max-width: none;
+  padding-top: calc(var(--fse-bsu) * 1.25);
+  padding-bottom: calc(var(--fse-bsu) * 1.25); }
+  .wp-block-full-score-events-schedule-item .components-datetime__time {
+    padding-bottom: 0; }
+    .wp-block-full-score-events-schedule-item .components-datetime__time fieldset:first-child {
+      display: none; }
+    .wp-block-full-score-events-schedule-item .components-datetime__time .components-button,
+    .wp-block-full-score-events-schedule-item .components-datetime__time input[type="number"],
+    .wp-block-full-score-events-schedule-item .components-datetime__time select {
+      height: 30px; }
+  .editor-styles-wrapper .wp-block-full-score-events-schedule-item .block-editor-block-list__layout > * + *,
+  .editor-styles-wrapper .wp-block-full-score-events-schedule-item [data-type="core/paragraph"] + [data-type="core/paragraph"] {
+    margin-top: var(--fse-bsu); }
+
+/* stylelint-enable selector-class-pattern */
+
+/**
+ * Program block editor adjustments
+ *
+ * @since   1.0.0
+ * @package Full_Score_Events
+ */
+.wp-block-full-score-events-program-edit {
+  padding-top: var(--fse-bsu-x1-5);
+  padding-bottom: var(--fse-bsu-x1-5);
+  border: 2px solid var(--fse-border-color); }
+  .wp-block-full-score-events-program-edit > .block-editor-inner-blocks > .block-editor-block-list__layout {
+    display: -ms-grid;
+    display: grid;
+    gap: var(--fse-bsu); }
+  @media (min-width: 50rem) {
+    .wp-block-full-score-events-program-edit {
+      padding-top: var(--fse-bsu-x2);
+      padding-bottom: var(--fse-bsu-x2); } }
+
+.fse-piece-arranger-name {
+  display: inline-block;
+  min-width: var(--fse-bsu-half); }
+
+.editor-styles-wrapper .fse-program-subheading,
+.editor-styles-wrapper .fse-program-tertiary-heading,
+.editor-styles-wrapper .fse-piece-title,
+.editor-styles-wrapper .fse-piece-composer,
+.editor-styles-wrapper .wp-block-full-score-events-program-edit .wp-block,
+.editor-styles-wrapper .fse-program-pieces {
+  margin: 0; }
+
+.editor-styles-wrapper .wp-block-full-score-events-program-heading,
+.editor-styles-wrapper .wp-block-full-score-events-program-pieces,
+.editor-styles-wrapper .fse-program-pieces {
+  padding-left: var(--fse-bsu-x1-5);
+  padding-right: var(--fse-bsu-x1-5); }
+
+@media (min-width: 50rem) {
+  .editor-styles-wrapper .wp-block-full-score-events-program-heading,
+  .editor-styles-wrapper .wp-block-full-score-events-program-pieces,
+  .editor-styles-wrapper .fse-program-pieces {
+    padding-left: var(--fse-bsu-x2);
+    padding-right: var(--fse-bsu-x2); } }
+
+/**
+ * Location details block
+ *
+ * @since   1.0.0
+ * @package Full_Score_Events
+ */
+.fse-location-details-map {
+  margin-top: var(--fse-bsu-x2); }
+
+/**
+ * Upcoming events editor adjustments
+ *
+ * @since   1.0.0
+ * @package Full_Score_Events
+ */
+.editor-styles-wrapper .fse-upcoming-event .fse-event-title {
+  font-size: var(--fse-font-size-medium-large); }
+
+
+/*# sourceMappingURL=editor.css.map*/
