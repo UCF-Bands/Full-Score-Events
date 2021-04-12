@@ -28,24 +28,25 @@ class Event extends Post {
 	/**
 	 * Date DateTime cache
 	 *
-	 * @var   array
 	 * @since 1.0.0
+	 * @var   array
 	 */
 	private $dates = [];
 
 	/**
 	 * Location post
 	 *
-	 * @var   Location
 	 * @since 1.0.0
+	 * @var   Location
 	 */
 	private $location;
 
 	/**
 	 * Is the event featured?
 	 *
+	 * @since 1.0.0
+	 *
 	 * @return boolean
-	 * @since  1.0.0
 	 */
 	public function is_featured() {
 		return $this->get( '_is_featured' );
@@ -54,10 +55,10 @@ class Event extends Post {
 	/**
 	 * Get a DateTime object for a date field
 	 *
+	 * @since 1.0.0
+	 *
 	 * @param  string $which  Which datetime to get from meta (ex: start).
 	 * @return DateTime
-	 *
-	 * @since 1.0.0
 	 */
 	private function get_date( $which ) {
 
@@ -75,10 +76,10 @@ class Event extends Post {
 	/**
 	 * Get abbreviated human-readable month
 	 *
+	 * @since  1.0.0
+	 *
 	 * @param  string $which  Month to get (start or finish).
 	 * @return string
-	 *
-	 * @since  1.0.0
 	 */
 	private function get_month( $which ) {
 		$date = $this->get_date( $which );
@@ -88,11 +89,11 @@ class Event extends Post {
 	/**
 	 * Get day
 	 *
+	 * @since 1.0.0
+	 *
 	 * @param  string $which   Day to get (start or finish).
 	 * @param  string $format  Format to return (view, attr, custom).
 	 * @return string
-	 *
-	 * @since 1.0.0
 	 */
 	private function get_day( $which, $format = 'view' ) {
 		$date = $this->get_date( $which );
@@ -111,11 +112,11 @@ class Event extends Post {
 	/**
 	 * Get time
 	 *
+	 * @since 1.0.0
+	 *
 	 * @param  string $which   Time to get (start or finish).
 	 * @param  string $format  Format to return (view, attr, custom).
 	 * @return string
-	 *
-	 * @since 1.0.0
 	 */
 	private function get_time( $which, $format = 'view' ) {
 		$date = $this->get_date( $which );
@@ -134,8 +135,9 @@ class Event extends Post {
 	/**
 	 * Get the starting date
 	 *
-	 * @return DateTime
 	 * @since 1.0.0
+	 *
+	 * @return DateTime
 	 */
 	public function get_date_start() {
 		return $this->get_date( 'start' );
@@ -144,8 +146,9 @@ class Event extends Post {
 	/**
 	 * Get the starting month
 	 *
+	 * @since 1.0.0
+	 *
 	 * @return string  Abbreviated human-readable month
-	 * @since  1.0.0
 	 */
 	public function get_month_start() {
 		return $this->get_month( 'start' );
@@ -163,10 +166,10 @@ class Event extends Post {
 	/**
 	 * Get the starting day of the month
 	 *
+	 * @since  1.0.0
+	 *
 	 * @param  string $format  Format.
 	 * @return string          Start date day of the month.
-	 *
-	 * @since  1.0.0
 	 */
 	public function get_day_start( $format = 'view' ) {
 		return $this->get_day( 'start', $format );
@@ -175,8 +178,9 @@ class Event extends Post {
 	/**
 	 * Output the starting day of the month
 	 *
-	 * @param string $format  Format.
 	 * @since 1.0.0
+	 *
+	 * @param string $format  Format.
 	 */
 	public function do_day_start( $format = 'view' ) {
 		echo $this->get_day_start( $format ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -185,10 +189,10 @@ class Event extends Post {
 	/**
 	 * Get the starting time of day
 	 *
+	 * @since 1.0.0
+	 *
 	 * @param  string $format  Format.
 	 * @return string          Start date time of day.
-	 *
-	 * @since  1.0.0
 	 */
 	public function get_time_start( $format = 'view' ) {
 		return $this->get_time( 'start', $format );
@@ -197,8 +201,9 @@ class Event extends Post {
 	/**
 	 * Output the starting time of day
 	 *
-	 * @param string $format  Format.
 	 * @since 1.0.0
+	 *
+	 * @param string $format  Format.
 	 */
 	public function do_time_start( $format = 'view' ) {
 		echo $this->get_time_start( $format ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -207,8 +212,9 @@ class Event extends Post {
 	/**
 	 * Get the finishing date
 	 *
-	 * @return DateTime
 	 * @since 1.0.0
+	 *
+	 * @return DateTime
 	 */
 	public function get_date_finish() {
 		return $this->get_date( 'finish' );
@@ -217,8 +223,9 @@ class Event extends Post {
 	/**
 	 * Get the finishing month
 	 *
+	 * @since 1.0.0
+	 *
 	 * @return string  Abbreviated human-readable month
-	 * @since  1.0.0
 	 */
 	public function get_month_finish() {
 		return $this->get_month( 'finish' );
@@ -227,8 +234,9 @@ class Event extends Post {
 	/**
 	 * Get the finishing day of the month
 	 *
+	 * @since 1.0.0
+	 *
 	 * @return string  Finish date day of the month.
-	 * @since  1.0.0
 	 */
 	public function get_day_finish() {
 		return $this->get_day( 'finish' );
@@ -237,8 +245,9 @@ class Event extends Post {
 	/**
 	 * Output the finishing day of the month
 	 *
-	 * @param string $format  Format.
 	 * @since 1.0.0
+	 *
+	 * @param string $format  Format.
 	 */
 	public function do_day_finish( $format = 'view' ) {
 		echo $this->get_day_finish( $format ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -247,10 +256,10 @@ class Event extends Post {
 	/**
 	 * Get the finishing time of day
 	 *
+	 * @since 1.0.0
+	 *
 	 * @param  string $format  Format.
 	 * @return string          Finish date time of day.
-	 *
-	 * @since  1.0.0
 	 */
 	public function get_time_finish( $format = 'view' ) {
 		return $this->get_time( 'finish', $format );
@@ -259,8 +268,9 @@ class Event extends Post {
 	/**
 	 * Output the finishing time of day
 	 *
-	 * @param string $format  Format.
 	 * @since 1.0.0
+	 *
+	 * @param string $format  Format.
 	 */
 	public function do_time_finish( $format = 'view' ) {
 		echo $this->get_time_finish( $format ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -269,8 +279,9 @@ class Event extends Post {
 	/**
 	 * Is daily (all-day)?
 	 *
+	 * @since 1.0.0
+	 *
 	 * @return boolean
-	 * @since  1.0.0
 	 */
 	public function is_daily() {
 		return $this->get( '_is_all_day' );
@@ -279,8 +290,9 @@ class Event extends Post {
 	/**
 	 * Is the time TBA?
 	 *
+	 * @since 1.0.0
+	 *
 	 * @return boolean
-	 * @since  1.0.0
 	 */
 	public function is_time_tba() {
 		return $this->get( '_is_time_tba' );
@@ -289,8 +301,9 @@ class Event extends Post {
 	/**
 	 * Display the finish date/time?
 	 *
+	 * @since 1.0.0
+	 *
 	 * @return boolean
-	 * @since  1.0.0
 	 */
 	public function get_show_finish() {
 		return $this->get( '_show_finish' );
@@ -299,8 +312,9 @@ class Event extends Post {
 	/**
 	 * Get location
 	 *
-	 * @return boolean|Location
 	 * @since 1.0.0
+	 *
+	 * @return boolean|Location
 	 */
 	public function get_location() {
 
@@ -315,10 +329,10 @@ class Event extends Post {
 	/**
 	 * Get registration type
 	 *
+	 * @since 1.0.0
+	 *
 	 * @param  string $format  Raw or human-readable "label" format.
 	 * @return string
-	 *
-	 * @since 1.0.0
 	 */
 	public function get_registration_type( $format = null ) {
 		$type = $this->get( '_registration_type' );
@@ -349,8 +363,9 @@ class Event extends Post {
 	/**
 	 * Get registration URL
 	 *
+	 * @since 1.0.0
+	 *
 	 * @return string
-	 * @since  1.0.0
 	 */
 	public function get_registration_url() {
 		return $this->get( '_registration_url' );
@@ -359,8 +374,9 @@ class Event extends Post {
 	/**
 	 * Should the price be shown?
 	 *
+	 * @since 1.0.0
+	 *
 	 * @return boolean
-	 * @since  1.0.0
 	 */
 	public function get_show_price() {
 		return $this->get( '_show_price' );
@@ -368,6 +384,8 @@ class Event extends Post {
 
 	/**
 	 * Get price
+	 *
+	 * @since 1.0.0
 	 *
 	 * @param  string $format  Raw or human-readable "label" format.
 	 * @return string|float
@@ -397,8 +415,9 @@ class Event extends Post {
 	/**
 	 * Get contact's user ID
 	 *
+	 * @since 1.0.0
+	 *
 	 * @return integer
-	 * @since  1.0.0
 	 */
 	public function get_contact() {
 		return intval( $this->get( '_contact_id' ) );

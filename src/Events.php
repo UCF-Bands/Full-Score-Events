@@ -58,8 +58,9 @@ class Events extends Post_Type {
 	/**
 	 * Get general post type label
 	 *
-	 * @return string
 	 * @since 1.0.0
+	 *
+	 * @return string
 	 */
 	public function get_label() {
 		return __( 'Event', 'full-score-events' );
@@ -117,8 +118,9 @@ class Events extends Post_Type {
 	/**
 	 * Get non-default post type args
 	 *
-	 * @return array
 	 * @since 1.0.0
+	 *
+	 * @return array
 	 */
 	public function get_cpt_args() {
 		return [
@@ -187,8 +189,9 @@ class Events extends Post_Type {
 	/**
 	 * Get editor title field placeholder
 	 *
+	 * @since 1.0.0
+	 *
 	 * @return string
-	 * @since  1.0.0
 	 */
 	protected function get_title_placeholder() {
 		return __( 'Add event title', 'full-score-events' );
@@ -197,8 +200,9 @@ class Events extends Post_Type {
 	/**
 	 * Conditionally set main query arguments
 	 *
-	 * @param WP_Query $query  Main query for current post type archive.
 	 * @since 1.0.0
+	 *
+	 * @param WP_Query $query  Main query for current post type archive.
 	 */
 	protected function set_query( $query ) {
 
@@ -235,10 +239,10 @@ class Events extends Post_Type {
 	/**
 	 * Manage admin columns
 	 *
-	 * @param  array $columns Column headings.
-	 * @return array $columns
-	 *
 	 * @since 1.0.0
+	 *
+	 * @param  array $columns  Column headings.
+	 * @return array $columns
 	 */
 	public function set_posts_columns( $columns ) {
 
@@ -270,10 +274,10 @@ class Events extends Post_Type {
 	/**
 	 * Manage sortable admin columns
 	 *
+	 * @since 1.0.0
+	 *
 	 * @param  array $columns  Sortable columns.
 	 * @return array $columns
-	 *
-	 * @since  1.0.0
 	 */
 	public function set_sortable_columns( $columns ) {
 		$columns['date_start']  = 'date_start';
@@ -284,8 +288,9 @@ class Events extends Post_Type {
 	/**
 	 * Set value of custom admin column
 	 *
-	 * @param string $name  Column name.
 	 * @since 1.0.0
+	 *
+	 * @param string $name  Column name.
 	 */
 	public function do_custom_column( $name ) {
 
@@ -367,11 +372,11 @@ class Events extends Post_Type {
 	 * The start_date meta query should be included by default via pre_get_posts
 	 * hook.
 	 *
+	 * @since 1.0.0
+	 *
 	 * @param  integer $number     Posts to get.
 	 * @param  array   $ensembles  Array of ensemble term IDs.
 	 * @return WP_Query
-	 *
-	 * @since 1.0.0
 	 */
 	public static function get_upcoming( $number = 3, $ensembles = [] ) {
 
@@ -398,8 +403,9 @@ class Events extends Post_Type {
 	 * The start_date meta query should be include by default via pre_get_posts
 	 * hook.
 	 *
+	 * @since 1.0.0
+	 *
 	 * @return WP_Query
-	 * @since  1.0.0
 	 */
 	public static function get_featured() {
 

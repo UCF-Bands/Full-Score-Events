@@ -11,10 +11,11 @@ namespace Full_Score_Events;
 /**
  * Returns a $_GET value
  *
- * @param  string $key $_GET superglobal key.
- * @return mixed
- * @see    https://github.com/WordPress/WordPress-Coding-Standards/wiki/Fixing-errors-for-input-data
  * @since  1.0.0
+ * @see    https://github.com/WordPress/WordPress-Coding-Standards/wiki/Fixing-errors-for-input-data
+ *
+ * @param  string $key  $_GET superglobal key.
+ * @return mixed
  */
 function get( $key ) {
 	return isset( $_GET[ $key ] ) ? sanitize_text_field( wp_unslash( $_GET[ $key ] ) ) : null;
@@ -25,10 +26,11 @@ function get( $key ) {
  *
  * Nonce verification should happen before this.
  *
+ * @since 1.0.0
+ * @see   https://github.com/WordPress/WordPress-Coding-Standards/wiki/Fixing-errors-for-input-data
+ *
  * @param  string $key  $_POST superglobal key.
  * @return mixed
- * @see    https://github.com/WordPress/WordPress-Coding-Standards/wiki/Fixing-errors-for-input-data
- * @since  1.0.0
  */
 function postval( $key ) {
 	// phpcs:ignore WordPress.Security.NonceVerification.Missing
@@ -38,11 +40,10 @@ function postval( $key ) {
 /**
  * Break array into string of attributes
  *
- * Has special cases for "class" and "data" keys if their values are arrays, so
- * it's compatible with arrays of data attributes (by using recusion).
+ * @since 1.0.0
  *
- * @param  array  $attrs   Attribute names/values.
- * @param  string $prefix  a prefix for the data attribute (ex: "data-").
+ * @param  array  $attrs   Attributes (keys) and values.
+ * @param  string $prefix  Prefix for data attributes (ex: "data-").
  * @return string          Inline string of data attributes.
  */
 function get_attrs( $attrs, $prefix = '' ) {
@@ -73,8 +74,10 @@ function get_attrs( $attrs, $prefix = '' ) {
 /**
  * Output HTML string off attributes
  *
- * @param  array  $attrs   Attribute names/values.
- * @param  string $prefix  a prefix for the data attribute (ex: "data-").
+ * @since 1.0.0
+ *
+ * @param  array  $attrs   Attributes and their values.
+ * @param  string $prefix  A prefix for data attributes (ex: "data-").
  */
 function do_attrs( $attrs, $prefix = '' ) {
 	echo get_attrs( $attrs, $prefix ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -83,8 +86,9 @@ function do_attrs( $attrs, $prefix = '' ) {
 /**
  * Attribute building helper, but all items go to "class" arg
  *
+ * @since 1.0.0
+ *
  * @return string
- * @since  1.0.0
  */
 function get_attrs_class() {
 	return get_attrs( [ 'class' => func_get_args() ] );
@@ -102,8 +106,9 @@ function do_attrs_class() {
 /**
  * Custom kses allowed HTML for "inlined" entities.
  *
- * @return array Allowed HTML entities/attributes.
- * @since  1.0.0
+ * @since 1.0.0
+ *
+ * @return array  Allowed HTML entities/attributes.
  */
 function get_allowed_inline_html() {
 	return [
@@ -123,10 +128,10 @@ function get_allowed_inline_html() {
 /**
  * Configure "allowed inline HTML" message for block editor.
  *
- * @param  array $object Data to be localized in JS object.
- * @return array $object Data to be localized + "allowed inline HTML" help text.
+ * @since 1.0.0
  *
- * @since  1.0.0
+ * @param  array $object  Data to be localized in JS object.
+ * @return array $object  Data to be localized + "allowed inline HTML" help text.
  */
 function set_blocks_js_allowed_inline_html_help( $object ) {
 
@@ -142,11 +147,11 @@ add_filter( 'full_score_events_editor_js_object', __NAMESPACE__ . '\set_blocks_j
 /**
  * Locate a template part in the theme, then fall back to plugin.
  *
+ * @since 1.0.0
+ *
  * @param  string $slug  Template slug (excluding .php).
  * @param  string $name  Template file name (excluding .php).
  * @return string        Template path.
- *
- * @since  1.0.0
  */
 function locate_plugin_template( $slug, $name = '' ) {
 
@@ -177,11 +182,11 @@ function locate_plugin_template( $slug, $name = '' ) {
 /**
  * Get a plugin template
  *
+ * @since 1.0.0
+ *
  * @param string $slug  Template slug (excluding .php).
  * @param string $name  Template part name (excluding .php).
  * @param array  $args  Template arguments (extracted to vars).
- *
- * @since 1.0.0
  */
 function get_plugin_template( $slug, $name = '', $args = [] ) {
 
@@ -201,11 +206,11 @@ function get_plugin_template( $slug, $name = '', $args = [] ) {
 /**
  * Get the first parsed block of type/name from post content
  *
+ * @since 1.0.0
+ *
  * @param  string  $name     Block name.
  * @param  integer $post_id  Post to search.
  * @return array             Parsed block array, if exists.
- *
- * @since  1.0.0
  */
 function get_block( $name, $post_id = null ) {
 
@@ -230,10 +235,10 @@ function get_block( $name, $post_id = null ) {
 /**
  * Get a dynamic block template
  *
- * @param string $name Block template part name (excluding .php).
- * @param array  $args Template arguments (extracted to vars).
- *
  * @since 1.0.0
+ *
+ * @param string $name  Block template part name (excluding .php).
+ * @param array  $args  Template arguments (extracted to vars).
  */
 function get_block_template( $name, $args = [] ) {
 	ob_start();
@@ -262,8 +267,9 @@ function get_block_template( $name, $args = [] ) {
 /**
  * Wrapper for edit_posts capability check
  *
+ * @since 1.0.0
+ *
  * @return bool
- * @since  1.0.0
  */
 function get_can_user_edit_posts() {
 	return current_user_can( 'edit_posts' );
@@ -272,10 +278,10 @@ function get_can_user_edit_posts() {
 /**
  * Add SVG to allowed MIMEs
  *
+ * @since 1.0.0
+ *
  * @param  array $mimes  Allowed MIME types.
  * @return array $mimes
- *
- * @since 1.0.0
  */
 function add_allowed_mimes( $mimes ) {
 	$mimes['svg'] = 'image/svg';
@@ -287,10 +293,10 @@ add_filter( 'upload_mimes', __NAMESPACE__ . '\\add_allowed_mimes' );
 /**
  * Get the contents of an icon SVG
  *
+ * @since 1.0.0
+ *
  * @param  string $name  File name of icon in icons/.
  * @return string
- *
- * @since 1.0.0
  */
 function get_icon( $name ) {
 	return file_get_contents( FULL_SCORE_EVENTS_DIR . "src/icons/{$name}.svg" ); // phpcs:ignore
@@ -299,8 +305,9 @@ function get_icon( $name ) {
 /**
  * Output an SVG icon
  *
- * @param string $name  Icon file name.
  * @since 1.0.0
+ *
+ * @param string $name  Icon file name.
  */
 function do_icon( $name ) {
 	echo get_icon( $name ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -309,10 +316,10 @@ function do_icon( $name ) {
 /**
  * Do a basic permissions check on viewing a post
  *
+ * @since 1.0.0
+ *
  * @param  integer $post_id  Post ID to check against.
  * @return boolean
- *
- * @since  1.0.0
  */
 function get_can_view_post( $post_id ) {
 	$status = get_post_status( $post_id );
@@ -324,10 +331,10 @@ function get_can_view_post( $post_id ) {
  *
  * Make sure the post exists and it's a location, then get its object.
  *
+ * @since 1.0.0
+ *
  * @param  integer $post_id  Post ID to check.
  * @return boolean|Location
- *
- * @since  1.0.0
  */
 function get_location( $post_id ) {
 	return $post_id && get_can_view_post( $post_id ) ? new Location( $post_id ) : false;
@@ -336,8 +343,9 @@ function get_location( $post_id ) {
 /**
  * Is this an event single?
  *
+ * @since 1.0.0
+ *
  * @return boolean
- * @since  1.0.0
  */
 function is_event() {
 	return is_singular( Events::CPT_KEY );
@@ -346,8 +354,9 @@ function is_event() {
 /**
  * Is this an event archive?
  *
+ * @since 1.0.0
+ *
  * @return boolean
- * @since  1.0.0
  */
 function is_event_archive() {
 	return is_post_type_archive( Events::CPT_KEY );

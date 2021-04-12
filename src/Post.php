@@ -23,24 +23,25 @@ class Post {
 	/**
 	 * Associated post ID
 	 *
-	 * @var   integer
 	 * @since 1.0.0
+	 * @var   integer
 	 */
 	private $id;
 
 	/**
 	 * Meta cache
 	 *
-	 * @var   array
 	 * @since 1.0.0
+	 * @var   array
 	 */
 	private $meta = [];
 
 	/**
 	 * Set everything up
 	 *
-	 * @param integer $post_id Associated post ID.
 	 * @since 1.0.0
+	 *
+	 * @param integer $post_id  Associated post ID.
 	 */
 	public function __construct( $post_id = null ) {
 		$this->id = $post_id ?? get_the_ID();
@@ -49,8 +50,9 @@ class Post {
 	/**
 	 * Get post ID
 	 *
+	 * @since 1.0.0
+	 *
 	 * @return integer
-	 * @since  1.0.0
 	 */
 	public function get_id() {
 		return $this->id;
@@ -59,10 +61,10 @@ class Post {
 	/**
 	 * Check and retrive something from the post's meta
 	 *
-	 * @param  string $key Meta key/field.
-	 * @return mixed
+	 * @since 1.0.0
 	 *
-	 * @since  1.0.0
+	 * @param  string $key  Meta key/field.
+	 * @return mixed
 	 */
 	protected function get( $key ) {
 
@@ -77,8 +79,9 @@ class Post {
 	/**
 	 * Get post title
 	 *
+	 * @since 1.0.0
+	 *
 	 * @return string
-	 * @since  1.0.0
 	 */
 	public function get_title() {
 		return \get_the_title( $this->get_id() );
@@ -87,7 +90,7 @@ class Post {
 	/**
 	 * Output post title
 	 *
-	 * @since  1.0.0
+	 * @since 1.0.0
 	 */
 	public function do_title() {
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped

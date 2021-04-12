@@ -10,10 +10,10 @@
  * compatibility. It is recommended that you make your customizations using
  * hooks/filters to reduce technical debt.
  *
- * @param   string $heading
- *
  * @package Full_Score_Events/templates
  * @since   1.0.0
+ *
+ * @param string $heading
  */
 
 ?>

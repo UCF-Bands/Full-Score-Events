@@ -26,16 +26,16 @@ class Customizer {
 	/**
 	 * Customizer control/setting prefix
 	 *
-	 * @var   string
 	 * @since 1.0.0
+	 * @var   string
 	 */
 	private static $prefix = 'fse';
 
 	/**
 	 * Settings used for inline custom CSS property styles
 	 *
-	 * @var   array
 	 * @since 1.0.0
+	 * @var   array
 	 */
 	private static $style_settings = [
 		'featured_background',
@@ -58,8 +58,9 @@ class Customizer {
 	/**
 	 * Add customizer section, settings, and controls
 	 *
-	 * @param WP_Customize_Manager $wp_customize  Customizer object.
 	 * @since 1.0.0
+	 *
+	 * @param WP_Customize_Manager $wp_customize  Customizer object.
 	 */
 	public function add_section( $wp_customize ) {
 
@@ -222,11 +223,11 @@ class Customizer {
 	/**
 	 * Get the value of a customizer setting
 	 *
+	 * @since  1.0.0
+	 *
 	 * @param  string $setting  Name of setting (without prefix).
 	 * @param  mixed  $default  Default value fallback.
 	 * @return mixed
-	 *
-	 * @since  1.0.0
 	 */
 	public static function get( $setting, $default = false ) {
 		return get_theme_mod( self::$prefix . "_{$setting}", $default );

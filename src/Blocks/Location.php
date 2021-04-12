@@ -31,8 +31,9 @@ class Location extends Post_Block {
 	/**
 	 * Get block's attributes
 	 *
+	 * @since 1.0.0
+	 *
 	 * @return array
-	 * @since  1.0.0
 	 */
 	public function get_attributes() {
 

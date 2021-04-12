@@ -1,8 +1,8 @@
 /**
  * Get label/value pairs from WP API request for react-select options
  *
- * @see   https://react-select.com/async
  * @since 1.0.0
+ * @see   https://react-select.com/async
  */
 
 const Html5Entities = require( 'html-entities' ).Html5Entities;

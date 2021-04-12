@@ -1,8 +1,8 @@
 /**
  * Higher order component for adding ensemble term filtering to a block
  *
- * @see   https://jschof.com/gutenberg-blocks/sharing-functionality-between-gutenberg-blocks/
  * @since 1.0.0
+ * @see   https://jschof.com/gutenberg-blocks/sharing-functionality-between-gutenberg-blocks/
  */
 
 import { __ } from '@wordpress/i18n';
@@ -36,10 +36,10 @@ const EnsemblesSelectWrapper = ( blockConfig ) => {
 	/**
 	 * Edit function that runs the base block's edit
 	 *
+	 * @since 1.0.0
+	 *
 	 * @param  {Object} props Block properties for editing.
 	 * @return {Object}       post-select-wrapped block edit
-	 *
-	 * @since 1.0.0
 	 */
 	blockConfig.edit = withSelect( ( select, props ) => ( {
 		ensembles: select( 'core' ).getEntityRecords(

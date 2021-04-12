@@ -41,8 +41,9 @@ class Block {
 	/**
 	 * Set everything up
 	 *
-	 * @param string $name  Block name.
 	 * @since 1.0.0
+	 *
+	 * @param string $name  Block name.
 	 */
 	public function __construct( $name = null ) {
 		$this->name = $name ?: $this->name;
@@ -53,7 +54,7 @@ class Block {
 	/**
 	 * Register the block with WordPress
 	 *
-	 * @since  1.0.0
+	 * @since 1.0.0
 	 */
 	public function do_registration() {
 
@@ -76,8 +77,9 @@ class Block {
 	/**
 	 * Get block's attributes
 	 *
-	 * @return array
 	 * @since  1.0.0
+	 *
+	 * @return array
 	 */
 	protected function get_attributes() {
 		return [];
@@ -96,11 +98,11 @@ class Block {
 	 *
 	 * Only used if templated.
 	 *
+	 * @since 1.0.0
+	 *
 	 * @param  array  $attrs   Block's attributes.
 	 * @param  string $content Block's contents (InnerBlocks).
 	 * @return string          Block HTML.
-	 *
-	 * @since 1.0.0
 	 */
 	public function render( $attrs, $content ) {
 

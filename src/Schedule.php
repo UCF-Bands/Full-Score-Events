@@ -25,8 +25,9 @@ class Schedule extends Post {
 	/**
 	 * Get schedule edit block
 	 *
+	 * @since 1.0.0
+	 *
 	 * @return array|boolean  Parsed schedule-edit block.
-	 * @since  1.0.0
 	 */
 	public function get_edit_block() {
 		return get_block( 'full-score-events/schedule-edit', $this->get_id() );

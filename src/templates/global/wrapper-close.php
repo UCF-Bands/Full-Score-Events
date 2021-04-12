@@ -10,10 +10,9 @@
  * compatibility. It is recommended that you make your customizations using
  * hooks/filters to reduce technical debt.
  *
- * @see WooCommerce's templates/global/wrapper-end.php
- *
  * @package Full_Score_Events/templates
  * @since   1.0.0
+ * @see     WooCommerce's templates/global/wrapper-end.php
  */
 
 namespace Full_Score_Events;

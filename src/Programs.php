@@ -49,8 +49,9 @@ class Programs extends Post_Type {
 	/**
 	 * Get general post type label
 	 *
-	 * @return string
 	 * @since 1.0.0
+	 *
+	 * @return string
 	 */
 	public function get_label() {
 		return __( 'Program', 'full-score-events' );
@@ -59,8 +60,9 @@ class Programs extends Post_Type {
 	/**
 	 * Get plural post type label
 	 *
-	 * @return string
 	 * @since 1.0.0
+	 *
+	 * @return string
 	 */
 	public function get_plural_label() {
 		return __( 'Programs', 'full-score-events' );
@@ -69,8 +71,9 @@ class Programs extends Post_Type {
 	/**
 	 * Get non-default post type args
 	 *
-	 * @return array
 	 * @since 1.0.0
+	 *
+	 * @return array
 	 */
 	public function get_cpt_args() {
 		return [

@@ -26,8 +26,8 @@ class Template_Loader {
 	/**
 	 * CSS/JS asset handle
 	 *
-	 * @var   string
 	 * @since 1.0.0
+	 * @var   string
 	 */
 	const ASSET_HANDLE = 'full-score-events-public';
 
@@ -48,12 +48,11 @@ class Template_Loader {
 	 * Templates are in the 'templates' folder. Full Score Events looks for
 	 * theme overrides in /%theme%/full-score-events/.
 	 *
-	 * @see WooCommerce's WC_Template_Loader->template_loader()
+	 * @since 1.0.0
+	 * @see   WooCommerce's WC_Template_Loader->template_loader()
 	 *
 	 * @param  string $template  Template to load.
 	 * @return string
-	 *
-	 * @since  1.0.0
 	 */
 	public static function set_template( $template ) {
 

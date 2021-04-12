@@ -71,8 +71,9 @@ abstract class Taxonomy {
 	/**
 	 * Get main taxonomy label
 	 *
+	 * @since 1.0.0
+	 *
 	 * @return string
-	 * @since  1.0.0
 	 */
 	public function get_label() {
 		return __( 'Set Taxonomy Label', 'full-score-events' );
@@ -81,8 +82,9 @@ abstract class Taxonomy {
 	/**
 	 * Get main plural taxonomy label
 	 *
+	 * @since 1.0.0
+	 *
 	 * @return string
-	 * @since  1.0.0
 	 */
 	public function get_plural_label() {
 		return __( 'Set Plural Taxonomy Label', 'full-score-events' );
@@ -104,10 +106,10 @@ abstract class Taxonomy {
 	/**
 	 * Get taxonomy args
 	 *
-	 * @return array Taxonomy registration args.
-	 *
-	 * @see   https://generatewp.com/taxonomy/
 	 * @since 1.0.0
+	 * @see   https://generatewp.com/taxonomy/
+	 *
+	 * @return array  Taxonomy registration args.
 	 */
 	protected function get_tax_args() {
 		return [];
@@ -116,8 +118,9 @@ abstract class Taxonomy {
 	/**
 	 * Are we currently on a term creation/edit screen for this taxonomy?
 	 *
+	 * @since 1.0.0
+	 *
 	 * @return boolean
-	 * @since  1.0.0
 	 */
 	protected function is_term_edit() {
 		$screen = get_current_screen();
@@ -141,13 +144,12 @@ abstract class Taxonomy {
 	 * because there's an orderby arg bug where 'meta_value_num' (probably
 	 * amoung other things) isn't respected:
 	 *
-	 * @see    https://core.trac.wordpress.org/ticket/42005
+	 * @since 1.0.0
+	 * @see   https://core.trac.wordpress.org/ticket/42005
 	 *
 	 * @param  array $defaults    get_terms() default arguments.
 	 * @param  array $taxonomies  Taxonomies currently being queried.
 	 * @return array $defaults
-	 *
-	 * @since 1.0.0
 	 */
 	public function set_terms_query( $defaults, $taxonomies ) {
 		return $defaults;
@@ -176,8 +178,9 @@ abstract class Taxonomy {
 	/**
 	 * Output term edit nonce and other fields
 	 *
-	 * @param WP_Term $term  Term being edited.
 	 * @since 1.0.0
+	 *
+	 * @param WP_Term $term  Term being edited.
 	 */
 	public function do_edit_term_nonce( $term ) {
 		$this->do_term_nonce_field();
@@ -187,10 +190,11 @@ abstract class Taxonomy {
 	/**
 	 * Output term quick edit nonce
 	 *
+	 * @since 1.0.0
+	 *
 	 * @param string $column     Current admin column.
 	 * @param string $post_type  Post type.
 	 * @param string $taxonomy   Taxonomy.
-	 * @since 1.0.0
 	 */
 	public function do_quick_edit_term_nonce( $column, $post_type, $taxonomy ) {
 
@@ -212,8 +216,9 @@ abstract class Taxonomy {
 	/**
 	 * Output term edit form fields
 	 *
-	 * @param WP_Term $term  Term being edited.
 	 * @since 1.0.0
+	 *
+	 * @param WP_Term $term  Term being edited.
 	 */
 	protected function do_edit_term_fields( $term ) {
 	}
@@ -221,8 +226,9 @@ abstract class Taxonomy {
 	/**
 	 * Perform a nonce check and send to processing
 	 *
-	 * @param integer $term_id  New or edited term ID.
 	 * @since 1.0.0
+	 *
+	 * @param integer $term_id  New or edited term ID.
 	 */
 	public function do_term_nonce_check( $term_id ) {
 		$key = static::TAX_KEY;
@@ -238,8 +244,9 @@ abstract class Taxonomy {
 	/**
 	 * Do actions on updated/created term
 	 *
-	 * @param integer $term_id  Created/updated term ID.
 	 * @since 1.0.0
+	 *
+	 * @param integer $term_id  Created/updated term ID.
 	 */
 	public function do_saved_term( $term_id ) {
 	}
@@ -247,8 +254,9 @@ abstract class Taxonomy {
 	/**
 	 * Do actions on deleted term
 	 *
-	 * @param integer $term_id  Deleted term ID.
 	 * @since 1.0.0
+	 *
+	 * @param integer $term_id  Deleted term ID.
 	 */
 	public function do_deleted_term( $term_id ) {
 	}
@@ -256,8 +264,9 @@ abstract class Taxonomy {
 	/**
 	 * Run term meta saving/updating
 	 *
-	 * @param integer $term_id  Term ID.
 	 * @since 1.0.0
+	 *
+	 * @param integer $term_id  Term ID.
 	 */
 	public function set_term_meta( $term_id ) {
 	}
@@ -265,10 +274,10 @@ abstract class Taxonomy {
 	/**
 	 * Add custom admin columns for term meta
 	 *
+	 * @since 1.0.0
+	 *
 	 * @param  array $columns  Term columns.
 	 * @return array $columns
-	 *
-	 * @since  1.0.0
 	 */
 	public function add_custom_columns( $columns ) {
 		return $columns;
@@ -277,10 +286,10 @@ abstract class Taxonomy {
 	/**
 	 * Manage sortable term admin columns
 	 *
+	 * @since 1.0.0
+	 *
 	 * @param  array $columns  Sortable term columns.
 	 * @return array $columns
-	 *
-	 * @since  1.0.0
 	 */
 	public function set_sortable_columns( $columns ) {
 		return $columns;
@@ -289,12 +298,12 @@ abstract class Taxonomy {
 	/**
 	 * Set the contents of one of this taxonomy term's columns
 	 *
+	 * @since 1.0.0
+	 *
 	 * @param  string  $content  Column content.
 	 * @param  string  $column   Column name.
 	 * @param  integer $term_id  Term ID.
 	 * @return string  $content
-	 *
-	 * @since 1.0.0
 	 */
 	public function set_custom_column( $content, $column, $term_id ) {
 		return $content;
@@ -303,8 +312,9 @@ abstract class Taxonomy {
 	/**
 	 * Get currently queried terms
 	 *
-	 * @return array
 	 * @since  1.0.0
+	 *
+	 * @return array
 	 */
 	public static function get_queried() {
 		return array_filter( explode( ',', get_query_var( static::TAX_KEY ) ) );
@@ -315,10 +325,10 @@ abstract class Taxonomy {
 	 *
 	 * Compatible with archives and singular posts.
 	 *
+	 * @since 1.0.0
+	 *
 	 * @param  string $fields  Term fields to return. "all" is full term objects.
 	 * @return array           Term objects for this taxonomy.
-	 *
-	 * @since  1.0.0
 	 */
 	public static function get_current_terms( $fields = 'all' ) {
 
@@ -345,8 +355,9 @@ abstract class Taxonomy {
 	/**
 	 * Get current query's terms in a human-readable list
 	 *
+	 * @since 1.0.0
+	 *
 	 * @return string
-	 * @since  1.0.0
 	 */
 	public static function get_current_terms_list() {
 		$terms = static::get_current_terms( 'names' );

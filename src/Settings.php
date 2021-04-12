@@ -23,32 +23,32 @@ class Settings {
 	/**
 	 * Page/menu slug
 	 *
-	 * @var   string
 	 * @since 1.0.0
+	 * @var   string
 	 */
 	private static $page_slug = 'full-score-events';
 
 	/**
 	 * Settings option group key
 	 *
-	 * @var   string
 	 * @since 1.0.0
+	 * @var   string
 	 */
 	private static $group = 'fse';
 
 	/**
 	 * Settings section key
 	 *
-	 * @var   string
 	 * @since 1.0.0
+	 * @var   string
 	 */
 	private static $section = 'fse_main';
 
 	/**
 	 * Google API key option name
 	 *
-	 * @var   string
 	 * @since 1.0.0
+	 * @var   string
 	 */
 	private static $key_google = 'fse_api_google';
 
@@ -146,8 +146,9 @@ class Settings {
 	/**
 	 * Output text input
 	 *
-	 * @param string $key Option name/key.
 	 * @since 1.0.0
+	 *
+	 * @param string $key  Option name/key.
 	 */
 	private static function do_text_field( $key ) {
 		?>
@@ -166,10 +167,10 @@ class Settings {
 	 *
 	 * Usage example: Settings::get( 'google' )
 	 *
-	 * @param  string $option Setting key.
-	 * @return mixed
-	 *
 	 * @since 1.0.0
+	 *
+	 * @return mixed
+	 * @param  string $option  Setting key.
 	 */
 	public static function get( $option ) {
 		$option = "key_$option";

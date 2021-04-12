@@ -35,88 +35,88 @@ class Plugin {
 	/**
 	 * The single instance of this class
 	 *
-	 * @var   Plugin
 	 * @since 1.0.0
+	 * @var   Plugin
 	 */
 	protected static $instance;
 
 	/**
 	 * Schedules handler
 	 *
-	 * @var   Schedules
 	 * @since 1.0.0
+	 * @var   Schedules
 	 */
 	public $schedules;
 
 	/**
 	 * Programs handler
 	 *
-	 * @var   Programs
 	 * @since 1.0.0
+	 * @var   Programs
 	 */
 	public $programs;
 
 	/**
 	 * Locations handler
 	 *
-	 * @var   Locations
 	 * @since 1.0.0
+	 * @var   Locations
 	 */
 	public $locations;
 
 	/**
 	 * Ensembles handler
 	 *
-	 * @var   Ensembles
 	 * @since 1.0.0
+	 * @var   Ensembles
 	 */
 	public $ensembles;
 
 	/**
 	 * Seasons handler
 	 *
-	 * @var   Seasons
 	 * @since 1.0.0
+	 * @var   Seasons
 	 */
 	public $seasons;
 
 	/**
 	 * Events handler
 	 *
-	 * @var   Events
 	 * @since 1.0.0
+	 * @var   Events
 	 */
 	public $events;
 
 	/**
 	 * Blocks handler
 	 *
-	 * @var   Customizer
 	 * @since 1.0.0
+	 * @var   Customizer
 	 */
 	public $blocks;
 
 	/**
 	 * Users handler
 	 *
-	 * @var   Users
 	 * @since 1.0.0
+	 * @var   Users
 	 */
 	public $users;
 
 	/**
 	 * Customizer handler
 	 *
-	 * @var   Customizer
 	 * @since 1.0.0
+	 * @var   Customizer
 	 */
 	public $customizer;
 
 	/**
 	 * Settings handler
 	 *
-	 * @var   Settings
 	 * @since 1.0.0
+	 * @var   Settings
 	 */
 	public $settings;
 
@@ -125,8 +125,8 @@ class Plugin {
 	 *
 	 * False if not a front end request.
 	 *
-	 * @var   Template_Loader|boolean
 	 * @since 1.0.0
+	 * @var   Template_Loader|boolean
 	 */
 	public $template_loader = false;
 
@@ -135,16 +135,17 @@ class Plugin {
 	 *
 	 * False if not a front end request.
 	 *
-	 * @var   Template_Hooks|boolean
 	 * @since 1.0.0
+	 * @var   Template_Hooks|boolean
 	 */
 	public $template_hooks = false;
 
 	/**
 	 * Get main plugin instance.
 	 *
-	 * @since  1.0.0
-	 * @see    instance()
+	 * @since 1.0.0
+	 * @see   instance()
+	 *
 	 * @return Plugin
 	 */
 	public static function instance() {
@@ -208,12 +209,11 @@ class Plugin {
 	/**
 	 * What type of request is this?
 	 *
-	 * @see WooCommerce's WooCommerce->is_request()
+	 * @since 1.0.0
+	 * @see   WooCommerce's WooCommerce->is_request()
 	 *
 	 * @param  string $type  admin, ajax, cron or frontend.
 	 * @return boolean
-	 *
-	 * @since  1.0.0
 	 */
 	private function is_request( $type ) {
 		switch ( $type ) {
@@ -253,8 +253,9 @@ class Plugin {
 /**
  * Get instance of main plugin class
  *
+ * @since 1.0.0
+ *
  * @return Plugin
- * @since  1.0.0
  */
 function instance() {
 	return Plugin::instance();

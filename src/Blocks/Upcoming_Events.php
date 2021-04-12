@@ -39,8 +39,9 @@ class Upcoming_Events extends Block {
 	/**
 	 * Get block's attributes
 	 *
-	 * @return array
 	 * @since  1.0.0
+	 *
+	 * @return array
 	 */
 	protected function get_attributes() {
 		return [

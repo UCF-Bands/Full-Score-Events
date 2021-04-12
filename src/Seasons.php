@@ -52,8 +52,8 @@ class Seasons extends Taxonomy {
 	 * This is used to keep track of the unpassed date list in an archive
 	 * listing.
 	 *
-	 * @var   array|boolean
 	 * @since 1.0.0
+	 * @var   array|boolean
 	 */
 	private $season_labels;
 
@@ -77,8 +77,9 @@ class Seasons extends Taxonomy {
 	/**
 	 * Get general taxonomy label
 	 *
-	 * @return string
 	 * @since 1.0.0
+	 *
+	 * @return string
 	 */
 	public function get_label() {
 		return __( 'Season', 'full-score-events' );
@@ -88,6 +89,8 @@ class Seasons extends Taxonomy {
 	 * Get the plural version of the general taxonomy label
 	 *
 	 * @since 1.0.0
+	 *
+	 * @return string
 	 */
 	public function get_plural_label() {
 		return __( 'Seasons', 'full-score-events' );
@@ -96,8 +99,9 @@ class Seasons extends Taxonomy {
 	/**
 	 * Get non-default post type args
 	 *
-	 * @return array
 	 * @since 1.0.0
+	 *
+	 * @return array
 	 */
 	public function get_tax_args() {
 
@@ -168,13 +172,12 @@ class Seasons extends Taxonomy {
 	 * because there's an orderby arg bug where 'meta_value_num' (probably
 	 * amoung other things) isn't respected:
 	 *
-	 * @see    https://core.trac.wordpress.org/ticket/42005
+	 * @since 1.0.0
+	 * @see   https://core.trac.wordpress.org/ticket/42005
 	 *
 	 * @param  array $defaults    get_terms() default arguments.
 	 * @param  array $taxonomies  Taxonomies currently being queried.
 	 * @return array $defaults
-	 *
-	 * @since 1.0.0
 	 */
 	public function set_terms_query( $defaults, $taxonomies ) {
 
@@ -206,8 +209,9 @@ class Seasons extends Taxonomy {
 	/**
 	 * Output term edit form fields
 	 *
-	 * @param WP_Term $term  Term being edited.
 	 * @since 1.0.0
+	 *
+	 * @param WP_Term $term  Term being edited.
 	 */
 	public function do_edit_term_fields( $term ) {
 		$date_start = DateTime::createFromFormat( 'Ymd', get_term_meta( $term->term_id, 'fse_date_start', true ) );
@@ -241,8 +245,9 @@ class Seasons extends Taxonomy {
 	/**
 	 * Run term meta saving/updating
 	 *
-	 * @param integer $term_id  Term ID.
 	 * @since 1.0.0
+	 *
+	 * @param integer $term_id  Term ID.
 	 */
 	public function set_term_meta( $term_id ) {
 
@@ -266,9 +271,9 @@ class Seasons extends Taxonomy {
 	/**
 	 * Set seasons cache on season term update
 	 *
-	 * @param integer $term_id  Created/updated term ID.
-	 *
 	 * @since 1.0.0
+	 *
+	 * @param integer $term_id  Created/updated term ID.
 	 */
 	public function do_saved_term( $term_id ) {
 		$this->get_date_list( true );
@@ -277,9 +282,9 @@ class Seasons extends Taxonomy {
 	/**
 	 * Set seasons cache on season term delete
 	 *
-	 * @param integer $term_id  Deleted term ID.
-	 *
 	 * @since 1.0.0
+	 *
+	 * @param integer $term_id  Deleted term ID.
 	 */
 	public function do_deleted_term( $term_id ) {
 		$this->get_date_list( true );
@@ -288,10 +293,10 @@ class Seasons extends Taxonomy {
 	/**
 	 * Add custom admin columns for term meta
 	 *
+	 * @since 1.0.0
+	 *
 	 * @param  array $columns  Term columns.
 	 * @return array $columns
-	 *
-	 * @since  1.0.0
 	 */
 	public function add_custom_columns( $columns ) {
 
@@ -306,10 +311,10 @@ class Seasons extends Taxonomy {
 	/**
 	 * Manage sortable term admin columns
 	 *
+	 * @since 1.0.0
+	 *
 	 * @param  array $columns  Sortable term columns.
 	 * @return array $columns
-	 *
-	 * @since  1.0.0
 	 */
 	public function set_sortable_columns( $columns ) {
 		$columns['fse_date_start'] = 'fse_date_start';
@@ -319,12 +324,12 @@ class Seasons extends Taxonomy {
 	/**
 	 * Set the contents of one of this taxonomy term's columns
 	 *
+	 * @since 1.0.0
+	 *
 	 * @param  string  $content  Column content.
 	 * @param  string  $column   Column name.
 	 * @param  integer $term_id  Term ID.
 	 * @return string  $content
-	 *
-	 * @since 1.0.0
 	 */
 	public function set_custom_column( $content, $column, $term_id ) {
 
@@ -343,10 +348,10 @@ class Seasons extends Taxonomy {
 	 *
 	 * Try to grab from transient cache first and re-compile if expired/gone.
 	 *
+	 * @since 1.0.0
+	 *
 	 * @param  boolean $skip_cache  Always set and get new list.
 	 * @return array
-	 *
-	 * @since  1.0.0
 	 */
 	public function get_date_list( $skip_cache = false ) {
 
@@ -397,8 +402,9 @@ class Seasons extends Taxonomy {
 	 * Iterate season dates list in reverse order, adding each one to a list
 	 * until we stop at the "last" season (that most recently passed).
 	 *
+	 * @since 1.0.0
+	 *
 	 * @return array
-	 * @since  1.0.0
 	 */
 	private function get_unpassed_date_list() {
 

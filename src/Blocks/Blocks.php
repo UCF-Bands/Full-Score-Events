@@ -132,10 +132,10 @@ class Blocks {
 	/**
 	 * Add custom block categories
 	 *
+	 * @since 1.0.0
+	 *
 	 * @param  array $categories  Categories.
 	 * @return array
-	 *
-	 * @since 1.0.0
 	 */
 	public static function add_block_categories( $categories ) {
 

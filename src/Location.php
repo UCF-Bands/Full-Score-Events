@@ -25,11 +25,11 @@ class Location extends Post {
 	/**
 	 * Get address
 	 *
-	 * @param  boolean $html  Include HTML.
-	 * @param  boolean $title Include title if HTML.
+	 * @since 1.0.0
 	 *
+	 * @param  boolean $html   Include HTML.
+	 * @param  boolean $title  Include title if HTML.
 	 * @return string
-	 * @since  1.0.0
 	 */
 	public function get_address( $html = true, $title = true ) {
 
@@ -50,10 +50,10 @@ class Location extends Post {
 	/**
 	 * Output address
 	 *
-	 * @param boolean $html  Include HTML.
-	 * @param boolean $title Include title if HTML.
-	 *
 	 * @since 1.0.0
+	 *
+	 * @param boolean $html   Include HTML.
+	 * @param boolean $title  Include title if HTML.
 	 */
 	public function do_address( $html = true, $title = true ) {
 		echo $this->get_address( $html, $title ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -62,8 +62,9 @@ class Location extends Post {
 	/**
 	 * Get Google Maps place URL
 	 *
+	 * @since 1.0.0
+	 *
 	 * @return string
-	 * @since  1.0.0
 	 */
 	public function get_map_url() {
 		return $this->get( '_map_url' );
@@ -72,8 +73,9 @@ class Location extends Post {
 	/**
 	 * Get Google Place ID
 	 *
+	 * @since 1.0.0
+	 *
 	 * @return string
-	 * @since  1.0.0
 	 */
 	public function get_place_id() {
 		return $this->get( '_place_id' );
@@ -82,8 +84,9 @@ class Location extends Post {
 	/**
 	 * Get map embed SRC
 	 *
+	 * @since 1.0.0
+	 *
 	 * @return string
-	 * @since  1.0.0
 	 */
 	public function get_map_src() {
 		$place_id = $this->get_place_id();
@@ -104,8 +107,9 @@ class Location extends Post {
 	 *
 	 * Uses Google Maps Embed API. Key must be entered in settings.
 	 *
+	 * @since 1.0.0
+	 *
 	 * @return string
-	 * @since  1.0.0
 	 */
 	public function get_map_embed() {
 

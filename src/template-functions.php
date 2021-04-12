@@ -273,8 +273,9 @@ function do_featured_body() {
 /**
  * Output "next event" heading
  *
- * @param string $heading  Heading attribute passed into block template.
  * @since 1.0.0
+ *
+ * @param string $heading  Heading attribute passed into block template.
  */
 function do_next_event_heading( $heading ) {
 
@@ -289,10 +290,10 @@ function do_next_event_heading( $heading ) {
  * This was mostly added because Twenty Twentyone inlines height and max-width
  * styles on attachment images.
  *
+ * @since 1.0.0
+ *
  * @param  array $attr  Attachment image attributes.
  * @return array $attr
- *
- * @since 1.0.0
  */
 function remove_attachment_image_style_attribute( $attr ) {
 
@@ -317,10 +318,10 @@ add_filter( 'wp_get_attachment_image_attributes', __NAMESPACE__ . '\remove_attac
 /**
  * Set excerpt "more" to ellipsis in event card
  *
+ * @since 1.0.0
+ *
  * @param  string $excerpt_more  Excerpt "more" text.
  * @return string
- *
- * @since 1.0.0
  */
 function remove_excerpt_more( $excerpt_more ) {
 
@@ -335,10 +336,10 @@ add_filter( 'excerpt_more', __NAMESPACE__ . '\remove_excerpt_more', 25 );
 /**
  * Set event card's excerpt length
  *
+ * @since 1.0.0
+ *
  * @param  integer $length  Excerpt length.
  * @return integer
- *
- * @since 1.0.0
  */
 function set_excerpt_length( $length ) {
 
@@ -354,10 +355,10 @@ add_filter( 'excerpt_length', __NAMESPACE__ . '\set_excerpt_length', 25 );
 /**
  * Add misc. conditional body classes
  *
+ * @since 1.0.0
+ *
  * @param  array $classes  Body classes.
  * @return array $classes
- *
- * @since 1.0.0
  */
 function add_body_classes( $classes ) {
 
