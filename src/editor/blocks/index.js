@@ -24,7 +24,7 @@ import './program';
 import './location-details';
 import './location';
 
-import './staff-details';
-
 import './upcoming-events';
 import './next-event';
+
+import './staff-details';

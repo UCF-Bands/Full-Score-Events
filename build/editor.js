@@ -36071,9 +36071,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _program__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./program */ "./src/editor/blocks/program/index.js");
 /* harmony import */ var _location_details__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./location-details */ "./src/editor/blocks/location-details/index.js");
 /* harmony import */ var _location__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./location */ "./src/editor/blocks/location/index.js");
-/* harmony import */ var _staff_details__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./staff-details */ "./src/editor/blocks/staff-details/index.js");
-/* harmony import */ var _upcoming_events__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./upcoming-events */ "./src/editor/blocks/upcoming-events/index.js");
-/* harmony import */ var _next_event__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./next-event */ "./src/editor/blocks/next-event/index.js");
+/* harmony import */ var _upcoming_events__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./upcoming-events */ "./src/editor/blocks/upcoming-events/index.js");
+/* harmony import */ var _next_event__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./next-event */ "./src/editor/blocks/next-event/index.js");
+/* harmony import */ var _staff_details__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./staff-details */ "./src/editor/blocks/staff-details/index.js");
 /**
  * Custom blocks
  *
