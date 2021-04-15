@@ -21,4 +21,48 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since 1.0.0
  */
 class Staff_Member extends Post {
+
+	/**
+	 * Get title
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return string
+	 */
+	public function get_title() {
+		return $this->get( '_title' );
+	}
+
+	/**
+	 * Get email address
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return string
+	 */
+	public function get_email() {
+		return $this->get( '_email' );
+	}
+
+	/**
+	 * Get phone number for attribute (numbers only)
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return string
+	 */
+	public function get_phone() {
+		return $this->get( '_phone' );
+	}
+
+	/**
+	 * Get user-facing phone number
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return string
+	 */
+	public function get_phone_display() {
+		return $this->get( '_phone_display' );
+	}
 }
