@@ -38846,22 +38846,20 @@ Object(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_2__["registerPlugin"])('fse-e
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/slicedToArray.js");
-/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash */ "lodash");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
-
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_select_async__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-select/async */ "./node_modules/react-select/async/dist/react-select.browser.esm.js");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _util_get_api_options__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util/get-api-options */ "./src/editor/util/get-api-options.js");
 
 
 /**
- * Event primary contact user selection control
+ * Event primary contact staff post selection control
  *
+ * @todo  Combine this and location-control into a post-select-control?
  * @since 1.0.0
  */
 
@@ -38871,77 +38869,36 @@ __webpack_require__.r(__webpack_exports__);
 
 var ContactControl = function ContactControl(_ref) {
   var contact = _ref.contact,
-      contactUsers = _ref.contactUsers,
-      contactIsRequesting = _ref.contactIsRequesting,
+      contactPost = _ref.contactPost,
       setContact = _ref.setContact;
-
-  /**
-   * Track the state of the user selector
-   *
-   * contactValue is required for setContactValue to work.
-   */
-  var _useState = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["useState"])(),
-      _useState2 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_useState, 2),
-      contactValue = _useState2[0],
-      setContactValue = _useState2[1]; // build ComboBox options array if we got users and we aren't still
-  // looking for more
-
-
-  var contactAvatar = false;
-  var contactOptions = // @todo blog this?
-  !contactUsers || contactIsRequesting ? false : contactUsers.map(function (user) {
-    // check for selected user's avatar
-    if (user.id === contact) {
-      var _ref2, _user$avatar_urls$;
-
-      contactAvatar = (_ref2 = (_user$avatar_urls$ = user.avatar_urls[48]) !== null && _user$avatar_urls$ !== void 0 ? _user$avatar_urls$ : user.avatar_urls[24]) !== null && _ref2 !== void 0 ? _ref2 : false;
-    }
-
-    return {
-      value: user.id,
-      label: user.name
-    };
-  });
-  /**
-   * Ensure that the contact is set? (author selector does this)
-   */
-
-  Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
-    if (contact) {
-      setContactValue(contact);
-    }
-  }, [contact]);
-  /**
-   * Handle search input
-   *
-   * @param {Object} inputValue
-   *
-   */
-
-  var handleKeydown = function handleKeydown(inputValue) {
-    setContactValue(inputValue);
-  };
-
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
-    className: "fse-user-control"
-  }, contactOptions ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ComboboxControl"], {
-    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('Primary Contact', 'full-score-events'),
-    options: contactOptions,
-    value: contact,
-    onFilterValueChange: Object(lodash__WEBPACK_IMPORTED_MODULE_2__["debounce"])(handleKeydown, 300),
-    onChange: function onChange(userId) {
-      return setContact(userId);
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["BaseControl"], {
+    className: "fse-contact-control fse-post-select-control",
+    id: "fse-contact-select",
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Primary Contact', 'full-score-events')
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(react_select_async__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    name: "kb-post-select",
+    value: contactPost ? {
+      label: contactPost.title.rendered,
+      value: contact
+    } : {},
+    onChange: function onChange(option) {
+      return setContact(option.value);
     },
-    isLoading: contactIsRequesting,
-    allowReset: true
-  }) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("p", {
-    className: "fse-loading-users"
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("strong", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('Loading users…', 'full-score-events'))), contactAvatar && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("img", {
-    src: contactAvatar,
-    width: "48",
-    height: "48",
-    alt: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])("Selected primary contact's avatar", 'full-score-events')
-  }));
+    loadOptions: function loadOptions(inputValue, callback) {
+      return Object(_util_get_api_options__WEBPACK_IMPORTED_MODULE_4__["default"])('fse_staff', inputValue, callback);
+    },
+    placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Start typing staff name', 'full-score-events'),
+    noOptionsMessage: function noOptionsMessage() {
+      return Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('No options. Start typing staff name', 'full-score-events');
+    }
+  }), contactPost && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Button"], {
+    className: "fse-contact-remove fse-post-select-remove",
+    isLink: true,
+    isDestructive: true,
+    onClick: function onClick() {
+      return setContact(0);
+    }
+  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Remove', 'full-score-events')));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ContactControl);
@@ -38968,8 +38925,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util/plugin-meta-handler */ "./src/editor/util/plugin-meta-handler.js");
 /* harmony import */ var _contact_control__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./contact-control */ "./src/editor/plugins/event-location-contact/contact-control.js");
 /* harmony import */ var _location_control__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./location-control */ "./src/editor/plugins/event-location-contact/location-control.js");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./index.scss */ "./src/editor/plugins/event-location-contact/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_7__);
 
 
 /**
@@ -38984,23 +38939,23 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var render = Object(_util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_4__["default"])({
   location: {
     key: '_location_id',
-    type: 'postId'
+    type: 'postId',
+    postType: 'fse_location'
   },
   contact: {
     key: '_contact_id',
-    type: 'userId'
+    type: 'postId',
+    postType: 'fse_staff'
   }
 })(function (_ref) {
   var postType = _ref.postType,
       location = _ref.location,
       locationPost = _ref.locationPost,
       contact = _ref.contact,
-      contactUsers = _ref.contactUsers,
-      contactIsRequesting = _ref.contactIsRequesting,
+      contactPost = _ref.contactPost,
       setLocation = _ref.setLocation,
       setContact = _ref.setContact;
 
@@ -39018,8 +38973,7 @@ var render = Object(_util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_4__["defa
     setLocation: setLocation
   }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_contact_control__WEBPACK_IMPORTED_MODULE_5__["default"], {
     contact: contact,
-    contactUsers: contactUsers,
-    contactIsRequesting: contactIsRequesting,
+    contactPost: contactPost,
     setContact: setContact
   }));
 }); // register the sidebar plugin
@@ -39028,17 +38982,6 @@ Object(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_2__["registerPlugin"])('fse-e
   render: render,
   icon: 'location'
 });
-
-/***/ }),
-
-/***/ "./src/editor/plugins/event-location-contact/index.scss":
-/*!**************************************************************!*\
-  !*** ./src/editor/plugins/event-location-contact/index.scss ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -39076,7 +39019,7 @@ var LocationControl = function LocationControl(_ref) {
       locationPost = _ref.locationPost,
       setLocation = _ref.setLocation;
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["BaseControl"], {
-    className: "fse-location-control",
+    className: "fse-location-control fse-post-select-control",
     id: "fse-location-select",
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Location', 'full-score-events')
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(react_select_async__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -39096,7 +39039,7 @@ var LocationControl = function LocationControl(_ref) {
       return Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('No options. Start typing location name', 'full-score-events');
     }
   }), locationPost && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Button"], {
-    className: "fse-location-remove",
+    className: "fse-location-remove fse-post-select-remove",
     isLink: true,
     isDestructive: true,
     onClick: function onClick() {
@@ -39512,7 +39455,7 @@ function pluginMetaHandler(meta) {
        */
 
       if (props.type === 'postId' && selected[key]) {
-        selected["".concat(key, "Post")] = select('core').getEntityRecord('postType', 'fse_location', selected[key]);
+        selected["".concat(key, "Post")] = select('core').getEntityRecord('postType', props.postType, selected[key]);
         /**
          * Add extra %key%Users and %key%IsRequesting prop if userId
          *
@@ -39968,17 +39911,6 @@ function SvgPhone(props) {
 /***/ (function(module, exports) {
 
 (function() { module.exports = this["wp"]["url"]; }());
-
-/***/ }),
-
-/***/ "lodash":
-/*!**********************************!*\
-  !*** external {"this":"lodash"} ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-(function() { module.exports = this["lodash"]; }());
 
 /***/ }),
 

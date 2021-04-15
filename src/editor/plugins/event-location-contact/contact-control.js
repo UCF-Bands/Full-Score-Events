@@ -1,102 +1,53 @@
 /**
- * Event primary contact user selection control
+ * Event primary contact staff post selection control
  *
+ * @todo  Combine this and location-control into a post-select-control?
  * @since 1.0.0
  */
 
-import { debounce } from 'lodash';
+import AsyncSelect from 'react-select/async';
 
 import { __ } from '@wordpress/i18n';
-import { useState, useEffect } from '@wordpress/element';
-import { ComboboxControl } from '@wordpress/components';
+import { BaseControl, Button } from '@wordpress/components';
 
-const ContactControl = ( {
-	contact,
-	contactUsers,
-	contactIsRequesting,
-	setContact,
-} ) => {
-	/**
-	 * Track the state of the user selector
-	 *
-	 * contactValue is required for setContactValue to work.
-	 */
-	const [ contactValue, setContactValue ] = useState();
+import getApiOptions from '../../util/get-api-options';
 
-	// build ComboBox options array if we got users and we aren't still
-	// looking for more
-	let contactAvatar = false;
-
-	const contactOptions = // @todo blog this?
-		! contactUsers || contactIsRequesting
-			? false
-			: contactUsers.map( ( user ) => {
-					// check for selected user's avatar
-					if ( user.id === contact ) {
-						contactAvatar =
-							user.avatar_urls[ 48 ] ??
-							user.avatar_urls[ 24 ] ??
-							false;
-					}
-
-					return {
-						value: user.id,
-						label: user.name,
-					};
-			  } );
-
-	/**
-	 * Ensure that the contact is set? (author selector does this)
-	 */
-	useEffect( () => {
-		if ( contact ) {
-			setContactValue( contact );
-		}
-	}, [ contact ] );
-
-	/**
-	 * Handle search input
-	 *
-	 * @param {Object} inputValue
-	 *
-	 */
-	const handleKeydown = ( inputValue ) => {
-		setContactValue( inputValue );
-	};
-
-	return (
-		<div className="fse-user-control">
-			{ contactOptions ? (
-				<ComboboxControl
-					label={ __( 'Primary Contact', 'full-score-events' ) }
-					options={ contactOptions }
-					value={ contact }
-					onFilterValueChange={ debounce( handleKeydown, 300 ) }
-					onChange={ ( userId ) => setContact( userId ) }
-					isLoading={ contactIsRequesting }
-					allowReset={ true }
-				/>
-			) : (
-				<p className="fse-loading-users">
-					<strong>
-						{ __( 'Loading users…', 'full-score-events' ) }
-					</strong>
-				</p>
-			) }
-
-			{ contactAvatar && (
-				<img
-					src={ contactAvatar }
-					width="48"
-					height="48"
-					alt={ __(
-						"Selected primary contact's avatar",
-						'full-score-events'
-					) }
-				/>
-			) }
-		</div>
-	);
-};
+const ContactControl = ( { contact, contactPost, setContact } ) => (
+	<BaseControl
+		className="fse-contact-control fse-post-select-control"
+		id="fse-contact-select"
+		label={ __( 'Primary Contact', 'full-score-events' ) }
+	>
+		<AsyncSelect
+			name="kb-post-select"
+			value={
+				contactPost
+					? {
+							label: contactPost.title.rendered,
+							value: contact,
+					  }
+					: {}
+			}
+			onChange={ ( option ) => setContact( option.value ) }
+			loadOptions={ ( inputValue, callback ) =>
+				getApiOptions( 'fse_staff', inputValue, callback )
+			}
+			placeholder={ __( 'Start typing staff name', 'full-score-events' ) }
+			noOptionsMessage={ () =>
+				__( 'No options. Start typing staff name', 'full-score-events' )
+			}
+		/>
+		{ contactPost && (
+			<Button
+				className="fse-contact-remove fse-post-select-remove"
+				isLink
+				isDestructive
+				onClick={ () => setContact( 0 ) }
+			>
+				{ __( 'Remove', 'full-score-events' ) }
+			</Button>
+		) }
+	</BaseControl>
+);
 
 export default ContactControl;

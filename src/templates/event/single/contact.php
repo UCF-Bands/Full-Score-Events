@@ -24,10 +24,7 @@ if ( ! $contact ) {
 	return;
 }
 
-$name       = get_the_author_meta( 'display_name', $contact );
-$this_title = get_the_author_meta( 'title', $contact );
-$email      = get_the_author_meta( 'user_email', $contact );
-$phone      = get_the_author_meta( 'phone', $contact );
+$contact = new Staff_Member( $contact );
 ?>
 
 <section class="fse-event-contact">
@@ -35,25 +32,27 @@ $phone      = get_the_author_meta( 'phone', $contact );
 	<h2 class="fse-event-aside-heading fse-event-contact-heading"><?php esc_html_e( 'Event Contact', 'full-score-events' ); ?></h2>
 
 	<address class="fse-contact-card">
-		<?php echo get_avatar( $contact, 94 ); ?>
+		<?php echo get_the_post_thumbnail( $contact->get_id(), [ 94, 94 ] ); ?>
 
 		<div class="fse-contact-card-details">
-			<strong class="fse-contact-card-name"><?php echo esc_html( $name ); ?></strong>
+			<strong class="fse-contact-card-name"><?php $contact->do_title(); ?></strong>
 
-			<?php if ( $this_title ) : ?>
-				<span class="fse-contact-title"><?php echo esc_html( $this_title ); ?></span>
+			<?php if ( $contact->get_position() ) : ?>
+				<span class="fse-contact-title"><?php $contact->do_position(); ?></span>
 			<?php endif; ?>
 
 			<div class="fse-contact-card-methods">
-				<a href="mailto:<?php echo esc_attr( $email ); ?>" class="fse-contact-method fse-contact-email">
-					<?php do_icon( 'envelope' ); ?>
-					<?php echo esc_html( $email ); ?>
-				</a>
+				<?php if ( $contact->get_email() ) : ?>
+					<a href="mailto:<?php $contact->do_email(); ?>" class="fse-contact-method fse-contact-email">
+						<?php do_icon( 'envelope' ); ?>
+						<?php $contact->do_email(); ?>
+					</a>
+				<?php endif; ?>
 
-				<?php if ( $phone ) : ?>
-					<a href="tel:<?php echo esc_attr( $phone ); ?>" class="fse-contact-method fse-contact-phone">
+				<?php if ( $contact->get_phone() ) : ?>
+					<a href="tel:<?php $contact->do_phone(); ?>" class="fse-contact-method fse-contact-phone">
 						<?php do_icon( 'phone' ); ?>
-						<?php echo esc_html( $phone ); ?>
+						<?php $contact->do_phone(); ?>
 					</a>
 				<?php endif; ?>
 			</div>

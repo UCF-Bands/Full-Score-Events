@@ -13,7 +13,7 @@ import getApiOptions from '../../util/get-api-options';
 
 const LocationControl = ( { location, locationPost, setLocation } ) => (
 	<BaseControl
-		className="fse-location-control"
+		className="fse-location-control fse-post-select-control"
 		id="fse-location-select"
 		label={ __( 'Location', 'full-score-events' ) }
 	>
@@ -44,7 +44,7 @@ const LocationControl = ( { location, locationPost, setLocation } ) => (
 		/>
 		{ locationPost && (
 			<Button
-				className="fse-location-remove"
+				className="fse-location-remove fse-post-select-remove"
 				isLink
 				isDestructive
 				onClick={ () => setLocation( 0 ) }

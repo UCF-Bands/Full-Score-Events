@@ -14,16 +14,16 @@ import pluginMetaHandler from '../../util/plugin-meta-handler';
 import ContactControl from './contact-control';
 import LocationControl from './location-control';
 
-import './index.scss';
-
 const render = pluginMetaHandler( {
 	location: {
 		key: '_location_id',
 		type: 'postId',
+		postType: 'fse_location',
 	},
 	contact: {
 		key: '_contact_id',
-		type: 'userId',
+		type: 'postId',
+		postType: 'fse_staff',
 	},
 } )(
 	( {
@@ -31,8 +31,7 @@ const render = pluginMetaHandler( {
 		location,
 		locationPost,
 		contact,
-		contactUsers,
-		contactIsRequesting,
+		contactPost,
 		setLocation,
 		setContact,
 	} ) => {
@@ -53,8 +52,7 @@ const render = pluginMetaHandler( {
 				/>
 				<ContactControl
 					contact={ contact }
-					contactUsers={ contactUsers }
-					contactIsRequesting={ contactIsRequesting }
+					contactPost={ contactPost }
 					setContact={ setContact }
 				/>
 			</PluginDocumentSettingPanel>

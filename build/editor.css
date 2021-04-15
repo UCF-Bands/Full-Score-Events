@@ -19,6 +19,12 @@
   padding: 0;
   list-style-type: none; }
 
+.fse-post-select-control {
+  margin-bottom: 16px; }
+
+.fse-post-select-remove.is-link {
+  margin-top: 4px; }
+
 /**
  * DateTimeControl component styling
  *
@@ -36,32 +42,6 @@
  */
 .fse-event-registration-type {
   margin-bottom: 10px; }
-
-/**
- * Event location/contact editor sidebar plugin
- *
- * @since   1.0.0
- * @package Full_Score_Events
- */
-.fse-location-control {
-  margin-bottom: 16px; }
-
-.fse-location-remove.is-link {
-  margin-top: 4px; }
-
-.fse-user-control {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr auto;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 8px;
-  /* stylelint-disable selector-class-pattern */
-  /* stylelint-enable selector-class-pattern */ }
-  .fse-user-control .components-base-control__field,
-  .fse-user-control .components-combobox-control__suggestions-container {
-    margin-bottom: 0; }
 
 /**
  * Schedule block editor adjustments

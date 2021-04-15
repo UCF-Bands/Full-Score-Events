@@ -42,7 +42,7 @@ export default function pluginMetaHandler( meta ) {
 			if ( props.type === 'postId' && selected[ key ] ) {
 				selected[ `${ key }Post` ] = select( 'core' ).getEntityRecord(
 					'postType',
-					'fse_location',
+					props.postType,
 					selected[ key ]
 				);
 

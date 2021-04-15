@@ -351,7 +351,7 @@ class Events extends Post_Type {
 				$location->do_address( false );
 				return;
 
-			// Contact (user).
+			// Contact (staff member).
 			case 'contact':
 				$contact = $fse_event->get_contact();
 
@@ -359,9 +359,10 @@ class Events extends Post_Type {
 					return;
 				}
 
-				$edit = get_edit_profile_url( $contact );
-				$name = get_the_author_meta( 'display_name', $contact );
-				echo '<a href="' . esc_attr( $edit ) . '">' . esc_html( $name ) . '</a><br>';
+				echo '<a href="' . esc_attr( get_edit_post_link( $contact->get_id() ) ) . '">';
+				$contact->do_title();
+				echo '</a><br>';
+				$contact->do_position();
 				return;
 		}
 	}

@@ -342,6 +342,20 @@ function get_location( $post_id ) {
 }
 
 /**
+ * Get a staff member
+ *
+ * Make sure the post exists and it's a staff member, then get its object.
+ *
+ * @since 1.0.0
+ *
+ * @param  integer $post_id  Post ID to check.
+ * @return boolean|Staff_Member
+ */
+function get_staff_member( $post_id ) {
+	return $post_id && get_can_view_post( $post_id ) ? new Staff_Member( $post_id ) : false;
+}
+
+/**
  * Is this an event single?
  *
  * @since 1.0.0
