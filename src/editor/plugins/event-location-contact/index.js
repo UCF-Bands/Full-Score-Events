@@ -11,8 +11,7 @@ import { PluginDocumentSettingPanel } from '@wordpress/edit-post';
 
 import pluginMetaHandler from '../../util/plugin-meta-handler';
 
-import ContactControl from './contact-control';
-import LocationControl from './location-control';
+import PostSelectControl from '../../components/post-select-control';
 
 const render = pluginMetaHandler( {
 	location: {
@@ -45,15 +44,21 @@ const render = pluginMetaHandler( {
 				className="fse-event-location-contact"
 				title={ __( 'Location & Contact', 'full-score-events' ) }
 			>
-				<LocationControl
-					location={ location }
-					locationPost={ locationPost }
-					setLocation={ setLocation }
+				<PostSelectControl
+					label={ __( 'Location', 'full-score-events' ) }
+					selectLabel={ __( 'location', 'full-score-events' ) }
+					postType="fse_location"
+					postId={ location }
+					post={ locationPost }
+					setPostId={ setLocation }
 				/>
-				<ContactControl
-					contact={ contact }
-					contactPost={ contactPost }
-					setContact={ setContact }
+				<PostSelectControl
+					label={ __( 'Primary Contact', 'full-score-events' ) }
+					selectLabel={ __( 'staff member', 'full-score-events' ) }
+					postType="fse_staff"
+					postId={ contact }
+					post={ contactPost }
+					setPostId={ setContact }
 				/>
 			</PluginDocumentSettingPanel>
 		);

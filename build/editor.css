@@ -19,12 +19,6 @@
   padding: 0;
   list-style-type: none; }
 
-.fse-post-select-control {
-  margin-bottom: 16px; }
-
-.fse-post-select-remove.is-link {
-  margin-top: 4px; }
-
 /**
  * DateTimeControl component styling
  *
@@ -42,6 +36,18 @@
  */
 .fse-event-registration-type {
   margin-bottom: 10px; }
+
+/**
+ * PostSelectControl component styling
+ *
+ * @since   1.0.0
+ * @package Full_Score_Events
+ */
+.fse-post-select-control {
+  margin-bottom: 16px; }
+
+.fse-post-select-remove.is-link {
+  margin-top: 4px; }
 
 /**
  * Schedule block editor adjustments

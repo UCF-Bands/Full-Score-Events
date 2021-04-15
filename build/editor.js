@@ -38466,6 +38466,92 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/editor/components/post-select-control/index.js":
+/*!************************************************************!*\
+  !*** ./src/editor/components/post-select-control/index.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_select_async__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-select/async */ "./node_modules/react-select/async/dist/react-select.browser.esm.js");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _util_get_api_options__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util/get-api-options */ "./src/editor/util/get-api-options.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./index.scss */ "./src/editor/components/post-select-control/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_5__);
+
+
+/**
+ * Post selection control
+ *
+ * @since 1.0.0
+ */
+
+
+
+
+
+
+var PostSelectControl = function PostSelectControl(_ref) {
+  var label = _ref.label,
+      selectLabel = _ref.selectLabel,
+      postType = _ref.postType,
+      postId = _ref.postId,
+      post = _ref.post,
+      setPostId = _ref.setPostId;
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["BaseControl"], {
+    className: "fse-".concat(postType, "-control fse-post-select-control"),
+    id: "fse-".concat(postType, "-select"),
+    label: label
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(react_select_async__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    name: "kb-post-select",
+    value: post ? {
+      label: post.title.rendered,
+      value: postId
+    } : {},
+    onChange: function onChange(option) {
+      return setPostId(option.value);
+    },
+    loadOptions: function loadOptions(inputValue, callback) {
+      return Object(_util_get_api_options__WEBPACK_IMPORTED_MODULE_4__["default"])(postType, inputValue, callback);
+    },
+    placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["sprintf"])( // Translators: Start typing the name of a %s…
+    Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Start typing the name of a %s…', 'full-score-events'), selectLabel),
+    noOptionsMessage: function noOptionsMessage() {
+      return Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["sprintf"])( // Translators: No options. Start typing the name of a %s
+      Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('No options. Start typing the name of a %s', 'full-score-events'), selectLabel);
+    }
+  }), post && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Button"], {
+    className: "fse-".concat(postType, "-remove fse-post-select-remove"),
+    isLink: true,
+    isDestructive: true,
+    onClick: function onClick() {
+      return setPostId(0);
+    }
+  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Remove', 'full-score-events')));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (PostSelectControl);
+
+/***/ }),
+
+/***/ "./src/editor/components/post-select-control/index.scss":
+/*!**************************************************************!*\
+  !*** ./src/editor/components/post-select-control/index.scss ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "./src/editor/components/post-select-wrapper/index.js":
 /*!************************************************************!*\
   !*** ./src/editor/components/post-select-wrapper/index.js ***!
@@ -38837,74 +38923,6 @@ Object(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_2__["registerPlugin"])('fse-e
 
 /***/ }),
 
-/***/ "./src/editor/plugins/event-location-contact/contact-control.js":
-/*!**********************************************************************!*\
-  !*** ./src/editor/plugins/event-location-contact/contact-control.js ***!
-  \**********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_select_async__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-select/async */ "./node_modules/react-select/async/dist/react-select.browser.esm.js");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _util_get_api_options__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util/get-api-options */ "./src/editor/util/get-api-options.js");
-
-
-/**
- * Event primary contact staff post selection control
- *
- * @todo  Combine this and location-control into a post-select-control?
- * @since 1.0.0
- */
-
-
-
-
-
-var ContactControl = function ContactControl(_ref) {
-  var contact = _ref.contact,
-      contactPost = _ref.contactPost,
-      setContact = _ref.setContact;
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["BaseControl"], {
-    className: "fse-contact-control fse-post-select-control",
-    id: "fse-contact-select",
-    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Primary Contact', 'full-score-events')
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(react_select_async__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    name: "kb-post-select",
-    value: contactPost ? {
-      label: contactPost.title.rendered,
-      value: contact
-    } : {},
-    onChange: function onChange(option) {
-      return setContact(option.value);
-    },
-    loadOptions: function loadOptions(inputValue, callback) {
-      return Object(_util_get_api_options__WEBPACK_IMPORTED_MODULE_4__["default"])('fse_staff', inputValue, callback);
-    },
-    placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Start typing staff name', 'full-score-events'),
-    noOptionsMessage: function noOptionsMessage() {
-      return Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('No options. Start typing staff name', 'full-score-events');
-    }
-  }), contactPost && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Button"], {
-    className: "fse-contact-remove fse-post-select-remove",
-    isLink: true,
-    isDestructive: true,
-    onClick: function onClick() {
-      return setContact(0);
-    }
-  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Remove', 'full-score-events')));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (ContactControl);
-
-/***/ }),
-
 /***/ "./src/editor/plugins/event-location-contact/index.js":
 /*!************************************************************!*\
   !*** ./src/editor/plugins/event-location-contact/index.js ***!
@@ -38923,8 +38941,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/edit-post */ "@wordpress/edit-post");
 /* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util/plugin-meta-handler */ "./src/editor/util/plugin-meta-handler.js");
-/* harmony import */ var _contact_control__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./contact-control */ "./src/editor/plugins/event-location-contact/contact-control.js");
-/* harmony import */ var _location_control__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./location-control */ "./src/editor/plugins/event-location-contact/location-control.js");
+/* harmony import */ var _components_post_select_control__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/post-select-control */ "./src/editor/components/post-select-control/index.js");
 
 
 /**
@@ -38933,7 +38950,6 @@ __webpack_require__.r(__webpack_exports__);
  * @since 1.0.0
  * @see   https://github.com/WordPress/gutenberg/blob/c88866cd91ea3eb7990a68978e03e2366ed7106c/packages/editor/src/components/post-author/index.js
  */
-
 
 
 
@@ -38967,14 +38983,20 @@ var render = Object(_util_plugin_meta_handler__WEBPACK_IMPORTED_MODULE_4__["defa
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_3__["PluginDocumentSettingPanel"], {
     className: "fse-event-location-contact",
     title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Location & Contact', 'full-score-events')
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_location_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    location: location,
-    locationPost: locationPost,
-    setLocation: setLocation
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_contact_control__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    contact: contact,
-    contactPost: contactPost,
-    setContact: setContact
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_components_post_select_control__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Location', 'full-score-events'),
+    selectLabel: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('location', 'full-score-events'),
+    postType: "fse_location",
+    postId: location,
+    post: locationPost,
+    setPostId: setLocation
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_components_post_select_control__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Primary Contact', 'full-score-events'),
+    selectLabel: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('staff member', 'full-score-events'),
+    postType: "fse_staff",
+    postId: contact,
+    post: contactPost,
+    setPostId: setContact
   }));
 }); // register the sidebar plugin
 
@@ -38982,73 +39004,6 @@ Object(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_2__["registerPlugin"])('fse-e
   render: render,
   icon: 'location'
 });
-
-/***/ }),
-
-/***/ "./src/editor/plugins/event-location-contact/location-control.js":
-/*!***********************************************************************!*\
-  !*** ./src/editor/plugins/event-location-contact/location-control.js ***!
-  \***********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_select_async__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-select/async */ "./node_modules/react-select/async/dist/react-select.browser.esm.js");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _util_get_api_options__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util/get-api-options */ "./src/editor/util/get-api-options.js");
-
-
-/**
- * Event location post selection control
- *
- * @since 1.0.0
- */
-
-
-
-
-
-var LocationControl = function LocationControl(_ref) {
-  var location = _ref.location,
-      locationPost = _ref.locationPost,
-      setLocation = _ref.setLocation;
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["BaseControl"], {
-    className: "fse-location-control fse-post-select-control",
-    id: "fse-location-select",
-    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Location', 'full-score-events')
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(react_select_async__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    name: "kb-post-select",
-    value: locationPost ? {
-      label: locationPost.title.rendered,
-      value: location
-    } : {},
-    onChange: function onChange(option) {
-      return setLocation(option.value);
-    },
-    loadOptions: function loadOptions(inputValue, callback) {
-      return Object(_util_get_api_options__WEBPACK_IMPORTED_MODULE_4__["default"])('fse_location', inputValue, callback);
-    },
-    placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Start typing location name', 'full-score-events'),
-    noOptionsMessage: function noOptionsMessage() {
-      return Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('No options. Start typing location name', 'full-score-events');
-    }
-  }), locationPost && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Button"], {
-    className: "fse-location-remove fse-post-select-remove",
-    isLink: true,
-    isDestructive: true,
-    onClick: function onClick() {
-      return setLocation(0);
-    }
-  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Remove', 'full-score-events')));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (LocationControl);
 
 /***/ }),
 
