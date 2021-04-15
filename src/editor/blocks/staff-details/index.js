@@ -20,10 +20,10 @@ if ( fullScoreEventsEditor.currentCPT === 'fse_staff' ) {
 		category: 'fse-event',
 
 		attributes: {
-			title: {
+			position: {
 				type: 'string',
 				source: 'meta',
-				meta: '_title',
+				meta: '_position',
 			},
 			phone: {
 				type: 'string',

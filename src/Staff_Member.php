@@ -23,14 +23,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Staff_Member extends Post {
 
 	/**
-	 * Get title
+	 * Get position
 	 *
 	 * @since 1.0.0
 	 *
 	 * @return string
 	 */
-	public function get_title() {
-		return $this->get( '_title' );
+	public function get_position() {
+		return $this->get( '_position' );
 	}
 
 	/**

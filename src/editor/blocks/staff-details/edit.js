@@ -11,16 +11,16 @@ import icons from '../../../icons';
 
 export default function edit( { attributes, setAttributes } ) {
 	const blockProps = useBlockProps(),
-		{ title, phoneDisplay, email } = attributes;
+		{ position, phoneDisplay, email } = attributes;
 
 	return (
 		<div { ...blockProps }>
 			<RichText
 				tagName="h3"
-				className="fse-staff-detail-edit fse-staff-title-edit"
+				className="fse-staff-detail-edit fse-staff-position-edit"
 				placeholder={ __( 'Director of Bands', 'full-score-events' ) }
-				value={ title }
-				onChange={ ( value ) => setAttributes( { title: value } ) }
+				value={ position }
+				onChange={ ( value ) => setAttributes( { position: value } ) }
 				allowedFormats={ [] }
 				autocompleters={ [] }
 			/>
