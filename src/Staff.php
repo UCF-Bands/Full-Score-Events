@@ -72,7 +72,7 @@ class Staff extends Post_Type {
 	public function do_meta_registration() {
 
 		foreach ( [
-			'_title',
+			'_position',
 			'_phone',
 			'_phone_display',
 			'_email',
@@ -150,53 +150,65 @@ class Staff extends Post_Type {
 		return __( "Staff member's name", 'full-score-events' );
 	}
 
-	// /**
-	//  * Manage admin columns
-	//  *
-	//  * @param  array $columns Column headings.
-	//  * @return array $columns
-	//  *
-	//  * @since 1.0.0
-	//  */
-	// public function set_posts_columns( $columns ) {
+	/**
+	 * Manage admin columns
+	 *
+	 * @param  array $columns Column headings.
+	 * @return array $columns
+	 *
+	 * @since 1.0.0
+	 */
+	public function set_posts_columns( $columns ) {
 
-	// 	// Move date column to end.
-	// 	$date = $columns['date'] ?? false;
-	// 	unset( $columns['date'] );
+		// Move title and date columns.
+		$title = $columns['title'] ?? false;
+		$date  = $columns['date'] ?? false;
+		unset( $columns['title'], $columns['date'] );
 
-	// 	$columns['address'] = __( 'Address', 'full-score-events' );
+		$columns['thumbnail'] = __( 'Photo', 'full-score-events' );
 
-	// 	if ( $date ) {
-	// 		$columns['date'] = $date;
-	// 	}
+		if ( $title ) {
+			$columns['title'] = $title;
+		}
 
-	// 	return $columns;
-	// }
+		$columns['title']    = __( 'Name', 'full-score-events' );
+		$columns['position'] = __( 'Title', 'full-score-events' );
+		$columns['email']    = __( 'Email', 'full-score-events' );
+		$columns['phone']    = __( 'Phone', 'full-score-events' );
 
-	// /**
-	//  * Set value of custom admin column
-	//  *
-	//  * @param string $name  Column name.
-	//  * @since 1.0.0
-	//  */
-	// public function do_custom_column( $name ) {
+		if ( $date ) {
+			$columns['date'] = $date;
+		}
 
-	// 	if ( 'address' !== $name ) {
-	// 		return;
-	// 	}
+		return $columns;
+	}
 
-	// 	global $fse_location;
+	/**
+	 * Set value of custom admin column
+	 *
+	 * @param string $name  Column name.
+	 * @since 1.0.0
+	 */
+	public function do_custom_column( $name ) {
 
-	// 	$fse_location->do_address( true, false );
+		global $fse_staff_member;
 
-	// 	$map = $fse_location->get_map_url();
+		switch ( $name ) {
+			case 'thumbnail':
+				the_post_thumbnail( [ 100, 100 ] );
+				return;
 
-	// 	if ( $map ) {
-	// 		printf(
-	// 			'<a href="%s" target="_blank" rel="nofollow noopener">%s <span class="dashicons dashicons-external"></span></a>',
-	// 			esc_attr( $map ),
-	// 			esc_html__( 'View Map', 'full-score-events' )
-	// 		);
-	// 	}
-	// }
+			case 'position':
+				$fse_staff_member->do_position();
+				return;
+
+			case 'email':
+				$fse_staff_member->do_email();
+				return;
+
+			case 'phone':
+				$fse_staff_member->do_phone_display();
+				return;
+		}
+	}
 }
