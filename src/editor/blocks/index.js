@@ -23,7 +23,8 @@ import './program';
 
 import './location-details';
 import './location';
-// import './zombie-schedule-edit';
+
+import './staff-details';
 
 import './upcoming-events';
 import './next-event';
