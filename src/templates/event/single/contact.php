@@ -23,8 +23,6 @@ $contact = $fse_event->get_contact();
 if ( ! $contact ) {
 	return;
 }
-
-$contact = new Staff_Member( $contact );
 ?>
 
 <section class="fse-event-contact">
