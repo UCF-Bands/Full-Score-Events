@@ -35938,22 +35938,18 @@ function Edit(_ref) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _icons_info_circle_svg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../icons/info-circle.svg */ "./src/icons/info-circle.svg");
-/* harmony import */ var _icons_check_square_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../icons/check-square.svg */ "./src/icons/check-square.svg");
-/* harmony import */ var _icons_exclamation_triangle_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../icons/exclamation-triangle.svg */ "./src/icons/exclamation-triangle.svg");
+/* harmony import */ var _icons__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../icons */ "./src/icons/index.js");
 /**
  * Prep callout icons
  *
  * @since 1.0.0
  */
 
-
-
 /* harmony default export */ __webpack_exports__["default"] = ({
-  info: _icons_info_circle_svg__WEBPACK_IMPORTED_MODULE_0__["ReactComponent"],
-  success: _icons_check_square_svg__WEBPACK_IMPORTED_MODULE_1__["ReactComponent"],
-  warning: _icons_exclamation_triangle_svg__WEBPACK_IMPORTED_MODULE_2__["ReactComponent"],
-  error: _icons_exclamation_triangle_svg__WEBPACK_IMPORTED_MODULE_2__["ReactComponent"]
+  info: _icons__WEBPACK_IMPORTED_MODULE_0__["default"].infoCircle,
+  success: _icons__WEBPACK_IMPORTED_MODULE_0__["default"].checkSquare,
+  warning: _icons__WEBPACK_IMPORTED_MODULE_0__["default"].exclamationTriangle,
+  error: _icons__WEBPACK_IMPORTED_MODULE_0__["default"].exclamationTriangle
 });
 
 /***/ }),
@@ -36075,8 +36071,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _program__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./program */ "./src/editor/blocks/program/index.js");
 /* harmony import */ var _location_details__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./location-details */ "./src/editor/blocks/location-details/index.js");
 /* harmony import */ var _location__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./location */ "./src/editor/blocks/location/index.js");
-/* harmony import */ var _upcoming_events__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./upcoming-events */ "./src/editor/blocks/upcoming-events/index.js");
-/* harmony import */ var _next_event__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./next-event */ "./src/editor/blocks/next-event/index.js");
+/* harmony import */ var _staff_details__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./staff-details */ "./src/editor/blocks/staff-details/index.js");
+/* harmony import */ var _upcoming_events__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./upcoming-events */ "./src/editor/blocks/upcoming-events/index.js");
+/* harmony import */ var _next_event__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./next-event */ "./src/editor/blocks/next-event/index.js");
 /**
  * Custom blocks
  *
@@ -36097,7 +36094,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- // import './zombie-schedule-edit';
+
 
 
 
@@ -37871,6 +37868,150 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_4__["registerBlockType"])('ful
 
 /***/ }),
 
+/***/ "./src/editor/blocks/staff-details/edit.js":
+/*!*************************************************!*\
+  !*** ./src/editor/blocks/staff-details/edit.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return edit; });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../icons */ "./src/icons/index.js");
+
+
+/**
+ * Staff details block edit
+ *
+ * @since 1.0.0
+ */
+
+
+
+function edit(_ref) {
+  var attributes = _ref.attributes,
+      setAttributes = _ref.setAttributes;
+  var blockProps = Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["useBlockProps"])(),
+      title = attributes.title,
+      phoneDisplay = attributes.phoneDisplay,
+      email = attributes.email;
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", blockProps, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["RichText"], {
+    tagName: "h3",
+    className: "fse-staff-detail-edit fse-staff-title-edit",
+    placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Director of Bands', 'full-score-events'),
+    value: title,
+    onChange: function onChange(value) {
+      return setAttributes({
+        title: value
+      });
+    },
+    allowedFormats: [],
+    autocompleters: []
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
+    className: "fse-staff-detail-edit fse-staff-email-edit"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("strong", null, _icons__WEBPACK_IMPORTED_MODULE_3__["default"].envelope(), " ", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["RichText"], {
+    tagName: "span",
+    className: "fse-staff-detail-value fse-staff-email-value",
+    placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('tkizer@ucf.edu', 'full-score-events'),
+    value: email,
+    onChange: function onChange(value) {
+      return setAttributes({
+        email: value
+      });
+    },
+    allowedFormats: [],
+    autocompleters: []
+  }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
+    className: "fse-staff-detail-edit fse-staff-phone-edit"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("strong", null, _icons__WEBPACK_IMPORTED_MODULE_3__["default"].phone(), " ", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["RichText"], {
+    tagName: "span",
+    className: "fse-staff-detail-value fse-staff-phone-value",
+    placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('(123) 456-7890', 'full-score-events'),
+    value: phoneDisplay,
+    onChange: function onChange(value) {
+      return setAttributes({
+        phoneDisplay: value,
+        phone: value.replace(/\D/g, '') // digits only
+
+      });
+    },
+    allowedFormats: [],
+    autocompleters: []
+  }))));
+}
+
+/***/ }),
+
+/***/ "./src/editor/blocks/staff-details/index.js":
+/*!**************************************************!*\
+  !*** ./src/editor/blocks/staff-details/index.js ***!
+  \**************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/index.js");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edit */ "./src/editor/blocks/staff-details/edit.js");
+/**
+ * Staff details block
+ *
+ * @since 1.0.0
+ */
+
+
+
+ // only allow staff details in staff CPT
+
+if (fullScoreEventsEditor.currentCPT === 'fse_staff') {
+  Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('full-score-events/staff-details', {
+    apiVersion: 2,
+    title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Staff Title & Contacts', 'full-score-events'),
+    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_2__["people"],
+    keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('staff'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('faculty'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('team')],
+    category: 'fse-event',
+    attributes: {
+      title: {
+        type: 'string',
+        source: 'meta',
+        meta: '_title'
+      },
+      phone: {
+        type: 'string',
+        source: 'meta',
+        meta: '_phone'
+      },
+      phoneDisplay: {
+        type: 'string',
+        source: 'meta',
+        meta: '_phone_display'
+      },
+      email: {
+        type: 'string',
+        source: 'meta',
+        meta: '_email'
+      }
+    },
+    edit: _edit__WEBPACK_IMPORTED_MODULE_3__["default"],
+    save: function save() {
+      return null;
+    }
+  });
+}
+
+/***/ }),
+
 /***/ "./src/editor/blocks/upcoming-events/edit.js":
 /*!***************************************************!*\
   !*** ./src/editor/blocks/upcoming-events/edit.js ***!
@@ -39487,6 +39628,42 @@ function SvgCheckSquare(props) {
 
 /***/ }),
 
+/***/ "./src/icons/envelope.svg":
+/*!********************************!*\
+  !*** ./src/icons/envelope.svg ***!
+  \********************************/
+/*! exports provided: default, ReactComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReactComponent", function() { return SvgEnvelope; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+
+
+var _ref = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("path", {
+  fill: "currentColor",
+  d: "M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"
+});
+
+function SvgEnvelope(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("svg", _extends({
+    "aria-hidden": "true",
+    "data-prefix": "far",
+    "data-fse-icon": "envelope",
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 512 512"
+  }, props), _ref);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSIgZGF0YS1wcmVmaXg9ImZhciIgZGF0YS1mc2UtaWNvbj0iZW52ZWxvcGUiIHJvbGU9ImltZyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PHBhdGggZmlsbD0iY3VycmVudENvbG9yIiBkPSJNNDY0IDY0SDQ4QzIxLjQ5IDY0IDAgODUuNDkgMCAxMTJ2Mjg4YzAgMjYuNTEgMjEuNDkgNDggNDggNDhoNDE2YzI2LjUxIDAgNDgtMjEuNDkgNDgtNDhWMTEyYzAtMjYuNTEtMjEuNDktNDgtNDgtNDh6bTAgNDh2NDAuODA1Yy0yMi40MjIgMTguMjU5LTU4LjE2OCA0Ni42NTEtMTM0LjU4NyAxMDYuNDktMTYuODQxIDEzLjI0Ny01MC4yMDEgNDUuMDcyLTczLjQxMyA0NC43MDEtMjMuMjA4LjM3NS01Ni41NzktMzEuNDU5LTczLjQxMy00NC43MDFDMTA2LjE4IDE5OS40NjUgNzAuNDI1IDE3MS4wNjcgNDggMTUyLjgwNVYxMTJoNDE2ek00OCA0MDBWMjE0LjM5OGMyMi45MTQgMTguMjUxIDU1LjQwOSA0My44NjIgMTA0LjkzOCA4Mi42NDYgMjEuODU3IDE3LjIwNSA2MC4xMzQgNTUuMTg2IDEwMy4wNjIgNTQuOTU1IDQyLjcxNy4yMzEgODAuNTA5LTM3LjE5OSAxMDMuMDUzLTU0Ljk0NyA0OS41MjgtMzguNzgzIDgyLjAzMi02NC40MDEgMTA0Ljk0Ny04Mi42NTNWNDAwSDQ4eiI+PC9wYXRoPjwvc3ZnPg==");
+
+
+/***/ }),
+
 /***/ "./src/icons/exclamation-triangle.svg":
 /*!********************************************!*\
   !*** ./src/icons/exclamation-triangle.svg ***!
@@ -39523,6 +39700,40 @@ function SvgExclamationTriangle(props) {
 
 /***/ }),
 
+/***/ "./src/icons/index.js":
+/*!****************************!*\
+  !*** ./src/icons/index.js ***!
+  \****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _info_circle_svg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./info-circle.svg */ "./src/icons/info-circle.svg");
+/* harmony import */ var _check_square_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./check-square.svg */ "./src/icons/check-square.svg");
+/* harmony import */ var _exclamation_triangle_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./exclamation-triangle.svg */ "./src/icons/exclamation-triangle.svg");
+/* harmony import */ var _phone_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./phone.svg */ "./src/icons/phone.svg");
+/* harmony import */ var _envelope_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./envelope.svg */ "./src/icons/envelope.svg");
+/**
+ * Prep icons
+ *
+ * @since 1.0.0
+ */
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  infoCircle: _info_circle_svg__WEBPACK_IMPORTED_MODULE_0__["ReactComponent"],
+  checkSquare: _check_square_svg__WEBPACK_IMPORTED_MODULE_1__["ReactComponent"],
+  exclamationTriangle: _exclamation_triangle_svg__WEBPACK_IMPORTED_MODULE_2__["ReactComponent"],
+  phone: _phone_svg__WEBPACK_IMPORTED_MODULE_3__["ReactComponent"],
+  envelope: _envelope_svg__WEBPACK_IMPORTED_MODULE_4__["ReactComponent"]
+});
+
+/***/ }),
+
 /***/ "./src/icons/info-circle.svg":
 /*!***********************************!*\
   !*** ./src/icons/info-circle.svg ***!
@@ -39555,6 +39766,42 @@ function SvgInfoCircle(props) {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSIgZGF0YS1wcmVmaXg9ImZhciIgZGF0YS1mc2UtaWNvbj0iaW5mby1jaXJjbGUiIHJvbGU9ImltZyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PHBhdGggZmlsbD0iY3VycmVudENvbG9yIiBkPSJNMjU2IDhDMTE5LjA0MyA4IDggMTE5LjA4MyA4IDI1NmMwIDEzNi45OTcgMTExLjA0MyAyNDggMjQ4IDI0OHMyNDgtMTExLjAwMyAyNDgtMjQ4QzUwNCAxMTkuMDgzIDM5Mi45NTcgOCAyNTYgOHptMCA0NDhjLTExMC41MzIgMC0yMDAtODkuNDMxLTIwMC0yMDAgMC0xMTAuNDk1IDg5LjQ3Mi0yMDAgMjAwLTIwMCAxMTAuNDkxIDAgMjAwIDg5LjQ3MSAyMDAgMjAwIDAgMTEwLjUzLTg5LjQzMSAyMDAtMjAwIDIwMHptMC0zMzhjMjMuMTk2IDAgNDIgMTguODA0IDQyIDQycy0xOC44MDQgNDItNDIgNDItNDItMTguODA0LTQyLTQyIDE4LjgwNC00MiA0Mi00MnptNTYgMjU0YzAgNi42MjctNS4zNzMgMTItMTIgMTJoLTg4Yy02LjYyNyAwLTEyLTUuMzczLTEyLTEydi0yNGMwLTYuNjI3IDUuMzczLTEyIDEyLTEyaDEydi02NGgtMTJjLTYuNjI3IDAtMTItNS4zNzMtMTItMTJ2LTI0YzAtNi42MjcgNS4zNzMtMTIgMTItMTJoNjRjNi42MjcgMCAxMiA1LjM3MyAxMiAxMnYxMDBoMTJjNi42MjcgMCAxMiA1LjM3MyAxMiAxMnYyNHoiPjwvcGF0aD48L3N2Zz4=");
+
+
+/***/ }),
+
+/***/ "./src/icons/phone.svg":
+/*!*****************************!*\
+  !*** ./src/icons/phone.svg ***!
+  \*****************************/
+/*! exports provided: default, ReactComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReactComponent", function() { return SvgPhone; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+
+
+var _ref = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("path", {
+  fill: "currentColor",
+  d: "M476.5 22.9L382.3 1.2c-21.6-5-43.6 6.2-52.3 26.6l-43.5 101.5c-8 18.6-2.6 40.6 13.1 53.4l40 32.7C311 267.8 267.8 311 215.4 339.5l-32.7-40c-12.8-15.7-34.8-21.1-53.4-13.1L27.7 329.9c-20.4 8.7-31.5 30.7-26.6 52.3l21.7 94.2c4.8 20.9 23.2 35.5 44.6 35.5C312.3 512 512 313.7 512 67.5c0-21.4-14.6-39.8-35.5-44.6zM69.3 464l-20.9-90.7 98.2-42.1 55.7 68.1c98.8-46.4 150.6-98 197-197l-68.1-55.7 42.1-98.2L464 69.3C463 286.9 286.9 463 69.3 464z"
+});
+
+function SvgPhone(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("svg", _extends({
+    "aria-hidden": "true",
+    "data-prefix": "far",
+    "data-fse-icon": "phone",
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 512 512"
+  }, props), _ref);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSIgZGF0YS1wcmVmaXg9ImZhciIgZGF0YS1mc2UtaWNvbj0icGhvbmUiIHJvbGU9ImltZyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PHBhdGggZmlsbD0iY3VycmVudENvbG9yIiBkPSJNNDc2LjUgMjIuOUwzODIuMyAxLjJjLTIxLjYtNS00My42IDYuMi01Mi4zIDI2LjZsLTQzLjUgMTAxLjVjLTggMTguNi0yLjYgNDAuNiAxMy4xIDUzLjRsNDAgMzIuN0MzMTEgMjY3LjggMjY3LjggMzExIDIxNS40IDMzOS41bC0zMi43LTQwYy0xMi44LTE1LjctMzQuOC0yMS4xLTUzLjQtMTMuMUwyNy43IDMyOS45Yy0yMC40IDguNy0zMS41IDMwLjctMjYuNiA1Mi4zbDIxLjcgOTQuMmM0LjggMjAuOSAyMy4yIDM1LjUgNDQuNiAzNS41QzMxMi4zIDUxMiA1MTIgMzEzLjcgNTEyIDY3LjVjMC0yMS40LTE0LjYtMzkuOC0zNS41LTQ0LjZ6TTY5LjMgNDY0bC0yMC45LTkwLjcgOTguMi00Mi4xIDU1LjcgNjguMWM5OC44LTQ2LjQgMTUwLjYtOTggMTk3LTE5N2wtNjguMS01NS43IDQyLjEtOTguMkw0NjQgNjkuM0M0NjMgMjg2LjkgMjg2LjkgNDYzIDY5LjMgNDY0eiI+PC9wYXRoPjwvc3ZnPg==");
 
 
 /***/ }),

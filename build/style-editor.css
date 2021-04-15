@@ -31,6 +31,7 @@
   --fse-event-card-link-offset: calc(var(--fse-bsu) * 2.5); }
 
 .fse-featured-heading,
+.fse-callout-message,
 .fse-event-title,
 .fse-season-label,
 .fse-upcoming-events .fse-event-title {
