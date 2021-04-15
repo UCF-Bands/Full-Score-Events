@@ -4,13 +4,11 @@
  * @since 1.0.0
  */
 
-import { ReactComponent as InfoCircle } from '../../../icons/info-circle.svg';
-import { ReactComponent as CheckSquare } from '../../../icons/check-square.svg';
-import { ReactComponent as ExclamationTriangle } from '../../../icons/exclamation-triangle.svg';
+import icons from '../../../icons';
 
 export default {
-	info: InfoCircle,
-	success: CheckSquare,
-	warning: ExclamationTriangle,
-	error: ExclamationTriangle,
+	info: icons.infoCircle,
+	success: icons.checkSquare,
+	warning: icons.exclamationTriangle,
+	error: icons.exclamationTriangle,
 };
