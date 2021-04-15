@@ -338,7 +338,9 @@ function get_can_view_post( $post_id ) {
  * @return boolean|Location
  */
 function get_location( $post_id ) {
-	return $post_id && get_can_view_post( $post_id ) ? new Location( $post_id ) : false;
+	return $post_id && Locations::CPT_KEY === get_post_type( $post_id ) && get_can_view_post( $post_id )
+		? new Location( $post_id )
+		: false;
 }
 
 /**
@@ -352,7 +354,9 @@ function get_location( $post_id ) {
  * @return boolean|Staff_Member
  */
 function get_staff_member( $post_id ) {
-	return $post_id && get_can_view_post( $post_id ) ? new Staff_Member( $post_id ) : false;
+	return $post_id && Staff::CPT_KEY === get_post_type( $post_id ) && get_can_view_post( $post_id )
+		? new Staff_Member( $post_id )
+		: false;
 }
 
 /**
