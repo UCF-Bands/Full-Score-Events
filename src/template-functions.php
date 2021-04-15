@@ -351,6 +351,25 @@ function set_excerpt_length( $length ) {
 }
 add_filter( 'excerpt_length', __NAMESPACE__ . '\set_excerpt_length', 25 );
 
+/**
+ * Append staff contacts to its post content
+ *
+ * @since 1.0.0
+ *
+ * @param  string $content  Staff post content.
+ * @return string
+ */
+function add_staff_contacts_to_content( $content ) {
+
+	if ( Staff::CPT_KEY !== get_post_type() ) {
+		return $content;
+	}
+
+	ob_start();
+	get_plugin_template( 'staff/contacts' );
+	return ob_get_clean() . $content;
+}
+add_filter( 'the_content', __NAMESPACE__ . '\add_staff_contacts_to_content' );
 
 /**
  * Add misc. conditional body classes
