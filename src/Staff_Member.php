@@ -74,6 +74,15 @@ class Staff_Member extends Post {
 	}
 
 	/**
+	 * Output phone number for attribute (numbers only)
+	 *
+	 * @since 1.0.0
+	 */
+	public function do_phone() {
+		echo esc_attr( $this->get_phone() );
+	}
+
+	/**
 	 * Get user-facing phone number
 	 *
 	 * @since 1.0.0
