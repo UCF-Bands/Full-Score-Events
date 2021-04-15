@@ -134,9 +134,9 @@ class Staff extends Post_Type {
 				'pages'      => true,
 				'feeds'      => true,
 			],
-			// 'template'            => [
-			// 	[ 'full-score-events/location-details' ],
-			// ],
+			'template'            => [
+				[ 'full-score-events/staff-details' ],
+			],
 		];
 	}
 
