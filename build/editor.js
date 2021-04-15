@@ -37899,17 +37899,17 @@ function edit(_ref) {
   var attributes = _ref.attributes,
       setAttributes = _ref.setAttributes;
   var blockProps = Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["useBlockProps"])(),
-      title = attributes.title,
+      position = attributes.position,
       phoneDisplay = attributes.phoneDisplay,
       email = attributes.email;
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", blockProps, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["RichText"], {
     tagName: "h3",
-    className: "fse-staff-detail-edit fse-staff-title-edit",
+    className: "fse-staff-detail-edit fse-staff-position-edit",
     placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Director of Bands', 'full-score-events'),
-    value: title,
+    value: position,
     onChange: function onChange(value) {
       return setAttributes({
-        title: value
+        position: value
       });
     },
     allowedFormats: [],
@@ -37982,10 +37982,10 @@ if (fullScoreEventsEditor.currentCPT === 'fse_staff') {
     keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('staff'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('faculty'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('team')],
     category: 'fse-event',
     attributes: {
-      title: {
+      position: {
         type: 'string',
         source: 'meta',
-        meta: '_title'
+        meta: '_position'
       },
       phone: {
         type: 'string',
