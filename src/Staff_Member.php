@@ -34,6 +34,15 @@ class Staff_Member extends Post {
 	}
 
 	/**
+	 * Output position
+	 *
+	 * @since 1.0.0
+	 */
+	public function do_position() {
+		echo esc_html( $this->get_position() );
+	}
+
+	/**
 	 * Get email address
 	 *
 	 * @since 1.0.0
@@ -42,6 +51,15 @@ class Staff_Member extends Post {
 	 */
 	public function get_email() {
 		return $this->get( '_email' );
+	}
+
+	/**
+	 * Output email
+	 *
+	 * @since 1.0.0
+	 */
+	public function do_email() {
+		echo esc_html( $this->get_email() );
 	}
 
 	/**
@@ -64,5 +82,14 @@ class Staff_Member extends Post {
 	 */
 	public function get_phone_display() {
 		return $this->get( '_phone_display' );
+	}
+
+	/**
+	 * Output user-facing phone number
+	 *
+	 * @since 1.0.0
+	 */
+	public function do_phone_display() {
+		echo esc_html( $this->get_phone_display() );
 	}
 }
