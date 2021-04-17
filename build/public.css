@@ -214,6 +214,7 @@ span.fse-event-registration-label {
   margin-top: var(--fse-event-header-title-offset); }
 
 .fse-event-single-thumbnail {
+  display: block;
   width: 100%; }
 
 .fse-event-content-wrap {
