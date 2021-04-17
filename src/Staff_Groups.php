@@ -141,7 +141,7 @@ class Staff_Groups extends Taxonomy {
 					[
 						'name'             => 'fse_associated_page',
 						'id'               => 'fse_associated_page',
-						'selected'         => esc_attr( get_term_meta( $term->term_id, 'fse_associated_page', true ) ),
+						'selected'         => esc_attr( static::get_associated_page( $term ) ),
 						'show_option_none' => esc_attr_x( 'None', 'staff_group_associated_page', 'full-score-events' ),
 					]
 				);
@@ -170,5 +170,15 @@ class Staff_Groups extends Taxonomy {
 		}
 
 		update_term_meta( $term_id, 'fse_associated_page', $associated_page );
+	}
+
+	/**
+	 * Get the group's associated page
+	 *
+	 * @param WP_Term|integer $term  Term object or ID.
+	 */
+	public static function get_associated_page( $term ) {
+		$term = is_numeric( $term ) ? get_term( $term, self::TAX_KEY ) : $term;
+		return get_term_meta( $term->term_id, 'fse_associated_page', true ) ?: false;
 	}
 }
