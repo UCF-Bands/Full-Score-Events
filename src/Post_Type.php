@@ -257,7 +257,7 @@ abstract class Post_Type {
 
 		// Assign global loop object. Ex: global $fse_schedule will be an
 		// instance of Full_Score_Events\Schedule.
-		$GLOBALS[ "fse_{$this->loop_global_name}" ] = new $post_class( $post->ID );
+		$GLOBALS[ "fse_{$this->loop_global_name}" ] = new $post_class( $post );
 
 		return $GLOBALS[ "fse_{$this->loop_global_name}" ];
 	}
