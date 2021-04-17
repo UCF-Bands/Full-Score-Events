@@ -21,6 +21,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Post {
 
 	/**
+	 * Associated post object
+	 *
+	 * @since 1.0.0
+	 * @var   WP_Post
+	 */
+	private $post;
+
+	/**
 	 * Associated post ID
 	 *
 	 * @since 1.0.0
@@ -41,10 +49,32 @@ class Post {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param integer $post_id  Associated post ID.
+	 * @param WP_Post|integer $post  Associated post ID.
 	 */
-	public function __construct( $post_id = null ) {
-		$this->id = $post_id ?? get_the_ID();
+	public function __construct( $post = null ) {
+
+		if ( is_a( $post, 'WP_Post' ) ) {
+			$this->post = $post;
+			$this->id   = $post->ID;
+		} else {
+			$this->id = $post ?? get_the_ID();
+		}
+	}
+
+	/**
+	 * Get associated post object
+	 *
+	 * @return WP_Post
+	 * @since  1.0.0
+	 */
+	public function get_post() {
+
+		if ( isset( $this->post ) ) {
+			return $this->post;
+		}
+
+		$this->post = get_post( $this->get_id() );
+		return $this->post;
 	}
 
 	/**

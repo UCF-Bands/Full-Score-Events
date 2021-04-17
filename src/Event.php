@@ -42,6 +42,14 @@ class Event extends Post {
 	private $location;
 
 	/**
+	 * Staff member post for primary contact
+	 *
+	 * @since 1.0.0
+	 * @var   Staff_Member
+	 */
+	private $contact;
+
+	/**
 	 * Is the event featured?
 	 *
 	 * @since 1.0.0
@@ -413,13 +421,19 @@ class Event extends Post {
 	}
 
 	/**
-	 * Get contact's user ID
+	 * Get primary contact staff member
 	 *
 	 * @since 1.0.0
 	 *
 	 * @return integer
 	 */
 	public function get_contact() {
-		return intval( $this->get( '_contact_id' ) );
+
+		if ( isset( $this->contact ) ) {
+			return $this->contact;
+		}
+
+		$this->contact = get_staff_member( $this->get( '_contact_id' ) );
+		return $this->contact;
 	}
 }

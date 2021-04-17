@@ -136,6 +136,7 @@ function get_allowed_inline_html() {
 function set_blocks_js_allowed_inline_html_help( $object ) {
 
 	$object['allowedInlineHTML'] = sprintf(
+		// Translators: Allowed HTML: %s.
 		__( 'Allowed HTML: %s', 'full-score-events' ),
 		implode( ', ', array_keys( get_allowed_inline_html() ) )
 	);
@@ -337,7 +338,25 @@ function get_can_view_post( $post_id ) {
  * @return boolean|Location
  */
 function get_location( $post_id ) {
-	return $post_id && get_can_view_post( $post_id ) ? new Location( $post_id ) : false;
+	return $post_id && Locations::CPT_KEY === get_post_type( $post_id ) && get_can_view_post( $post_id )
+		? new Location( $post_id )
+		: false;
+}
+
+/**
+ * Get a staff member
+ *
+ * Make sure the post exists and it's a staff member, then get its object.
+ *
+ * @since 1.0.0
+ *
+ * @param  integer $post_id  Post ID to check.
+ * @return boolean|Staff_Member
+ */
+function get_staff_member( $post_id ) {
+	return $post_id && Staff::CPT_KEY === get_post_type( $post_id ) && get_can_view_post( $post_id )
+		? new Staff_Member( $post_id )
+		: false;
 }
 
 /**

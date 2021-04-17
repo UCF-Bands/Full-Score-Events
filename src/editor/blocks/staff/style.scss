@@ -1,0 +1,16 @@
+/**
+ * Staff listing block
+ *
+ * @since   1.0.0
+ * @package Full_Score_Events
+ */
+
+.wp-block-full-score-events-staff {
+	display: grid;
+	gap: var(--fse-bsu);
+	grid-template-columns: repeat(auto-fill, minmax(#{"min(300px, 100%)"}, 1fr));
+
+	@media (min-width: 80em) {
+		gap: var(--fse-bsu-x1-5);
+	}
+}

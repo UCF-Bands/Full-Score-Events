@@ -5,6 +5,7 @@
  * @package Full_Score_Events
  */
 
+.fse-link-overlay,
 .fse-event-link-overlay {
 	pointer-events: none;
 }
@@ -16,12 +17,14 @@
 	.wp-block-full-score-events-schedule-edit .wp-block,
 	.wp-block-full-score-events-schedule-edit p,
 	.wp-block .fse-schedule-heading-heading,
-	.wp-block .fse-program-heading-heading {
+	.wp-block .fse-program-heading-heading,
+	.wp-block .fse-staff-card-name {
 		margin: 0;
 	}
 
 	// list reset
-	.fse-upcoming-events-list {
+	.fse-upcoming-events-list,
+	.fse-staff-card-icons {
 		margin: 0;
 		padding: 0;
 		list-style-type: none;
