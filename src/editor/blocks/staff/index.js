@@ -9,6 +9,9 @@ import { registerBlockType } from '@wordpress/blocks';
 import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 import { people as icon } from '@wordpress/icons';
 
+import './style.scss';
+import './editor.scss';
+
 const ALLOWED_BLOCKS = [ 'full-score-events/staff-member' ];
 
 const BLOCKS_TEMPLATE = [
@@ -25,14 +28,23 @@ registerBlockType( 'full-score-events/staff', {
 	category: 'fse-event',
 	keywords: [ __( 'staff' ), __( 'faculty' ), __( 'team' ) ],
 
+	supports: {
+		align: [ 'wide' ],
+	},
+
 	edit: () => (
 		<div { ...useBlockProps() }>
 			<InnerBlocks
 				allowedBlocks={ ALLOWED_BLOCKS }
 				template={ BLOCKS_TEMPLATE }
+				orientation="horizontal"
 			/>
 		</div>
 	),
 
-	save: () => <InnerBlocks.Content />,
+	save: () => (
+		<div { ...useBlockProps.save() }>
+			<InnerBlocks.Content />
+		</div>
+	),
 } );

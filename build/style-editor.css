@@ -434,6 +434,21 @@
         justify-self: center; } }
 
 /**
+ * Staff listing block
+ *
+ * @since   1.0.0
+ * @package Full_Score_Events
+ */
+.wp-block-full-score-events-staff {
+  display: -ms-grid;
+  display: grid;
+  gap: var(--fse-bsu);
+  grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); }
+  @media (min-width: 80em) {
+    .wp-block-full-score-events-staff {
+      gap: var(--fse-bsu-x1-5); } }
+
+/**
  * Staff member block
  *
  * @since   1.0.0
@@ -455,7 +470,8 @@
   padding: var(--fse-bsu-half); }
 
 .fse-staff-card-content {
-  padding: var(--fse-bsu-fourth); }
+  padding: var(--fse-bsu-fourth);
+  text-align: left; }
 
 .fse-staff-card-icon {
   margin: calc(var(--fse-bsu) / 8) 0;

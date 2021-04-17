@@ -179,6 +179,20 @@
   font-size: var(--fse-font-size-medium-large); }
 
 /**
+ * Staff listing block editor adjustments
+ *
+ * @since   1.0.0
+ * @package Full_Score_Events
+ */
+.wp-block-full-score-events-staff {
+  display: block; }
+  .wp-block-full-score-events-staff .block-editor-block-list__layout {
+    display: -ms-grid;
+    display: grid;
+    gap: var(--fse-bsu);
+    grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); }
+
+/**
  * Staff member block editor adjustments
  *
  * @since   1.0.0
@@ -186,6 +200,9 @@
  */
 .editor-styles-wrapper .fse-staff-card-content-wrap {
   margin-top: 0; }
+
+.fse-staff-card {
+  margin: 0; }
 
 
 /*# sourceMappingURL=editor.css.map*/
