@@ -15,7 +15,7 @@ global $fse_staff_member;
 <figure <?php do_attrs_class( 'fse-staff-card', $className ?? '' ); ?>>
 
 	<div class="fse-staff-card-thumbnail-wrap">
-		<?php the_post_thumbnail( 'medium_large' ); ?>
+		<?php the_post_thumbnail( apply_filters( 'full_score_events_staff_card_thumbnail_size', 'medium_large' ) ); ?>
 	</div>
 
 	<figcaption class="fse-staff-card-content-wrap">
