@@ -60,6 +60,10 @@
 	line-height: var(--fse-line-height-xsmall);
 }
 
+.fse-button svg {
+	margin-left: var(--fse-bsu-half);
+}
+
 // date calendar icon thing
 .fse-date {
 	display: grid;

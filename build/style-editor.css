@@ -49,6 +49,10 @@
   line-height: var(--global--line-height-page-title, 1.1);
   line-height: var(--fse-line-height-xsmall); }
 
+.fse-button svg {
+  margin-left: calc(16px / 2);
+  margin-left: var(--fse-bsu-half); }
+
 .fse-date {
   display: -ms-grid;
   display: grid;
