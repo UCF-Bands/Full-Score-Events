@@ -160,10 +160,13 @@ class Staff extends Post_Type {
 	 */
 	public function set_posts_columns( $columns ) {
 
-		// Move title and date columns.
-		$title = $columns['title'] ?? false;
-		$date  = $columns['date'] ?? false;
-		unset( $columns['title'], $columns['date'] );
+		$groups_index = 'taxonomy-' . Staff_Groups::TAX_KEY;
+
+		// Move title, date, and tax columns.
+		$title  = $columns['title'] ?? false;
+		$date   = $columns['date'] ?? false;
+		$groups = $columns[ $groups_index ] ?? false;
+		unset( $columns['title'], $columns['date'], $columns[ $groups_index ] );
 
 		$columns['thumbnail'] = __( 'Photo', 'full-score-events' );
 
@@ -175,6 +178,10 @@ class Staff extends Post_Type {
 		$columns['position'] = __( 'Title', 'full-score-events' );
 		$columns['email']    = __( 'Email', 'full-score-events' );
 		$columns['phone']    = __( 'Phone', 'full-score-events' );
+
+		if ( $groups ) {
+			$columns[ $groups_index ] = $groups;
+		}
 
 		if ( $date ) {
 			$columns['date'] = $date;

@@ -105,12 +105,12 @@ class Plugin {
 	public $staff;
 
 	/**
-	 * Users handler
+	 * Staff Groups handler
 	 *
 	 * @since 1.0.0
-	 * @var   Users
+	 * @var   Staff_Groups
 	 */
-	public $users;
+	public $staff_groups;
 
 	/**
 	 * Customizer handler
@@ -195,17 +195,17 @@ class Plugin {
 	 * @since 1.0.0
 	 */
 	public function init() {
-		$this->schedules  = new Schedules();
-		$this->programs   = new Programs();
-		$this->locations  = new Locations();
-		$this->ensembles  = new Ensembles();
-		$this->seasons    = new Seasons();
-		$this->events     = new Events();
-		$this->blocks     = new Blocks\Blocks();
-		$this->staff      = new Staff();
-		$this->users      = new Users();
-		$this->customizer = new Customizer();
-		$this->settings   = new Settings();
+		$this->schedules    = new Schedules();
+		$this->programs     = new Programs();
+		$this->locations    = new Locations();
+		$this->ensembles    = new Ensembles();
+		$this->seasons      = new Seasons();
+		$this->events       = new Events();
+		$this->blocks       = new Blocks\Blocks();
+		$this->staff        = new Staff();
+		$this->staff_groups = new Staff_Groups();
+		$this->customizer   = new Customizer();
+		$this->settings     = new Settings();
 
 		if ( $this->is_request( 'frontend' ) ) {
 			$this->template_loader = new Template_Loader();
