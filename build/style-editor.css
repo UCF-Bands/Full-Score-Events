@@ -220,7 +220,7 @@
   padding-top: var(--fse-bsu-x1-5);
   padding-bottom: var(--fse-bsu-x1-5);
   border: 2px solid var(--fse-border-color); }
-  @media (min-width: 50rem) {
+  @media (min-width: 50em) {
     .fse-schedule,
     .fse-program {
       padding-top: var(--fse-bsu-x2);
@@ -265,7 +265,7 @@
   .fse-schedule [role="button"] {
     margin-top: var(--fse-bsu-half);
     text-align: center; }
-  @media (min-width: 50rem) {
+  @media (min-width: 50em) {
     .fse-schedule {
       padding-left: var(--fse-bsu-x2);
       padding-right: var(--fse-bsu-x2); } }
@@ -326,7 +326,7 @@
 .fse-piece-title {
   font-weight: 700; }
 
-@media (min-width: 50rem) {
+@media (min-width: 50em) {
   .wp-block-full-score-events-program-piece {
     -ms-grid-columns: 1.3333fr 1fr;
     grid-template-columns: 1.3333fr 1fr;
@@ -360,7 +360,7 @@
 .fse-program-tertiary-heading {
   font-style: italic; }
 
-@media (min-width: 50rem) {
+@media (min-width: 50em) {
   .wp-block-full-score-events-program-heading {
     -ms-grid-columns: 1fr 1fr;
     grid-template-columns: 1fr 1fr; }
@@ -381,7 +381,7 @@
 .fse-program > * {
   padding-left: var(--fse-bsu-x1-5);
   padding-right: var(--fse-bsu-x1-5); }
-  @media (min-width: 50rem) {
+  @media (min-width: 50em) {
     .fse-program > * {
       padding-left: var(--fse-bsu-x2);
       padding-right: var(--fse-bsu-x2); } }
@@ -423,7 +423,7 @@
 .fse-all-events-link {
   text-align: center; }
 
-@media (min-width: 50rem) {
+@media (min-width: 50em) {
   .fse-upcoming-events,
   .fse-upcoming-events-list {
     gap: var(--fse-bsu-x2); }

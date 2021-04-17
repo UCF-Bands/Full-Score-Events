@@ -70,7 +70,7 @@
 	margin-top: var(--fse-bsu);
 }
 
-@media (min-width: 64rem) {
+@media (min-width: 64em) {
 
 	.fse-featured-events.fse-has-background {
 		padding-top: var(--fse-bsu-x4);
@@ -82,7 +82,7 @@
 	}
 }
 
-@media (min-width: 105rem) {
+@media (min-width: 105em) {
 
 	.fse-featured-events.fse-has-background {
 		padding-top: calc(var(--fse-bsu) * 6);
