@@ -47,7 +47,8 @@
 
 // list reset
 .fse-featured-events-list,
-.fse-upcoming-events-list {
+.fse-upcoming-events-list,
+.fse-staff-card-icons {
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
@@ -133,20 +134,24 @@
 	}
 }
 
+.fse-link-overlay,
 .fse-event-link-overlay {
-	display: flex;
-	align-items: flex-end;
 	position: absolute;
 	top: 0;
 	right: 0;
 	bottom: 0;
 	left: 0;
-	text-decoration: none;
-	letter-spacing: var(--fse-letter-spacing-semi-wide);
-	font-size: var(--fse-font-size-xsmall);
 	outline: 2px dotted transparent;
 	outline-offset: var(--fse-bsu-half);
 	transition: outline ease-in-out var(--fse-transition-duration);
+}
+
+.fse-event-link-overlay {
+	display: flex;
+	align-items: flex-end;
+	text-decoration: none;
+	letter-spacing: var(--fse-letter-spacing-semi-wide);
+	font-size: var(--fse-font-size-xsmall);
 
 	&:hover .fse-event-link-overlay-message [data-fse-icon],
 	&:focus .fse-event-link-overlay-message [data-fse-icon] {
@@ -154,9 +159,14 @@
 	}
 }
 
-// Twenty Twenty-One fix
+.fse-link-overlay:hover,
+.fse-link-overlay:focus,
 .fse-event-link-overlay:hover,
-.fse-event-link-overlay:focus,
+.fse-event-link-overlay:focus {
+	outline: 2px dotted var(--fse-border-color);
+}
+
+// Twenty Twenty-One fix
 .site .fse-event-link-overlay:not(.wp-block-button__link):not(.wp-block-file__button):focus {
 	background: none;
 	outline: 2px dotted var(--fse-border-color);

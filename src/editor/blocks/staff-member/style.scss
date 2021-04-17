@@ -1,0 +1,45 @@
+/**
+ * Staff member block
+ *
+ * @since   1.0.0
+ * @package Full_Score_Events
+ */
+.fse-staff-card {
+	position: relative;
+	// padding: var(--fse-bsu-half);
+	// border: 2px solid var(--fse-border-color);
+
+	.fse-staff-card-name,
+	.fse-staff-card-position {
+		margin: 0;
+	}
+}
+
+// .fse-staff-card-thumbnail-wrap {
+// 	margin-bottom: var(--fse-bsu-half);
+// 	padding: var(--fse-bsu-half);
+// }
+
+.fse-staff-card-content-wrap {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	align-items: center;
+	margin: 0;
+	padding: var(--fse-bsu-half);
+}
+
+.fse-staff-card-content {
+	padding: var(--fse-bsu-fourth);
+}
+
+.fse-staff-card-icon {
+	margin: calc(var(--fse-bsu) / 8) 0;
+	text-align: center;
+}
+
+@media (min-width: 23em) {
+
+	.fse-staff-card-content-wrap {
+		padding: var(--fse-bsu);
+	}
+}

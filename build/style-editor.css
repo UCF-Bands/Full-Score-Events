@@ -38,7 +38,8 @@
   margin: 0; }
 
 .fse-featured-events-list,
-.fse-upcoming-events-list {
+.fse-upcoming-events-list,
+.fse-staff-card-icons {
   margin: 0;
   padding: 0;
   list-style-type: none; }
@@ -125,31 +126,39 @@
     transition: transform ease-in-out 150ms;
     transition: transform var(--fse-transition-timing-function) var(--fse-transition-duration); }
 
+.fse-link-overlay,
 .fse-event-link-overlay {
-  display: flex;
-  align-items: flex-end;
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  text-decoration: none;
-  letter-spacing: 0.05em;
-  letter-spacing: var(--fse-letter-spacing-semi-wide);
-  font-size: var(--global--font-size-xs, 14px);
-  font-size: var(--fse-font-size-xsmall);
   outline: 2px dotted transparent;
   outline-offset: calc(16px / 2);
   outline-offset: var(--fse-bsu-half);
   transition: outline ease-in-out 150ms;
   transition: outline ease-in-out var(--fse-transition-duration); }
+
+.fse-event-link-overlay {
+  display: flex;
+  align-items: flex-end;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  letter-spacing: var(--fse-letter-spacing-semi-wide);
+  font-size: var(--global--font-size-xs, 14px);
+  font-size: var(--fse-font-size-xsmall); }
   .fse-event-link-overlay:hover .fse-event-link-overlay-message [data-fse-icon],
   .fse-event-link-overlay:focus .fse-event-link-overlay-message [data-fse-icon] {
     transform: translateX(calc(16px / 4));
     transform: translateX(var(--fse-bsu-fourth)); }
 
+.fse-link-overlay:hover,
+.fse-link-overlay:focus,
 .fse-event-link-overlay:hover,
-.fse-event-link-overlay:focus,
+.fse-event-link-overlay:focus {
+  outline: 2px dotted var(--global--color-border, var(--fse-color-black));
+  outline: 2px dotted var(--fse-border-color); }
+
 .site .fse-event-link-overlay:not(.wp-block-button__link):not(.wp-block-file__button):focus {
   background: none;
   outline: 2px dotted var(--global--color-border, var(--fse-color-black));
@@ -423,6 +432,38 @@
   .fse-all-events-link {
     -ms-grid-column-align: center;
         justify-self: center; } }
+
+/**
+ * Staff member block
+ *
+ * @since   1.0.0
+ * @package Full_Score_Events
+ */
+.fse-staff-card {
+  position: relative; }
+  .fse-staff-card .fse-staff-card-name,
+  .fse-staff-card .fse-staff-card-position {
+    margin: 0; }
+
+.fse-staff-card-content-wrap {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr auto;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  margin: 0;
+  padding: var(--fse-bsu-half); }
+
+.fse-staff-card-content {
+  padding: var(--fse-bsu-fourth); }
+
+.fse-staff-card-icon {
+  margin: calc(var(--fse-bsu) / 8) 0;
+  text-align: center; }
+
+@media (min-width: 23em) {
+  .fse-staff-card-content-wrap {
+    padding: var(--fse-bsu); } }
 
 
 /*# sourceMappingURL=style-editor.css.map*/

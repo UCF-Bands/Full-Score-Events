@@ -88,6 +88,17 @@
 
 /***/ }),
 
+/***/ "./src/editor/blocks/staff-member/style.scss":
+/*!***************************************************!*\
+  !*** ./src/editor/blocks/staff-member/style.scss ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "./src/editor/blocks/style.scss":
 /*!**************************************!*\
   !*** ./src/editor/blocks/style.scss ***!
@@ -36074,6 +36085,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _upcoming_events__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./upcoming-events */ "./src/editor/blocks/upcoming-events/index.js");
 /* harmony import */ var _next_event__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./next-event */ "./src/editor/blocks/next-event/index.js");
 /* harmony import */ var _staff_details__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./staff-details */ "./src/editor/blocks/staff-details/index.js");
+/* harmony import */ var _staff__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./staff */ "./src/editor/blocks/staff/index.js");
+/* harmony import */ var _staff_member__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./staff-member */ "./src/editor/blocks/staff-member/index.js");
 /**
  * Custom blocks
  *
@@ -36081,6 +36094,8 @@ __webpack_require__.r(__webpack_exports__);
  */
 // shared
  // import './index.scss';
+
+
 
 
 
@@ -38009,6 +38024,143 @@ if (fullScoreEventsEditor.currentCPT === 'fse_staff') {
     }
   });
 }
+
+/***/ }),
+
+/***/ "./src/editor/blocks/staff-member/index.js":
+/*!*************************************************!*\
+  !*** ./src/editor/blocks/staff-member/index.js ***!
+  \*************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./src/editor/blocks/staff-member/style.scss");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./index.scss */ "./src/editor/blocks/staff-member/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _components_post_select_wrapper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/post-select-wrapper */ "./src/editor/components/post-select-wrapper/index.js");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/server-side-render */ "@wordpress/server-side-render");
+/* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/index.js");
+
+
+/**
+ * Staff member block
+ *
+ * Allows editor to display a staff member by staff post.
+ *
+ * @since 1.0.0
+ */
+
+
+
+
+
+
+
+var config = {
+  apiVersion: 2,
+  title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Staff Member', 'full-score-events'),
+  icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__["people"],
+  category: 'fse-event',
+  keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('staff member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('faculty member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('team')],
+  parent: ['full-score-events/staff'],
+  edit: function edit(_ref) {
+    var attributes = _ref.attributes;
+    var selectedPost = attributes.selectedPost;
+    return selectedPost.value ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_5___default.a, {
+      block: "full-score-events/staff-member",
+      attributes: attributes
+    }) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Please select a staff member in block options', 'full-score-events'));
+  },
+  save: function save() {
+    return null;
+  },
+  // for PostSelectWrapper
+  postType: 'fse_staff',
+  selectLabel: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('staff member', 'full-score-events')
+};
+/**
+ * Register staff member block
+ *
+ * {@link https://wordpress.org/gutenberg/handbook/block-api/}
+ *
+ * @param  {string}   name     Block name.
+ * @param  {Object}   settings Block settings.
+ * @return {?WPBlock}          The block, if it has been successfully registered; otherwise `undefined`.
+ */
+
+Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_6__["registerBlockType"])('full-score-events/staff-member', Object(_components_post_select_wrapper__WEBPACK_IMPORTED_MODULE_3__["default"])(config));
+
+/***/ }),
+
+/***/ "./src/editor/blocks/staff-member/index.scss":
+/*!***************************************************!*\
+  !*** ./src/editor/blocks/staff-member/index.scss ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./src/editor/blocks/staff/index.js":
+/*!******************************************!*\
+  !*** ./src/editor/blocks/staff/index.js ***!
+  \******************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/index.js");
+
+
+/**
+ * Staff member listing block
+ *
+ * @since 1.0.0
+ */
+
+
+
+
+var ALLOWED_BLOCKS = ['full-score-events/staff-member'];
+var BLOCKS_TEMPLATE = [['full-score-events/staff-member'], ['full-score-events/staff-member'], ['full-score-events/staff-member']];
+Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('full-score-events/staff', {
+  apiVersion: 2,
+  title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Staff', 'full-score-events'),
+  description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Staff member listing.', 'full-score-events'),
+  icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__["people"],
+  category: 'fse-event',
+  keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('staff'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('faculty'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('team')],
+  edit: function edit() {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["useBlockProps"])(), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["InnerBlocks"], {
+      allowedBlocks: ALLOWED_BLOCKS,
+      template: BLOCKS_TEMPLATE
+    }));
+  },
+  save: function save() {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["InnerBlocks"].Content, null);
+  }
+});
 
 /***/ }),
 

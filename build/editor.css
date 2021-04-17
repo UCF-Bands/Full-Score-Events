@@ -4,6 +4,7 @@
  * @since   1.0.0
  * @package Full_Score_Events
  */
+.fse-link-overlay,
 .fse-event-link-overlay {
   pointer-events: none; }
 
@@ -11,10 +12,12 @@
 .editor-styles-wrapper .wp-block-full-score-events-schedule-edit .wp-block,
 .editor-styles-wrapper .wp-block-full-score-events-schedule-edit p,
 .editor-styles-wrapper .wp-block .fse-schedule-heading-heading,
-.editor-styles-wrapper .wp-block .fse-program-heading-heading {
+.editor-styles-wrapper .wp-block .fse-program-heading-heading,
+.editor-styles-wrapper .wp-block .fse-staff-card-name {
   margin: 0; }
 
-.editor-styles-wrapper .fse-upcoming-events-list {
+.editor-styles-wrapper .fse-upcoming-events-list,
+.editor-styles-wrapper .fse-staff-card-icons {
   margin: 0;
   padding: 0;
   list-style-type: none; }
@@ -174,6 +177,15 @@
  */
 .editor-styles-wrapper .fse-upcoming-event .fse-event-title {
   font-size: var(--fse-font-size-medium-large); }
+
+/**
+ * Staff member block editor adjustments
+ *
+ * @since   1.0.0
+ * @package Full_Score_Events
+ */
+.editor-styles-wrapper .fse-staff-card-content-wrap {
+  margin-top: 0; }
 
 
 /*# sourceMappingURL=editor.css.map*/

@@ -28,3 +28,5 @@ import './upcoming-events';
 import './next-event';
 
 import './staff-details';
+import './staff';
+import './staff-member';

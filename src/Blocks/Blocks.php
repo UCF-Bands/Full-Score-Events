@@ -64,6 +64,8 @@ class Blocks {
 		new Upcoming_Events();
 		new Next_Event();
 		new Block( 'staff-details' );
+		new Block( 'staff' );
+		new Post_Block( 'staff-member' );
 		// new Zombie_Schedule_Edit(); This is just a placeholder since we have that Gutenberg issue.
 	}
 
