@@ -11,8 +11,6 @@
 	<exclude-pattern>/docroot/xmlrpc.php</exclude-pattern>
 	<exclude-pattern>/docroot/wp-content/plugins/*</exclude-pattern> -->
 
-	<!-- DZ custom (inspired by wprig) -->
-
 	<!-- Pass some flags to PHPCS:
 		 p flag: Show progress of the run.
 		 s flag: Show sniff codes in all reports.
