@@ -50,7 +50,7 @@ if ( ! $contact ) {
 				<?php if ( $contact->get_phone() ) : ?>
 					<a href="tel:<?php $contact->do_phone(); ?>" class="fse-contact-method fse-contact-phone">
 						<?php do_icon( 'phone' ); ?>
-						<?php $contact->do_phone(); ?>
+						<?php $contact->do_phone_display(); ?>
 					</a>
 				<?php endif; ?>
 			</div>
