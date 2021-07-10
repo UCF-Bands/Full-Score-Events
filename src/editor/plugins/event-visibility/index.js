@@ -1,5 +1,5 @@
 /**
- * Featured event handling sidebar plugin
+ * Event visibility/featured handling sidebar plugin
  *
  * @since 1.0.0
  */
@@ -37,4 +37,4 @@ const render = pluginMetaHandler( {
 } );
 
 // register the sidebar plugin
-registerPlugin( 'fse-event-featured', { render, icon: 'tickets-alt' } );
+registerPlugin( 'fse-event-visibility', { render, icon: 'tickets-alt' } );
