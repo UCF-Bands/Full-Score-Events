@@ -233,6 +233,19 @@ class Events extends Post_Type {
 			$meta_query['date_finish']['compare'] = '>';
 		}
 
+		// Handle "all events" exclusion (no ensemble query).
+		if (
+			! $query->is_admin
+			&& ! $query->is_singular()
+			&& ! $query->is_tax( Ensembles::TAX_KEY )
+		) {
+			$meta_query['exclude_ensemble_limited'] = [
+				'key'     => '_limit_to_ensembles',
+				'value'   => 1,
+				'compare' => '!=',
+			];
+		}
+
 		// Set our modified meta query.
 		$query->set( 'meta_query', $meta_query );
 	}
