@@ -88,18 +88,19 @@ class Events extends Post_Type {
 		$date = $date->format( 'c' );
 
 		foreach ( [
-			'_is_featured'       => [ 'boolean', false ],
-			'_date_start'        => [ 'string', $date ],
-			'_date_finish'       => [ 'string', $date ],
-			'_show_finish'       => [ 'boolean', false ],
-			'_is_all_day'        => [ 'boolean', false ],
-			'_is_time_tba'       => [ 'boolean', false ],
-			'_registration_type' => [ 'string', '' ],
-			'_registration_url'  => [ 'string', '' ],
-			'_price'             => [ 'number', 0 ],
-			'_show_price'        => [ 'boolean', true ],
-			'_location_id'       => [ 'integer', 0 ],
-			'_contact_id'        => [ 'integer', 0 ],
+			'_is_featured'        => [ 'boolean', false ],
+			'_limit_to_ensembles' => [ 'boolean', false ],
+			'_date_start'         => [ 'string', $date ],
+			'_date_finish'        => [ 'string', $date ],
+			'_show_finish'        => [ 'boolean', false ],
+			'_is_all_day'         => [ 'boolean', false ],
+			'_is_time_tba'        => [ 'boolean', false ],
+			'_registration_type'  => [ 'string', '' ],
+			'_registration_url'   => [ 'string', '' ],
+			'_price'              => [ 'number', 0 ],
+			'_show_price'         => [ 'boolean', true ],
+			'_location_id'        => [ 'integer', 0 ],
+			'_contact_id'         => [ 'integer', 0 ],
 		] as $key => $args ) {
 			register_post_meta(
 				self::CPT_KEY,
@@ -232,6 +233,19 @@ class Events extends Post_Type {
 			$meta_query['date_finish']['compare'] = '>';
 		}
 
+		// Handle "all events" exclusion (no ensemble query).
+		if (
+			! $query->is_admin
+			&& ! $query->is_singular()
+			&& ! $query->is_tax( Ensembles::TAX_KEY )
+		) {
+			$meta_query['exclude_ensemble_limited'] = [
+				'key'     => '_limit_to_ensembles',
+				'value'   => 1,
+				'compare' => '!=',
+			];
+		}
+
 		// Set our modified meta query.
 		$query->set( 'meta_query', $meta_query );
 	}
@@ -254,11 +268,12 @@ class Events extends Post_Type {
 		unset( $columns['date'], $columns[ $ensembles_key ] );
 
 		// Add start/finish, location, and contact.
-		$columns['featured']    = __( 'Featured', 'full-score-events' );
-		$columns['date_start']  = __( 'Start', 'full-score-events' );
-		$columns['date_finish'] = __( 'Finish', 'full-score-events' );
-		$columns['location']    = __( 'Location', 'full-score-events' );
-		$columns['contact']     = __( 'Contact', 'full-score-events' );
+		$columns['featured']         = __( 'Featured', 'full-score-events' );
+		$columns['ensemble_limited'] = __( 'Ensemble View Only', 'full-score-events' );
+		$columns['date_start']       = __( 'Start', 'full-score-events' );
+		$columns['date_finish']      = __( 'Finish', 'full-score-events' );
+		$columns['location']         = __( 'Location', 'full-score-events' );
+		$columns['contact']          = __( 'Contact', 'full-score-events' );
 
 		if ( $ensembles ) {
 			$columns[ $ensembles_key ] = $ensembles;
@@ -300,6 +315,11 @@ class Events extends Post_Type {
 			// Featured.
 			case 'featured':
 				echo $fse_event->is_featured() ? '<span class="dashicons dashicons-star-filled"></span>' : '';
+				return;
+
+			// Limited to ensemble's views.
+			case 'ensemble_limited':
+				echo $fse_event->is_ensemble_limited() ? '<span class="dashicons dashicons-yes"></span>' : '';
 				return;
 
 			// Start date.
