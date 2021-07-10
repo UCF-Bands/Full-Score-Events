@@ -61,6 +61,17 @@ class Event extends Post {
 	}
 
 	/**
+	 * Is the event limited to views of its ensemble(s)?
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return boolean
+	 */
+	public function is_ensemble_limited() {
+		return $this->get( '_limit_to_ensembles' );
+	}
+
+	/**
 	 * Get a DateTime object for a date field
 	 *
 	 * @since 1.0.0
