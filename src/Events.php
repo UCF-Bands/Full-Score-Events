@@ -255,11 +255,12 @@ class Events extends Post_Type {
 		unset( $columns['date'], $columns[ $ensembles_key ] );
 
 		// Add start/finish, location, and contact.
-		$columns['featured']    = __( 'Featured', 'full-score-events' );
-		$columns['date_start']  = __( 'Start', 'full-score-events' );
-		$columns['date_finish'] = __( 'Finish', 'full-score-events' );
-		$columns['location']    = __( 'Location', 'full-score-events' );
-		$columns['contact']     = __( 'Contact', 'full-score-events' );
+		$columns['featured']         = __( 'Featured', 'full-score-events' );
+		$columns['ensemble_limited'] = __( 'Ensemble View Only', 'full-score-events' );
+		$columns['date_start']       = __( 'Start', 'full-score-events' );
+		$columns['date_finish']      = __( 'Finish', 'full-score-events' );
+		$columns['location']         = __( 'Location', 'full-score-events' );
+		$columns['contact']          = __( 'Contact', 'full-score-events' );
 
 		if ( $ensembles ) {
 			$columns[ $ensembles_key ] = $ensembles;
@@ -301,6 +302,11 @@ class Events extends Post_Type {
 			// Featured.
 			case 'featured':
 				echo $fse_event->is_featured() ? '<span class="dashicons dashicons-star-filled"></span>' : '';
+				return;
+
+			// Limited to ensemble's views.
+			case 'ensemble_limited':
+				echo $fse_event->is_ensemble_limited() ? '<span class="dashicons dashicons-yes"></span>' : '';
 				return;
 
 			// Start date.
