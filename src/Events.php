@@ -88,18 +88,19 @@ class Events extends Post_Type {
 		$date = $date->format( 'c' );
 
 		foreach ( [
-			'_is_featured'       => [ 'boolean', false ],
-			'_date_start'        => [ 'string', $date ],
-			'_date_finish'       => [ 'string', $date ],
-			'_show_finish'       => [ 'boolean', false ],
-			'_is_all_day'        => [ 'boolean', false ],
-			'_is_time_tba'       => [ 'boolean', false ],
-			'_registration_type' => [ 'string', '' ],
-			'_registration_url'  => [ 'string', '' ],
-			'_price'             => [ 'number', 0 ],
-			'_show_price'        => [ 'boolean', true ],
-			'_location_id'       => [ 'integer', 0 ],
-			'_contact_id'        => [ 'integer', 0 ],
+			'_is_featured'        => [ 'boolean', false ],
+			'_limit_to_ensembles' => [ 'boolean', false ],
+			'_date_start'         => [ 'string', $date ],
+			'_date_finish'        => [ 'string', $date ],
+			'_show_finish'        => [ 'boolean', false ],
+			'_is_all_day'         => [ 'boolean', false ],
+			'_is_time_tba'        => [ 'boolean', false ],
+			'_registration_type'  => [ 'string', '' ],
+			'_registration_url'   => [ 'string', '' ],
+			'_price'              => [ 'number', 0 ],
+			'_show_price'         => [ 'boolean', true ],
+			'_location_id'        => [ 'integer', 0 ],
+			'_contact_id'         => [ 'integer', 0 ],
 		] as $key => $args ) {
 			register_post_meta(
 				self::CPT_KEY,
