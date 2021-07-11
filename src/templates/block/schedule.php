@@ -21,7 +21,7 @@ $upload_id = $edit_block['attrs']['uploadId'] ?? false;
 
 <div <?php do_attrs_class( 'fse-schedule', $className ?? '' ); ?>>
 
-	<?php if ( $showTitle ) : ?>
+	<?php if ( $showTitle ?? false ) : ?>
 		<h2 class="fse-schedule-title"><?php $fse_schedule->do_title(); ?></h2>
 	<?php endif; ?>
 
