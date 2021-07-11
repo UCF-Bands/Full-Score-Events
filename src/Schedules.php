@@ -119,4 +119,19 @@ class Schedules extends Post_Type {
 	protected function get_title_placeholder() {
 		return __( 'Add schedule name', 'full-score-events' );
 	}
+
+	/**
+	 * Add schedule block to main content if there isn't one
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param  string $content  Post content.
+	 * @return string $content  Post content.
+	 */
+	protected function get_content( $content ) {
+
+		return ! has_block( 'full-score-events/schedule' )
+			? $content . get_block_template( 'schedule' )
+			: $content;
+	}
 }
