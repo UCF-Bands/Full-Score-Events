@@ -115,4 +115,19 @@ class Programs extends Post_Type {
 			],
 		];
 	}
+
+	/**
+	 * Add program block to main content if there isn't one
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param  string $content  Post content.
+	 * @return string $content  Post content.
+	 */
+	protected function get_content( $content ) {
+
+		return ! has_block( 'full-score-events/program' )
+			? $content . get_block_template( 'program' )
+			: $content;
+	}
 }

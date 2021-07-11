@@ -82,6 +82,7 @@ abstract class Post_Type {
 		add_filter( "manage_{$key}_posts_columns", [ $this, 'set_posts_columns' ] );
 		add_filter( "manage_edit-{$key}_sortable_columns", [ $this, 'set_sortable_columns' ], 15 );
 		add_action( "manage_{$key}_posts_custom_column", [ $this, 'do_custom_column' ], 20, 2 );
+		add_filter( 'the_content', [ $this, 'set_content' ] );
 	}
 
 	/**
@@ -310,6 +311,30 @@ abstract class Post_Type {
 	 */
 	public function do_custom_column( $name ) {
 		return null;
+	}
+
+	/**
+	 * Get the post's main content with any needed adjustments
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param  string $content  Post content.
+	 * @return string $content  Post content.
+	 */
+	protected function get_content( $content ) {
+		return $content;
+	}
+
+	/**
+	 * Adjust the post's main content
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param  string $content  Post content.
+	 * @return string $content  Post content.
+	 */
+	public function set_content( $content ) {
+		return is_singular( $this::CPT_KEY ) ? $this->get_content( $content ) : $content;
 	}
 
 	/**
