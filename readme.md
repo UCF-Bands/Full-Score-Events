@@ -1,22 +1,52 @@
-# Features
+# Full Score Events
 
-* PHP namespacing
-* PSR-4 autoloading via composer!
-* CPT registration class with "Sample" CPT
-* PHPCS with WordPress coding standards integration through command line and/or code editor (VS Code workspace settings included)
+Full Score Events is a WordPress plugin that allow band programs schedule events for their performances, meetings, rehearsals, and more with unique features tailored for the activities of an athletic or concert ensemble:
 
-# Getting Started
+## Schedules
 
-## Clone
+Create beatifully formatted, single or multi-day schedules that clearly communicate when certain parts of an event, performance, game, or trip are to take place. A PDF version of the schedule can be uploaded by an editor and downloaded by a viewer with a button at the bottom of the schedule.
 
-Clone this repo down to your `wp-content/plugins` folder and **delete the `.git`
-folder inside it so you're editing a new plugin instead of this repository**.
+Schedule items can be written with basic formatting and contain bulleted/numbered lists in case additional details or materials need to be listed out. 
 
-## Local setup
+Callouts with "info", "success", "warning", and "error" formats can also be added to the schedule for more visible notices, such as an event cancellation or important reminder.
+
+## Concert Programs
+
+Full-fledged digital concert programs can be added to any event, post, or page on your website. Multiple ensembles can be put on a program for joint concerts, along with director, conductor, and guest conductor information. Pieces can be added under each program heading with a title, composer, arranger, and a featured or guest conductor/soloist/etc.
+
+## Staff Members
+
+Staff members can be added to your site for:
+
+1. Full profile viewing (individual staff member view)
+2. Faculty/staff page listings
+3. An event's primary contact
+
+Each staff member can have a photo, position, phone number, email address, and bio with full-fledged block editor contents.
+
+## Events
+
+Full Score Events has all of the standard event date/time/location features, but is especially capable for band programs because:
+
+1. Event times can be set to "TBA" or have their end time not displayed in case certain events don't have a probable finish, such as a football game.
+2. A ticket or registration link can be added to the event's header and can be linked either internally or externally, and optionally display a unit price.
+3. Event description editing is done with the full block editor, allowing the addition of concert programs, schedules, staff members, and the other media/text blocks available on your site.
+4. Events can be flagged as "featured" and stay at the top of the events listing page
+5. Ensembles can be added to the site and have events assigned to them. "Events" blocks are available in the editor and can be filtered down to one or more ensembles.
+6. Events can be assigned a "primary contact" staff member and have their contact contact information and photo displayed in the event's sidebar.
+7. Events can be limited to views specifically filtered down to the ensembles added to the event. This is helpful for events that shouldn't be in the main listing, but should be in an upcoming events block for a specific ensemble.
+8. The Event archive/listing page colors and header background can be adjusted in the customizer.
+
+## Seasons
+
+Seasons can be added to the website, which are given a title and start date to help "break down" your main event listing into groups of time, such as semesters. This allows headings to be added to the events listing for "Spring 2021", "Summer 2021", "Fall 2022", etc to be added.
+
+-----
+
+# Contributing
 
 1. Install NPM dependencies: `npm install`
 1. Install untracked composer dependencies: `composer install`
-1. Make sure the autoloader has the right namespace: `composer dump-autoload`
 1. Install PHPCS languages: `composer run-script install-codestandards`
 1. Configure PHPCS linting in your editor so you don't have to rely only on the `phpcs` composer script
 
