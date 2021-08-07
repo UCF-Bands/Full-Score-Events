@@ -371,12 +371,23 @@ class Event extends Post {
 	}
 
 	/**
-	 * Output registration type
+	 * Get registration label
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return string
+	 */
+	public function get_registration_label() {
+		return $this->get( '_registration_label' ) ?: $this->get_registration_type( 'label' );
+	}
+
+	/**
+	 * Output registration label
 	 *
 	 * @since 1.0.0
 	 */
-	public function do_registration_type() {
-		echo $this->get_registration_type( 'label' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	public function do_registration_label() {
+		echo $this->get_registration_label(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
 	/**

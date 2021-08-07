@@ -6,7 +6,7 @@
 
 import find from 'lodash/find';
 
-import { __ } from '@wordpress/i18n';
+import { __, sprintf } from '@wordpress/i18n';
 import { registerPlugin } from '@wordpress/plugins';
 import { PluginDocumentSettingPanel } from '@wordpress/edit-post';
 import { URLInput } from '@wordpress/block-editor';
@@ -24,6 +24,9 @@ const render = pluginMetaHandler( {
 	type: {
 		key: '_registration_type',
 	},
+	typeLabel: {
+		key: '_registration_label',
+	},
 	url: {
 		key: '_registration_url',
 	},
@@ -39,10 +42,12 @@ const render = pluginMetaHandler( {
 	( {
 		postType,
 		type,
+		typeLabel,
 		url,
 		price,
 		showPrice,
 		setType,
+		setTypeLabel,
 		setUrl,
 		setPrice,
 		setShowPrice,
@@ -61,11 +66,13 @@ const render = pluginMetaHandler( {
 			{
 				label: __( 'Registration', 'full-score-events' ),
 				value: 'register',
+				typeLabel: __( 'Register', 'full-score-events' ),
 				urlLabel: __( 'Registration Link', 'full-score-events' ),
 			},
 			{
 				label: __( 'Tickets', 'full-score-events' ),
 				value: 'ticket',
+				typeLabel: __( 'Get Tickets', 'full-score-events' ),
 				urlLabel: __( 'Tickets Link', 'full-score-events' ),
 			},
 		];
@@ -84,6 +91,19 @@ const render = pluginMetaHandler( {
 					onChange={ ( value ) => setType( value ) }
 					value={ type }
 				/>
+
+				{ type && (
+					<TextControl
+						label={ __( 'Button Text', 'full-score-events' ) }
+						placeholder={ sprintf(
+							// Translators: Defaults to %s (registration type label)
+							__( 'Defaults to "%s"', 'full-score-events' ),
+							typeData.typeLabel
+						) }
+						value={ typeLabel }
+						onChange={ ( value ) => setTypeLabel( value ) }
+					/>
+				) }
 
 				{ typeData.urlLabel && (
 					<URLInput
