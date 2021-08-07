@@ -344,7 +344,7 @@ add_filter( 'excerpt_more', __NAMESPACE__ . '\remove_excerpt_more', 25 );
 function set_excerpt_length( $length ) {
 
 	if ( doing_action( 'full_score_events_loop_event_content' ) ) {
-		return 40;
+		return Customizer::get( 'excerpt_length', 40 );
 	}
 
 	return $length;
