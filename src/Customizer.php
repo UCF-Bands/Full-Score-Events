@@ -74,6 +74,17 @@ class Customizer {
 			]
 		);
 
+		// Excerpt length.
+		$wp_customize->add_setting( "{$this::$prefix}_excerpt_length" );
+		$wp_customize->add_control(
+			"{$this::$prefix}_excerpt_length",
+			[
+				'label'   => __( 'Event Excerpt Length (Words)', 'full-score-events' ),
+				'type'    => 'number',
+				'section' => $section,
+			]
+		);
+
 		// Featured events title.
 		$wp_customize->add_setting(
 			"{$this::$prefix}_featured_title",
