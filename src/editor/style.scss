@@ -109,7 +109,14 @@
 	> * {
 		flex: 0 1 auto;
 		display: block;
+		position: relative;
 		margin: calc(var(--fse-event-meta-spacing) / 2) var(--fse-event-meta-spacing);
+		padding-left: calc(var(--fse-bsu) * 1.666);
+	}
+
+	[data-fse-icon] {
+		position: absolute;
+		left: 0;
 	}
 }
 

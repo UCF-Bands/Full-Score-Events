@@ -45,7 +45,7 @@ $attrs    = apply_filters(
 
 	<?php if ( $this_type ) : ?>
 		<span class="fse-event-registration-type">
-			<?php $fse_event->do_registration_type(); ?>
+			<?php $fse_event->do_registration_label(); ?>
 		</span>
 	<?php endif; ?>
 

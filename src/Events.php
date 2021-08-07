@@ -96,6 +96,7 @@ class Events extends Post_Type {
 			'_is_all_day'         => [ 'boolean', false ],
 			'_is_time_tba'        => [ 'boolean', false ],
 			'_registration_type'  => [ 'string', '' ],
+			'_registration_label' => [ 'string', '' ],
 			'_registration_url'   => [ 'string', '' ],
 			'_price'              => [ 'number', 0 ],
 			'_show_price'         => [ 'boolean', true ],
