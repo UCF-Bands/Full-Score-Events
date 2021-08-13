@@ -208,6 +208,11 @@ class Events extends Post_Type {
 	 */
 	protected function set_query( $query ) {
 
+		// Don't run on singles.
+		if ( $query->is_singular() ) {
+			return;
+		}
+
 		$meta_query = $query->get( 'meta_query' ) ?: [];
 
 		// Require and add orderby names for start/finish dates.
