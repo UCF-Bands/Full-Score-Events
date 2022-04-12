@@ -8,7 +8,7 @@
 
 .fse-schedule{padding-left:var(--fse-bsu-x1-5);padding-right:var(--fse-bsu-x1-5)}.fse-schedule [role="button"]{margin-top:var(--fse-bsu-half);text-align:center}@media (min-width: 50em){.fse-schedule{padding-left:var(--fse-bsu-x2);padding-right:var(--fse-bsu-x2)}}
 
-.fse-schedule-item{display:-ms-grid;display:grid;-ms-grid-columns:calc(var(--fse-bsu) * 6) 1fr;grid-template-columns:calc(var(--fse-bsu) * 6) 1fr;gap:var(--fse-bsu-x1-5);padding:var(--fse-bsu-half) 0}.fse-schedule-item time{font-weight:700}.fse-schedule-item+.fse-schedule-item{border-top:1px solid var(--fse-border-color)}
+.fse-schedule-item{display:-ms-grid;display:grid;-ms-grid-columns:calc(var(--fse-bsu) * 6) 1fr;grid-template-columns:calc(var(--fse-bsu) * 6) 1fr;gap:var(--fse-bsu-x1-5);padding:var(--fse-bsu-half) 0}.fse-schedule-item time{font-weight:700}.fse-schedule-item+.fse-schedule-item{border-top:1px solid var(--fse-border-color)}.fse-schedule-activity p+p{margin-top:calc(var(--fse-bsu) * 0.6666)}
 
 .wp-block-full-score-events-schedule-heading{display:-ms-grid;display:grid;gap:var(--fse-bsu);margin-top:var(--fse-bsu)}.wp-block-full-score-events-schedule-heading:first-child{margin-top:0}
 
