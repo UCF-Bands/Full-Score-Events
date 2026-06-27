@@ -14,11 +14,14 @@
  * @since   1.0.0
  */
 
+/**
+ * @var \Full_Score_Events\Event $fse_event
+ */
 global $fse_event;
 
 $location = $fse_event->get_location();
 
-if ( ! $location ) {
+if ( ! $location || ( ! $location->get_address() && ! $location->get_map_src() ) ) {
 	return;
 }
 ?>
