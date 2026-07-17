@@ -40,6 +40,26 @@ if ( fullScoreEventsEditor.currentCPT === 'fse_staff' ) {
 				source: 'meta',
 				meta: '_email',
 			},
+			facebookLabel: {
+				type: 'string',
+				source: 'meta',
+				meta: '_facebook_label',
+			},
+			facebookURL: {
+				type: 'string',
+				source: 'meta',
+				meta: '_facebook_url',
+			},
+			discordLabel: {
+				type: 'string',
+				source: 'meta',
+				meta: '_discord_label',
+			},
+			discordURL: {
+				type: 'string',
+				source: 'meta',
+				meta: '_discord_url',
+			},
 		},
 
 		edit,

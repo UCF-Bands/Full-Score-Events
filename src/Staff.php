@@ -76,6 +76,11 @@ class Staff extends Post_Type {
 			'_phone',
 			'_phone_display',
 			'_email',
+			'_email',
+			'_facebook_label',
+			'_facebook_url',
+			'_discord_label',
+			'_discord_url',
 		] as $key ) {
 			register_post_meta(
 				self::CPT_KEY,
