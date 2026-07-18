@@ -49,16 +49,16 @@ if ( ! $email && ! $phone && ! $facebook && ! $discord ) {
 	<?php endif; ?>
 
 	<?php if ( $facebook ) : ?>
-		<a href="<?php echo esc_url( $facebook ); ?>" class="fse-contact-method fse-contact-facebook">
+		<a href="<?php $fse_staff_member->do_facebook_url(); ?>" class="fse-contact-method fse-contact-facebook">
 			<?php do_icon( 'facebook' ); ?>
-			<?php echo esc_html( $fse_staff_member->get_facebook_label() ) ?: esc_html_e( 'Facebook', 'full-score-events' ); ?>
+			<?php $fse_staff_member->do_facebook_label(); ?>
 		</a>
 	<?php endif; ?>
 
 	<?php if ( $discord ) : ?>
-		<a href="<?php echo esc_url( $discord ); ?>" class="fse-contact-method fse-contact-discord">
+		<a href="<?php $fse_staff_member->do_discord_url(); ?>" class="fse-contact-method fse-contact-discord">
 			<?php do_icon( 'discord' ); ?>
-			<?php echo esc_html( $fse_staff_member->get_discord_label() ) ?: esc_html_e( 'Discord', 'full-score-events' ); ?>
+			<?php $fse_staff_member->do_discord_label(); ?>
 		</a>
 	<?php endif; ?>
 </address>
