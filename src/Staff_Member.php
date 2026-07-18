@@ -130,7 +130,7 @@ class Staff_Member extends Post {
 	 * @return string
 	 */
 	public function get_facebook_url() {
-		return esc_url( $this->get( '_facebook_url' ) );
+		return $this->get( '_facebook_url' );
 	}
 
 	/**
@@ -139,8 +139,7 @@ class Staff_Member extends Post {
 	 * @since 1.1.0
 	 */
 	public function do_facebook_url() {
- 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo $this->get_facebook_url();
+		echo esc_url( $this->get_facebook_url() );
 	}
 
 	/**
@@ -171,7 +170,7 @@ class Staff_Member extends Post {
 	 * @return string
 	 */
 	public function get_discord_url() {
-		return esc_url( $this->get( '_discord_url' ) );
+		return $this->get( '_discord_url' );
 	}
 
 	/**
@@ -180,7 +179,6 @@ class Staff_Member extends Post {
 	 * @since 1.1.0
 	 */
 	public function do_discord_url() {
- 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo $this->get_discord_url();
+		echo esc_url( $this->get_discord_url() );
 	}
 }
