@@ -5,7 +5,7 @@
  * Description: Event, schedule, and concerpt program management and listing for bands
  * Author: JordanPak
  * Author URI: https://jordanpak.com/
- * Version: 1.0.0
+ * Version: 1.1.0
  * License: GPL2+
  * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain: full-score-events
@@ -184,7 +184,7 @@ class Plugin {
 	 * @since 1.0.0
 	 */
 	private function set_constants() {
-		define( 'FULL_SCORE_EVENTS_VERSION', '1.0.0' );
+		define( 'FULL_SCORE_EVENTS_VERSION', '1.1.0' );
 		define( 'FULL_SCORE_EVENTS_DIR', plugin_dir_path( __FILE__ ) );
 		define( 'FULL_SCORE_EVENTS_URL', plugin_dir_url( __FILE__ ) );
 	}

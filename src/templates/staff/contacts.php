@@ -16,12 +16,19 @@
 
 namespace Full_Score_Events;
 
+/**
+ * Global staff member.
+ *
+ * @var \Full_Score_Events\Staff_Member $fse_staff_member
+ */
 global $fse_staff_member;
 
-$email = $fse_staff_member->get_email();
-$phone = $fse_staff_member->get_phone();
+$email    = $fse_staff_member->get_email();
+$phone    = $fse_staff_member->get_phone();
+$facebook = $fse_staff_member->get_facebook_url();
+$discord  = $fse_staff_member->get_discord_url();
 
-if ( ! $email && ! $phone ) {
+if ( ! $email && ! $phone && ! $facebook && ! $discord ) {
 	return;
 }
 ?>
@@ -38,6 +45,20 @@ if ( ! $email && ! $phone ) {
 		<a href="tel:<?php echo esc_attr( $phone ); ?>" class="fse-contact-method fse-contact-phone">
 			<?php do_icon( 'phone' ); ?>
 			<?php echo esc_html( $fse_staff_member->get_phone_display() ?: $phone ); ?>
+		</a>
+	<?php endif; ?>
+
+	<?php if ( $facebook ) : ?>
+		<a href="<?php $fse_staff_member->do_facebook_url(); ?>" class="fse-contact-method fse-contact-facebook">
+			<?php do_icon( 'facebook' ); ?>
+			<?php $fse_staff_member->do_facebook_label(); ?>
+		</a>
+	<?php endif; ?>
+
+	<?php if ( $discord ) : ?>
+		<a href="<?php $fse_staff_member->do_discord_url(); ?>" class="fse-contact-method fse-contact-discord">
+			<?php do_icon( 'discord' ); ?>
+			<?php $fse_staff_member->do_discord_label(); ?>
 		</a>
 	<?php endif; ?>
 </address>

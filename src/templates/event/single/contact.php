@@ -16,6 +16,11 @@
 
 namespace Full_Score_Events;
 
+/**
+ * Global event.
+ *
+ * @var \Full_Score_Events\Event
+ */
 global $fse_event;
 
 $contact = $fse_event->get_contact();
@@ -51,6 +56,20 @@ if ( ! $contact ) {
 					<a href="tel:<?php $contact->do_phone(); ?>" class="fse-contact-method fse-contact-phone">
 						<?php do_icon( 'phone' ); ?>
 						<?php $contact->do_phone_display(); ?>
+					</a>
+				<?php endif; ?>
+
+				<?php if ( $contact->get_facebook_url() ) : ?>
+					<a href="<?php $contact->do_facebook_url(); ?>" class="fse-contact-method fse-contact-facebook">
+						<?php do_icon( 'facebook' ); ?>
+						<?php $contact->do_facebook_label(); ?>
+					</a>
+				<?php endif; ?>
+
+				<?php if ( $contact->get_discord_url() ) : ?>
+					<a href="<?php $contact->do_discord_url(); ?>" class="fse-contact-method fse-contact-discord">
+						<?php do_icon( 'discord' ); ?>
+						<?php $contact->do_discord_label(); ?>
 					</a>
 				<?php endif; ?>
 			</div>

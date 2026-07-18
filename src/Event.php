@@ -447,7 +447,7 @@ class Event extends Post {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return integer
+	 * @return Staff_Member
 	 */
 	public function get_contact() {
 
